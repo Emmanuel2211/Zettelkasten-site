@@ -1,6 +1,6 @@
 ---
-modified: 2026-10-30T14:40:04Z
-title: "Introducción Algebra"
+modified: 2026-11-04T19:56:43Z
+title: "Algebra"
 publish: true
 type: moc
 tags: 

@@ -1,6 +1,6 @@
 ---
-modified: 2026-11-04T19:52:14Z
-title: "Set Theory"
+modified: 2026-11-04T19:57:08Z
+title: "Teoria de Conjuntos"
 publish: true
 type: moc
 tags: 
