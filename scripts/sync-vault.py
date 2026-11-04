@@ -39,6 +39,8 @@ FRONTMATTER_RE = re.compile(r"\A---\r?\n(.*?)\r?\n---\r?\n?", re.S)
 PUBLISH_RE = re.compile(r"^publish:\s*(true|yes)\s*$", re.I | re.M)
 WIKI_EMBED_RE = re.compile(r"!\[\[([^\]|#^]+)(?:[#^][^\]|]*)?(?:\|[^\]]*)?\]\]")
 WIKI_LINK_RE = re.compile(r"(?<!!)\[\[([^\]|#^]+)(?:[#^][^\]|]*)?(?:\|[^\]]*)?\]\]")
+# raw HTML images: <img src="images/x.png" ...> (local files only)
+HTML_IMG_RE = re.compile(r"""<img\b[^>]*?\bsrc=["'](?!https?://|data:|/)([^"']+)["']""", re.I)
 MD_EMBED_RE = re.compile(r"!\[[^\]]*\]\((?!https?://)([^)\s]+)(?:\s+\"[^\"]*\")?\)")
 CODE_FENCE_RE = re.compile(r"^(```|~~~).*?^\1", re.S | re.M)
 
@@ -366,6 +368,27 @@ def strip_code(text: str) -> str:
 LINK_FULL_RE = re.compile(r"(!?)\[\[([^\]|#^\\]+)((?:#[^\]|]*)?)((?:\\?\|[^\]]*)?)\]\]")
 
 
+def fix_raw_html(text: str, rel: PurePosixPath, index: "VaultIndex") -> str:
+    """Obsidian renders math inside raw HTML in the browser; Quartz renders math at
+    build time and only recognises the classes `math-display` / `math-inline`.
+    Also point <img src> at the copied asset (root path) so it works from any page."""
+    def fix_img(m: re.Match) -> str:
+        hit = index.resolve(m.group(1), rel)
+        if hit is None:
+            return m.group(0)
+        start, end = m.span(1)
+        s0 = m.start(0)
+        return m.group(0)[: start - s0] + "/" + hit.as_posix() + m.group(0)[end - s0:]
+
+    def fix(part: str) -> str:
+        part = re.sub(r"""class=(["'])math display\1""", r'class="math-display"', part)
+        part = re.sub(r"""class=(["'])math inline\1""", r'class="math-inline"', part)
+        return HTML_IMG_RE.sub(fix_img, part)
+
+    parts = re.split(r"(^(?:```|~~~).*?^(?:```|~~~)[^\n]*$)", text, flags=re.S | re.M)
+    return "".join(p if i % 2 else fix(p) for i, p in enumerate(parts))
+
+
 def is_folder_note(rel: PurePosixPath) -> bool:
     """Obsidian 'folder note': Maths/Algebra/Algebra.md (named like its folder)."""
     return rel.suffix == ".md" and len(rel.parts) >= 2 and rel.stem.lower() == rel.parent.name.lower()
@@ -433,7 +456,7 @@ def main() -> int:
     private_links = 0
     for rel, text in notes.items():
         body = strip_code(text)
-        for target in WIKI_EMBED_RE.findall(body) + MD_EMBED_RE.findall(body):
+        for target in WIKI_EMBED_RE.findall(body) + MD_EMBED_RE.findall(body) + HTML_IMG_RE.findall(body):
             hit = index.resolve(target, rel)
             if hit is None:
                 missing.append((rel, target))
@@ -508,6 +531,7 @@ def main() -> int:
         dst = CONTENT / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
         text = fix_folder_note_links(text, rel, index, published)
+        text = fix_raw_html(text, rel, index)
         text = add_modified_date(h1_to_title(fix_math_in_callouts(text)), VAULT / rel)
         dst.write_text(text, encoding="utf-8")
         shutil.copystat(VAULT / rel, dst)  # keep modified dates
@@ -526,6 +550,7 @@ def main() -> int:
                         ignore=shutil.ignore_patterns("*.md"))
     for rel, text in site_pages.items():
         text = fix_folder_note_links(text, rel, index, published)
+        text = fix_raw_html(text, rel, index)
         (CONTENT / rel).parent.mkdir(parents=True, exist_ok=True)
         (CONTENT / rel).write_text(text, encoding="utf-8")
 

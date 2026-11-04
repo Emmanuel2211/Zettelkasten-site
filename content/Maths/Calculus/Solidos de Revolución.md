@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-01T17:32:23Z
+modified: 2026-11-04T23:23:28Z
 title: "Solidos de Revolución"
 publish: true
 type: zettel
