@@ -39,6 +39,15 @@
   --titleFont: "Latin Modern Roman", "Crimson Pro", serif;
 }
 
+// Site-wide "zoom": everything sized in rem (text, math, headings, sidebars)
+// scales with this, like browser zoom. 120% ≈ Ctrl + in Chrome twice.
+// Only on tablet/desktop; phones stay at 100% (already readable).
+@media (min-width: 800px) {
+  html {
+    font-size: 120%;
+  }
+}
+
 // Latin Modern reads small; match the vault's 18px base size.
 article {
   font-size: 1.1rem;

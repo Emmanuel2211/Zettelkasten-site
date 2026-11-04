@@ -6,7 +6,7 @@ configuration:
   enablePopovers: true
   analytics: null
   locale: es-ES
-  baseUrl: zettelkasten.pages.dev
+  baseUrl: zettelkasten-site.emmanuelcd-2211.workers.dev
   ignorePatterns:
     - private
     - Templates
