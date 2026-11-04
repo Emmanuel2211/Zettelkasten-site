@@ -1,0 +1,21 @@
+# Paths (relative to the vault root) that are NEVER copied to the site,
+# even if they have `publish: true`. One glob per line. Folders end with /.
+# Matching is case-insensitive.
+.obsidian/
+.trash/
+Templates/
+Personal/
+Passwords.md
+Despensa y Gastos.md
+nombres compañeros*
+Notas Alex & Emma.md
+Rutina del dia.md
+Workout.md
+Currently....md
+Carrera.md
+Investigacion Carrera.md
+Proyectos de Carrera.md
+Timeline Carrera.canvas
+Untitled*.md
+test.md
+Prueba Obsidian.md

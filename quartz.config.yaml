@@ -1,0 +1,360 @@
+# yaml-language-server: $schema=./quartz/plugins/quartz-plugins.schema.json
+configuration:
+  pageTitle: Zettelkasten
+  pageTitleSuffix: " · Zettelkasten"
+  enableSPA: true
+  enablePopovers: true
+  analytics: null
+  locale: es-ES
+  baseUrl: zettelkasten.pages.dev
+  ignorePatterns:
+    - private
+    - Templates
+    - .obsidian
+    - "**/*.canvas"
+  theme:
+    fontOrigin: googleFonts
+    cdnCaching: true
+    # Body/headers are overridden to self-hosted Latin Modern Roman in
+    # quartz/styles/custom.scss; Crimson Pro is the fallback while it loads.
+    typography:
+      header: Crimson Pro
+      body: Crimson Pro
+      code: JetBrains Mono
+    colors:
+      lightMode:
+        light: "#fbfaf9"
+        lightgray: "#e6e3ea"
+        gray: "#b3adb9"
+        darkgray: "#4a4650"
+        dark: "#26232a"
+        secondary: "#8a3fc7"
+        tertiary: "#b760f0"
+        highlight: rgba(183, 96, 240, 0.10)
+        textHighlight: "#fff23688"
+      darkMode:
+        light: "#17151a"
+        lightgray: "#3a3540"
+        gray: "#6c6573"
+        darkgray: "#d6d1dc"
+        dark: "#eeebf1"
+        secondary: "#c58af5"
+        tertiary: "#b760f0"
+        highlight: rgba(183, 96, 240, 0.14)
+        textHighlight: "#b3aa0288"
+plugins:
+  - source: "@quartz-community/created-modified-date"
+    enabled: true
+    options:
+      defaultDateType: modified
+      # sync-vault.py writes the vault file's real mtime as `modified:`
+      priority:
+        - frontmatter
+        - filesystem
+        - git
+    order: 10
+  - source: "@quartz-community/syntax-highlighting"
+    enabled: true
+    options:
+      theme:
+        light: catppuccin-latte
+        dark: catppuccin-mocha
+      keepBackground: false
+    order: 20
+  - source: "@quartz-community/obsidian-flavored-markdown"
+    enabled: true
+    options:
+      comments: true
+      highlight: true
+      wikilinks: true
+      callouts: true
+      mermaid: true
+      parseTags: true
+      parseArrows: true
+      parseBlockReferences: true
+      # keep false: rendered pseudocode is raw HTML and must not be re-parsed
+      enableInHtmlEmbed: false
+      enableYouTubeEmbed: true
+      enableVideoEmbed: true
+      enableCheckbox: true
+    order: 30
+  - source: "@quartz-community/github-flavored-markdown"
+    enabled: true
+    order: 40
+  - source: "@quartz-community/table-of-contents"
+    enabled: true
+    order: 50
+    layout:
+      position: right
+      priority: 30
+  - source: "@quartz-community/crawl-links"
+    enabled: true
+    options:
+      markdownLinkResolution: shortest
+      # links to private/unpublished notes render as plain (non-clickable) text
+      disableBrokenWikilinks: true
+      lazyLoad: true
+    order: 60
+  - source: "@quartz-community/description"
+    enabled: true
+    order: 70
+  - source: "@quartz-community/latex"
+    enabled: true
+    options:
+      # MathJax = same engine Obsidian uses, so notes render identically
+      renderEngine: mathjax
+    order: 80
+  - source: "@quartz-community/citations"
+    enabled: false
+    order: 85
+  - source: "@quartz-community/hard-line-breaks"
+    enabled: true
+    order: 90
+  - source: "@quartz-community/ox-hugo"
+    enabled: false
+    order: 91
+  - source: "@quartz-community/roam"
+    enabled: false
+    order: 92
+  - source: "@quartz-community/quartz-fonts"
+    enabled: true
+    options:
+      useThemeFonts: false
+      fontOrigin: googleFonts
+      # Latin Modern Roman is self-hosted (quartz/static/fonts/lm, see custom.scss)
+      body: '"Latin Modern Roman", "Crimson Pro", serif'
+      header: '"Latin Modern Roman", "Crimson Pro", serif'
+      title: '"Latin Modern Roman", "Crimson Pro", serif'
+      interface: '"Latin Modern Roman", "Crimson Pro", serif'
+      code:
+        name: JetBrains Mono
+        weights: [400, 600]
+        includeItalic: false
+  # Obsidian-theme emulation layer (~420 KB CSS/page). Off: we use Quartz's own
+  # styling + the palette above + callouts ported in quartz/styles/custom.scss.
+  - source: "@quartz-themes/core"
+    enabled: false
+    options:
+      theme: default
+      mode: both
+  - source: "@quartz-community/remove-draft"
+    enabled: true
+  # Only notes with `publish: true` are built (2nd safety layer after sync-vault.py)
+  - source: "@quartz-community/explicit-publish"
+    enabled: true
+  - source: "@quartz-community/unlisted-pages"
+    enabled: true
+    options: {}
+    order: 45
+  - source: "@quartz-community/encrypted-pages"
+    enabled: true
+    options:
+      iterations: 600000
+      passwordField: password
+      unlistWhenEncrypted: false
+      outputPath: static/encryptedContentIndex.json
+  - source: "@quartz-community/stacked-pages"
+    enabled: false
+    layout:
+      position: afterBody
+      priority: 50
+      display: all
+  - source: "@quartz-community/alias-redirects"
+    enabled: true
+  - source: "@quartz-community/content-index"
+    enabled: true
+    options:
+      enableSiteMap: true
+      enableRSS: true
+  - source: "@quartz-community/favicon"
+    enabled: true
+  - source: "@quartz-community/og-image"
+    enabled: true
+  - source: "@quartz-community/cname"
+    enabled: true
+  - source: "@quartz-community/canvas-page"
+    enabled: true
+  - source: "@quartz-community/content-page"
+    enabled: true
+  - source: "@quartz-community/folder-page"
+    enabled: true
+  - source: "@quartz-community/tag-page"
+    enabled: true
+  - source: "@quartz-community/explorer"
+    enabled: true
+    options:
+      title: Notas
+      folderClickBehavior: collapse
+      folderDefaultState: collapsed
+      useSavedState: true
+    layout:
+      position: left
+      priority: 50
+  - source: "@quartz-community/graph"
+    enabled: true
+    options:
+      localGraph:
+        drag: true
+        zoom: true
+        depth: 2
+        scale: 1.1
+        repelForce: 0.5
+        centerForce: 0.3
+        linkDistance: 30
+        fontSize: 0.6
+        opacityScale: 1
+        showTags: true
+        removeTags: [romana]
+        focusOnHover: true
+        enableRadial: false
+      globalGraph:
+        drag: true
+        zoom: true
+        depth: -1
+        scale: 0.9
+        repelForce: 0.5
+        centerForce: 0.2
+        linkDistance: 30
+        fontSize: 0.6
+        opacityScale: 1
+        showTags: true
+        removeTags: [romana]
+        focusOnHover: true
+        enableRadial: true
+    layout:
+      position: right
+      priority: 10
+  - source: "@quartz-community/search"
+    enabled: true
+    options:
+      enablePreview: true
+      fieldPriority: [title, content, tags]
+    layout:
+      position: left
+      priority: 20
+      group: toolbar
+      groupOptions:
+        grow: true
+  - source: "@quartz-community/backlinks"
+    enabled: true
+    layout:
+      position: right
+      priority: 50
+  - source: "@quartz-community/article-title"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 10
+  - source: "@quartz-community/content-meta"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 20
+  - source: "@quartz-community/tag-list"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 30
+  - source: "@quartz-community/page-title"
+    enabled: true
+    layout:
+      position: left
+      priority: 10
+  - source: "@quartz-community/darkmode"
+    enabled: true
+    layout:
+      position: left
+      priority: 30
+      group: toolbar
+  - source: "@quartz-community/reader-mode"
+    enabled: true
+    layout:
+      position: left
+      priority: 35
+      group: toolbar
+  - source: "@quartz-community/breadcrumbs"
+    enabled: true
+    layout:
+      position: beforeBody
+      priority: 5
+      condition: not-index
+  - source: "@quartz-community/comments"
+    enabled: false
+    options:
+      provider: giscus
+      options: {}
+    layout:
+      position: afterBody
+      priority: 10
+  - source: "@quartz-community/footer"
+    enabled: true
+    options:
+      links:
+        Hecho con Quartz: https://quartz.jzhao.xyz
+    layout:
+      position: footer
+      priority: 50
+  - source: "@quartz-community/recent-notes"
+    enabled: false
+  - source: "@quartz-community/spacer"
+    enabled: true
+    options: {}
+    order: 25
+    layout:
+      position: left
+      priority: 25
+      display: mobile-only
+  - source: "@quartz-community/bases-page"
+    enabled: true
+    options: {}
+    order: 50
+  - source: "@quartz-community/note-properties"
+    enabled: true
+    options:
+      includeAll: false
+      includedProperties:
+        - description
+        - tags
+        - aliases
+      excludedProperties: []
+      # Obsidian has properties hidden in reading view; tags still show via tag-list
+      hidePropertiesView: true
+      delimiters: ---
+      language: yaml
+    order: 5
+    layout:
+      position: beforeBody
+      priority: 15
+      display: all
+  - source: "@quartz-community/obsidian-plugin-excalidraw"
+    enabled: true
+    options:
+      enableInteraction: true
+      darkMode: auto
+      exportPadding: 20
+    order: 50
+layout:
+  groups:
+    toolbar:
+      priority: 35
+      direction: row
+      gap: 0.5rem
+  byPageType:
+    "404":
+      positions:
+        beforeBody: []
+        left: []
+        right: []
+    content: {}
+    folder:
+      exclude:
+        - reader-mode
+      positions:
+        right: []
+    tag:
+      exclude:
+        - reader-mode
+      positions:
+        right: []
+    canvas: {}
+    bases: {}

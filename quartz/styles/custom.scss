@@ -1,3 +1,205 @@
 @use "./variables.scss" as *;
+@use "./vendor-pseudocode.scss";
 
-// put your custom CSS here!
+// ---------------------------------------------------------------------------
+// Latin Modern Roman (self-hosted, GUST Font License) — same look as the vault
+// ---------------------------------------------------------------------------
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("/static/fonts/lm/lmroman10-regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("/static/fonts/lm/lmroman10-italic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("/static/fonts/lm/lmroman10-bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Latin Modern Roman";
+  src: url("/static/fonts/lm/lmroman10-bolditalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+:root:root {
+  --bodyFont: "Latin Modern Roman", "Crimson Pro", serif;
+  --headerFont: "Latin Modern Roman", "Crimson Pro", serif;
+  --titleFont: "Latin Modern Roman", "Crimson Pro", serif;
+}
+
+// Latin Modern reads small; match the vault's 18px base size.
+article {
+  font-size: 1.1rem;
+}
+
+// ---------------------------------------------------------------------------
+// Callouts ported from .obsidian/snippets
+// ---------------------------------------------------------------------------
+
+// [!theorem]  (theorem.css): outlined box, no icon, italic body
+.callout[data-callout="theorem"] {
+  --color: var(--dark);
+  --border: var(--dark);
+  --bg: transparent;
+  font-family: "Latin Modern Roman", serif;
+  border: 1px solid var(--dark);
+  border-radius: 6px;
+
+  .callout-icon {
+    display: none;
+  }
+  .callout-title-inner {
+    font-weight: revert;
+  }
+  .callout-content {
+    font-style: italic;
+
+    strong,
+    b {
+      font-weight: bold;
+      font-style: normal;
+      color: var(--dark);
+    }
+  }
+}
+
+// [!proof]  (Proof.css): mint green with a "search-check" icon
+.callout[data-callout="proof"] {
+  --color: rgb(81, 201, 165);
+  --border: rgba(81, 201, 165, 0.27);
+  --bg: rgba(81, 201, 165, 0.1);
+  --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m8 11 2 2 4-4"/><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>');
+}
+
+// [!observation]  (observation.css): olive with an "eye" icon
+.callout[data-callout="observation"] {
+  --color: rgb(174, 185, 100);
+  --border: rgba(174, 185, 100, 0.27);
+  --bg: rgba(174, 185, 100, 0.1);
+  --callout-icon: url('data:image/svg+xml; utf8, <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"/><circle cx="12" cy="12" r="3"/></svg>');
+  margin-bottom: 0.5em;
+
+  .callout-content > :last-child {
+    margin-bottom: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Lists (listas.css)
+// ---------------------------------------------------------------------------
+article ol li::marker {
+  color: var(--secondary);
+  font-weight: bold;
+}
+
+// notes with `cssclasses: [romana]` get (i), (ii), (iii)
+.romana ol {
+  list-style-type: lower-roman;
+
+  li::marker {
+    font-style: italic;
+    font-weight: normal;
+    font-family: "Latin Modern Roman", "Latin Modern Math", "Cambria Math", serif;
+  }
+}
+
+article ul ul {
+  list-style-type: circle;
+}
+article ul ul ul {
+  list-style-type: square;
+}
+
+// ---------------------------------------------------------------------------
+// Image alignment (center-images.css): ![[img.png|center]] / ![[img.png|right]]
+// ---------------------------------------------------------------------------
+img[alt*="center"] {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+img[alt*="right"] {
+  float: right;
+  clear: right;
+  margin: 2px 0 2px 1rem;
+}
+
+// ---------------------------------------------------------------------------
+// Code blocks (codeBlock.css): slightly smaller code
+// ---------------------------------------------------------------------------
+article pre {
+  font-size: 0.85em;
+}
+
+// ---------------------------------------------------------------------------
+// TikZ diagrams (pre-rendered to SVG by scripts/sync-vault.py)
+// ---------------------------------------------------------------------------
+:is(img[alt="tikz"], object[aria-label="tikz"]) {
+  display: block;
+  margin: 1rem auto;
+  max-width: 100%;
+  height: auto;
+}
+// black-on-transparent drawings → invert in dark mode (like the Obsidian plugin)
+:root[saved-theme="dark"] :is(img[alt="tikz"], object[aria-label="tikz"]) {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+// ---------------------------------------------------------------------------
+// Pseudocode (pre-rendered by scripts/render-pseudocode.mjs)
+// ---------------------------------------------------------------------------
+.pseudocode-block {
+  margin: 1rem 0;
+  overflow-x: auto;
+
+  .ps-root {
+    font-family: "Latin Modern Roman", serif;
+    color: var(--dark);
+  }
+  .ps-algorithm {
+    border-top-color: var(--dark);
+    border-bottom-color: var(--dark);
+  }
+  .ps-algorithm.with-caption > .ps-line:first-child {
+    border-bottom-color: var(--dark);
+  }
+  .ps-keyword {
+    color: var(--secondary);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Links to notes that aren't published: plain text, no click / no popover
+// ---------------------------------------------------------------------------
+a.internal.broken {
+  pointer-events: none;
+  cursor: text;
+  color: inherit;
+  background: none;
+  font-weight: inherit;
+  text-decoration: none;
+}
+
+// ---------------------------------------------------------------------------
+// Excalidraw drawings embedded in notes: no filename heading / quote border
+// ---------------------------------------------------------------------------
+blockquote.transclude:has(> article.excalidraw-page) {
+  border-left: none;
+  padding-left: 0;
+
+  > h1 {
+    display: none;
+  }
+}
