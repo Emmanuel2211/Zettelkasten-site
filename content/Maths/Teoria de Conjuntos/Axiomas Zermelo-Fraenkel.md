@@ -1,5 +1,5 @@
 ---
-modified: 2026-10-02T03:26:16Z
+modified: 2026-11-04T19:51:46Z
 title: "Axiomas Zermelo-Fraenkel (ZFC)"
 publish: true
 type: zettel
@@ -17,9 +17,9 @@ cssclasses:
 
 
 
-> [!theorem] **Axiom of Pairing (emparejamiento).**^[[[Axioma de Emparejamiento]]] *For any $a$ and $b$ there exists a set $\{ a,b \}$ that contains exactly $a$ and $b$*.
+> [!theorem] **Axiom of Pairing (emparejamiento).** *For any $a$ and $b$ there exists a set $\{ a,b \}$ that contains exactly $a$ and $b$*.
 
-> [!theorem] **Axiom Esquema de Separación.**^[[[Axioma de Separacion]]]  *Si $P$ es una propiedad (con parámetro $p$), entonces para cualquier $X$ y $p$ existe un conjunto $Y = \{ u \in X : P(u,p) \}$ que contiene todo $u \in X$ con la propiedad $P$*.
+> [!theorem] **Axiom Esquema de Separación.**  *Si $P$ es una propiedad (con parámetro $p$), entonces para cualquier $X$ y $p$ existe un conjunto $Y = \{ u \in X : P(u,p) \}$ que contiene todo $u \in X$ con la propiedad $P$*.
 
 ^28a139
 

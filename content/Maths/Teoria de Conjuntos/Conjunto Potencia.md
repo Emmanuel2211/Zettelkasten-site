@@ -1,5 +1,5 @@
 ---
-modified: 2026-08-25T20:29:05Z
+modified: 2026-11-04T19:51:28Z
 title: "Conjunto Potencia"
 publish: true
 alias: 
@@ -26,8 +26,6 @@ $$
 P(X) = \{  u : u \subset X \},
 $$
 es llamado **conjunto potencia**.
-
----
 
 De este axioma se desarrolla otras nociones básicas de la teoría de conjuntos.
 

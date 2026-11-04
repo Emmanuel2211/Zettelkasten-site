@@ -1,5 +1,5 @@
 ---
-modified: 2026-08-26T16:17:45Z
+modified: 2026-11-04T19:52:14Z
 title: "Set Theory"
 publish: true
 type: moc
@@ -17,31 +17,11 @@ cssclasses: romana
 > [!quote]- **Definición.** (Un conjunto según Cantor)
 > Un **conjunto** es una colección de objetos definidos y distintos que forman parte de nuestra intuición o de nuestro pensamiento. A estos objetos se les denomina elementos (miembros) del conjunto.
 
-### Lenguaje de Teoría de Conjuntos y Formulas
 
-El Axioma de Separación usa la noción vaga de *propiedad*. El desarrollo de axiomática de conjuntos va con el *framework* de la *lógica de primer orden* (*cálculo de predicados*). 
-
-Las *formulas atómicas* son
-$$
-x \in y, \quad x = y
-$$
-
-los *conectivos*
-$$
-\varphi \land \psi, \quad \varphi \lor \psi, \quad \neg\varphi, \quad \varphi\implies \psi, \quad \varphi \iff \psi
-$$
-y los *cuantificadores*
-$$
-\forall x \varphi, \quad \exists x\varphi.
-$$
-
-#### Teoría de Conjuntos
 
 - [[Axiomas Zermelo-Fraenkel]]
 	- Clases y Paradoja de Russel
 	- Extensionalidad
-	- Axioma del Par
-	- Esquema de Separación
 	- Unión
 	- Potencia
 - [[Algebra de Conjuntos]]
