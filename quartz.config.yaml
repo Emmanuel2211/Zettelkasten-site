@@ -184,7 +184,8 @@ plugins:
     enabled: true
     options:
       title: Notas
-      folderClickBehavior: collapse
+      # click folder name = open its MOC (folder note); click the arrow = expand/collapse
+      folderClickBehavior: link
       folderDefaultState: collapsed
       useSavedState: true
     layout:

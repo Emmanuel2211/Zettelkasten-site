@@ -362,6 +362,33 @@ def strip_code(text: str) -> str:
     return CODE_FENCE_RE.sub("", text)
 
 
+# [[Target#anchor|alias]] / ![[Target]] / table-escaped [[Target\|alias]]
+LINK_FULL_RE = re.compile(r"(!?)\[\[([^\]|#^\\]+)((?:#[^\]|]*)?)((?:\\?\|[^\]]*)?)\]\]")
+
+
+def is_folder_note(rel: PurePosixPath) -> bool:
+    """Obsidian 'folder note': Maths/Algebra/Algebra.md (named like its folder)."""
+    return rel.suffix == ".md" and len(rel.parts) >= 2 and rel.stem.lower() == rel.parent.name.lower()
+
+
+def fix_folder_note_links(text: str, rel: PurePosixPath, index: "VaultIndex", published: set) -> str:
+    """Quartz publishes a folder note as the folder's page (`maths/algebra/index`),
+    but its 'shortest' link resolution then can't find it, so [[Algebra]] came out
+    broken. Point such links at the explicit path; the visible text is unchanged."""
+    def sub(m: re.Match) -> str:
+        bang, target, anchor, alias = m.groups()
+        hit = index.resolve(target, rel)
+        if hit is None or hit not in published or not is_folder_note(hit):
+            return m.group(0)
+        if not alias and not bang:
+            alias = "|" + target.strip()
+        return f"{bang}[[{hit.parent.as_posix()}/index{anchor}{alias}]]"
+
+    # leave code blocks alone
+    parts = re.split(r"(^(?:```|~~~).*?^(?:```|~~~)[^\n]*$)", text, flags=re.S | re.M)
+    return "".join(p if i % 2 else LINK_FULL_RE.sub(sub, p) for i, p in enumerate(parts))
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="report only, write nothing")
@@ -462,6 +489,7 @@ def main() -> int:
         for e in render_errors:
             print(f"   - {e}")
 
+    published = set(notes)
     # Rebuild content/ from scratch so unpublished notes disappear from the site.
     if CONTENT.exists():
         shutil.rmtree(CONTENT)
@@ -479,6 +507,7 @@ def main() -> int:
     for rel, text in notes.items():
         dst = CONTENT / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
+        text = fix_folder_note_links(text, rel, index, published)
         text = add_modified_date(h1_to_title(fix_math_in_callouts(text)), VAULT / rel)
         dst.write_text(text, encoding="utf-8")
         shutil.copystat(VAULT / rel, dst)  # keep modified dates
@@ -496,6 +525,7 @@ def main() -> int:
         shutil.copytree(SITE_PAGES, CONTENT, dirs_exist_ok=True,
                         ignore=shutil.ignore_patterns("*.md"))
     for rel, text in site_pages.items():
+        text = fix_folder_note_links(text, rel, index, published)
         (CONTENT / rel).parent.mkdir(parents=True, exist_ok=True)
         (CONTENT / rel).write_text(text, encoding="utf-8")
 
