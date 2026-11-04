@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-03T18:16:50Z
+modified: 2026-11-04T21:14:10Z
 title: "Trompeta de Torricelli"
 publish: true
 type: zettel
@@ -20,7 +20,7 @@ cssclasses:
 > 2. Su área o superficie es infinita.
 >
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 > 1. $\displaystyle V = \pi \int_{a}^{b} f(x)^{2} \, dx  = \pi \int_{1}^{\infty} \left(\frac{1}{x}\right)^{2} \, dx = \pi \lim_{b \to \infty} \left(\frac{x^{-1}}{-1}  \right)\bigg|_{1}^{b} = -\pi \lim_{b \to \infty} \left[ \frac{1}{b} - 1  \right] = \pi$
 > Por lo tanto, $V = \pi$.
 >

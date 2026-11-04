@@ -12,7 +12,7 @@ aliases:
 - Teoria de Grupos
 ---
 - Algunas notas sobre [[Logica]]
-- Lo básico sobre la Teoría de [[Teoria de Conjuntos]]
+- Lo básico sobre la Teoría de [[Maths/Teoria de Conjuntos/index|Teoria de Conjuntos]]
 ## [[Relaciones Binarias]]
 - [[Relacion de Orden]]
 - Relaciones de Equivalencia
