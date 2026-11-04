@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-04T08:48:52Z
+modified: 2026-11-04T19:32:17Z
 title: "Calculus"
 publish: true
 type: moc
@@ -57,12 +57,11 @@ La estructura de la discusión es:
 - [[Continuidad]]
 - [[Regla de L'Hopital]]
 
-Los 3 Teoremas Fuertes de Continuidad:
+Los Teoremas Fuertes de Continuidad:
 - [[Teorema del Valor Intermedio]]
 - [[Teorema de Weierstrass y de Acotación]]
 Algunas más otras consecuencias:
 - [[Teorema de Existencia de Raices]]
-
 - [[Continuidad Uniforme]]
 
 ---
@@ -78,37 +77,41 @@ Algunas más otras consecuencias:
 ---
 ## Derivadas
 - [[Diferenciacion]]
-regla de leibniz, cadena... nose que
-
-- #### [[Teorema del Valor Medio]]
+- [[Teorema del Valor Medio]]
+	- [[Teorema de Rolle]]
 - [[Antiderivada]]
-- [[Derivacion Logaritmica]]
 
 
 ---
-## [[Integrales]]
+## Integrales
 
 - [[Definiendo la Integral]]
+	- [[Suma Inferior y Superior]]
 	- [[Integral de Darboux]]
-	- [[Teorema Fundamental de Cálculo]]
-	- [[Integral de Reimann]]
+	- [[Integrabilidad]]
+- [[Teorema Fundamental de Cálculo]]
+- [[Integral de Reimann]]
 	- [[Generalizando la Integral]]
 	- [[Mas propiedades de la integral]]
-##### [[Derivadas e Integrales Comunes]]
+	
+#### Resultados:
+- [[Derivadas e Integrales Comunes]]
 
-#### Metodos de Integración
+---
+## Metodos de Integración
 - [[Cambio de Variable]]
 - [[Integracion por Partes]]
 - [[Sustitucion Trigonometrica]]
 - [[Fracciones Parciales]]
 	- [[Sustitución de Weierstrass]]
 - [[Metodo de Euler]]
-
-#### [[Integrales Trigonometricas]]
-#### [[Integrales Impropias]]
+-  [[Integrales Impropias]]
 - [[Criterios de Convergencia de Integrales]]
+#### Resultados:
+- [[Integrales Trigonometricas]]
 
 
+---
 ## [[Aplicaciones de la Integral]]
 - [[Funciones Uniparametricas]]
 - [[Solidos de Revolución]]
@@ -131,7 +134,7 @@ Para Actuarios:
 
 ---
 
-## [[Logaritmo y Exponencial]]
+## Función Logaritmo y Exponencial
 - [[Funcion Logaritmo]]
 - [[Funcion Exponencial]]
 - [[definicion chida logaritmo yexp]]
@@ -140,24 +143,15 @@ Para Actuarios:
 	- [[Derivadas de Funciones Hiperbólicas]]
 
 ---
+## Aproximación de Funciones
 
-# [[Polinomio de Taylor]]
+- [[Polinomio de Taylor]]
 
 
-- [[Tres teoremas fuertes]]
-- [[Derivadas]]
-- [[Significado de la derivada]]
-- [[funcion convexa]]
-- [[Funcion Inversa]]
-- [[particion de un intervalo]]
-- [[Integrabilidad]]
-- [[Teorema Fundamental de Cálculo]]
-- [[Funciones Trigonometricas]]
-- Integración en Términos Elementales
 
 ---
 
-# [[Series]]
+## [[Series]]
 
 - [[Series Armonicas]]
 - [[Series Telescópicas]]

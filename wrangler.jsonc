@@ -1,0 +1,15 @@
+// Cloudflare Workers deploy config (used by `npx wrangler deploy` in Workers Builds).
+// The site is static: Cloudflare just serves the folder Quartz builds into.
+{
+  // MUST match the Worker's name in the Cloudflare dashboard, or the build fails.
+  "name": "zettelkasten-site",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    // Quartz's build output
+    "directory": "./public",
+    // /maths/limite -> maths/limite.html  (Quartz writes `page.html` files)
+    "html_handling": "auto-trailing-slash",
+    // unknown URLs show Quartz's own 404.html instead of a blank error
+    "not_found_handling": "404-page"
+  }
+}

@@ -1,5 +1,5 @@
 ---
-modified: 2026-10-02T23:27:54Z
+modified: 2026-11-04T19:25:31Z
 title: "Teorema de Lagrange"
 publish: true
 type: zettel
@@ -20,16 +20,7 @@ cssclasses:
 > $$
 
 
-> [!theorem] **Teorema.** (Teorema de Rolle)
-> Sea $f$ una función continua en $[a,b]$ y derivable en $(a,b)$ y supóngase que $f(a) = f(b)$. Ent. $\exists c \in (a,b)$ tq. $f'(c)=0$.
-
-
-
-
-
-
-> [!tip]- **Idea.**
-> En algún punto $c$, el area bajo la curva es igual al area del rectangulo que se forma con $f(c)$ y $b-a$
+Un caso particula del T.V.M. es el [[Teorema de Rolle]].
 
 
 > [!theorem] **Teorema.** (Teorema del Valor Medio para Integrales)

@@ -1,6 +1,6 @@
 ---
-modified: 2026-09-10T18:23:05Z
-title: "Regla de L'hipita"
+modified: 2026-11-04T19:23:35Z
+title: "Regla de L'Hôpita"
 publish: true
 type: zettel
 status: 
@@ -21,8 +21,3 @@ materia:
 
 
 
-(Observe que el [[Teorema 7 del significado de la derivada|teorema 7]] es un caso particular.)
-
-
-
-Proof.
