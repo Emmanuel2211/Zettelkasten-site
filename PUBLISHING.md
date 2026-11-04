@@ -10,6 +10,7 @@ Vault: `~/Documentos/Zettelkasten` → this repo (`content/` is generated, never
    python3 -I scripts/mark-publish.py Maths                         # dry run
    python3 -I scripts/mark-publish.py --type zettel --tag algebra --apply
    python3 -I scripts/mark-publish.py "Nota.md" --unpublish --apply
+   python3 -I scripts/mark-publish.py --undo                       # reverse the last --apply
    ```
 3. Preview locally: `./scripts/publish.sh --preview` → http://localhost:8080
 4. Publish: `./scripts/publish.sh` (sync → test build → commit & push → Cloudflare deploys).
