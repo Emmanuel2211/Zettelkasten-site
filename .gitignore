@@ -15,3 +15,6 @@ quartz/cli/tui/dist/
 
 # rendered tikz/pseudocode cache (scripts/sync-vault.py)
 .render-cache/
+
+# Python bytecode from scripts/
+__pycache__/

@@ -203,3 +203,51 @@ blockquote.transclude:has(> article.excalidraw-page) {
     display: none;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Display math ($$ … $$) spacing
+// MathJax adds `margin: 1em 0` to every display equation, and Quartz's base
+// styles add another 1rem above/below the SVG inside blockquotes (= callouts),
+// so equations got ~2em of air on each side. Tune --math-display-gap to taste.
+// ---------------------------------------------------------------------------
+:root {
+  --math-display-gap: 0.5em;
+}
+article mjx-container[jax="SVG"][display="true"] {
+  margin: var(--math-display-gap) 0 !important;
+}
+article blockquote > div > mjx-container.MathJax > svg {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+// ---------------------------------------------------------------------------
+// Callouts: tidy endings + truly collapsed when folded (`> [!proof]-`)
+// ---------------------------------------------------------------------------
+.callout > .callout-content {
+  // a trailing empty `>` line in the note becomes an empty <p>
+  > p:empty {
+    display: none;
+  }
+  > :last-child,
+  > :last-child > mjx-container:last-child {
+    margin-bottom: 0.75rem !important;
+  }
+}
+// Quartz collapses by shrinking each child to height 0, but descendants'
+// margins (MathJax SVGs, nested lists) still leaked through → tall empty box.
+.callout.is-collapsed > .callout-content {
+  display: none;
+}
+
+// Callout content is a CSS grid whose column grew to the widest equation,
+// shifting every equation right and clipping it. Pin the column to the callout
+// width and let over-wide equations scroll horizontally (like Obsidian).
+.callout > .callout-content {
+  grid-template-columns: minmax(0, 1fr);
+}
+article mjx-container[jax="SVG"][display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}

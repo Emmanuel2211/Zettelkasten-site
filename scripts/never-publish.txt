@@ -17,5 +17,4 @@ Investigacion Carrera.md
 Proyectos de Carrera.md
 Timeline Carrera.canvas
 Untitled*.md
-test.md
 Prueba Obsidian.md

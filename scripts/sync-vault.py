@@ -335,7 +335,12 @@ def main() -> int:
     ap.add_argument("--preview", nargs="*", default=[], metavar="PATH",
                     help="vault notes/folders to treat as published for a local preview")
     ap.add_argument("-v", "--verbose", action="store_true")
+    ap.add_argument("--content-dir", metavar="DIR",
+                    help="write here instead of content/ (e.g. for previews; build with `quartz build -d DIR`)")
     args = ap.parse_args()
+    global CONTENT
+    if args.content_dir:
+        CONTENT = Path(args.content_dir).expanduser().resolve()
 
     if not VAULT.is_dir():
         print(f"Vault not found: {VAULT}", file=sys.stderr)
