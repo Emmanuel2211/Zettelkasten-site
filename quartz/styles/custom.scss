@@ -152,9 +152,19 @@ article pre {
   max-width: 100%;
   height: auto;
 }
-// black-on-transparent drawings → invert in dark mode (like the Obsidian plugin)
-:root[saved-theme="dark"] :is(img[alt="tikz"], object[aria-label="tikz"]) {
-  filter: invert(1) hue-rotate(180deg);
+// Each diagram is rendered twice (sync-vault.py TIKZ_THEMES): show the one
+// matching the theme. (Inverting colors turned tikz-cd's white "crossing
+// over" gaps and label boxes into black bars.)
+img.tikz-dark {
+  display: none;
+}
+:root[saved-theme="dark"] {
+  img.tikz-light {
+    display: none;
+  }
+  img.tikz-dark {
+    display: block;
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -175,9 +185,20 @@ article pre {
   .ps-algorithm.with-caption > .ps-line:first-child {
     border-bottom-color: var(--dark);
   }
+  // keywords (Algorithm 1, procedure, if, for, …): bold, white in dark mode
+  // (pure white would vanish on the light theme, so there it's the text color)
   .ps-keyword {
-    color: var(--secondary);
+    color: var(--dark);
+    font-weight: bold;
   }
+  // line numbers (lineNumber: true in the Obsidian plugin settings)
+  .ps-linenum {
+    color: var(--gray);
+    font-size: 0.85em;
+  }
+}
+:root[saved-theme="dark"] .pseudocode-block .ps-keyword {
+  color: #ffffff;
 }
 
 // ---------------------------------------------------------------------------

@@ -95,7 +95,11 @@ TIKZ_SCALE = 1.5
 FENCE_OPEN_RE = re.compile(r"^(?P<q>(?:>[ \t]?)*)[ \t]*(?P<fence>`{3,}|~{3,})[ \t]*(?P<lang>tikz|pseudo)[ \t]*$")
 
 # Same packages the Obsidian TikZJax plugin preloads.
-TIKZ_PREAMBLE = r"""\documentclass[dvisvgm,tikz,border=2pt]{standalone}
+# No `tikz` class option: that would put every tikzpicture/tikzcd on its own
+# page (and only page 1 is converted). Without it the whole block is one image.
+TIKZ_PREAMBLE = r"""\documentclass[border=2pt]{standalone}
+\def\pgfsysdriver{pgfsys-dvisvgm.def}
+\usepackage{tikz}
 \usepackage{amsmath,amstext,amsfonts,amssymb,array}
 \usepackage{pgfplots}\pgfplotsset{compat=1.18}
 \usepackage{tikz-cd,tikz-3dplot,circuitikz,chemfig}
@@ -130,27 +134,53 @@ def find_render_blocks(text: str):
         i = j + 1
 
 
+def pseudo_options() -> dict:
+    """jsSettings of the Obsidian 'Pseudocode' plugin, so the site renders like Obsidian."""
+    import json
+
+    f = VAULT / ".obsidian" / "plugins" / "pseudocode-in-obs" / "data.json"
+    try:
+        return json.loads(f.read_text(encoding="utf-8")).get("jsSettings", {})
+    except (OSError, ValueError):
+        return {}
+
+
 def digest(lang: str, src: str) -> str:
     import hashlib
 
-    extra = TIKZ_PREAMBLE if lang == "tikz" else ""
+    import json
+
+    extra = TIKZ_PREAMBLE if lang == "tikz" else json.dumps(pseudo_options(), sort_keys=True)
     return hashlib.sha256((lang + extra + src).encode()).hexdigest()[:16]
 
 
-def render_tikz(src: str) -> tuple[Path | None, str]:
+# Two renders per diagram, one per site theme. tikz-cd paints "crossing over"
+# gaps and `description` labels with its background color, so each variant uses
+# that theme's page background (keep in sync with quartz.config.yaml colors).
+TIKZ_THEMES = {
+    "light": r"\definecolor{qzbg}{HTML}{FBFAF9}\tikzcdset{background color=qzbg}",
+    "dark": r"\definecolor{qzbg}{HTML}{17151A}\tikzcdset{background color=qzbg}"
+            r"\AtBeginDocument{\color{white}}",
+}
+
+
+def render_tikz(src: str, theme: str = "light") -> tuple[Path | None, str]:
     import subprocess
     import tempfile
 
-    h = digest("tikz", src)
+    h = digest("tikz", src + "\0" + TIKZ_THEMES[theme]) + f"-{theme}"
     out = CACHE / "tikz" / f"{h}.svg"
     if out.exists():
         return out, ""
+    # Same clean-up the Obsidian TikZJax plugin does: blank lines are paragraph
+    # breaks in real LaTeX and break tikzcd/matrices ("Missing $ inserted").
+    src = "\n".join(l.strip() for l in src.replace("&nbsp;", "").split("\n") if l.strip())
     if r"\begin{document}" in src:
         pre, _, rest = src.partition(r"\begin{document}")
         body = rest.split(r"\end{document}")[0]
     else:
         pre, body = "", src
-    doc = TIKZ_PREAMBLE + pre + "\n\\begin{document}\n" + body + "\n\\end{document}\n"
+    doc = TIKZ_PREAMBLE + TIKZ_THEMES[theme] + "\n" + pre + "\n\\begin{document}\n" + body + "\n\\end{document}\n"
     with tempfile.TemporaryDirectory() as tmp:
         Path(tmp, "d.tex").write_text(doc, encoding="utf-8")
         try:
@@ -186,7 +216,7 @@ def render_pseudo_batch(sources: list[str]) -> dict[str, tuple[str | None, str]]
     if todo:
         try:
             r = subprocess.run(["node", str(REPO / "scripts" / "render-pseudocode.mjs")], cwd=REPO,
-                               input=json.dumps(todo), capture_output=True, text=True, timeout=300)
+                               input=json.dumps({"options": pseudo_options(), "sources": todo}), capture_output=True, text=True, timeout=300)
             rendered = json.loads(r.stdout) if r.returncode == 0 else [{"error": r.stderr[-300:]}] * len(todo)
         except (OSError, subprocess.TimeoutExpired, ValueError) as e:
             rendered = [{"error": str(e)}] * len(todo)
@@ -217,12 +247,15 @@ def render_blocks(notes: dict[PurePosixPath, str]) -> tuple[dict[PurePosixPath, 
         lines = text.split("\n")
         for start, end, lang, src, prefix in reversed(blocks):
             if lang == "tikz":
-                svg, err = render_tikz(src)
-                if svg:
-                    svgs.add(svg)
-                    # raw <img>: Quartz would turn an .svg embed into <object>, which gets an
-                    # opaque background (breaks the dark-mode invert). Site is served at "/".
-                    repl = f'{prefix}<img class="tikz" alt="tikz" src="/tikz-svg/{svg.name}">'
+                svg, err = render_tikz(src, "light")
+                dark, err_dark = render_tikz(src, "dark") if svg else (None, "")
+                err = err or err_dark
+                if svg and dark:
+                    svgs |= {svg, dark}
+                    # raw <img>: Quartz would turn an .svg embed into <object>.
+                    # CSS shows the variant matching the current theme.
+                    repl = (f'{prefix}<img class="tikz tikz-light" alt="tikz" src="/tikz-svg/{svg.name}">'
+                            f'<img class="tikz tikz-dark" alt="tikz" src="/tikz-svg/{dark.name}">')
             else:
                 html, err = pseudo.get(src, (None, "not rendered"))
                 if html:

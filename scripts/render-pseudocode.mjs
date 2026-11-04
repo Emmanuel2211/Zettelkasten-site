@@ -1,10 +1,13 @@
 // Render ```pseudo blocks (pseudocode-in-obs syntax) to static HTML.
-// Input  (stdin):  JSON array of pseudocode sources
+// Input  (stdin):  JSON { options: {...}, sources: [string, ...] }
+//                  `options` = jsSettings from the Obsidian "Pseudocode" plugin
+//                  (.obsidian/plugins/pseudocode-in-obs/data.json), passed in
+//                  by sync-vault.py so the site matches Obsidian.
 // Output (stdout): JSON array of { html } or { error }
-// Options mirror the Obsidian "Pseudocode" plugin defaults.
 import pseudocode from "pseudocode"
 
-const OPTIONS = {
+// Plugin defaults, overridden by the user's Obsidian settings.
+const DEFAULTS = {
   indentSize: "1.2em",
   commentDelimiter: "//",
   lineNumber: false,
@@ -15,7 +18,8 @@ const OPTIONS = {
 
 let input = ""
 for await (const chunk of process.stdin) input += chunk
-const sources = JSON.parse(input)
+const { options = {}, sources = [] } = JSON.parse(input)
+const OPTIONS = { ...DEFAULTS, ...options }
 
 const results = sources.map((src) => {
   try {
