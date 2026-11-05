@@ -11,7 +11,7 @@ tags:
 cssclasses: 
  - romana
 ---
-Que motivación más importante que el uso de estas estructuras desde la escuela secundaria.^[[[Motivación Espacio Vectorial]]] 
+Que motivación más importante que el uso de estas estructuras desde la escuela secundaria.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> 
 
 Abstraemos! y se hace la luz...
 
@@ -42,20 +42,74 @@ Abstraemos! y se hace la luz...
 > - En general, en todo esp. vect. denotamos con $\bar{0}$ a su neutro para diferenciarlo del neutro $0$ del campo.
 > - *Ojo!* en nuestros "axiomas" no mencionamos nuestro **neutro** e **inverso** son *únicos*.
 
-Ahora, veamos propiedades que cumplen **todos** los espacios vectoriales.^[[[Propiedades de Espacio Vectorial]]]
+Ahora, veamos propiedades que cumplen **todos** los espacios vectoriales.<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>
 
-Hay algunos $V$ en particular que tienen características muy interesantes y son importantes en la aplicación. Estos 5 ejemplos son los 5 de siempre por antonomacia, cada uno generalizando al anterior.^[[[Espacio Vectorial de las n-eadas de un Campo]]]^[[[Matrices de un Campo]]]^[[[Espacio Vectorial de Polinomios con Coeficientes en un Campo]]]^[[[Espacio Vectorial de todas las Sucesiones finitas de un Campo]]]^[[[Espacio Vectorial del Conjunto de todas las Funciones]]]
+Hay algunos $V$ en particular que tienen características muy interesantes y son importantes en la aplicación. Estos 5 ejemplos son los 5 de siempre por antonomacia, cada uno generalizando al anterior.<sup><a href="#user-content-fn-inline-3" id="user-content-fnref-inline-3" data-footnote-ref class="internal">3</a></sup><sup><a href="#user-content-fn-inline-4" id="user-content-fnref-inline-4" data-footnote-ref class="internal">4</a></sup><sup><a href="#user-content-fn-inline-5" id="user-content-fnref-inline-5" data-footnote-ref class="internal">5</a></sup><sup><a href="#user-content-fn-inline-6" id="user-content-fnref-inline-6" data-footnote-ref class="internal">6</a></sup><sup><a href="#user-content-fn-inline-7" id="user-content-fnref-inline-7" data-footnote-ref class="internal">7</a></sup>
 $$
 \mathbb{F}^{n}\to M_{m\times n}(\mathbb{F}) \to P(\mathbb{F}) \to \mathcal{S}(\mathbb{F}) \to \mathscr{F}(S,\mathbb{F})
 $$
 
 
-Normalmente, en el estudio de cualquier estructura algebraica es interesante examinar subconjuntos que tengan la misma estructura. Así, esta noción de *subestructura* para espacios vectoriales se le conoce como **subespacio**.^[[[Subespacio]]] 
+Normalmente, en el estudio de cualquier estructura algebraica es interesante examinar subconjuntos que tengan la misma estructura. Así, esta noción de *subestructura* para espacios vectoriales se le conoce como **subespacio**.<sup><a href="#user-content-fn-inline-8" id="user-content-fnref-inline-8" data-footnote-ref class="internal">8</a></sup> 
 Desarrollamos un criterio muy simple para determinar subespacios y algunos resultados, damos ejemplos de subespacios.
 
 Como vimos en tales ejemplos, un esp. vect. $V$ puede tener muchos y diversos subespacios, y surge una pregunta natural:
 - ¿Cómo pueden combinarse subespacios para generar otros subespacios?
 - ¿Quienes son los subespacios que están "arriba" y "abajo" de ellos en el diagrama (*Lattice*)?
-Esto abre la discusión de combinaciones de subespacios^[[[Combinando Subespacios]]]
-Cuando un vector es combinación lineal de otro?^[[[Combinaciones Lineales y Generados]]]
+Esto abre la discusión de combinaciones de subespacios<sup><a href="#user-content-fn-inline-9" id="user-content-fnref-inline-9" data-footnote-ref class="internal">9</a></sup>
+Cuando un vector es combinación lineal de otro?<sup><a href="#user-content-fn-inline-10" id="user-content-fnref-inline-10" data-footnote-ref class="internal">10</a></sup>
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Motivación Espacio Vectorial]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Propiedades de Espacio Vectorial]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-3">
+
+[[Espacio Vectorial de las n-eadas de un Campo]] <a href="#user-content-fnref-inline-3" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-4">
+
+[[Matrices de un Campo]] <a href="#user-content-fnref-inline-4" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-5">
+
+[[Espacio Vectorial de Polinomios con Coeficientes en un Campo]] <a href="#user-content-fnref-inline-5" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-6">
+
+[[Espacio Vectorial de todas las Sucesiones finitas de un Campo]] <a href="#user-content-fnref-inline-6" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-7">
+
+[[Espacio Vectorial del Conjunto de todas las Funciones]] <a href="#user-content-fnref-inline-7" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-8">
+
+[[Subespacio]] <a href="#user-content-fnref-inline-8" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-9">
+
+[[Combinando Subespacios]] <a href="#user-content-fnref-inline-9" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-10">
+
+[[Combinaciones Lineales y Generados]] <a href="#user-content-fnref-inline-10" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

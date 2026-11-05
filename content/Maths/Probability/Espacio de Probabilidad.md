@@ -20,9 +20,9 @@ cssclasses:
 > [!theorem] **Definición.** (Espacio Muestral) [Samplig Space]
 > El espacio muestral de un experimento aleatorio es el conjunto de todos los posibles resultados del experimento, denotado $\Omega$. A un resultado particular del experimento se le denota $\omega$.
 
-La $\sigma$*-álgebra de eventos*^[[[Sigma-algebra de eventos]]] es una familia de subconjuntos de $\Omega$ que cumple con tres propiedades. Funciona como ***aduana*** para restrigir $\operatorname{dom}P$ a solo conjuntos tratables, como en el caso de conjuntos discretos o de infinitos pequeños.
+La $\sigma$*-álgebra de eventos*<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> es una familia de subconjuntos de $\Omega$ que cumple con tres propiedades. Funciona como ***aduana*** para restrigir $\operatorname{dom}P$ a solo conjuntos tratables, como en el caso de conjuntos discretos o de infinitos pequeños.
 
-La *medida de probablidad*^[[[Medida de Probabilidad]]] es una funcíon $P: \mathcal{F\to \mathbb{R}}$ que asigna cada *evento* en $\mathcal{F}$ un número real, y tiene que cumplir con tres axiomas. 
+La *medida de probablidad*<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup> es una funcíon $P: \mathcal{F\to \mathbb{R}}$ que asigna cada *evento* en $\mathcal{F}$ un número real, y tiene que cumplir con tres axiomas. 
 
 > [!Info]- **Nota!**
 > - Un **experimento aleatorio** $\mathcal{E}$ aunque no lo parezca, también tiene su definición formal fenomenológica:
@@ -60,7 +60,7 @@ Muyyy en sintesis,
 > - $\mathcal{F}_{0} = \{ \Omega, \varnothing \}.$ Conocida como $\sigma$-álgebra cero o trivial
 
 
-> [!example]- **Ejemplo 1.** (Medida clásica)^[[[Medida de Probabilidad Clasica]]]
+> [!example]- **Ejemplo 1.** (Medida clásica)<sup><a href="#user-content-fn-inline-3" id="user-content-fnref-inline-3" data-footnote-ref class="internal">3</a></sup>
 > Para la Medida de probabilidad clasica, se necesita que $\Omega$ sea finito.
 > > [!theorem] **Definición.** (Medida clásica)
 > > $$
@@ -94,3 +94,23 @@ Muyyy en sintesis,
 > En está medida, la probablidad depende del tamaño $\lvert A \rvert$, de hecho, termina de ser una generalización de la *medida clásica*.
 > Tiene una consecuencia interesante, para todo punto $x$ su probabilidad es $0$
 > 
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Sigma-algebra de eventos]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Medida de Probabilidad]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-3">
+
+[[Medida de Probabilidad Clasica]] <a href="#user-content-fnref-inline-3" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

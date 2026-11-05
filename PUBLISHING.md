@@ -25,6 +25,8 @@ Links to unpublished notes render as plain text (their *title* is still visible 
 ## What the sync does to the copies (never to the vault)
 - `# H1` at the top becomes the page `title:` (Obsidian hides the inline title, Quartz doesn't).
 - Writes `modified:` from the file's real mtime (accurate dates on Cloudflare).
+- Turns inline footnotes `palabra^[[[Nota]]]` / `^[texto]` into numbered footnotes
+  (superscript + list at the bottom), also inside callout titles.
 - Fixes `$$…$$` blocks inside callouts whose lines lack the `> ` prefix.
 - Renders ```` ```tikz ```` with your local TeX Live → SVG (cached in `.render-cache/`).
   Same packages as Obsidian TikZJax: tikz-cd, pgfplots, circuitikz, chemfig, tikz-3dplot.

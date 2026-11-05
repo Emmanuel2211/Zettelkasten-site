@@ -44,7 +44,7 @@ Igualmente nombradas *Ordenaciones sin Repetición*. Vamos a interpretarlas:
 > [!observation]- **Observación.**
 > ¿Si $n = m$? Se tiene $(n- m) = 0$. Y por convicción $!0 = 1$, por lo que $O_{n}^{n} =   n!$.
 
-De esta forma, las *ordenaciones* son casos especiales de las *ordenaciones con repetición*^[[[Ordenaciones con Repeticion]]]. Importante, consideramos un ejemplo para ilustrar el resultado general.
+De esta forma, las *ordenaciones* son casos especiales de las *ordenaciones con repetición*<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>. Importante, consideramos un ejemplo para ilustrar el resultado general.
 
 > [!example]- **Ejemplo 1.** 
 > Las "palabras" de dos letras distintas que pueden formar con las letras $a,b$ y $c$ son:
@@ -147,6 +147,19 @@ Ahora sí, veamos el siguiente lema.
 > \tag*{$\blacksquare$}
 > $$
 
-Un caso especial de las ordenaciones son las permutaciones.^[[[Permutaciones]]]
+Un caso especial de las ordenaciones son las permutaciones.<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
 
+[[Ordenaciones con Repeticion]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Permutaciones]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

@@ -36,7 +36,7 @@ cssclasses:
 > $$
 > \operatorname{Var} (X) = E(X - \mu)^{2}
 > $$
-> Si! La varianza es un caso particular de la esperanza, en donde estamos calculando la esperanza de $g(x)= ( x - \mu )^{2}$ aplicada a una v.a. $X$ con esperanza $\mu$. Entonces, podemos hacer uso de un poco de la teoría que desarrollamos sobre la esperanza^[[[Esperanza]]].
+> Si! La varianza es un caso particular de la esperanza, en donde estamos calculando la esperanza de $g(x)= ( x - \mu )^{2}$ aplicada a una v.a. $X$ con esperanza $\mu$. Entonces, podemos hacer uso de un poco de la teoría que desarrollamos sobre la esperanza<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>.
 
 > [!theorem] **Definición.** (Desviación Estandar)
 > A la raíz cuadrada de $\sigma ^{2}$ se le llama **desviación estandar**, denotada $\sigma$.
@@ -57,3 +57,13 @@ cssclasses:
 > $$
 > \operatorname{Var} (X + Y) = \operatorname{Var} (X) + \operatorname{Var} (Y)
 > $$
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Esperanza]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

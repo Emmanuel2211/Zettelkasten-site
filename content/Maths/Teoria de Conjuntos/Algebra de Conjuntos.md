@@ -91,7 +91,7 @@ A partir de aquí, podemos desarrollar resultados de conjuntos como
 > \end{align}
 > $$
 > - $(A^{c})^{c} = A$
-> - Leyes de Morgan^[[[Leyes de DeMorgan]]]
+> - Leyes de Morgan<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 > - Propiedades de la diferencia: 
 > $$
 > \begin{align} \\
@@ -133,3 +133,12 @@ A partir de aquí, podemos desarrollar resultados de conjuntos como
 
 Con esas propiedades deebería de bastar hasta ahora...
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Leyes de DeMorgan]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

@@ -394,6 +394,73 @@ def fix_raw_html(text: str, rel: PurePosixPath, index: "VaultIndex") -> str:
     return "".join(p if i % 2 else fix(p) for i, p in enumerate(parts))
 
 
+# inline code, $$display$$ and $inline$ math: a `^[` in there is not a footnote
+PROTECTED_RE = re.compile(r"(`+)[^`]*?\1|\$\$.*?\$\$|\$[^$\n]+\$", re.S)
+
+
+def fix_inline_footnotes(text: str) -> str:
+    """Obsidian inline footnotes `word^[text or [[Link]]]` aren't supported by
+    Quartz (GFM only knows `[^label]` + `[^label]: text`). Turn each one into a
+    footnote (GFM's markup); the notes go in a list at the end of the page."""
+    defs: list[str] = []
+
+    def convert(part: str) -> str:
+        protected = [m.span() for m in PROTECTED_RE.finditer(part)]
+        out, i, n = [], 0, len(part)
+        while True:
+            j = part.find("^[", i)
+            if j == -1:
+                break
+            if any(a <= j < b for a, b in protected) or (j > 0 and part[j - 1] == "\\"):
+                out.append(part[i:j + 2]); i = j + 2
+                continue
+            depth, k = 0, j + 1
+            while k < n:  # find the matching `]` (content may hold [[links]])
+                c = part[k]
+                if c == "\\":
+                    k += 2; continue
+                if c == "[":
+                    depth += 1
+                elif c == "]":
+                    depth -= 1
+                    if depth == 0:
+                        break
+                elif c == "\n" and part[k + 1:k + 2] in ("\n", ""):
+                    k = n; break  # a footnote never spans paragraphs
+                k += 1
+            if k >= n:
+                out.append(part[i:j + 2]); i = j + 2
+                continue
+            body = part[j + 2:k]
+            # inside a table the alias pipe is escaped (`[[X\|y]]`); not needed below
+            body = re.sub(r"\[\[([^\]]*?)\\\|", r"[[\1|", body)
+            body = re.sub(r"\s*\n\s*(?:>\s*)*", " ", body).strip()  # callout line breaks
+            if not body:
+                out.append(part[i:k + 1]); i = k + 1
+                continue
+            defs.append(body)
+            n_ = len(defs)
+            # raw HTML instead of GFM `[^n]`: Quartz renders callout *titles*
+            # separately, so GFM refs there were all numbered "1" and lost.
+            out.append(part[i:j] + f'<sup><a href="#user-content-fn-inline-{n_}" '
+                       f'id="user-content-fnref-inline-{n_}" data-footnote-ref '
+                       f'class="internal">{n_}</a></sup>')
+            i = k + 1
+        out.append(part[i:])
+        return "".join(out)
+
+    parts = re.split(r"(^(?:```|~~~).*?^(?:```|~~~)[^\n]*$)", text, flags=re.S | re.M)
+    text = "".join(p if i % 2 else convert(p) for i, p in enumerate(parts))
+    if defs:  # same markup GFM produces, so Quartz's footnote styles apply
+        items = "".join(
+            f'<li id="user-content-fn-inline-{n}">\n\n{d} <a href="#user-content-fnref-inline-{n}" '
+            f'data-footnote-backref class="data-footnote-backref internal">↩</a>\n\n</li>\n'
+            for n, d in enumerate(defs, 1))
+        text = (text.rstrip("\n") + '\n\n<section data-footnotes class="footnotes">'
+                '<h2 class="sr-only" id="footnote-label">Notas</h2>\n<ol>\n' + items + "</ol>\n</section>\n")
+    return text
+
+
 def is_folder_note(rel: PurePosixPath) -> bool:
     """Obsidian 'folder note': Maths/Algebra/Algebra.md (named like its folder)."""
     return rel.suffix == ".md" and len(rel.parts) >= 2 and rel.stem.lower() == rel.parent.name.lower()
@@ -535,6 +602,7 @@ def main() -> int:
     for rel, text in notes.items():
         dst = CONTENT / rel
         dst.parent.mkdir(parents=True, exist_ok=True)
+        text = fix_inline_footnotes(text)
         text = fix_folder_note_links(text, rel, index, published)
         text = fix_raw_html(text, rel, index)
         text = add_modified_date(h1_to_title(fix_math_in_callouts(text)), VAULT / rel)
@@ -554,6 +622,7 @@ def main() -> int:
         shutil.copytree(SITE_PAGES, CONTENT, dirs_exist_ok=True,
                         ignore=shutil.ignore_patterns("*.md"))
     for rel, text in site_pages.items():
+        text = fix_inline_footnotes(text)
         text = fix_folder_note_links(text, rel, index, published)
         text = fix_raw_html(text, rel, index)
         (CONTENT / rel).parent.mkdir(parents=True, exist_ok=True)

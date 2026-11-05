@@ -10,7 +10,7 @@ tags:
 cssclasses: 
  - romana
 ---
-Observamos inmediatamente de los axiomas de orden^[[[Estructura de Orden]]], si $a,b \in \mathbb{R}$ y $P = \mathbb{R}^+$ entonces se verifica una sola de las siguientes propiedades:
+Observamos inmediatamente de los axiomas de orden<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>, si $a,b \in \mathbb{R}$ y $P = \mathbb{R}^+$ entonces se verifica una sola de las siguientes propiedades:
 $$
 \begin{align}
 a-b = 0 \\
@@ -146,5 +146,19 @@ $$
 \end{align}
 $$
 
-Después de la discusión del valor absoluto, nos vamos con desigualdades de forma amplia^[[[Desigualdades]]]
+Después de la discusión del valor absoluto, nos vamos con desigualdades de forma amplia<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Estructura de Orden]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Desigualdades]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

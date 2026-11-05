@@ -23,8 +23,8 @@ P[\text{Obt. 3 num. iguales}] = \ ?
 $$
 **Ej.** 7 | 7 | 7 | Q | A
 ¿Cuántas manos hay?
-Para esto... tenemos que aprender a **contar**. A partir del *principio fundamental del conteo*^[[[Principio del Producto|Principio de Conteo]]] desarrollamos todas nuestras herramientas.
-Vemos **permutaciones**^[[[Permutaciones]]], las generalizamos con las **ordenaciones**^[[[Ordenaciones sin Repeticion|Ordenaciones]]] y **ordenaciones con repetición**^[[[Ordenaciones con Repeticion]]], y **combinaciones**^[[[Combinaciones]]]
+Para esto... tenemos que aprender a **contar**. A partir del *principio fundamental del conteo*<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> desarrollamos todas nuestras herramientas.
+Vemos **permutaciones**<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>, las generalizamos con las **ordenaciones**<sup><a href="#user-content-fn-inline-3" id="user-content-fnref-inline-3" data-footnote-ref class="internal">3</a></sup> y **ordenaciones con repetición**<sup><a href="#user-content-fn-inline-4" id="user-content-fnref-inline-4" data-footnote-ref class="internal">4</a></sup>, y **combinaciones**<sup><a href="#user-content-fn-inline-5" id="user-content-fnref-inline-5" data-footnote-ref class="internal">5</a></sup>
 
 ---
 
@@ -37,3 +37,33 @@ Vemos **permutaciones**^[[[Permutaciones]]], las generalizamos con las **ordenac
 - [[Teorema de Binomio Generalizado]]
 - [[Binomio de Newton]]
 - [[Identidad de Vandermonde]]
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Principio del Producto|Principio de Conteo]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Permutaciones]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-3">
+
+[[Ordenaciones sin Repeticion|Ordenaciones]] <a href="#user-content-fnref-inline-3" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-4">
+
+[[Ordenaciones con Repeticion]] <a href="#user-content-fnref-inline-4" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-5">
+
+[[Combinaciones]] <a href="#user-content-fnref-inline-5" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

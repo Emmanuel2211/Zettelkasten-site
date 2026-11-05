@@ -46,7 +46,7 @@ cssclasses:
 
 
 
-Es claro de donde viene la notación $n!$, un caso especial de las ordenaciones.^[[[Ordenaciones sin Repeticion]]] Es decir, las **ordenaciones** *generalizan* a las *permutaciones*.
+Es claro de donde viene la notación $n!$, un caso especial de las ordenaciones.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> Es decir, las **ordenaciones** *generalizan* a las *permutaciones*.
 
 Vemos ejemplos:
 
@@ -66,3 +66,12 @@ Una definición alternativa es
 > [!theorem] **Definición 2.** (Permutaciones)
 > Sea $A$ un conjunto finito. Las **permutaciones del conjunto** $A$ son las funciones biyectivas de $A$ en $A$.
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Ordenaciones sin Repeticion]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

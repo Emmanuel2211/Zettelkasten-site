@@ -66,7 +66,7 @@ cssclasses:
 > f(x) \leq \frac{d}{dx} \int_{a}^{x} f(z) \, dz \leq f(x)
 > $$
 
-Despues del teorema fundamental, podemos estudiar... Antiderivadas.^[[[Antiderivada]]] Y llegar al siguiente resultado.
+Despues del teorema fundamental, podemos estudiar... Antiderivadas.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> Y llegar al siguiente resultado.
 
 > La Regla de Barrow (TFC2) nos permite concetar integrales definidas con antiderivadas, permitiendo calcular la función de acumulación (*integral*).
 
@@ -128,3 +128,13 @@ Con esto, podemos desarrollar más resultados.
 > $$
 > \int_{0}^{1} f(x) \, dx  = G(1)-G(0) = \left( \frac{1}{3}+1 \right)-(1) = \frac{1}{3}
 > $$
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Antiderivada]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

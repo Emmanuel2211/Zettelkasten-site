@@ -34,6 +34,19 @@ Estas propiedades definimos la relación de Orden $<$:
 
 
 
-Las propiedades de las desigualdades ^[[[Propiedades de Desigualdades]]], son consecuencia de los axiomas de campo^[[[Axiomas de Campo]]] y orden.
+Las propiedades de las desigualdades <sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>, son consecuencia de los axiomas de campo<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup> y orden.
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
 
+[[Propiedades de Desigualdades]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Axiomas de Campo]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

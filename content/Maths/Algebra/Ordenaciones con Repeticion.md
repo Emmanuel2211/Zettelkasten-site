@@ -52,5 +52,14 @@ Este concepto es altamente practico, entonces lo desarrollamos con ejemplos
 > [!example]- **Ejemplo 4.** ¿Cuántas placas distintas pueden expedirse que tengan al menos una ocurrencia de la letra $A$?
 > ...
 
-Un caso de las las *ordenaciones con repetición*, son las *ordenaciones*.^[[[Ordenaciones sin Repeticion]]]
+Un caso de las las *ordenaciones con repetición*, son las *ordenaciones*.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Ordenaciones sin Repeticion]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

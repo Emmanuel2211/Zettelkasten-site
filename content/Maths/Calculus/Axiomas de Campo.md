@@ -10,7 +10,7 @@ cssclasses: romana
 
 ### Campo
 
-Con dos operaciones^[[[Operacion Binaria]]]
+Con dos operaciones<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
 > [!theorem] **Axiomas de Campo** 
 > 1. $+(a,b) = +(b,a)$
@@ -25,7 +25,7 @@ Con dos operaciones^[[[Operacion Binaria]]]
 >
 > 9. $(a+b)c = ac+bc$
 
-Y para $\mathbb{R}$ se cumple una estructura de orden^[[[Estructura de Orden]]]
+Y para $\mathbb{R}$ se cumple una estructura de orden<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>
 
 
 --- 
@@ -48,3 +48,17 @@ $$
 x^{3} + y^{3} = (x+y)(x^{2} - xy + y^{2})
 $$
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Operacion Binaria]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Estructura de Orden]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

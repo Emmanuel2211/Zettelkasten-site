@@ -11,7 +11,7 @@ tags:
 cssclasses:
   - romana
 ---
-La función sucesor es bien definida en el segundo axioma del Peano.^[[[Axiomas del Peano]]]
+La función sucesor es bien definida en el segundo axioma del Peano.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
 
 > *Von Newman:*
@@ -27,3 +27,12 @@ La función sucesor es bien definida en el segundo axioma del Peano.^[[[Axiomas 
 > En general, para todo $n \in \mathbb{N}$, se tiene que: $$n \in n+1$$
 > Dicho esto, podemos definir el **orden** para $\mathbb{N}$.
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Axiomas del Peano]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

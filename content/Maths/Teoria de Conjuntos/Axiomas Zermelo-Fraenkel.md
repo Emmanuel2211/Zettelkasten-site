@@ -13,7 +13,7 @@ cssclasses:
 ---
 > [!theorem] **Axiom de Existencia.** *Existe un conjunto que carece de elementos,* $\varnothing$.
 
-> [!theorem] **Axiom de Extensionalidad.**^[[[Axioma de Extensionalidad]]] *Si $X$ y $Y$ tienen los mismo elementos, entonces $X = Y$*.
+> [!theorem] **Axiom de Extensionalidad.**<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> *Si $X$ y $Y$ tienen los mismo elementos, entonces $X = Y$*.
 
 
 
@@ -24,9 +24,9 @@ cssclasses:
 ^28a139
 
 
-> [!theorem] **Axiom of Union.**^[[[Axioma de Union]]] *For any $X$ there exists a set $Y = \bigcup X$, the union of all elements of $X$.*
+> [!theorem] **Axiom of Union.**<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup> *For any $X$ there exists a set $Y = \bigcup X$, the union of all elements of $X$.*
 
-> [!theorem] **Axiom of Power.**^[[[Conjunto Potencia|Axioma de Potencia]]] For any $X$ there exists a set $Y = P(X)$, the set of all subsets of $X$.
+> [!theorem] **Axiom of Power.**<sup><a href="#user-content-fn-inline-3" id="user-content-fnref-inline-3" data-footnote-ref class="internal">3</a></sup> For any $X$ there exists a set $Y = P(X)$, the set of all subsets of $X$.
 
 > [!theorem] **Axiom of Infinity.** *There exists an infinite set.*
 
@@ -37,3 +37,23 @@ cssclasses:
 > [!theorem] **Axiom of Choice.** *Every family of nonempty sets ahs a choice function. (the C in ZFC)*
 
 Hay teoría de conjuntos con axiomática Zermelo-Fraenkel (ZF); y (ZFC) que es ZF con axioma de elección (AC).
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Axioma de Extensionalidad]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Axioma de Union]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-3">
+
+[[Conjunto Potencia|Axioma de Potencia]] <a href="#user-content-fnref-inline-3" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

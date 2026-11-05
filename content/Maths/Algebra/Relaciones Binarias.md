@@ -101,5 +101,14 @@ La propiedad de ser antisimétrica no  tiene que ver con la negación de ser sim
 
 
 
-Se continua con las relaciones de equivalencia^[[[Relaciones de Equivalencia]]]
+Se continua con las relaciones de equivalencia<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Relaciones de Equivalencia]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

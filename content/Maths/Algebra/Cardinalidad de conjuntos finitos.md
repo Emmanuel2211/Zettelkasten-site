@@ -9,7 +9,7 @@ tags:
 cssclasses: 
  - romana
 ---
-Se define $I_{m}$ como un **conjunto índice**^[[[Familia Indexada]]] o **segmento inicial**. Damos multiples propiedades en la definición.
+Se define $I_{m}$ como un **conjunto índice**<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> o **segmento inicial**. Damos multiples propiedades en la definición.
 
 > [!theorem] **Def.** Conjunto Finito y Cardinalidad (aprender a contar)
 > Sean $A$ y $B$ conjuntos. Decimos que $A$ y $B$ tienen la misma **cardinalidad** si y sólo si existe una función biyectiva $f: A\to B$.
@@ -38,4 +38,19 @@ Otra propiedad importante para determinar biyectividad:
 > [!theorem] **Proposición.**
 > Existe una función **sobre** $I_{m}$ en $I_{n}$ si y sólo si $m\geq n$.
 
-Se demuestra como corolario del Principio del Palomar^[[[Principio de la Suma]]] algo relacionado:
+Se demuestra como corolario del Principio del Palomar<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup> algo relacionado:
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Familia Indexada]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Principio de la Suma]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

@@ -9,7 +9,7 @@ El concepto de grupo esta estrechamente ligado con el concepto de *simetría*.
 > $$
 > \cdot: G \times G \to G
 > $$
-> es una operación binaria^[[[Operacion Binaria]]]
+> es una operación binaria<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 > $$
 > (u,v) \longmapsto \cdot(u,v)
 > $$
@@ -83,9 +83,24 @@ El concepto de grupo esta estrechamente ligado con el concepto de *simetría*.
 > $$
 > Luego, todo grupo abeliano $G$ puede verse como un grupo con operadores en $\mathbb{Z}$.
 
-^[[[Anillo]]]
+<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>
 
 ### Recursos
 https://www.matem.unam.mx/~labardini/teaching/Grupos_EMALCA_Chile.pdf
 
 https://www.pesmm.org.mx/Serie%20Textos_archivos/T6.pdf
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Operacion Binaria]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Anillo]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

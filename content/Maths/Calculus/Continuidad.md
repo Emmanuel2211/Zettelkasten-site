@@ -115,4 +115,49 @@ del $\text{dom} (f)$, donde $f$ esta definida en el vecindario de $x_{0}$: $(x_{
 > $$
 
 # Summary
-Después de definir el límite y la continuidad en un punto, abrimos multiples discusiones diversas: continuidad en un punto arbitrario^[[[Continuidad en un punto arbitrario]]], en un conjunto^[[[continuidad en un conjunto]]], varias propiedades importantes de funciones continuas^[[[propiedades de funciones continuas]]], continuidad uniforma^[[[Continuidad Uniforme]]], propiedades con extremos^[[[continuidad y extremos]]], y revisitar la propiedad de Darboux^[[[Propiedad de Darboux]]] con nuestros conceptos de continuidad ya establecidos, además entramos en terrenos de discontinuidad^[[[Discontinuidad de funciones]]] y las funciones monótonas^[[[Funciones Monotonas]]]... y más
+Después de definir el límite y la continuidad en un punto, abrimos multiples discusiones diversas: continuidad en un punto arbitrario<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>, en un conjunto<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>, varias propiedades importantes de funciones continuas<sup><a href="#user-content-fn-inline-3" id="user-content-fnref-inline-3" data-footnote-ref class="internal">3</a></sup>, continuidad uniforma<sup><a href="#user-content-fn-inline-4" id="user-content-fnref-inline-4" data-footnote-ref class="internal">4</a></sup>, propiedades con extremos<sup><a href="#user-content-fn-inline-5" id="user-content-fnref-inline-5" data-footnote-ref class="internal">5</a></sup>, y revisitar la propiedad de Darboux<sup><a href="#user-content-fn-inline-6" id="user-content-fnref-inline-6" data-footnote-ref class="internal">6</a></sup> con nuestros conceptos de continuidad ya establecidos, además entramos en terrenos de discontinuidad<sup><a href="#user-content-fn-inline-7" id="user-content-fnref-inline-7" data-footnote-ref class="internal">7</a></sup> y las funciones monótonas<sup><a href="#user-content-fn-inline-8" id="user-content-fnref-inline-8" data-footnote-ref class="internal">8</a></sup>... y más
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Continuidad en un punto arbitrario]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[continuidad en un conjunto]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-3">
+
+[[propiedades de funciones continuas]] <a href="#user-content-fnref-inline-3" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-4">
+
+[[Continuidad Uniforme]] <a href="#user-content-fnref-inline-4" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-5">
+
+[[continuidad y extremos]] <a href="#user-content-fnref-inline-5" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-6">
+
+[[Propiedad de Darboux]] <a href="#user-content-fnref-inline-6" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-7">
+
+[[Discontinuidad de funciones]] <a href="#user-content-fnref-inline-7" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-8">
+
+[[Funciones Monotonas]] <a href="#user-content-fnref-inline-8" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

@@ -12,7 +12,7 @@ cssclasses:
 ---
 # Propiedades de $V$
 
-Al igual que en un campo $\mathbb{F}$^[[[Propiedades del Campo]]], veremos que propiedades se desprenden a partir de los "axiomas" del esp. vect. Enlistaremos algunas y procederemos con sus demostraciones constructivamente, repetando el orden en como se enuncian.
+Al igual que en un campo $\mathbb{F}$<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>, veremos que propiedades se desprenden a partir de los "axiomas" del esp. vect. Enlistaremos algunas y procederemos con sus demostraciones constructivamente, repetando el orden en como se enuncian.
 
 > [!theorem] **Teorema.** (Propiedades de $V$)
 > Sea $V$ un esp. vect. sobre un campo $\mathbb{F}$,
@@ -84,3 +84,13 @@ $$
 > [!proof]- **Proof.** $(v)$
 
 > [!proof]- **Proof.** $(vi)$
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Propiedades del Campo]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

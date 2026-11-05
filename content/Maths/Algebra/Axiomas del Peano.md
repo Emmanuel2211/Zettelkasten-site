@@ -21,6 +21,14 @@ status: undone
 
 Combinando los axiomas *(ii)*, *(iii)* y *(iv)* obtenemos que $\mathfrak{s}: \mathbb{N} \to \mathbb{N} \setminus \{ 0 \}$ y que es inyectiva.
 
-La relación $\mathfrak{s}$ es definida conjuntistamente por *Von Newman*.^[[[Funcion Sucesor]]]
+La relación $\mathfrak{s}$ es definida conjuntistamente por *Von Newman*.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
 
+[[Funcion Sucesor]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

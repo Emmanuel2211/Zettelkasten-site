@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-04T19:32:17Z
+modified: 2026-11-05T00:06:01Z
 title: "Calculus"
 publish: true
 type: moc
@@ -115,11 +115,9 @@ Algunas más otras consecuencias:
 ## [[Aplicaciones de la Integral]]
 - [[Funciones Uniparametricas]]
 - [[Solidos de Revolución]]
-Para Físicos:
 - [[Centros de Masa para Físicos]]
-Para Actuarios:
+- [[Teorema de Pappus]]
 - [[Centros de Masa para Actuarios]]
-
 - [[Metodos numericos de Integracion]]
 	- [[Metodo de los Trapecios]]
 	- [[Metodo de Simpson]]

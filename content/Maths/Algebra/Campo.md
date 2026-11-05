@@ -45,7 +45,22 @@ Es muy importante tomar la caraterística de los campos.
 > - Si $p$ es primo, $\mathbb{Z}_{p}$ tiene característica $p$.
 > 
 
-^[[[Congruencias]]]
+<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
 
-A partir de aquí, demostramos propiedades fundamentales.^[[[Propiedades del Campo]]]
+A partir de aquí, demostramos propiedades fundamentales.<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>
+
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Congruencias]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Propiedades del Campo]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>

@@ -72,7 +72,7 @@ Para discutir a fondo la *integral* es útil disponer del siguiente criterio.
 > $$
 > U(f,P'')-L(f,P') < \varepsilon.
 > $$
-> *Razón:* "*truco* $\frac{\varepsilon}{2}$ *y definición del supremo usando $\varepsilon$*".^[[[Supremo e Infimo]]]
+> *Razón:* "*truco* $\frac{\varepsilon}{2}$ *y definición del supremo usando $\varepsilon$*".<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 > $$
 > \begin{align}
 > L(f, P') > I - \frac{\varepsilon}{2} \\
@@ -180,7 +180,7 @@ Observamos que surgen dificultades ya sea $f$ discontinuo o continuo y desarroll
 > &= \left( \sum_{j=0}^{n-1} j \right) \frac{b^{2}}{n^{2}}.
 > \end{align}
 > $$
-> Recordando la suma Gaussiana^[[[Suma Gaussiana]]]
+> Recordando la suma Gaussiana<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>
 > $$
 > 1 + \dots + k = \frac{k(k+1)}{2},
 > $$
@@ -272,7 +272,7 @@ En nuestra discusión hablamos de *verdadero* y "complicadisimo" criterio de int
 > $$
 > U(f,P) - L(f,P) < \varepsilon.
 > $$
-> El Teorema 1 de Sumas de Reiman^[[[Sumas de Riemann]]], nos permite afrimar que $f$ es uniformemente continua en $[a,b]$. Por tanto, existe algún $\delta >0$ tal que $\forall x, y \in [a,b]$, 
+> El Teorema 1 de Sumas de Reiman<sup><a href="#user-content-fn-inline-3" id="user-content-fnref-inline-3" data-footnote-ref class="internal">3</a></sup>, nos permite afrimar que $f$ es uniformemente continua en $[a,b]$. Por tanto, existe algún $\delta >0$ tal que $\forall x, y \in [a,b]$, 
 > $$
 > \lvert x-y \rvert <\delta \implies \lvert f(x)-f(y) \rvert < \frac{\varepsilon}{2(b-a)}.
 > $$
@@ -360,3 +360,22 @@ $$
 $$
 Con esto el hecho del teorema anterior se verifica para todo $a,c,b$ incluso sin $a<c<b$. (la demostración es por casos y super tediosa).
 
+<section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
+<ol>
+<li id="user-content-fn-inline-1">
+
+[[Supremo e Infimo]] <a href="#user-content-fnref-inline-1" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-2">
+
+[[Suma Gaussiana]] <a href="#user-content-fnref-inline-2" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+<li id="user-content-fn-inline-3">
+
+[[Sumas de Riemann]] <a href="#user-content-fnref-inline-3" data-footnote-backref class="data-footnote-backref internal">↩</a>
+
+</li>
+</ol>
+</section>
