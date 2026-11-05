@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-01T19:48:08Z
+modified: 2026-11-04T23:54:33Z
 publish: true
 type: zettel
 date: "2026-09-01"
@@ -129,26 +129,26 @@ $$
   <div style="flex: 1;">
     Si retomamos nuestra pizza, entonces tenemos que considerar una partición de tal intervalo.
     Al ser
-    <span class="math-display">
+    <span class="math-inline">
         A_{f(x)}
     </span>
     acotada por sumas de Riemman asociadas a la función
-    <span class="math-display">
+    <span class="math-inline">
         \displaystyle \frac{f^{2}(\theta)}{2}
     </span>
      definimos el área de una como en coordenadas polares en
-    <span class="math-display">
+    <span class="math-inline">
         [\theta_{1},\theta_{2}]
     </span>
      por:
     <div style="text-align: center; width: 100%; margin: 15px 0;">
-      <span class="math-display">
+      <span class="math-inline">
           \boxed{\int_{\theta_{1}}^{\theta_{2}} \frac{f^{2}(\theta)}{2} \, d\theta}
       </span>
     </div>
   </div>
   <div style="flex: 1; text-align: center;"> <!-- 💡 Opcional: Centrar también la imagen en su columna -->
-      <img src="/images/IMG_6973.jpeg" width="160">
+      <img src="/images/IMG_6973.jpeg" width="250">
   </div>
 </div>
 

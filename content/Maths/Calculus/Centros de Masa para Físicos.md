@@ -104,16 +104,16 @@ Obs. que el lado derecho de la ecuación es una suma de Riemann para $\rho(x)\cd
   <div style="flex: 1;">
     Pensemos ahora que la varilla está curveada.
     Procediendo similarmente al caso anterior con la existencia de 
-    <span class="math-display">
+    <span class="math-inline">
       \{ \xi_{i} \}
     </span>
     <div style="text-align: center; width: 100%; margin: 15px 0;">
-      <span class="math-display">
+      <span class="math-inline">
         m_{i} = \rho(\xi_{i}) \displaystyle \int_{t_{i}}^{t_{i+1}} \sqrt{(\gamma_{1}(t)')^{2} + (\gamma_{2}(t)')^{2}} \, dt
       </span>
     </div>
     Suponiendo que
-    <span class="math-display">
+    <span class="math-inline">
       \gamma
     </span>
     es derivable, tenemos

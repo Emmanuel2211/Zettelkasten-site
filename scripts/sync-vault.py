@@ -381,8 +381,13 @@ def fix_raw_html(text: str, rel: PurePosixPath, index: "VaultIndex") -> str:
         return m.group(0)[: start - s0] + "/" + hit.as_posix() + m.group(0)[end - s0:]
 
     def fix(part: str) -> str:
-        part = re.sub(r"""class=(["'])math display\1""", r'class="math-display"', part)
-        part = re.sub(r"""class=(["'])math inline\1""", r'class="math-inline"', part)
+        # Obsidian semantics: a <span class="math …"> renders INLINE (the "display"
+        # look in notes comes from a centred wrapper div + \displaystyle);
+        # a <div class="math …"> is a block element → display math.
+        part = re.sub(r"""<span(\s[^>]*?)?\sclass=(["'])math(?: display| inline)?\2""",
+                      lambda m: f'<span{m.group(1) or ""} class="math-inline"', part)
+        part = re.sub(r"""<div(\s[^>]*?)?\sclass=(["'])math(?: display| inline)?\2""",
+                      lambda m: f'<div{m.group(1) or ""} class="math-display"', part)
         return HTML_IMG_RE.sub(fix_img, part)
 
     parts = re.split(r"(^(?:```|~~~).*?^(?:```|~~~)[^\n]*$)", text, flags=re.S | re.M)
