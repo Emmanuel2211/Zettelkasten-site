@@ -1,5 +1,5 @@
 ---
-modified: 2026-04-16T02:52:36Z
+modified: 2026-11-09T14:45:05Z
 publish: true
 type: atomic-note
 status:
@@ -10,10 +10,9 @@ aliases: norma y ortogonalidad
 cssclasses: romana
 materia:
 ---
-TARGET DECK: Geometria
 
 
-**Teorema. (Ortogonalidad y criterios de ortogonalidad)**  #flashcard
+**Teorema. (Ortogonalidad y criterios de ortogonalidad)** 
 $\mathbf{a}$ es ortogonal a $\mathbf{b}$.
 $$
 \mathbf{a} \perp \mathbf{b} \iff \lvert \mathbf{a}+\mathbf{b} \rvert = \lvert  \mathbf{a }-\mathbf{b} \rvert.  
@@ -27,7 +26,6 @@ $$
 \end{align}
 $$
 Nótese que (2.3) es el famoso [[Teorema de Pitagoras|teorema de Pitágoras]].
-<!--ID: 1775159113420-->
 
 
 

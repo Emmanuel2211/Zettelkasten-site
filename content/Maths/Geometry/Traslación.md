@@ -1,5 +1,5 @@
 ---
-modified: 2026-04-09T02:21:20Z
+modified: 2026-11-09T14:44:05Z
 publish: true
 type: zettel
 status: 
@@ -11,7 +11,6 @@ cssclasses: romana
 materia: 
 ---
 
-TARGET DECK: Geometria
 
 
 > [!theorem] **Teorema** 
@@ -20,10 +19,9 @@ TARGET DECK: Geometria
 > T(\mathbf{P}) = \mathbf{P} + \mathbf{a}
 > $$
 
-#### Teorema. Traslación #flashcard 
+#### Teorema. Traslación 
 Ocurre cuando $M = I$ y $\mathbf{v\neq 0}$. Desplaza todos los puntos paralelamente a un vector fijo.
 $$
 T(\mathbf{x}) = \mathbf{x} + \mathbf{v}
 $$
-<!--ID: 1775701227538-->
 

@@ -1,5 +1,5 @@
 ---
-modified: 2026-09-23T14:46:15Z
+modified: 2026-11-06T19:08:09Z
 title: "Algoritmo de Euclides"
 publish: true
 type: zettel
@@ -61,7 +61,7 @@ Después de definir MCD, ver más teoremas de divisibilidad y definir a los prim
 > Más aún, despejando los residuos obtengo una combinación lineal entera que me da $(a,b)$.
 
 
-> [!example]- Ejemplo.
+> [!example]+ Ejemplo.
 > $(315, 56)$
 > $$
 > \begin{align}
@@ -72,5 +72,14 @@ Después de definir MCD, ver más teoremas de divisibilidad y definir a los prim
 >   14 &= 7(2) + 0
 > \end{align}
 > $$
+> Además,
+> $7 = 21-14 = 21-(35-21) = 21(2) - 35 = (56 - 35)(2) - 35 = 56(2) + 35(-3)$
+> $= 56(2) + (315 - 56(5))(-3)= 56(17) + 315(-3)$
+> Así, $7 = 56(17) + 315(-3)$
+> Obtenemos que también,
+> $$
+> 56(-28) + 315(5) = 7
+> $$
+> por lo que la comb. lineal entera de $56$ y $315$ que es igual a $7$ no es única.
 
 > [!proof]+ **Proof.** 

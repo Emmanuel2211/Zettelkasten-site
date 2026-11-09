@@ -1,5 +1,5 @@
 ---
-modified: 2026-03-27T03:56:35Z
+modified: 2026-11-09T14:42:59Z
 publish: true
 type: zettel
 status: 
@@ -10,15 +10,13 @@ aliases: [ "" ]
 cssclasses: romana
 materia: 
 ---
-TARGET DECK: Conjuntos
 
-**Teorema.** (5 Propiedades de la complementación) #flashcard 
+**Teorema.** (5 Propiedades de la complementación) 
 - $\varnothing^c = U$.
 - $\forall A \subseteq U, (A^c)^c = A$.
 - $U^c = \varnothing$.
 - $A \subseteq B \iff B^c \subseteq A^c$.
 - $A = B \iff A^c = B^c$.
-<!--ID: 1774583783848-->
 
 
 Proofs.

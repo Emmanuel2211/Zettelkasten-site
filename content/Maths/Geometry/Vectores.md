@@ -1,5 +1,5 @@
 ---
-modified: 2026-04-02T19:35:42Z
+modified: 2026-11-09T14:45:31Z
 publish: true
 type: atomic-note
 status:
@@ -13,7 +13,7 @@ materia:
 TARGET DECK: Geometria
 
 
-**Definición 1.** (Discusión Vectores: espacio vectorial, igualdad de vectores, adición, multiplicación, sustracción...) #flashcard
+**Definición 1.** (Discusión Vectores: espacio vectorial, igualdad de vectores, adición, multiplicación, sustracción...)
 Un vector en el espacio $n$-dimensional es una $n$-ada de $\mathbb{R}$.
 - El **espacio vectorial** $n$-**dimensional** $V_{n}$ es el conjunto de todas las $n$-adas de números reales, a las que denotaremos por $\mathbf{x} = (x_{1},\dots,x_{n})$, $x_{i} \in \mathbb{R}$, $(i = \{1,\dots,n\})$ y llamaremos vectores, donde las relaciones de igualdad y las operaciones de adición y de multiplicación por un número real se definen como:
 **2. Igualdad de vectores.** Si $\mathbf{x} = (x_{i},\dots,x_{n})$ y $\mathbf{y} = (y_{1},\dots, y_{n})$ son vectores en $V_{n}$, entonces
@@ -36,7 +36,6 @@ Las propiedades $A_{1}$ a $A_{5}$ implican que el conjunto de vectores $n$-dimen
 $$
 \mathbf{x} - \mathbf{y} = \mathbf{x} + (-\mathbf{y})
 $$
-<!--ID: 1775158433481-->
 
 
 

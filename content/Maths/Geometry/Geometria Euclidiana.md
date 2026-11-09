@@ -1,5 +1,5 @@
 ---
-modified: 2026-09-14T16:48:36Z
+modified: 2026-11-09T19:31:01Z
 title: "Geometría Euclidiana"
 publish: true
 type: zettel
@@ -19,7 +19,7 @@ cssclasses:
 
 [[Ortogonalidad]]
 
-[[Norma o valor absoluto]]
+[[Norma]]
 
 [[Producto Interior]]
 

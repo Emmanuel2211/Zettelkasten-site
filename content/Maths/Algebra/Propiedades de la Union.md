@@ -1,5 +1,5 @@
 ---
-modified: 2026-03-27T17:07:56Z
+modified: 2026-11-09T14:42:42Z
 publish: true
 type: zettel
 status: 
@@ -10,11 +10,9 @@ aliases: [ "" ]
 cssclasses: romana
 materia: 
 ---
-TARGET DECK: Conjuntos
 
-**Teorema.** (propiedades de la union) #flashcard 
+**Teorema.** (propiedades de la union) 
 Iguales que las de la intersección pero el **neutro** es el vacío, $A \cup \varnothing=A$.
-<!--ID: 1774627653796-->
 
 
 [[Algunas proposiciones para la union]]

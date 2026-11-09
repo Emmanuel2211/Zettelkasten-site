@@ -1,5 +1,5 @@
 ---
-modified: 2026-04-09T02:20:27Z
+modified: 2026-11-09T14:41:45Z
 publish: true
 type: zettel
 status: 
@@ -13,7 +13,7 @@ materia:
 
 TARGET DECK: Geometria
 
-### Definición. Vector normal #flashcard 
+### Definición. Vector normal 
 Sea $\mathscr{L}$ una recta en $\mathbb{R}^{2}$ con vector director no nulo $\mathbf{a} = (a_{1},a_{2}$). Un vector $\mathbf{n} = (n_{1},n_{2})$ es normal a $\mathscr{L}$ si es ortogonal a $\mathbf{a}$, es decir
 $$
 \mathbf{n} \cdot \mathbf{a} = 0
@@ -22,7 +22,6 @@ Es obvio que $\mathbf{n} = \mathbf{a}_{\perp}$
 Porque $\mathbf{n} = (A,B)$?
 #### Teorema. 
 Dada la ecuación $Ax + By+C = 0$, el vector $\mathbf{n} = (A,B)$ es ortogonal a cualquier vector contenido en la recta.
-<!--ID: 1775701227497-->
 
 
 

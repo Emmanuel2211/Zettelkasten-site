@@ -1,5 +1,5 @@
 ---
-modified: 2026-04-08T20:33:04Z
+modified: 2026-11-09T14:45:24Z
 publish: true
 type: atomic-note
 status:
@@ -15,7 +15,7 @@ materia:
 ---
 TARGET DECK: Geometria
 
-**1. Definición. (Espacio euclidiano, recta, plano)** #flashcard
+**1. Definición. (Espacio euclidiano, recta, plano)**
 El **espacio** (analítico) **euclidiano**, denotado por $\mathbb{R}^{3}$, es el espacio vectorial $V_{3}$ donde:
 **1.1** los elementos $(x,y,z)$ de $V_{3}$ son los puntos de $\mathbb{R}^{3}$;
 **1.2** un conjunto $\mathscr{L}$ de puntos de $\mathbb{R}^{3}$ es una **recta** si hay un punto $\mathbf{P_{0}} \in \mathbb{R}^{3}$ y dos vectores no paralelos y no nulos $\mathbf{a}$ y $\mathbf{b}$ de $V_{3}$ tales que,
@@ -46,7 +46,6 @@ $$
 x = x_{0} + ua_{1} + vb_{1} , \quad y =y_{0}+ua_{2}+vb_{2}, \quad z = z_{0}+ua_{3} + vb_{3}
 $$
 son las **ecuaciones paramétricas**.
-<!--ID: 1775163794370-->
 
 
 [[Rectas]]

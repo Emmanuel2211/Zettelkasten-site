@@ -1,5 +1,5 @@
 ---
-modified: 2026-09-14T16:44:57Z
+modified: 2026-11-09T14:45:18Z
 publish: true
 type: atomic-note
 status: done
@@ -27,7 +27,7 @@ $$
 $$
 Por lo que, que $\mathbf{a}$ y $\mathbf{b}$ sean ortogonales es $\equiv$ a que (1.3) $=0$. Dado la importancia de esta expresión la definimos como:
 
-**1. Teorema (Producto Escalar y propiedades)**  #flashcard
+**1. Teorema (Producto Escalar y propiedades)** 
 Para $x,y \in \mathbb{R}^n$, lease "a punto b", $\mathbf{a} \cdot \mathbf{b}$ está definido por
 $$
 \mathbf{a} \cdot \mathbf{b} = \sum_{k=1}^n a_{k}b_{k} = a_{1}b_{1} + \dots + a_{n}b_{n}.
@@ -48,7 +48,6 @@ Observamos que (2.5) es una reformulación de [[Ortogonalidad|(1.2)]] ya que
 $$
 \mathbf{a} \cdot \mathbf{a} = \sum_{k=1}^n a_{k}^{2} = \lvert a \rvert ^{2} \tag{2.6}
 $$
-<!--ID: 1775159208214-->
 
 
 

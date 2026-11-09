@@ -1,5 +1,5 @@
 ---
-modified: 2026-04-09T02:20:27Z
+modified: 2026-11-09T14:45:36Z
 publish: true
 type: zettel
 status: done
@@ -16,9 +16,8 @@ cssclasses: romana
 materia:
 ---
 
-TARGET DECK: Geometria
 
-### Discusión Rectas; paralelismo de rectas en $\mathbb{R}^{2}$ y $\mathbb{R}^{3}$. #flashcard
+### Discusión Rectas; paralelismo de rectas en $\mathbb{R}^{2}$ y $\mathbb{R}^{3}$.
 **1. Teorema.** Para cada par de puntos hay una y sólo una recta que pasa por ellos.
 **2. Teorema.** Dos rectas
 $$
@@ -29,7 +28,6 @@ son **paralelas** si los vectores $\mathbf{a}$ y $\mathbf{b}$ lo son.
 **2.2 Corolario.**  $\mathscr{L}_{1}$ y $\mathscr{L}_{2}$ son paralelas si y sólo si $\mathscr{L_{1}} = \mathscr{L}_{2}$ o $\mathscr{L}_{1} \cap \mathscr{L}_{2} = \varnothing$.
 Este corolario solo es verdad para $\mathbb{R}^{2}$, ya que para $\mathbb{R}^{3}$ puede que no se intersecten y no sean paralelas.
 **2.3 Definición.** Dos rectas $\mathscr{L_{1}}$ y $\mathscr{L}_{2}$​ se denominan **cruzadas** o **alabeadas** si no son paralelas y su intersección es vacía ($\mathscr{L_{1}} \cap \mathscr{L_{2}} = \varnothing$). Es decir, no existe ningún plano que contenga a ambas simultáneamente.
-<!--ID: 1775701227550-->
 
 
 ### Discusión Rectas; ángulo, 
@@ -57,7 +55,7 @@ $$
 \end{align}
 $$
 
-### Discusión Recta: forma simétrica #flashcard
+### Discusión Recta: forma simétrica
 **5.** La relación vectorial y algebraica nos permite describir a la recta de varias formas puramente analíticas. De acuerdo con las [[Espacio Euclidiano Tridimensional|ecuaciones paramétricas]] de la recta tenemos
 $$
 \begin{align}
@@ -66,7 +64,6 @@ $$
 \end{align}
 $$
 con $a_{1},a_{2},a_{3} \neq 0$, esta es la llamada **ecuación simétrica**.
-<!--ID: 1775701227554-->
 
 
 

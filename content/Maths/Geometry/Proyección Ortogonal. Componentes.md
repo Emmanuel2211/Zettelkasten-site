@@ -1,10 +1,9 @@
 ---
-modified: 2026-04-12T02:45:11Z
+modified: 2026-11-09T14:42:02Z
 publish: true
 ---
-TARGET DECK: Geometria
 
-### Teorema. (Proyección Ortogonal y Componente)  #flashcard
+### Teorema. (Proyección Ortogonal y Componente) 
 Sea $\mathbf{u}, \mathbf{v} \in V_{n}$ con $\mathbf{v} \neq \mathbf{0}$. La **proyección** de $\mathbf{u}$ sobre $\mathbf{v}$ es el vector
  $$
  \text{Proy}_{\mathbf{v}}\mathbf{u} = \frac{\mathbf{u}\cdot \mathbf{v}}{\lvert \mathbf{v} \rvert ^{2}} \cdot \mathbf{v}
@@ -33,7 +32,6 @@ $$
 \cos \theta &= \frac{\mathbf{u\cdot v}}{\lvert \mathbf{u} \rvert \lvert \mathbf{v} \rvert }. \tag{2.1}
 \end{align}
 $$
-<!--ID: 1775158233336-->
 
 
 

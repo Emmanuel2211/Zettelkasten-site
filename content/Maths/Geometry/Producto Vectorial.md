@@ -1,5 +1,5 @@
 ---
-modified: 2026-04-09T02:22:34Z
+modified: 2026-11-09T14:42:11Z
 publish: true
 type: zettel
 status: 
@@ -11,9 +11,8 @@ cssclasses: romana
 materia: 
 ---
 
-TARGET DECK: Geometria
 
-### Definición. Producto Vectorial o Cruz #flashcard
+### Definición. Producto Vectorial o Cruz 
 El **producto vectorial** de dos vectores $\mathbf{a,b}$ de $V_{3}$, denotado por $\mathbf{a \times b}$ es un **nuevo vector** definido por
 $$
 \mathbf{u} \times \mathbf{v} = \begin{vmatrix}
@@ -31,7 +30,6 @@ Para cualquier par de vectores en $\mathbb{R}^{3}$
 $$
 \mathbf{u}\cdot(\mathbf{u\times v}) = \mathbf{0} \ \ \ \text{ y } \ \ \ \mathbf{v}\cdot(\mathbf{u\times v})=\mathbf{0}
 $$
-<!--ID: 1775701227558-->
 
 
 

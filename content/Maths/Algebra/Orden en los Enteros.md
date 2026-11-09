@@ -1,5 +1,5 @@
 ---
-modified: 2026-09-08T21:23:30Z
+modified: 2026-11-09T14:43:28Z
 publish: true
 type: zettel
 date: "2026-08-25"
@@ -96,49 +96,6 @@ Muchas de estas demostraciones, en especial de orden, pueden ser descritas geome
 > $$
 
 
-
-
----
-#### 3.1 Teorema. 
-Para cualesquiera $[(n,m)],[(p,q)] \in \mathbb{Z}$,
-$$
-[(n,m)]< [(p,q)] \iff n+q < m+p.
-$$
-Este resultado da una equivalencia muy útil de la definición (3), basada de manera más directa en el orden de los $\mathbb{N}$.
-**3.2 Notación.** $b\leq a$ será una abreviatura cuando suceda que $b<a$ o $b =a$.
-###### 3.3 Lema. 
-$a <b \iff \exists t \in \mathbb{Z}^+ : a + t = b$.
-Una característica importantísima es que $<_{\mathbb{Z}}$ ordena linealmente a $\mathbb{Z}$.
-#### 3.4 Teorema. 
-($\mathbb{Z}, <_{\mathbb{Z}}$) es un orden lineal, a saber, cumple que:
-1. $\forall a \in \mathbb{Z}$, $a \not< a,$ es decir, $<$ es ***antirreflexiva***.
-2. $\forall a,b,c \in \mathbb{Z}$ tales que $a<b$ y $b<c$, se tiene que $a<c$, es decir, $<$ es ***transitiva***.
-3. Dados $a,b \in \mathbb{Z}$ se tiene una y sólo una de las siguientes: $a<b$, $b<a$, $a=b$, es decir, $<$ es ***tricotómica***.
-<!--ID: 1775502814377-->
-
-
-##### 3.5 Proposiciónes. (de $<_{\mathbb{Z}}$) #flashcard
-Para cualesquiera $a,b,c \in \mathbb{Z}$:
-1. $(c \in \mathbb{Z}^+ \cup \{ 0 \} \land a < b) \implies a < b + c$
-2. $a < b \iff a + c < b + c$
-3. si $c \in \mathbb{Z}^+, \ a<b \iff a \cdot c < b \cdot c$
-4. si $c \in \mathbb{Z}\setminus \mathbb{Z}^+$ y $a<b$, entonces $a\cdot c \geq b \cdot c$
-5. si $c \in \mathbb{Z}^-, \ a < b \iff a \cdot c > b \cdot c$
-6. si $b,c \in \mathbb{Z}^+$ y $a < b$, entonces $a< b\cdot c$
-<!--ID: 1775502814380-->
-
-
-**4. [[Valor Absoluto]]**
-La operación **valor absoluto** es la función $|\ |: \mathbb{Z} \to \mathbb{Z}$ tal que...
-
-**5.** Un entero $a$ tiene **inverso multiplicativo** $\iff$ $\exists b \in \mathbb{Z}$ tal que $ab=1$.
-Gracias a esta propiedad se dice que $1$ y $-1$ son las **unidades** de $\mathbb{Z}$. Pero para probar esto se necesita lo siguiente.
-###### 5.1 Lema 
-Si $a \in \mathbb{Z}^+$, entonces $a = 1$ o $a >1$.
-Ahora sí veamos que estas realmente sean las únicas unidades de $\mathbb{Z}$.
-#### 5. Teorema. 
-Los únicos enteros que tienen inverso multiplicativo son $1$ y $-1$
-**5.2** Para cualquier $a \in \mathbb{Z}$, existe $u \in \mathbb{Z}$  tal que $\lvert a \rvert = u \cdot a$. En efecto, como $1$ y $-1$ son unidades y $\lvert a \rvert$ es $a$ o $-a$, podemos concluir que $\lvert a \rvert = 1 \cdot a$ o $\lvert a \rvert = -1 \cdot a$.
 
 ---
 ### Links:
