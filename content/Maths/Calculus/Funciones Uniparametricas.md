@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-09T21:53:18Z
+modified: 2026-11-09T22:21:11Z
 title: "Funciones Uniparamétricas"
 publish: true
 type: zettel
@@ -50,10 +50,11 @@ Empezaremos a ver una forma de calcular longitudes.
 
 ![[IMG_6980(1).jpeg|center|500]]
 
-Una aproximación a la longitud de la curva será,
+Una aproximación a la longitud de la curva será (factorizando $(x_{k+1}-x_{k})^{2}$ dentro de la raíz),
 $$
 \begin{align}
-  \sum_{k=0}^{n-1} \sqrt{(x_{k+1}-x_{k})^{2} + (f(x_{k+1})- f(x_{k}))^{2}} &= \sum_{k=0}^{n-1} \sqrt{(x_{k+1}-x_{k})^{2} \left( 1 + \frac{(f(x_{k+1})- f(x_{k}))^{2}}{(x_{k+1}-x_{k})^{2}}\right)} \tag{factor. $(x_{k+1}-x_{k})^{2}$} \\[0.5em]
+  & \sum_{k=0}^{n-1} \sqrt{(x_{k+1}-x_{k})^{2} + (f(x_{k+1})- f(x_{k}))^{2}} \\[0.5em]
+   &= \sum_{k=0}^{n-1} \sqrt{(x_{k+1}-x_{k})^{2} \left( 1 + \frac{(f(x_{k+1})- f(x_{k}))^{2}}{(x_{k+1}-x_{k})^{2}}\right)} \tag{factor.} \\[0.5em]
    &= \sum_{k=0}^{n-1}(x_{k+1}- x_{k}) \sqrt{1 + \left(\frac{f(x_{k+1}) - f(x_{k})}{x_{k+1}- x_{k}}  \right)^{2}} \tag{$x_{k+1} > x_{k}$}
 \end{align}
 $$
@@ -89,7 +90,8 @@ De forma similar, ahora tomamos una partición $\{ a = t_{0} < t_{1} < \dots < t
 Así, la longitud de la poligonal es
 $$
 \begin{align}
-\sum_{k=0}^{n-1} \sqrt{(f(t_{k+1}) - f(t_{k}))^{2} + (g(t_{k+1}) - g(t_{k}))^{2}} &= \sum_{k=0}^{n-1} (t_{k+1}-t_{k}) \sqrt{\left(\frac{f(t_{k+1}) - f(t_{k})}{t_{k+1}-t_{k}}\right)^{2} + \left(\frac{g(t_{k+1}) - g(t_{k})}{t_{k+1}-t_{k}}\right)^{2}} \tag{factor.} \\[0.5em]
+& \sum_{k=0}^{n-1} \sqrt{(f(t_{k+1}) - f(t_{k}))^{2} + (g(t_{k+1}) - g(t_{k}))^{2}} \\[0.5em]
+&= \sum_{k=0}^{n-1} (t_{k+1}-t_{k}) \sqrt{\left(\frac{f(t_{k+1}) - f(t_{k})}{t_{k+1}-t_{k}}\right)^{2} + \left(\frac{g(t_{k+1}) - g(t_{k})}{t_{k+1}-t_{k}}\right)^{2}} \tag{factor.} \\[0.5em]
 &= \sum_{k=0}^{n-1} (t_{k+1}-t_{k}) \sqrt{f'(c_{k})^{2} + g'(d_{k})^{2}} \tag{T.V.M.}
 \end{align}
 $$
