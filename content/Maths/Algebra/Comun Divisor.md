@@ -1,5 +1,5 @@
 ---
-modified: 2026-10-29T00:42:22Z
+modified: 2026-11-11T16:50:25Z
 title: "Común Divisor"
 publish: true
 type: zettel
@@ -23,6 +23,7 @@ cssclasses:
 > - Siempre existen divisores comunes, por ejemplo el 1.
 > - Si $a\neq 0$ o $b\neq 0$ existe un divisor común que es mayor o igual que los demás.
 > > [!proof]- **Proof.**
+> > 
 > > $a,b \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$. Consideramos
 > > $D = \{ -c + \left| a \right| +\left| b \right| \mid c \in  \mathbb{Z}, c \mid a \land c \mid b \}$
 > > Si $a\neq 0$ y $c\mid a$, ent. $c \leq  \left| c \right| \leq \left| a \right| \leq  \left| a \right|+\left| b \right|$
