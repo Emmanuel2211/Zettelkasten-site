@@ -52,7 +52,7 @@ En la figura, $Q$ representa la partición con *puntos blancos y negros*. Es cla
 > \end{align} 
 > $$
 
-> [!proof]- **Proof.** 
+> [!proof]+ **Proof.** 
 >
 > Consideremos primero el caso especial (figura) en donde $Q$ contenga solamente un punto más que $P$:
 > 

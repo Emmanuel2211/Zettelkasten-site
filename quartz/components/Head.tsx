@@ -97,6 +97,25 @@ export default (() => {
         {js
           .filter((resource) => resource.loadTime === "beforeDOMReady")
           .map((res) => JSResourceToScriptElement(res, true))}
+        {/* zettelkasten-site: before first paint, (1) dark theme for visitors who
+            never picked one (the darkmode plugin's prescript.js, which runs just
+            before, follows the OS; a choice made with the toggle is saved in
+            localStorage["theme"] and wins), (2) zen mode by default. Then
+            site.js (cursor, zen default, theme fade). See CONTEXTO.md §6. */}
+        <script
+          data-persist
+          dangerouslySetInnerHTML={{
+            __html: `try{var d=document.documentElement;if(!localStorage.getItem("theme"))d.setAttribute("saved-theme","dark");if(localStorage.getItem("zen-mode")!=="off")d.setAttribute("reader-mode","on")}catch(e){}`,
+          }}
+        />
+        <script src="/static/site.js" defer data-persist />
+        <link
+          rel="preload"
+          href="/static/fonts/pagella/texgyrepagella-regular.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         {additionalHead.map((resource) => {
           if (typeof resource === "function") {
             return resource(fileData)

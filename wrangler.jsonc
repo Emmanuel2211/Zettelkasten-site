@@ -4,6 +4,11 @@
   // MUST match the Worker's name in the Cloudflare dashboard, or the build fails.
   "name": "zettelkasten-site",
   "compatibility_date": "2026-10-01",
+  // runs before every `wrangler deploy`: cache headers for the static files
+  // (see scripts/_headers; Quartz wipes public/ on each build)
+  "build": {
+    "command": "cp scripts/_headers public/_headers"
+  },
   "assets": {
     // Quartz's build output
     "directory": "./public",

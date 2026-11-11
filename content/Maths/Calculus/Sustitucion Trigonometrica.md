@@ -17,7 +17,7 @@ cssclasses:
 > $$
 
 
-> [!example]- Ejemplo. Caso $\sqrt{a^{2} - x^{2}}$
+> [!example]+ Ejemplo. Caso $\sqrt{a^{2} - x^{2}}$
 >
 > ![[Pasted image 20260918112859.png|center|190]]
 > $\displaystyle \int \frac{\sqrt{a^{2}-x^{2}}}{x} \, dx$ y observamos que $\displaystyle \sin(\theta )  = \frac{x}{a} \implies  x = a \sin(\theta )$ y con derivada $dx = a\cos(\theta )d\theta$.
@@ -32,7 +32,7 @@ cssclasses:
 > $$
 
 
-> [!example]- Ejemplo. Caso $\sqrt{a^{2} + x^{2}}$
+> [!example]+ Ejemplo. Caso $\sqrt{a^{2} + x^{2}}$
 >
 > ![[Pasted image 20260918120236.png|center|194]]
 > $\displaystyle \int x\sqrt{a^{2} + x^{2}} \, dx$

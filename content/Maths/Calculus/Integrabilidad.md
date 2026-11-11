@@ -146,7 +146,7 @@ Observamos que surgen dificultades ya sea $f$ discontinuo o continuo y desarroll
 > $$
 > 
 
-> [!example]- **Ejemplo 2:** $f(x) = x$
+> [!example]+ **Ejemplo 2:** $f(x) = x$
 >
 > Sea $f(x) = x$, para simplificar consideramos un intervalo $[0,b]$, donde $b>0$. Si $P = \{ t_{0},\dots,t_{n} \}$ es una partición de $[0,b]$, entonces
 > 

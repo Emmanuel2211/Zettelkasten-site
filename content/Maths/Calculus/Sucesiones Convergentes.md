@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-11T19:49:12Z
+modified: 2026-11-11T20:27:48Z
 title: "Sucesiones Convergentes"
 publish: true
 type: zettel
@@ -26,7 +26,7 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > Decimos que $\{ a_{n} \}$ es **convergente** si existe $L \in \mathbb{R}$ tal que $a_{n} \to L$. 
 > Si $L = 0$, decimos que $\{ a_{n} \}$ es **nula**.
 
-> [!tip]- **Idea.** (El uso de $\varepsilon$)
+> [!tip]+ **Idea.** (El uso de $\varepsilon$)
 >
 > Por propiedades de valor absoluto,
 > $$
@@ -34,8 +34,9 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > $$
 > Si dibujamos la sucesión como los puntos $(n, a_{n})$, la franja horizontal de ancho $2\varepsilon$ alrededor de la recta $y = L$ debe **atrapar** a todos los puntos a partir de $n = N$.
 >
-> <img src="/videos/banda-epsilon.avif" alt="center" width="500" loading="lazy">
-> *Sucesión: $a_{n} = 1 + \frac{2(-1)^{n}}{n}$, con $L = 1$.*
+> <img src="/videos/banda-epsilon.avif" alt="center" width="720" loading="lazy">
+>
+> *Sucesión:* $a_{n} = 1 + \frac{2(-1)^{n}}{n}$, con $L = 1$.
 > 
 > Obsérvece que $N$ depende de $\varepsilon$, y a veces se escribe $N = N(\varepsilon)$.
 >

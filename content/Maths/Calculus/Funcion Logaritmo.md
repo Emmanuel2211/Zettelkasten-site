@@ -11,7 +11,7 @@ tags:
 cssclasses: 
  - romana
 ---
-> [!Quote]- Un matemático buscando una definición
+> [!Quote]+ Un matemático buscando una definición
 >
 >  ![[Pasted image 20260819215736.png]]
 

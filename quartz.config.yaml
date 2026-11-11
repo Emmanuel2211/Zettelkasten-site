@@ -15,7 +15,7 @@ configuration:
   theme:
     fontOrigin: googleFonts
     cdnCaching: true
-    # Body/headers are overridden to self-hosted Latin Modern Roman in
+    # Body/headers are overridden to self-hosted TeX Gyre Pagella in
     # quartz/styles/custom.scss; Crimson Pro is the fallback while it loads.
     typography:
       header: Crimson Pro
@@ -28,19 +28,23 @@ configuration:
         gray: "#b3adb9"
         darkgray: "#4a4650"
         dark: "#26232a"
-        secondary: "#8a3fc7"
-        tertiary: "#b760f0"
-        highlight: rgba(183, 96, 240, 0.10)
+        # "Carmesí y pizarra" (type lab): secondary = links (main colour),
+        # tertiary = cursor, tags, link underline (secondary colour)
+        secondary: "#9b2c42"
+        tertiary: "#4c6479"
+        highlight: rgba(76, 100, 121, 0.12)
         textHighlight: "#fff23688"
+      # pure black + off-white text, like turntrout.com (The Pond)
       darkMode:
-        light: "#17151a"
-        lightgray: "#3a3540"
-        gray: "#6c6573"
-        darkgray: "#d6d1dc"
-        dark: "#eeebf1"
-        secondary: "#c58af5"
-        tertiary: "#b760f0"
-        highlight: rgba(183, 96, 240, 0.14)
+        light: "#000000"
+        lightgray: "#26262c"
+        gray: "#6e7080"
+        darkgray: "#dfe2ee"
+        dark: "#eff2ff"
+        # "Petróleo y ámbar" (type lab): teal links, amber cursor/tags/underline
+        secondary: "#6cc7bd"
+        tertiary: "#efb54a"
+        highlight: rgba(239, 181, 74, 0.14)
         textHighlight: "#b3aa0288"
 plugins:
   - source: "@quartz-community/created-modified-date"
@@ -121,11 +125,11 @@ plugins:
     options:
       useThemeFonts: false
       fontOrigin: googleFonts
-      # Latin Modern Roman is self-hosted (quartz/static/fonts/lm, see custom.scss)
-      body: '"Latin Modern Roman", "Crimson Pro", serif'
-      header: '"Latin Modern Roman", "Crimson Pro", serif'
-      title: '"Latin Modern Roman", "Crimson Pro", serif'
-      interface: '"Latin Modern Roman", "Crimson Pro", serif'
+      # TeX Gyre Pagella is self-hosted (quartz/static/fonts/pagella, see custom.scss)
+      body: '"TeX Gyre Pagella", Palatino, serif'
+      header: '"TeX Gyre Pagella", Palatino, serif'
+      title: '"TeX Gyre Pagella", Palatino, serif'
+      interface: '"TeX Gyre Pagella", Palatino, serif'
       code:
         name: JetBrains Mono
         weights: [400, 600]

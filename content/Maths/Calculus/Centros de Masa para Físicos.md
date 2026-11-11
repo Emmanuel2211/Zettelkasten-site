@@ -136,6 +136,7 @@ Obs. que el lado derecho de la ecuación es una [[Sumas de Riemann|suma de Riema
   </div>
   <div style="flex: 1; padding: 10px; border-radius: 5px;">
      <img src="/images/IMG_7013.jpeg" width="270">
+
   </div>
 </div>
 

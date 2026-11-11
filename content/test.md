@@ -3,7 +3,7 @@ modified: 2026-11-11T19:27:43Z
 publish: true
 ---
 
-<img class="tikz tikz-light" alt="tikz" src="/tikz-svg/472fef22750ba22f-light.svg"><img class="tikz tikz-dark" alt="tikz" src="/tikz-svg/7b902ea468b33d0b-dark.svg">
+<img class="tikz tikz-light" alt="tikz" src="/tikz-svg/472fef22750ba22f-light.svg"><img class="tikz tikz-dark" alt="tikz" src="/tikz-svg/21d4e162471f975d-dark.svg">
 
 
 
@@ -34,7 +34,7 @@ Sucesión $a_{n} = 1 + \frac{2(-1)^{n}}{n}$, con $L = 1$, $\varepsilon = 0.3$, $
 
 ## 1. TikZJax
 
-<img class="tikz tikz-light" alt="tikz" src="/tikz-svg/61599af1ba0d0e44-light.svg"><img class="tikz tikz-dark" alt="tikz" src="/tikz-svg/fa0f983c6da89f6d-dark.svg">
+<img class="tikz tikz-light" alt="tikz" src="/tikz-svg/61599af1ba0d0e44-light.svg"><img class="tikz tikz-dark" alt="tikz" src="/tikz-svg/60465f80880559e5-dark.svg">
 
 ## 2. SVG (archivo)
 
@@ -147,4 +147,4 @@ def partition(A, p, r):
 
 ## D. AVIF animado (imagen en bucle, 170 KB)
 
-<img src="/videos/banda-epsilon.avif" alt="center" width="500" loading="lazy">
+<img src="/videos/banda-epsilon.avif" alt="center" width="720" loading="lazy">

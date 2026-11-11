@@ -74,14 +74,16 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - `fix_inline_footnotes`: convierte `^[texto]` y `^[[[Nota]]]` (notas al pie en línea de Obsidian) en un superíndice numerado más una lista al final de la página.
     - Genera el HTML directamente, con el mismo marcado que GFM, porque las referencias GFM dentro de títulos de callout salían todas con el número "1".
   - `fix_folder_note_links`: un *folder note* como `Maths/Algebra/Algebra.md` se publica como `maths/algebra/index`. Por un bug de la resolución "shortest" de Quartz, los `[[Algebra]]` quedaban rotos; esta función los reescribe a `[[Maths/Algebra/index|Algebra]]`.
-  - `fix_extra_image_embeds`: convierte `![[x.avif|center|500]]` en `<img src="x.avif" alt="center" width="500">`. El plugin OFM solo reconoce como imagen `.jxl .png .jpg .jpeg .gif .bmp .webp`; con cualquier otra extensión sale "Transclude of …". Los AVIF animados (de manim) se reproducen en loop, igual que en Obsidian.
+  - `fix_extra_image_embeds`: convierte `![[x.avif|center|500]]` en `<img src="x.avif" alt="center" width="720">`. El ancho se multiplica por `EXTRA_IMAGE_SCALE = 1.44`; el CSS `article img { max-width: 100% }` evita que se salga de la columna o del callout. El plugin OFM solo reconoce como imagen `.jxl .png .jpg .jpeg .gif .bmp .webp`; con cualquier otra extensión sale "Transclude of …". Los AVIF animados (de manim) se reproducen en loop, igual que en Obsidian. Las animaciones de manim usan fondo negro `#000000` (`FONDO` en `Claude/manim/estilo.py` del vault), igual que el tema oscuro del sitio.
+  - Si el `<img>` queda solo en su línea, se agrega una línea vacía después. Sin ella, Markdown trata las líneas siguientes como HTML crudo y el `$…$` de un pie de imagen no se renderiza.
   - `fix_raw_html`: dentro del HTML crudo convierte `<span class="math">` en `math-inline` y `<div class="math">` en `math-display`, que son las únicas clases que MathJax reconoce al compilar. También pone una ruta absoluta en `<img src>`.
   - `fix_math_in_callouts`: agrega el `> ` que falta en las líneas de un `$$…$$` dentro de un callout.
+  - `expand_callouts_with_images`: un callout colapsado (`> [!tipo]-`) que contiene una imagen se publica abierto (`+`), aunque sigue siendo plegable. Cuentan como imagen los embeds de imagen, AVIF y Excalidraw, los `<img>`, `![](…)` y los bloques ```tikz.
   - `fix_nested_callout_titles`: agrega una línea `>` vacía después del encabezado de cada callout. El plugin OFM ya lo hace, pero su regex solo reconoce un `>` en la columna 0. Por eso, en callouts anidados (`> > [!proof]`) o con un espacio antes del `>`, el cuerpo se pegaba al título.
   - `h1_to_title`: el `# H1` inicial pasa a ser el `title:` de la página. No lo hace si el H1 lleva `$ [ ] < >` o comillas invertidas.
   - `add_modified_date`: escribe `modified:` con el mtime real del archivo.
   - **TikZ** (```tikz): se compila con `latex` + `dvisvgm --no-fonts --exact-bbox`, usando el driver `pgfsys-dvisvgm.def`.
-    - Se genera **dos veces**, una para el tema claro (fondo `#FBFAF9`) y otra para el oscuro (fondo `#17151A`, texto blanco).
+    - Se genera **dos veces**, una para el tema claro (fondo `#FBFAF9`) y otra para el oscuro (fondo `#000000`, texto blanco).
     - El resultado se escala ×1.5 y se inserta como `<img class="tikz tikz-light|tikz-dark">`. Las imágenes van en `content/tikz-svg/` y la caché en `.render-cache/`.
     - Paquetes: tikz-cd, pgfplots, circuitikz, chemfig, tikz-3dplot.
     - Se usa standalone **sin** la opción `tikz`, porque con ella solo salía el primer diagrama. Las líneas vacías se eliminan, porque rompían tikz-cd.
@@ -90,9 +92,20 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
 ## 6. Personalización (`quartz.config.yaml` + `custom.scss`)
 - **General:**
   - Idioma `es-ES`; título `Zettelkasten`.
-  - Colores: acento `#8a3fc7` en claro y `#c58af5` en oscuro, tertiary `#b760f0`. Fondo `#fbfaf9` en claro y `#17151a` en oscuro.
-  - Fuentes: Latin Modern Roman para el texto y JetBrains Mono para el código. El plugin `@quartz-themes/core` está **desactivado** porque sobrescribía las fuentes.
+  - Colores, elegidos en el type lab (2026-11-11). El principal es `--secondary`: enlaces, título y marcadores de listas. El secundario es `--tertiary`: cursor, tags y subrayado de los enlaces.
+    - **Claro**, "Carmesí y pizarra": principal `#9b2c42`, secundario `#4c6479`, fondo `#fbfaf9`.
+    - **Oscuro**, "Petróleo y ámbar": principal `#6cc7bd`, secundario `#efb54a`, fondo negro puro `#000000` y texto `#eff2ff` (como turntrout.com).
+  - **Tema oscuro por defecto:** si el visitante nunca usó el botón de tema, el script inline de `Head.tsx` pone `saved-theme="dark"` aunque su sistema esté en claro. Si lo cambia, el plugin lo guarda en `localStorage["theme"]` y desde entonces se respeta.
+  - Fuentes: **TeX Gyre Pagella** (un clon de Palatino) para el texto, servida desde el sitio en `quartz/static/fonts/pagella/` como `.woff2` recortado con pyftsubset. Se eligió en lugar de Latin Modern, que se veía débil en modo claro. El código usa JetBrains Mono. Las ecuaciones siguen en Computer Modern, porque es la fuente de MathJax. El plugin `@quartz-themes/core` está **desactivado** porque sobrescribía las fuentes.
   - Zoom de 120% en pantallas de 800px o más (`html { font-size:120% }`), y `article` a `1.1rem`.
+- **Rediseño "zen" (2026-11-11), inspirado en turntrout.com, jzhao.xyz, aarnphm.xyz y ssp.sh/brain:**
+  - El tamaño de letra crece con el ancho de la ventana: `html { font-size: clamp(16px, 0.55vw + 12.5px, 22px) }` y `article` a 1.15rem (unos 23px en una laptop de 1366px, como en The Pond). Reemplaza al zoom fijo de 120%.
+  - El cambio de tema claro/oscuro es un fundido de 0.45s con la View Transitions API (`site.js` envuelve el clic en `document.startViewTransition`). Mientras dura, se ignoran los clics: cada cambio dispara `themechange` y la gráfica reconstruye su canvas, así que repetir el clic muy rápido congelaba la página. Antes era un `* { transition }`, casi imperceptible y pesado en las páginas con mucho MathJax.
+  - Enlaces internos minimalistas: color de acento, mismo grosor que el texto, sin fondo resaltado y con subrayado fino al pasar el mouse.
+  - Cursor cuadrado (como el de jzhao.xyz) en todo el sitio, también sobre texto y matemáticas, y solo con mouse. Crece sobre los enlaces.
+  - Modo zen (reader mode) activado por defecto. Si el visitante lo apaga, se recuerda en `localStorage["zen-mode"]`.
+  - En escritorio, los paneles laterales miden 350px (con padding de 1.5rem, para que "Zettelkasten" quepa en una línea) y la página llega a 1680px. El index no tiene ancho máximo (`body[data-slug="index"]`).
+  - El JS propio está en `quartz/static/site.js`. Se carga desde `quartz/components/Head.tsx` (bloque marcado "zettelkasten-site"), que es **un archivo del core de Quartz**: revísalo después de cada `npx quartz upgrade`.
 - **Callouts propios:** `theorem` (con borde, en cursiva y sin icono), `proof` (verde menta) y `observation` (oliva).
   - Los callouts colapsados quedan realmente ocultos.
   - La columna del grid es `minmax(0,1fr)`, para que las ecuaciones anchas se desplacen en vez de recortarse.
@@ -106,6 +119,15 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - Explorer: al hacer clic en una carpeta se abre su MOC.
   - Excalidraw (`@quartz-community/obsidian-plugin-excalidraw`), backlinks, TOC, modo lectura y breadcrumbs.
 - **Fechas:** se toman en el orden frontmatter → filesystem → git.
+
+## 6b. Rendimiento
+- **Caché:** `scripts/_headers` define el `Cache-Control` de los archivos estáticos. Los archivos con hash (`component-*`, `index-*`, `static/scripts/*`, `static/resource-*`), las fuentes, KaTeX y `tikz-svg/` se guardan un año como `immutable`. `contentIndex.json`, `site.js`, `videos/` e `images/` usan una caché corta con `stale-while-revalidate`.
+  - Antes todo salía con `max-age=0, must-revalidate`, así que cada página volvía a consultar unos 40 archivos.
+  - Quartz borra `public/` en cada build, así que el `build.command` de `wrangler.jsonc` copia el archivo a `public/_headers` antes de cada `wrangler deploy`.
+- **Fuentes:** Pagella se sirve en `.woff2` recortado, unos 60 KB por estilo. La regular se precarga desde `Head.tsx`. Latin Modern sigue en `static/fonts/lm/`, pero ya no se usa.
+- **Pendiente:** las notas con mucha matemática pesan 1–2 MB de HTML, porque MathJax usa `fontCache: "local"` y repite los trazos de cada glifo en cada ecuación.
+  - Con `fontCache: global` bajan a un ~37%, pero `rehype-mathjax` no escribe la tabla de glifos y las ecuaciones salen en blanco.
+  - Arreglarlo requiere un paso post-build que inyecte los `<defs>`; no está hecho.
 
 ## 7. Privacidad (tres capas)
 1. sync-vault solo copia las notas con `publish: true`.

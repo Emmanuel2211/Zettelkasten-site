@@ -35,7 +35,7 @@ Tambien nombradas ordenaciones *con remplazo*. Vamos a interpretarlas.
 
 Este concepto es altamente practico, entonces lo desarrollamos con ejemplos
 
-> [!example]- **Ejemplo 1.** $\{ \bullet, - \}$
+> [!example]+ **Ejemplo 1.** $\{ \bullet, - \}$
 >
 > Sea $M$ el abecedario del código Morse, es decir, $M = \{ \bullet, - \}$. Las funciones $f: I_{3}\to M$ son las siguientes:
 > 

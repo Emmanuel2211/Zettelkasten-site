@@ -19,7 +19,7 @@ materia:
 > 
 > Un **grafo bipartita completo** es un grafo bipartita simple con la bipartición $(X,Y)$, el cual cada vértice de $X$ está unido con cada vértice de $Y$; si $\lvert X \rvert = m$ y $\lvert Y \rvert = n$, tal grafo se denota $K_{m,n}$.
 
-> [!example]- **Ejemplo.** 
+> [!example]+ **Ejemplo.** 
 > 
 > ![[Pasted image 20260528113148.png|center]]
 > 

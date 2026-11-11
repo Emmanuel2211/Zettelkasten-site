@@ -69,7 +69,7 @@ del $\text{dom} (f)$, donde $f$ esta definida en el vecindario de $x_{0}$: $(x_{
 
 **Continuidad en extremos:** Claro es ta que se define por limites laterales.
 
-> [!example]- **Ejemplo 1.** ("neighbourhood method" proof)
+> [!example]+ **Ejemplo 1.** ("neighbourhood method" proof)
 >
 > Sea $f: (0,\infty) \to \mathbb{R}$, definido por $f(x) = 1/ x$, Se demostrará que si $x_{0} \in (0,\infty)$, entonces $f$ es continua en $x_{0}$.
 > *Proof.*

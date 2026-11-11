@@ -165,8 +165,8 @@
  </g>
  </g>
 </g>
-<g fill='#17151a'>
-<g fill='#17151a'>
+<g fill='#000'>
+<g fill='#000'>
 <path d='M-41.32132 11.98402H-19.54929V23.28956H-41.32132Z' stroke='none'/>
 </g>
 <g transform='translate(-39.16855,15.8868)'>
@@ -485,7 +485,7 @@
 </g>
 </g>
 </g>
-<g stroke='#17151a'>
+<g stroke='#000'>
 <g stroke-width='6.45831'>
 <path d='M-12.67569 18.65974H55.31415' fill='none'/>
 </g>
@@ -617,7 +617,7 @@
 </g>
 </g>
 </g>
-<g stroke='#17151a'>
+<g stroke='#000'>
 <g stroke-width='6.45831'>
 <path d='M-20.93123-52.13733V12.30002' fill='none'/>
 </g>

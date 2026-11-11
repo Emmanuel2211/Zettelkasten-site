@@ -9,7 +9,7 @@ publish: true
 > 
 > Si $e \in E$ y $u,v \in V$ tales que $\psi(e) = uv$, entonces se dice que $e$ **une** $u$ y $v$; los vértices $u,v$ son llamados **extremos** de $e$.
 
-> [!example]- **Ejemplo** 
+> [!example]+ **Ejemplo** 
 >
 > $$
 > G = (V(G), E(G), \psi_{G})
@@ -41,7 +41,7 @@ publish: true
 > La **gráfica vacía** es la que no tiene aristas.
 
 
-> [!example]- **Ejemplo** 
+> [!example]+ **Ejemplo** 
 >
 > ![[Pasted image 20260526162638.png|center]]
 > 

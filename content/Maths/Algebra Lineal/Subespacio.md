@@ -89,7 +89,7 @@ Dado las obs. anteriores, es suficiente con revisar (VS 0), (VS 0.5) y (VS 3).
 
 > [!proof]- **Proof.** 
 
-> [!Info]- **Nota!**
+> [!Info]+ **Nota!**
 >
 > Dado cualquier esp. vect. $V$ podemos pensar en un diagrama de ellos, ordenándolos por $\leq$ (*ser subespacio de*):
 > 

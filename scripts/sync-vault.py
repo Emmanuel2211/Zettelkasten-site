@@ -162,7 +162,7 @@ def digest(lang: str, src: str) -> str:
 # that theme's page background (keep in sync with quartz.config.yaml colors).
 TIKZ_THEMES = {
     "light": r"\definecolor{qzbg}{HTML}{FBFAF9}\tikzcdset{background color=qzbg}",
-    "dark": r"\definecolor{qzbg}{HTML}{17151A}\tikzcdset{background color=qzbg}"
+    "dark": r"\definecolor{qzbg}{HTML}{000000}\tikzcdset{background color=qzbg}"
             r"\AtBeginDocument{\color{white}}",
 }
 
@@ -311,6 +311,39 @@ def fix_nested_callout_titles(text: str) -> str:
     return "\n".join(out)
 
 
+CALLOUT_HEAD_RE = re.compile(r"^((?: {0,3}> *)+)\[![\w-]+\|?.*?\]-")
+# what renders as a picture on the site: image/AVIF/Excalidraw embeds, raw <img>,
+# Markdown images and TikZ blocks
+CALLOUT_IMAGE_RE = re.compile(
+    r"!\[\[[^\]]+?\.(?:png|jpe?g|gif|webp|avif|apng|svg|bmp|jxl|excalidraw(?:\.md)?)(?:[|#\]])"
+    r"|<img\b|!\[[^\]]*\]\([^)]+\)|^[> ]*```tikz",
+    re.I | re.M,
+)
+
+
+def expand_callouts_with_images(text: str) -> str:
+    """Callouts folded by default (`> [!idea]-`) that contain a picture open by
+    default on the site (`+`, still foldable): an animation or figure hidden
+    behind a click is easy to miss. The body is every following line that
+    keeps the header's quote depth (in the copy only)."""
+    lines = text.split("\n")
+    for i, line in enumerate(lines):
+        m = CALLOUT_HEAD_RE.match(line)
+        if not m:
+            continue
+        depth = m.group(1).count(">")
+        body = []
+        for nxt in lines[i + 1:]:
+            q = re.match(r"^((?: {0,3}> *)*)", nxt).group(1).count(">")
+            if q < depth:
+                break
+            body.append(nxt)
+        if CALLOUT_IMAGE_RE.search("\n".join(body)):
+            end = m.end()
+            lines[i] = line[: end - 1] + "+" + line[end:]
+    return "\n".join(lines)
+
+
 def h1_to_title(text: str) -> str:
     """Obsidian hides the inline title, so notes start with their own `# H1`.
     Quartz already prints the page title, so move that H1 into `title:`."""
@@ -393,6 +426,7 @@ LINK_FULL_RE = re.compile(r"(!?)\[\[([^\]|#^\\]+)((?:#[^\]|]*)?)((?:\\?\|[^\]]*)
 # image formats Obsidian shows but the OFM plugin doesn't treat as images
 # (it only knows .jxl .png .jpg .jpeg .gif .bmp .webp, everything else becomes
 # a "Transclude of ..." link)
+EXTRA_IMAGE_SCALE = 1.44  # AVIF animations ~44% bigger than the width set in the note (1.2 × 1.2)
 EXTRA_IMAGE_EMBED_RE = re.compile(r"!\[\[([^\]|#^]+?\.(?:avif|apng))(?:\|([^\]]*))?\]\]", re.I)
 
 
@@ -405,15 +439,30 @@ def fix_extra_image_embeds(text: str) -> str:
         for part in (m.group(2) or "").split("|"):
             part = part.strip()
             size = re.fullmatch(r"(\d+)(?:x(\d+))?", part)
-            if size:
-                attrs = f' width="{size.group(1)}"' + (f' height="{size.group(2)}"' if size.group(2) else "")
+            if size:  # scaled like TikZ: notes read wider on the site than in Obsidian
+                attrs = f' width="{round(int(size.group(1)) * EXTRA_IMAGE_SCALE)}"' + (
+                    f' height="{round(int(size.group(2)) * EXTRA_IMAGE_SCALE)}"' if size.group(2) else "")
             elif part:
                 alt.append(part)
         alt_s = html.escape(" ".join(alt), quote=True)
         return f'<img src="{m.group(1).strip()}" alt="{alt_s}"{attrs} loading="lazy">'
 
+    def fix(part: str) -> str:
+        lines = EXTRA_IMAGE_EMBED_RE.sub(embed, part).split("\n")
+        out = []
+        for i, line in enumerate(lines):
+            out.append(line)
+            # A line that is only `<img …>` starts a raw-HTML block in Markdown,
+            # which swallows the next lines (a caption's $math$ stays raw).
+            # A blank line (same callout prefix) after it ends the block.
+            m = re.fullmatch(r"((?:\s*>)*\s*)<img [^>]*>\s*", line)
+            nxt = lines[i + 1] if i + 1 < len(lines) else ""
+            if m and nxt.replace(">", "").strip():
+                out.append(m.group(1).rstrip())
+        return "\n".join(out)
+
     parts = re.split(r"(^(?:```|~~~).*?^(?:```|~~~)[^\n]*$)", text, flags=re.S | re.M)
-    return "".join(p if i % 2 else EXTRA_IMAGE_EMBED_RE.sub(embed, p) for i, p in enumerate(parts))
+    return "".join(p if i % 2 else fix(p) for i, p in enumerate(parts))
 
 
 def fix_raw_html(text: str, rel: PurePosixPath, index: "VaultIndex") -> str:
@@ -653,7 +702,7 @@ def main() -> int:
         text = fix_inline_footnotes(text)
         text = fix_folder_note_links(text, rel, index, published)
         text = fix_raw_html(fix_extra_image_embeds(text), rel, index)
-        text = add_modified_date(h1_to_title(fix_nested_callout_titles(fix_math_in_callouts(text))), VAULT / rel)
+        text = add_modified_date(h1_to_title(fix_nested_callout_titles(expand_callouts_with_images(fix_math_in_callouts(text)))), VAULT / rel)
         dst.write_text(text, encoding="utf-8")
         shutil.copystat(VAULT / rel, dst)  # keep modified dates
     for rel in assets:

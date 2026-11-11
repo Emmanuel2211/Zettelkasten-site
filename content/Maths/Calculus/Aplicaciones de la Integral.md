@@ -153,6 +153,7 @@ $$
   </div>
   <div style="flex: 1; text-align: center;"> <!-- 💡 Opcional: Centrar también la imagen en su columna -->
       <img src="/images/IMG_6973.jpeg" width="250">
+
   </div>
 </div>
 
