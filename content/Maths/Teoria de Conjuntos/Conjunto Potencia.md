@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-04T19:51:28Z
+modified: 2026-11-11T01:56:51Z
 title: "Conjunto Potencia"
 publish: true
 alias: 
@@ -7,12 +7,8 @@ alias:
 - [ "axioma potencia" ]
 - [ "power axiom" ]
 ---
-> [!theorem] **Axiom.** (Power Set)
-> For any $X$ exists $Y = \mathscr{P}(X)$:
-> $$
-> \forall X \ \exists Y  \ \forall u ( u \in Y \iff u \subset X)
-> $$
-
+> [!theorem] **Definición.** (Conjunto Potencia)
+> $\mathcal{P}(A)$
 
 > [!theorem] **Def.** (Subconjunto)
 > Un conjunto $U$ es un **subconjunto** de $X$, denotado $U \subset X$ si

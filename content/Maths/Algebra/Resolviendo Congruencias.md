@@ -1,5 +1,5 @@
 ---
-modified: 2026-10-30T15:15:59Z
+modified: 2026-11-10T19:09:50Z
 title: "Resolviendo Congruencias"
 publish: true
 ---
@@ -269,3 +269,4 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > La solución es única módulo $M$.
 
 
+> [!example]+ **Ejemplo.** 

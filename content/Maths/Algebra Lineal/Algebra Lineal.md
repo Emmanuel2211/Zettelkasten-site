@@ -1,5 +1,5 @@
 ---
-modified: 2026-10-30T17:15:31Z
+modified: 2026-11-11T00:44:47Z
 title: "Algebra Lineal"
 publish: true
 type: moc
@@ -23,7 +23,7 @@ Esta discusión desarrolla y define los siguientes conceptos:
 	- [[Espacio Vectorial de las n-eadas de un Campo]]
 	- [[Matrices de un Campo]]
 	- [[Espacio Vectorial de Polinomios con Coeficientes en un Campo]]
-	- [[Espacio Vectorial de todas las Sucesiones finitas de un Campo]]
+	- [[Espacio Vectorial de las Sucesiones Finitas]]
 	- [[Espacio Vectorial del Conjunto de todas las Funciones]]
 - [[Propiedades de Espacio Vectorial]]
 - [[Subespacio]]

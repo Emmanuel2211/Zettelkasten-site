@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-04T18:56:04Z
+modified: 2026-11-11T04:37:56Z
 publish: true
 ---
 
@@ -24,3 +24,22 @@ $$
 \int_{a}^{b} \left( x^{2} \right) \, dx
 $$
 
+
+
+---
+
+# Prueba de gráficas: banda $\varepsilon$
+
+Sucesión $a_{n} = 1 + \frac{2(-1)^{n}}{n}$, con $L = 1$, $\varepsilon = 0.3$, $N = 7$.
+
+## 1. TikZJax
+
+<img class="tikz tikz-light" alt="tikz" src="/tikz-svg/61599af1ba0d0e44-light.svg"><img class="tikz tikz-dark" alt="tikz" src="/tikz-svg/fa0f983c6da89f6d-dark.svg">
+
+## 2. SVG (archivo)
+
+![[banda-epsilon.svg|center|600]]
+
+## 3. SVG en línea (usa los colores del tema)
+
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 376" width="100%" style="max-width:720px;font-family:serif"><rect x="50" y="131.0" width="574.0" height="48.0" style="fill:var(--color-cyan, #2a9d8f);fill-opacity:0.18"/><line x1="50" y1="131.0" x2="624.0" y2="131.0" style="stroke:var(--color-cyan, #2a9d8f);stroke-dasharray:5 4"/><line x1="50" y1="179.0" x2="624.0" y2="179.0" style="stroke:var(--color-cyan, #2a9d8f);stroke-dasharray:5 4"/><line x1="50" y1="155.0" x2="624.0" y2="155.0" style="stroke:var(--text-muted)"/><line x1="50" y1="331.0" x2="624.0" y2="331.0" style="stroke:var(--text-muted)"/><line x1="50" y1="331.0" x2="50" y2="55.0" style="stroke:var(--text-muted)"/><text x="78" y="349.0" text-anchor="middle" font-size="13" style="fill:var(--text-muted)">1</text><text x="190" y="349.0" text-anchor="middle" font-size="13" style="fill:var(--text-muted)">5</text><text x="330" y="349.0" text-anchor="middle" font-size="13" style="fill:var(--text-muted)">10</text><text x="470" y="349.0" text-anchor="middle" font-size="13" style="fill:var(--text-muted)">15</text><text x="610" y="349.0" text-anchor="middle" font-size="13" style="fill:var(--text-muted)">20</text><text x="630.0" y="336.0" font-size="15" font-style="italic" style="fill:var(--text-muted)">n</text><text x="42" y="59.0" text-anchor="end" font-size="15" font-style="italic" style="fill:var(--text-muted)">a<tspan font-size="11" dy="4">n</tspan></text><line x1="246" y1="55.0" x2="246" y2="331.0" style="stroke:var(--text-muted);stroke-dasharray:2 3"/><text x="246" y="367.0" text-anchor="middle" font-size="15" font-style="italic" style="fill:var(--text-muted)">N</text><text x="630.0" y="136.0" font-size="15" font-style="italic" style="fill:var(--color-cyan, #2a9d8f)">L + ε</text><text x="630.0" y="160.0" font-size="15" font-style="italic" style="fill:var(--text-muted)">L</text><text x="630.0" y="184.0" font-size="15" font-style="italic" style="fill:var(--color-cyan, #2a9d8f)">L − ε</text><circle cx="78" cy="315.0" r="4.5" style="fill:var(--color-orange, #e76f51)"/><circle cx="106" cy="75.0" r="4.5" style="fill:var(--color-orange, #e76f51)"/><circle cx="134" cy="208.3" r="4.5" style="fill:var(--color-orange, #e76f51)"/><circle cx="162" cy="115.0" r="4.5" style="fill:var(--color-orange, #e76f51)"/><circle cx="190" cy="187.0" r="4.5" style="fill:var(--color-orange, #e76f51)"/><circle cx="218" cy="128.3" r="4.5" style="fill:var(--color-orange, #e76f51)"/><circle cx="246" cy="177.9" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="274" cy="135.0" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="302" cy="172.8" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="330" cy="139.0" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="358" cy="169.5" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="386" cy="141.7" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="414" cy="167.3" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="442" cy="143.6" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="470" cy="165.7" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="498" cy="145.0" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="526" cy="164.4" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="554" cy="146.1" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="582" cy="163.4" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><circle cx="610" cy="147.0" r="4.5" style="fill:var(--color-cyan, #2a9d8f)"/><text x="139.60000000000002" y="33.0" text-anchor="middle" font-size="13" style="fill:var(--color-orange, #e76f51)">antes de N: cualquier cosa</text><text x="428.0" y="33.0" text-anchor="middle" font-size="13" style="fill:var(--color-cyan, #2a9d8f)">desde N: todos dentro de la banda</text></svg>

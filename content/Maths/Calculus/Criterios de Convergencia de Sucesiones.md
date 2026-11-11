@@ -1,6 +1,6 @@
 ---
-modified: 2026-10-01T18:19:02Z
-title: "Convergencia de Sucesiones"
+modified: 2026-11-11T04:11:45Z
+title: "Criterios de Convergencia de Sucesiones"
 publish: true
 type: zettel
 date: "2026-10-01"

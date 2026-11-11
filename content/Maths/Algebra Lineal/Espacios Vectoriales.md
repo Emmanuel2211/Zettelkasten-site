@@ -1,5 +1,5 @@
 ---
-modified: 2026-08-31T16:05:02Z
+modified: 2026-11-11T00:44:47Z
 title: "El Espacio Vectorial"
 publish: true
 type: zettel
@@ -88,7 +88,7 @@ Cuando un vector es combinación lineal de otro?<sup><a href="#user-content-fn-i
 </li>
 <li id="user-content-fn-inline-6">
 
-[[Espacio Vectorial de todas las Sucesiones finitas de un Campo]] <a href="#user-content-fnref-inline-6" data-footnote-backref class="data-footnote-backref internal">↩</a>
+[[Espacio Vectorial de las Sucesiones Finitas]] <a href="#user-content-fnref-inline-6" data-footnote-backref class="data-footnote-backref internal">↩</a>
 
 </li>
 <li id="user-content-fn-inline-7">

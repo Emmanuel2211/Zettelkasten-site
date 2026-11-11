@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-05T00:06:01Z
+modified: 2026-11-11T04:12:24Z
 title: "Calculus"
 publish: true
 type: moc
@@ -30,10 +30,17 @@ La estructura de la discusión es:
 
 ---
 ## [[Sucesiones]]
-- [[Convergencia de Sucesiones]]
+- [[Subsucesiones]]
+- [[Sucesiones Monotonas]]
+- [[Sucesiones Acotadas]]
+- [[Sucesiones Convergentes]]
+- [[Sucesiones Divergentes]]
+- [[Criterios de Convergencia de Sucesiones]]
+- [[Sucesiones de Cauchy]]
 - [[Teorema del Bolzano-Weierstrass]]
+- [[Sucesiones Repaso]]
 
-
+Creditos: Dr. Rodrigo Perusquía Cortés
 ---
 
 ## [[Funciones]]
@@ -73,7 +80,7 @@ Algunas más otras consecuencias:
 	- Teorema del sandwich
 - [[Limite de funciones compuestas]]
 	- [[Continuidad en un punto arbitrario]]
-	
+
 ---
 ## Derivadas
 - [[Diferenciacion]]

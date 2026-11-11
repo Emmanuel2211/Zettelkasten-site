@@ -1,5 +1,6 @@
 ---
-modified: 2026-08-27T15:32:07Z
+modified: 2026-11-11T00:44:52Z
+title: "Espacio Vectorial de las Sucesiones Finitas"
 publish: true
 type: zettel
 date: "2026-08-21"
@@ -10,9 +11,6 @@ tags:
 cssclasses: 
  - romana
 ---
-# $V = \mathcal{S}(\mathbb{F})$
-
-
 > [!theorem] **Definición.** ($S(\mathbb{F})$)
 > Sea $\mathbb{F}$ un campo. Definimos
 > $$
