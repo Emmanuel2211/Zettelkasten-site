@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-04T19:56:43Z
+modified: 2026-11-11T17:25:33Z
 title: "Algebra"
 publish: true
 type: moc
@@ -55,7 +55,6 @@ La estrucutura de la discusión es la siguiente:
 ---
 
 ### [[Congruencias]]
-- [[Juego Completo de Residuos]]
 - [[Funcion Phi de Euler]]
 - [[Inverso Multiplicativo Modular]]
 - [[Teorema de Wilson]]
