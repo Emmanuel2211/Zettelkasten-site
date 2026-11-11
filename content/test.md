@@ -147,4 +147,4 @@ def partition(A, p, r):
 
 ## D. AVIF animado (imagen en bucle, 170 KB)
 
-![[banda-epsilon.avif|center|500]]
+<img src="/videos/banda-epsilon.avif" alt="center" width="500" loading="lazy">

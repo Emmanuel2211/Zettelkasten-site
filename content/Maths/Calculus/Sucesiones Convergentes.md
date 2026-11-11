@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-11T19:45:17Z
+modified: 2026-11-11T19:49:12Z
 title: "Sucesiones Convergentes"
 publish: true
 type: zettel
@@ -34,7 +34,7 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > $$
 > Si dibujamos la sucesión como los puntos $(n, a_{n})$, la franja horizontal de ancho $2\varepsilon$ alrededor de la recta $y = L$ debe **atrapar** a todos los puntos a partir de $n = N$.
 >
-> ![[banda-epsilon.avif|center|500]]
+> <img src="/videos/banda-epsilon.avif" alt="center" width="500" loading="lazy">
 > *Sucesión: $a_{n} = 1 + \frac{2(-1)^{n}}{n}$, con $L = 1$.*
 > 
 > Obsérvece que $N$ depende de $\varepsilon$, y a veces se escribe $N = N(\varepsilon)$.
@@ -227,7 +227,7 @@ Recordemos que $\{ a_{n} \}$ está **acotada** sii $\exists k \in \mathbb{R}^{+}
 >
 > Si $\{ a_{n} \}$ **no** está acotada, ent. $\{ a_{n} \}$ no converge.
 
-El recíproco de la proposición es falso: estar acotada es **necesario** pero **no suficiente** para converger. El contraejemplo clásico es $\{ (-1)^{n} \}$, que está acotada ($k = 1$) pero no converge, como veremos abajo. Sin embargo, si además pedimos que sea monótona, sí converge (ver [[Criterios de Convergencia de Sucesiones]] y [[Sucesiones Monotonas]]).
+El recíproco de la proposición es falso: estar acotada es **necesario** pero **no suficiente** para converger. El contraejemplo clásico es $\{ (-1)^{n} \}$, que está acotada ($k = 1$) pero no converge. Sin embargo, verémos que si además pedimos como hipótesis que sea monótona, sí converge (ver [[Criterios de Convergencia de Sucesiones]] y [[Sucesiones Monotonas]]).
 
 <section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>
 <ol>

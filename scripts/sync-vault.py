@@ -23,6 +23,7 @@ from __future__ import annotations
 
 import argparse
 import fnmatch
+import html
 import os
 import re
 import shutil
@@ -389,6 +390,32 @@ def strip_code(text: str) -> str:
 LINK_FULL_RE = re.compile(r"(!?)\[\[([^\]|#^\\]+)((?:#[^\]|]*)?)((?:\\?\|[^\]]*)?)\]\]")
 
 
+# image formats Obsidian shows but the OFM plugin doesn't treat as images
+# (it only knows .jxl .png .jpg .jpeg .gif .bmp .webp, everything else becomes
+# a "Transclude of ..." link)
+EXTRA_IMAGE_EMBED_RE = re.compile(r"!\[\[([^\]|#^]+?\.(?:avif|apng))(?:\|([^\]]*))?\]\]", re.I)
+
+
+def fix_extra_image_embeds(text: str) -> str:
+    """`![[x.avif|center|500]]` -> `<img src="x.avif" alt="center" width="500">`.
+    Runs before fix_raw_html, which points the src at the copied asset. Animated
+    AVIFs (manim) then loop like a GIF, as in Obsidian."""
+    def embed(m: re.Match) -> str:
+        alt, attrs = [], ""
+        for part in (m.group(2) or "").split("|"):
+            part = part.strip()
+            size = re.fullmatch(r"(\d+)(?:x(\d+))?", part)
+            if size:
+                attrs = f' width="{size.group(1)}"' + (f' height="{size.group(2)}"' if size.group(2) else "")
+            elif part:
+                alt.append(part)
+        alt_s = html.escape(" ".join(alt), quote=True)
+        return f'<img src="{m.group(1).strip()}" alt="{alt_s}"{attrs} loading="lazy">'
+
+    parts = re.split(r"(^(?:```|~~~).*?^(?:```|~~~)[^\n]*$)", text, flags=re.S | re.M)
+    return "".join(p if i % 2 else EXTRA_IMAGE_EMBED_RE.sub(embed, p) for i, p in enumerate(parts))
+
+
 def fix_raw_html(text: str, rel: PurePosixPath, index: "VaultIndex") -> str:
     """Obsidian renders math inside raw HTML in the browser; Quartz renders math at
     build time and only recognises the classes `math-display` / `math-inline`.
@@ -625,7 +652,7 @@ def main() -> int:
         dst.parent.mkdir(parents=True, exist_ok=True)
         text = fix_inline_footnotes(text)
         text = fix_folder_note_links(text, rel, index, published)
-        text = fix_raw_html(text, rel, index)
+        text = fix_raw_html(fix_extra_image_embeds(text), rel, index)
         text = add_modified_date(h1_to_title(fix_nested_callout_titles(fix_math_in_callouts(text))), VAULT / rel)
         dst.write_text(text, encoding="utf-8")
         shutil.copystat(VAULT / rel, dst)  # keep modified dates
@@ -645,7 +672,7 @@ def main() -> int:
     for rel, text in site_pages.items():
         text = fix_inline_footnotes(text)
         text = fix_folder_note_links(text, rel, index, published)
-        text = fix_raw_html(text, rel, index)
+        text = fix_raw_html(fix_extra_image_embeds(text), rel, index)
         (CONTENT / rel).parent.mkdir(parents=True, exist_ok=True)
         (CONTENT / rel).write_text(text, encoding="utf-8")
 
