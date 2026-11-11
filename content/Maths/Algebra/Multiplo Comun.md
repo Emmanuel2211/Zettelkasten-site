@@ -12,23 +12,28 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Múltiplo Común)
+>
 > Sean $a,b \in \mathbb{Z}$. Decimos que $c \in \mathbb{Z}$ es un múltiplo común de $a$ y $b$ si $a \mid c$ y $b \mid c$.
 
 > [!observation]+ **Observación.**
+>
 > - Siempre hay múltiplos comunes, al menos $ab$.
 > - Si $a\neq 0$ y $b\neq 0$ siempre hay un múltiplo común positivo de $a$ y $b$, al menos $\left| ab \right|$.
 
 
 > [!theorem] **Definición.** (mcm)
+>
 > Sean $a,b \in \mathbb{Z} \setminus \{ 0 \}$. Decimos que $m \in \mathbb{Z}$ es el **mínimo común múltiplo de** $a$ **y** $b$ si es el menor múltiplo común positivo de $a$ y $b$. Se denotará por $[a,b]$.
 
 
 > [!theorem] **Teorema.**
+>
 > Sean $a,b \in \mathbb{Z}\setminus \{ 0 \}$, $m \in \mathbb{Z}$. Las siguiente afirmaciones son equivalentes:
 > 1. $m = [ a,b]$
 > 2. $m > 0, a \mid m, b \mid m$ y si $a \mid c$ y $b\mid c$ entonces $m \mid c$
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b \in \mathbb{Z}\setminus \{ 0 \}$, $m \in \mathbb{Z}$
 > $(i \implies  ii)$
 > Supongamos uqe $m = [a,b]$. Por definición $m > 0$, $a \mid m$ y $b \mid m$. El conjunto
@@ -52,6 +57,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.**
+>
 > Sean $a,b \in \mathbb{Z} \setminus \{ 0 \}$. Tenemos que
 > $$
 > [a,b](a,b) = \left| ab \right|
@@ -59,6 +65,7 @@ cssclasses:
 
 
 > [!proof]+ **Proof.**
+>
 > Sean $a,b \in \mathbb{Z}\setminus \{ 0 \}$
 > - Caso 1: $ab > 0$
 > Sabemos que $(a,b) \mid ab$
@@ -86,6 +93,7 @@ cssclasses:
 >
 
 > [!theorem] **Corolario.**
+>
 > Sean $a,b \in \mathbb{Z}\setminus \{ 0 \}$. Si $(a,b) = 1$, entonces $[a,b] = \left| ab \right|$.
 
 

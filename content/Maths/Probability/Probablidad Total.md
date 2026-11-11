@@ -14,6 +14,7 @@ cssclasses:
 Hay multiples definiciones, dependiendo de la materia. Para Proba 1:
 
 > [!theorem] **Definición** (Partición de $\Omega$)
+>
 > Se cumple la definición de toda la vida de una partición.
 > 1. $\displaystyle \bigcup_{i=1}^{\infty} B_{i} = \Omega$
 > 2. $B_{i} \cap B_{j} = \varnothing \ \forall i \neq j$
@@ -22,6 +23,7 @@ Hay multiples definiciones, dependiendo de la materia. Para Proba 1:
 > La **probabilidad total** es, de forma intuitiva, una manera de **calcular la probabilidad de un evento dividiéndolo en varios escenarios posibles** que no pueden ocurrir al mismo tiempo.
 
 > [!theorem] **Teorema.** (Probablidad Total)
+>
 > Sea $A$ un evento y una partición $\mathbb{B}= \{ B_{1},B_{2},\dots \}$ de $\Omega$ con $P[B_{i}] > 0 \ \forall i$.
 >
 > $$
@@ -29,6 +31,7 @@ Hay multiples definiciones, dependiendo de la materia. Para Proba 1:
 > $$
 
 > [!proof]- **Proof.**
+>
 > $$
 > \begin{align}
 > \sum_{i=1}^{\infty} P[A \mid  B_{i}]P[B_{i}] &= \sum_{i=1}^{\infty} \frac{P[A \cap B_{i}]}{P[B_{i}]} P[B_{i}]\\[0.5em]
@@ -43,6 +46,7 @@ Hay multiples definiciones, dependiendo de la materia. Para Proba 1:
 
 
 > [!example]- Ejemplo.
+>
 > En cierto curso hay 3 ayudantes, y se sabe que $P[\text{ dar buena calse }] = 1$.
 > El ayudante 2: $P[\text{ B.C. }] = 0.5$, el ayudante $3$: $P[\text{ B.C. }] = 0.2$
 > Cada martes puede llegar un ayudante al azar (con Probablidad Clásica). 

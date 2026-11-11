@@ -17,6 +17,7 @@ cssclasses:
 Desarrollamos propiedades de gran interés, recordando la definción de **orden**.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
 > [!theorem] **Teorema.**
+>
 > $(\mathbb{N}, <)$ es un orden lineal.
 
 > [!proof]- **Proof.** 

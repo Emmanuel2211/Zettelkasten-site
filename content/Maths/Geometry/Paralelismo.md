@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Paralelismo)
+>
 > $\mathcal{L_{1}}$ es pralela a $\mathcal{L_{2}}$ ( $\mathcal{L_{1}} \mathcal{L_{2}}$ ) si y sólo si $L_{1} = L_{2}$ o $L_{1} \cap  L_{2} = \varnothing$.
 
 

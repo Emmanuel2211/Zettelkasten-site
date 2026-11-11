@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.**
+>
 > Sean $a,b \in \mathbb{Z}$, $m \in \mathbb{Z}^{+}$. Decimos que $a$ es congruente con $b$ módulo $m$ si
 > $$
 > m \mid a - b
@@ -19,25 +20,30 @@ cssclasses:
 > y lo denotamos $a \equiv b \pmod{m}$, en caso contrario, $a \not \equiv b \pmod{m}$.
 
 > [!example]- Ejemplo. 
+>
 > $7 \equiv 7 \pmod{5}$, ya que $7 - 7 = 0 = 0\cdot 5$
 > $18 \equiv 33 \pmod{5}$, ya que $18-33 = - 15 = 5(-3)$
 > $-4 \equiv 16 \pmod{5}$, ya que $-4 -16 = -20 = (-4)5$
 > $-1 \equiv -56  \pmod{5}$, ya que $-1 - (-56) = 55 = 11 \cdot  5$
 
 > [!observation]+ **Observación.**
+>
 > La congruencia módulo $m$ es una relación de equivalencia.
 >
 > > [!proof]- **Proof.**
+> >
 > > 1. $a - a = 0 = 0 \cdot m$, así $m \mid a - a$ y $a \equiv a \pmod{m}$
 > > 2. Si $a \equiv b \pmod{m}$, $m \mid a - b$. Entonces $a- b = mq$ con $q \in  \mathbb{Z}$, $b-a = -(a-b) = -mq = m(-q)$. Así $m \mid b-a$ y $b \equiv a \pmod{m}$.
 > > 3. Si $a \equiv b \pmod{m}$ y $b \equiv c \pmod{m}$, ent. $m \mid a-b$ y $m \mid b - c$. Así, $m \mid  (a-b) + (b-c) = a-c$ y $a \equiv c \pmod{m}$. Q.E.D.
 > >
 
 > [!theorem] **Teorema.**
+>
 > Sean $a,b \in \mathbb{Z}$, $m \in \mathbb{Z}^{+}$. Tenemos que $a \equiv b \pmod{m}$ si y sólo si $a$ y $b$ tienen el mismo residuo al dividirlos entre $m$.
 
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b \in \mathbb{Z}$, $m \in \mathbb{Z}^{+}$.
 > $(\implies )$ Supongamos que $a \equiv b \pmod{m}$. Por el algoritmo de la división,
 > $$
@@ -73,9 +79,11 @@ cssclasses:
 
 
 > [!theorem] **Corolario.**
+>
 > Sea $m \in \mathbb{Z}^{+}$. Existen exactamente $m$ clases de equivalencia módulo $m$, que son $\bar{0}, \bar{1}, \dots, \overline{m-1}$.
 
 > [!proof]- **Proof.**
+>
 > Sea $m \in \mathbb{Z}^{+}$.
 > Veamos que $\bar{0},\bar{1}, \dots, \overline{m-1}$ son distintos. Si $\bar{i} = \bar{j}$ con $i \neq  j$, $i,j \in \{ 0,\dots,m-1 \}$, entonces $i \equiv j \pmod{m}$ y así $m \mid  i-j$.
 > Como $i\neq j$, entonces $m = \left| m \right| \leq  \left| i-j \right|$ pero por otro lado $0 \leq  i <m, 0 \leq  j < m$ y así $0 \leq  \left| i- j\right| < m !$ Contradicción! $\therefore i = j$
@@ -88,6 +96,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (Enteros Módulo $m$)
+>
 > Sea $m \in \mathbb{Z}^{+}$. El conjunto de los **enteros módulo** $m$ es la colección de clases módulo $m$, es decir,
 > $$
 > \{ \bar{0}, \bar{1}, \dots, \overline{m-1} \}
@@ -95,6 +104,7 @@ cssclasses:
 > y se denota por $\mathbb{Z}_{m}$
 
 > [!example]- Ejemplo.
+>
 > 1. $m = 6$,
 > Las clases módulo $6$ son,
 > $$
@@ -122,6 +132,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Propiedades Básicas)
+>
 > Sean $a,b,c,d \in \mathbb{Z}$, $m,n \in \mathbb{Z}^{+}$.
 > 1. $a \equiv b \pmod{m} \implies  a + c \equiv b +c \pmod{m}$
 > 2. $a \equiv b \pmod{m} \land  c \equiv d \pmod{m} \implies  a + c \equiv b + d \pmod{m}$
@@ -132,6 +143,7 @@ cssclasses:
 
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,c,d \in \mathbb{Z}$ y $m,n \in \mathbb{Z}^{+}$.
 > 1. Supongamos que $a\equiv b \pmod{m}$.
 > **PD**. $a + c \equiv b + c \pmod{m}$
@@ -166,6 +178,7 @@ cssclasses:
 
 
 > [!theorem] **Tarea.** (Más Propiedades)
+>
 > Sean $a,b \in \mathbb{Z}$, $d,m,m_{1},m_{2} \in \mathbb{Z}^{+}$. Demuestra o da un contraejemplo.
 > 1. $a \equiv b \pmod{m} \implies   a^{n}\equiv b^{n} \pmod{m} \quad \forall  n \in \mathbb{N}$.
 > 2. $\color{gray}{\cancel{ab \equiv 0 \pmod{m} \implies a \equiv 0 \pmod{m} \lor b \equiv 0 \pmod{m}}}$
@@ -176,6 +189,7 @@ cssclasses:
 
 
 > [!proof]- **Proof.**
+>
 > 1. **Verdadero.** Por inducción sobre $n$. Si $n = 1$, es la hipótesis. Sup. que $a^{n} \equiv b^{n} \pmod{m}$ (H.I.). Como $a \equiv b \pmod{m}$, por la prop. 4,
 > $$
 > a^{n+1} = a^{n} a \equiv b^{n} b = b^{n+1} \pmod{m}
@@ -193,6 +207,7 @@ cssclasses:
 > $$
 
 > [!theorem] **Definición.** (Suma y Producto en $\mathbb{Z}_{m}$)
+>
 > Sean $a,c \in \mathbb{Z}, m \in \mathbb{Z}^{+}$. La **suma** de $\bar{a}$ y $\bar{c}$ es
 > $$
 > \bar{a} + \bar{c} = \overline{a + c}
@@ -203,8 +218,10 @@ cssclasses:
 > $$
 
 > [!observation]+ **Observación.**
+>
 > Las operaciones anteriores están bien definidas.
 > > [!proof]- **Proof.**
+> >
 > > $a,b,c,d \in \mathbb{Z}$, $m \in \mathbb{Z}^{+}$
 > > Sup. que $\bar{a} = \bar{b}$ y $\bar{c} = \bar{d}$. Entonces,
 > > $a \equiv b \pmod{m}$ y $c \equiv d \pmod{m}$.
@@ -213,15 +230,18 @@ cssclasses:
 > > Así, $\overline{a+c} = \overline{b+d}$ y $\overline{ac} = \overline{bd}$.
 
 > [!example]- Ejemplo.
+>
 > $m = 9$. Consideremos $\bar{4}, \bar{7} \in \mathbb{Z}_{9}$
 > $\bar{4} + \bar{7} = \overline{4 + 7} = \overline{11} = \bar{2}$
 > $\bar{4} \cdot  \bar{7} = \overline{4\cdot 7} = \overline{28} = \bar{1}$
 
 
 > [!theorem] **Teorema.**
+>
 > Sea $m \in \mathbb{Z}^{+}$. El conjunto $\mathbb{Z}_{m}$ con las operaciones $+$ y $\cdot$ definidas es un anillo conmutativo con uno.
 
 > [!proof]- **Proof.**
+>
 > Sean $\bar{a}, \bar{b}, \bar{c} \in \mathbb{Z}_{m}$. Las operaciones están bien definidas (Observación anterior), y cada axioma se hereda de $\mathbb{Z}$ a través de los representantes:
 > 1. Asociatividad de $+$: $(\bar{a} + \bar{b}) + \bar{c} = \overline{(a+b)+c} = \overline{a+(b+c)} = \bar{a} + (\bar{b} + \bar{c})$
 > 2. Conmutatividad de $+$: $\bar{a} + \bar{b} = \overline{a+b} = \overline{b+a} = \bar{b} + \bar{a}$
@@ -245,6 +265,7 @@ cssclasses:
 > $$
 
 > [!example]- Ejemplos.
+>
 > 1. En $\mathbb{Z}_{4}$: $\bar{2} \cdot \bar{2} = \bar{4} = \bar{0}$ con $\bar{2} \neq \bar{0}$, ent. $\mathbb{Z}_{4}$ **no** es dominio entero ($4$ no es primo, ver el Corolario más abajo).
 > 2. En $\mathbb{Z}_{5}$: $\bar{2} \cdot \bar{3} = \bar{6} = \bar{1}$, ent. $\bar{3}$ es el inverso multiplicativo de $\bar{2}$. Además, $\bar{3} + \bar{2} = \bar{5} = \bar{0}$, ent. $\overline{-2} = \bar{3}$.
 
@@ -255,6 +276,7 @@ $$
 vemos que para esto necesitaremos la condición: $c \not\equiv 0 \pmod{m}$.
 
 > [!example]+ Ejemplos cancelación de congruencias.
+>
 > 1. $100 \equiv 16 \pmod{21}$ ya que $100-16 = 84 = 21(4)$, esto es, $21 \mid 100 - 16$.
 > Observamos que podemos factorizar, $4(25) \equiv 4(4) \pmod{21}$, podemos cancelar este $4$? En este caso sí, pues $25 - 4 = 21 = 21(1)$, ent. $25 \equiv 4 \pmod{21}$.
 > 2. $33 \equiv 12 \pmod{21}$ ya que $33 - 12 = 21 = 21(1)$.
@@ -269,6 +291,7 @@ vemos que para esto necesitaremos la condición: $c \not\equiv 0 \pmod{m}$.
 
 
 > [!theorem] **Proposición.**
+>
 > Sean $a,b,c \in \mathbb{Z}$, $m \in \mathbb{Z}^{+}$.
 > 1. $ac \equiv bc \pmod{m} \iff a\equiv b \pmod{\frac{m}{(c,m)}}$
 > 2. Si $(c,m) = 1$ se tiene que
@@ -278,6 +301,7 @@ vemos que para esto necesitaremos la condición: $c \not\equiv 0 \pmod{m}$.
 
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,c \in \mathbb{Z}$, $m \in \mathbb{Z}^{+}$.
 > 1. $(\implies )$ Sup $ac \equiv bc \pmod{m}$
 > **PD**. $a \equiv b \pmod{\frac{m}{(c,m)}}$
@@ -300,10 +324,12 @@ vemos que para esto necesitaremos la condición: $c \not\equiv 0 \pmod{m}$.
 > 2. Es consecuencia directa de 1., pues si $(c,m) = 1$, ent. $\frac{m}{(c,m)} = m$.
 
 > [!theorem] **Corolario.**
+>
 > Sea $m \in \mathbb{Z}^{+}, m > 1$. El anillo $\mathbb{Z}_{m}$ es un dominio entero si y sólo si $m$ es un número primo.
 
 
 > [!proof]- **Proof.**
+>
 > $(\implies )$ Por contrapuesta.
 > Sup. que $m$ no es primo
 > **PD**. $\mathbb{Z}_{m}$ no es un dominio entero.

@@ -16,6 +16,7 @@ cssclasses:
 >*"Si me das un margen de error diminuto $\varepsilon$ alrededor de la recta $y=L$, siempre puedo encontrar un punto $N$ en el eje $X$ a partir del cual toda la gráfica queda atrapada dentro de ese tubo horizontal para siempre"*
 
 > [!theorem] **Definición.** (Límite $x \to \pm \infty$ es $L$)
+>
 > Sea $f: (a, \infty) \to  \mathbb{R}$. Decimos que $\displaystyle \lim_{x \to \infty} f(x) = L$ si
 > $$
 > \forall  \varepsilon  > 0 \ \exists N > 0 \ (x > N \implies  \left| f(x) - L \right| < \varepsilon )

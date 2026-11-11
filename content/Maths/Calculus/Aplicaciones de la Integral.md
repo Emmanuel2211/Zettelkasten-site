@@ -34,6 +34,7 @@ donde $w,y$ son los puntos de intersección entre $f$ y $g$.
 Veamos un ejemplo
 
 > [!example]- Ejemplo.
+>
 > $\square$ Calcula el área comprendida entre $f(x) = \sqrt{1+x^{2}} + 2x - x^{2}$ y $g(x) = \sqrt{1+x^{3}} - 3x + 2$.
 >
 > Para esto, calculamos los puntos de intersección entre $f$ y $g$.
@@ -43,6 +44,7 @@ Veamos un ejemplo
 
 
 > [!example]- Ejemplo. (Área de un Círculo)
+>
 > $\square$ Calcular el área del Círculo!
 > **PD.** $A_{0} = \pi r^{2}$
 >
@@ -61,6 +63,7 @@ Veamos un ejemplo
 
 
 > [!example]- Ejemplo. 
+>
 > $\square$ Calcular el área encerrada por $f(x) = r\cos(x)$.
 >
 > Observamos la grafica de $r\cos(x)$ en $x= 0$ y $x = 2\pi$, para terminar con las siguientes integrales.
@@ -73,6 +76,7 @@ Veamos un ejemplo
 > $$
 
 > [!example]+ Ejemplo. (Área de un sector del círculo)
+>
 > Area de triangulo + inegral del intervalo de $r\cos(\theta )$ a $r$
 > Después de visualizar una gráfica para identificar las áreas a calcular, determinamos que necesitamos al suma de, un triángulo una parte del área de la circunferencia:
 > $$
@@ -153,6 +157,7 @@ $$
 </div>
 
 > [!example]- Ejemplo.
+>
 > $\square$ Dibuja la curva generada por $\rho = 2 \cos(2\theta)$ y determina el área que encierra.
 >
 > Así, el área encerrado por la curva es $\displaystyle A = \left( \frac{\pi}{4} + \frac{1}{2}  \right)$

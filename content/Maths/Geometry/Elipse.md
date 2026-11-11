@@ -4,18 +4,21 @@ title: "Elipse"
 publish: true
 ---
 > [!theorem] **Definición**  
+>
 > Una **elipse** es el lugar geométrico de todos los puntos $P(x,y)$ en un plano tales que la **suma** de sus distancias a dos puntos fijos (llamados focos, $F_{1}$​ y $F_{2}$​) es constante.
 > $$
 > \mathscr{E} = \{ P \in \mathbb{R}^{2} : d(P,F_{1}) + d(P,F_{2}) = 2a \}
 > $$
 
 > [!theorem] **Teorema.** (Ecuación canónica)
+>
 > La ecuación con centro en el origen esta dada por
 > $$
 > \frac{x^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} = 1
 > $$
 
 > [!proof]- **Proof.** 
+>
 > $$
 > \begin{align}
 > \sqrt{ (x+c)^{2} + y^{2} } + \sqrt{ (x-c)^{2} + y^{2} } &= 2a \\[0.5em]
@@ -37,6 +40,7 @@ publish: true
 > $$
 
 > [!theorem] **Teorema.** (Ecuación ordinaria)
+>
 > Sea una elipse con semiejes de longitud $a$ y $b$, y centro $C(h,k) \in \mathbb{R}^{2}$, cuyos ejes de simetría son paralelos a los ejes coordenados. Su ecuación es dada por
 > $$
 > \frac{(x-h)^{2}}{a^{2}} + \frac{(y-k)^{2}}{b^{2}} = 1
@@ -45,6 +49,7 @@ publish: true
 > Si $b>a$, es vertical
 
 > [!theorem] **Teorema.** (Ecuación general)
+>
 > Su ecuación general desarrollada a partir de la ordinaria es
 > $$
 > Ax^{2} + Cy^{2} + Dx + Ey+F = 0

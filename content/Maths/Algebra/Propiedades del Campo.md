@@ -14,6 +14,7 @@ cssclasses:
 A partir de los *axiomas de campo*<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> se puede demostrar un puñado de propiedades. Dada su maginitud, enlistamos las propiedades para luego demostrarlas respetando el orden de la construcción.
 
 > [!theorem] **Teorema.** (Propiedades de $\mathbb{F}$)
+>
 > - Unicidad de los nuetros
 > - Unicidad de los inversos
 > - Ley de la cancelación de la $+$ y de los no ceros de $\cdot$

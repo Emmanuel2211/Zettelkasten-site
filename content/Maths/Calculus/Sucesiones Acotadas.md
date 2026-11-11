@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Sucesión Acotada)
+>
 > Sea $\{ x_{n} \}$ una sucesión,
 > Decimos que $\{ x_{n} \}$ está **acotada superiormente** sii
 > $$
@@ -37,6 +38,7 @@ $$
 Dicho esto, por propiedades de valor absoluto podemos proponer la siguiente definición alternativa:
 
 > [!theorem] **Definición.** (Sucesión Acotada)
+>
 > Una sucesión $x_{n}$ está **acotada** si y soló si,
 > $$
 > \exists k \in  \mathbb{R}^{+} \ \text{ tal que } \ \forall n \in \mathbb{N}^{+} \left| \{ x_{n} \} \right| \leq k

@@ -11,6 +11,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Teorema** (Densidad de $\mathbb{R}$)
+>
 > Dados $x,y \in \mathbb{R}$ con $x < y$, se cumple
 > 1. Existe $q \in \mathbb{Q}$ tal que $x<q<y$.
 > 2. Existe un irracional $p \not \in  \mathbb{Q}$ tal que $x < p < y$.
@@ -20,6 +21,7 @@ Esto nos dice que no importa que tan pequeño sea un intervalo, simple hay infin
 ---
 
 > [!theorem] **Def.** Densidad de un conjunto
+>
 Un conjunto $E$ de $\mathbb{R}$ es **denso** en $\mathbb{R}$ si cada intervalo $(a,b)$ contiene un punto de $E$.
 
 Por ejemplo, es claro que $\mathbb{Q}$ es denso.
@@ -27,10 +29,12 @@ Por ejemplo, es claro que $\mathbb{Q}$ es denso.
 De forma más concreta, el siguiente enunciado es muy util. *"Entre cualquier para de números reales distintos, sin importar qué tan cerca estén, siempre hay un número racional."*
 
 > [!theorem] **Teorema.** (Densidad $\mathbb{Q}$ en $\mathbb{R}$)
+>
 > Si $x, y \in \mathbb{R}$ tales que $x < y$, entonces existe al menos un $q \in \mathbb{Q}$ tal que $x < q < y$. Es decir
 > $$\forall x, y \in \mathbb{R} \ \Big( x < y \implies \exists q \in \mathbb{Q} \ (x < q < y) \Big)$$
 
 > [!proof]- **Proof.** 
+>
 > Supongamos que $x, y \in \mathbb{R}$ con $x<y$. Dadto $x<y$, tenemos $y - x > 0$. Por $(i)$ del corolario de P.A.<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> sabemos que existe $n \in \mathbb{N}$ lo suficientemente grande como para que $n$ supere a $1$, es decir
 > $$
 > \begin{align}

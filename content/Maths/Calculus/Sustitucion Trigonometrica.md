@@ -18,6 +18,7 @@ cssclasses:
 
 
 > [!example]- Ejemplo. Caso $\sqrt{a^{2} - x^{2}}$
+>
 > ![[Pasted image 20260918112859.png|center|190]]
 > $\displaystyle \int \frac{\sqrt{a^{2}-x^{2}}}{x} \, dx$ y observamos que $\displaystyle \sin(\theta )  = \frac{x}{a} \implies  x = a \sin(\theta )$ y con derivada $dx = a\cos(\theta )d\theta$.
 > Además, $\displaystyle \cos(\theta ) = \frac{\sqrt{a^{2}-x^{2}}}{a} \implies  \sqrt{a^{2}-x^{2}} = a \cos(\theta )$.
@@ -32,6 +33,7 @@ cssclasses:
 
 
 > [!example]- Ejemplo. Caso $\sqrt{a^{2} + x^{2}}$
+>
 > ![[Pasted image 20260918120236.png|center|194]]
 > $\displaystyle \int x\sqrt{a^{2} + x^{2}} \, dx$
 > Observamos que $\sin(\theta ) = \frac{a}{\sqrt{a^{2}+x^{2}}} \implies \sqrt{a^{2}+x^{2}} = \frac{a}{\sin(\theta )} = a \csc(\theta)$.
@@ -47,6 +49,7 @@ cssclasses:
 > $$
 
 > [!example]+ Ejemplo. Varias Identidades Trigonométricas
+>
 > 1. $\displaystyle \int \sin(x) \, dx = -\cos(x) + c$
 > 2. $\displaystyle \int \sin(x)^{2} \, dx = \int \frac{1-\cos(2x)}{2} \, dx= \frac{1}{2}\left[ \int  \, dx - \int \cos(2x) \, dx  \right] = \frac{1}{2}\left[ x - \frac{\sin(2x)}{2}  \right] + c$
 > 3. $\displaystyle \int \sin(x)^{3} \, dx = \int \sin(x)^{2}\sin(x) \, dx = \int (1-\cos(x)^{2}) \, dx$

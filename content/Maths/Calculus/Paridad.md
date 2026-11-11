@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición** (Paridad)
+>
 > Sea $f:[-b,b]\to \mathbb{R}$.
 > - $f$ es **par** si, $\forall x \in  [-b,b], f(-x) = f(x)$.
 > - $f$ es **impar** si, $\forall  x \in  [-b,b], f(-x) = -f(x)$.

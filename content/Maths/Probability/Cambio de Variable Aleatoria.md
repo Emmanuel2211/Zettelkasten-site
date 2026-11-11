@@ -14,6 +14,7 @@ cssclasses:
 Para el caso discreto,
 
 > [!theorem] **Teorema.** (Cambio de V.A. discreta)
+>
 > Sea $X$ una v.a. discreta y sea $Y = \varphi  (X)$ en donde $\varphi$ es cualquier función definida por lo menos en el conjunto de valores $X$. Para cualquier $y \in Y$,
 > $$
 > f_{Y}(y) = P(Y= y) = P(X \in \varphi ^{-1} (y))
@@ -24,6 +25,7 @@ Para el caso discreto,
 > $$
 
 > [!theorem] **Teorema.** (Cambio de V.A continua)
+>
 > Sea $X$ v.a. continua con función de densidad $f_{X}(x)$. Sea $\varphi : \mathbb{R} \to \mathbb{R}$ función continua, estrictamente monótona y con inversa $\varphi ^{-1}$ diferenciable. Entonces la función de densidad $Y = \varphi (X)$ está dada por
 > $$
 > f_{Y}(y) = \begin{cases}

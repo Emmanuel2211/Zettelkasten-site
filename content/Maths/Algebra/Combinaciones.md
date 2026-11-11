@@ -32,6 +32,7 @@ En general,
 
 
 > [!theorem] **Definición.** (Combinación)
+>
 > Sea $A$ un cjnt. sean $n,m \in  \mathbb{N}$ tales que $0\leq m\leq n$. Una $m$**-combinación de** $A$ es cualquier subconjunto de $A$ que tenga exactametne cardinalidad $n$. Denotamos al número de **combinaciones de** $A$ **tomados de** $m$ **en** $m$ como
 > $$
 > C_{m}^{n} = \begin{pmatrix}
@@ -43,6 +44,7 @@ En general,
 En calculadoras: $nCm$, $nPm$, $nOm$
 
 > [!theorem] **Teorema.** (Regla de Pascal)
+>
 > Sea $m \geq 1$, $1\leq j \leq m$
 > $$
 > \binom{m}{j} = \binom{m-1}{j} + \binom{m-1}{j-1}

@@ -12,6 +12,7 @@ cssclasses:
   - romana
 ---
 > [!theorem] **Teorema.** (Propiedades)
+>
 > 1. Equivalencias de Complementos:
 > $$
 > A \perp\!\!\!\perp B \iff A \perp\!\!\!\perp B^{c} \iff A^{c} \perp\!\!\!\perp B^{c}

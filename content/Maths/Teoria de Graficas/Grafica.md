@@ -4,11 +4,13 @@ title: "Gráfica"
 publish: true
 ---
 > [!theorem] **Definición.** (Gráfica)
+>
 > Un **gráfica** $G$ es una terna ordenada $(V, E, \psi)$, consiste del conjunto $V \neq \varnothing$ de **vértices o nodos**, $E$ (disjunto de $V$) **bordes o aristas**, y una función de **incidencia** $\psi$ que asocia cada borde de $G$ un par no ordenado de vértices de $G$ (no necesariamente distintos).
 > 
 > Si $e \in E$ y $u,v \in V$ tales que $\psi(e) = uv$, entonces se dice que $e$ **une** $u$ y $v$; los vértices $u,v$ son llamados **extremos** de $e$.
 
 > [!example]- **Ejemplo** 
+>
 > $$
 > G = (V(G), E(G), \psi_{G})
 > $$
@@ -31,6 +33,7 @@ publish: true
 
 
 > [!theorem] **Def.** (Gráfica Simple, Completa, Vacía)
+>
 > Una gráfica es **simple** si no tiene bucles y no más de una arista une un par de vértices (inyectiva).
 > 
 > Una gráfica simple, la cual cada par de vertices distintos incide una arista, es llamada **gráfica completa**. Tal gráfica con $n$ vértices; es denotada $K_{n}$.
@@ -39,6 +42,7 @@ publish: true
 
 
 > [!example]- **Ejemplo** 
+>
 > ![[Pasted image 20260526162638.png|center]]
 > 
 > Observamos además que $(a)$ es *planar*. 
@@ -57,4 +61,5 @@ publish: true
 ## Resultados
 
 > [!theorem] **Teorema**
+>
 > Si $G$ es simple, entonces $\varepsilon \leq \begin{pmatrix}v \\  2\end{pmatrix}$.

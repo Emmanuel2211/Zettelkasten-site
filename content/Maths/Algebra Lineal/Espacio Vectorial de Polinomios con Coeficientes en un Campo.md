@@ -15,6 +15,7 @@ cssclasses:
 Como es construmbre denotaremos a los polinomios como $f(x) = a_{n}x^{n} + \dots + a_{1}x + a_{0}$, donde $a_{0},\dots,a_{n} \in \mathbb{F}$, con $n \in \mathbb{N}$.
 
 > [!theorem] **Definición.** ($P(\mathbb{F})$)
+>
 > Sea $\mathbb{F}$ un campo, definimos
 > $$P(\mathbb{F}) = \{ f(x) \mid \text{ los polinomios con coeficientes en } \mathbb{F} \}$$
 > Con las siguientes operaciones:

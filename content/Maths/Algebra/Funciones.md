@@ -16,6 +16,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Def.** (Function)
+>
 > Una función $f$ de $A$ en $B$, $f:A\to B$, es una relación<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> que satisface (Totalidad)
 > $$
 > \forall a \in A, \exists b \in B : (a,b) \in f
@@ -28,12 +29,14 @@ cssclasses:
 
 Se derivan tres componentes esenciales
 > [!theorem] **Def.** (Dominio, Codominio, Imagen o Rango)
+>
 > El conjunto de partida $A$ es el $\operatorname{dom} f$, el conjunto de llegada $B$ el **codominio**. La $\operatorname{im} f$ es el subconjunto de $B$ tal que
 > $$
 > \operatorname{im} f = \{ b \in B \mid \exists a \in A : f(a) = b  \}
 > $$
 
 > [!theorem] **Def.** (Partial function)
+>
 > Es simplemente una función que no necesariamente utiliza todos los valores de su dominio.
 
 En la teoría de la computabilidad, la noción intuitiva de un "algoritmo" fue formalizada con 3 definiciones de funciones equivalentes.<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup>

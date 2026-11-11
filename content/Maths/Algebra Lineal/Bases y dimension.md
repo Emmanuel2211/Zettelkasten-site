@@ -12,10 +12,12 @@ cssclasses:
   - romana
 ---
 > [!theorem] **Definición.** (Base)
+>
 > Sea $V$ un esp. vect. Una **base** $\beta$ de $V$ es un subcjto. l.i. tal que $\langle \beta  \rangle = V$.
 
 
 > [!observation]- **Observación.**
+>
 > - Una base nos genera al espacio sin tener información de más.
 >
 > - Si $S \subseteq V$, $\langle S \rangle$ es subesp. de $V$. Si $S$ es l.i, ent. $S$ es base de $\langle S \rangle$.
@@ -27,17 +29,21 @@ cssclasses:
 En instancias, es importante saber cuando un generado realmente es todo el esp. vect.  $V$, o simplemente genera a un subesp. de $V$.
 
 > [!example]- Ejemplo.
+>
 > - $\varnothing$ es base, pues por conv. $\langle \varnothing \rangle = \{ \bar{0} \}$ y $\varnothing$ es l.i. En cambio, aunque $\langle \{ \bar{0} \} \rangle = \{  \bar{0} \}$, $\{ \bar{0} \}$ es l.d.
 >
 
 > [!note]- 
+>
 > El "teorema fundamental de algebra lineal", que todo esp. vect. tiene base. Sorprendentemente, este teorema es equivalente al Axioma de Elección!
 
 
 > [!theorem] **Teoremon.** (Teorema de Bases)
+>
 > Sea $V$ un esp. vect. sobre $\mathbb{F}$. Sea $\beta = \{ u_{1},\dots,u_{n} \} \subseteq V$ tal que si $i \neq j$, ent, $u_{i} \neq  u_{j}$. Ent, $\beta$  es base de $V$ si y sólo si cada $v \in  V$ se puede expresar de única manera como comb. lineal de todos los elementos de $\beta$, es decir, existen únicos escalares $a_{1},\dots,a_{n} \in \mathbb{F}$ tales que $\displaystyle v = \sum_{i=1}^{n} a_{i}u_{i}$.
 
 > [!proof]- **Proof.**
+>
 >  Sea $\beta = \{ u_{1},\dots,u_{n} \} \subseteq V$ tal que si $i\neq j$, ent. $u_{i} \neq  u_{j}$.
 >  ($\impliedby$) Sup. que para cada $v \in  V$, *existen* **únicos** escalares $a_{1},\dots,a_{n} \in \mathbb{F}$ tq.
 >  $\displaystyle  v = \sum_{i=1}^{n} a_{i}u_{i}$. (Nota. Usamos unicidad apra ver que es l.i.)
@@ -62,18 +68,22 @@ En instancias, es importante saber cuando un generado realmente es todo el esp. 
 > 
 
 > [!theorem] **Corolario**
+>
 > Si $S\subseteq V$ es l.i. finito, y $S = \{ u_{1},\dots,u_{k} \}$ con todos distintos, ent. dado $v \in  \langle S \rangle$ existen **únicos** $a_{1},\dots,a_{k} \in  \mathbb{F}$ tal que $\displaystyle v = \sum_{i=1}^{k} a_{i}u_{i}$.
 
 > [!proof]- **Proof.**
+>
 > Tarea
 
 En general, si $S$ es l.d, sobra información para generar a $\langle S \rangle$. Es decir, debe existir $S' \subsetneq S$ tal que $\langle S' \rangle = \langle S \rangle$, y quiero seguir buscando subcjts. así hasta dar con uno que sea l.i.
 
 
 > [!theorem] **Lema.**
+>
 > Sea $V$ esp. vect. y $S \subseteq V$. Sea $v \in  S$. Ent. $v \in  \langle S \setminus \{ v \} \rangle \iff \langle S \rangle = \langle S \setminus \{ v \} \rangle$
 
 > [!proof]- **Proof.**
+>
 > Sea $V$ un esp. vect. y $S \subseteq V$. Sea $v \in  S$.
 > $(\implies)$
 > Sup. que $v \in  \langle S\setminus \{ v \} \rangle$, ent. hay $u_{1},\dots,u_{n} \in S\setminus \{ v \}$ y $a_{1},\dots,a_{n}\in \mathbb{F}$ tales que $v = \sum_{i=1}^{n} a_{i}u_{i}$.
@@ -93,9 +103,11 @@ En general, si $S$ es l.d, sobra información para generar a $\langle S \rangle$
  
 
 > [!theorem] **Teorema 1.9**
+>
 > Sea $V$ esp. vect. tal que hay un subcjto finito $S$ de $V$ con $\langle S \rangle = V$. Ent. algún subjto. de $S$ es base de $V$.
 
 > [!proof]- **Proof.**
+>
 > Sea $S \subseteq V$, $S$ finito tal que $\langle S \rangle = V$.
 > La demostración se hace por inducción sobre $\left| S \right| = n$.
 > Sea $A = \{ n \in  \mathbb{N} \mid \forall S(S \subseteq V \land  \left| S \right| = n \land  \langle S \rangle = V) \implies  \exists \beta \subseteq S (\beta \text{ es base de } V) \}$
@@ -118,11 +130,13 @@ En general, si $S$ es l.d, sobra información para generar a $\langle S \rangle$
 
 
 > [!theorem] **Teorema 1.10** (Teorema de Remplazo)
+>
 > Sean $n,m \in  \mathbb{N}$. Sea $V$ un esp. vect. Sean $G,I \subseteq V$ tal que $\langle G \rangle = V$ e $I$ es l.i. y $\left| G \right| = n$ y $\left| I \right| = m$. Entonces, $m\leq  n$ y, además, existe $H \subseteq G$ tal que $\left| H \right| = n - m$ y $\langle I\cup H \rangle = V$.
 
 > ¿Porqué se llama de Reemplazo? Se reemplazan $m$ vectores de $G$ con los vectores de $I$ (que son l.i. entre ellos)
 
 > [!proof]- **Proof.**
+>
 > Por inducción sobre $m$.
 > Sea $A = \{ m \in \mathbb{N} \mid \forall n \in  \mathbb{N} \  \forall  I, G \subseteq V \left( \left( \left| I \right| = m \land  \left| G \right| = n \land  I \text{ es l.i. } \land  \langle G \rangle = V  \right) \implies \left( m \leq n \land \exists H\subseteq G (\left| H \right| = n-m \land \langle I \cup H  \rangle = V)  \right)  \right) \}$
 > *Paso base:*
@@ -166,10 +180,12 @@ Aunque, lo verdaderamente importante son sus corolarios:
 
 
 > [!theorem] **Corolario 1.**
+>
 > Sea $V$ esp. vect. que tiene una base finita. Ent. toda base de $V$ tiene el mismo número de vectores.
 
 
 > [!proof]- **Proof.**
+>
 > Sea $\beta$ una base para $V$ que tiene exactamente $n$ vectores. Sea $\gamma$ una base para $V$. (no se especifica si finita o infinita, entonces puede ser cualquiera)
 > Sup. que hay $S \subseteq \gamma$ tq $\left| S \right| = n+1$. Como $\gamma$ es l.i, $S$ es l.i, por el Teo. de Reemplazo, usando que $S$ es l.i. y $\left| \beta  \right| = V$, $\left| S \right| \leq \left| \beta  \right|$
 > $$
@@ -190,12 +206,14 @@ Aunque, lo verdaderamente importante son sus corolarios:
 La siguiente definición es clave!
 
 > [!theorem] **Definición.** (Dimensión)
+>
 > Sea $V$ un esp. vect.
 > 1. $V$ tiene **dimensión finita** si y sólo si tiene una base con un número finito de vectores.
 > 2. Si $V$ tiene dimensíon finita, llamamos **dimensión de** $V$, denotado $\operatorname{dim}(V)$, al número de elementos de cualqeuir base de $V$.
 > 3. $V$ tiene **dimensión infinita** si y sólo si no tiene dimensión finita.
 
 > [!example]- Resultados.
+>
 > 1. $\operatorname{dim}(\{ 0 \}) = 0$
 > 2. $\operatorname{dim}(\mathbb{F}^{n}) = n$
 > 3. $\operatorname{dim}(M_{m\times n}(\mathbb{F})) = m\cdot n$
@@ -207,9 +225,11 @@ La siguiente definición es clave!
 > 6. La dimensión depende del campo!
 
 > [!observation]+ **Observación.**
+>
 > Cuando digamos que un esp. vect. $V$ tiene dimensión $n \in \mathbb{N}$, $\operatorname{dim}(V) = n$, estamos diciendo: "Existe una base para $V$ y caulqueir de sus bases tiene cardinalidad $n$"
 
 > [!theorem] **Corolario 2.**
+>
 > Sea $n \in  \mathbb{N}$. Sea $V$ esp. vect. de $\operatorname{dim}(V)= n$.
 > 1. Cualquier cjto. finito que **genere** a $V$ tiene al menos $n$ vectores. T cualquiera que *genere* a $V$ y tenga exactamente $n$ vectores **es base**.
 > 2. Cualquier subcjto. **l.i.** de $V$ que tenga exactamente $n$ vectores **es base** de $V$.

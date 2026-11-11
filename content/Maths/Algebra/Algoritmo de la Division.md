@@ -12,6 +12,7 @@ cssclasses:
   - romana
 ---
 > [!theorem] **Teorema.** (Algoritmo de la División)
+>
 > Sean $a,b \in  \mathbb{Z}$, $b \neq  0$, entonces, existen $q,r \in  \mathbb{Z}$ tales que
 > $$
 > a = bq + r \quad \text{ con } 0\leq r < \left| b \right|
@@ -20,6 +21,7 @@ cssclasses:
 
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b \in  \mathbb{Z}, b \neq  0$.
 > *Caso 1.* $b > 0$
 > Considero los múltiplos de $b$, ie. los de la forma $bt$ con $t \in  \mathbb{Z}$. Me fijo en su diferencia con $a$, ie. $a - bt, t \in  \mathbb{Z}$ y considero

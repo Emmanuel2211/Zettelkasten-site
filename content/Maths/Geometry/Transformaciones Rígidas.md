@@ -4,6 +4,7 @@ publish: true
 ---
 
 > [!theorem] **Definición** (Transformación Rígida)
+>
 > Una función $T$ es una con dominio $R^{2}$ y rango $R^{2}$ se llama **transformación del plano euclidiano**.
 > $T$ es rígida o *isométrica* si preserva la distancia:
 > $$

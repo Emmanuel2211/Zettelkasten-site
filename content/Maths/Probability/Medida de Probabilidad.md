@@ -14,6 +14,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (Medida de Probabilidad)
+>
 > Dado un espacio medible constituido por $(\Omega, \mathcal{F})$, una **medida de probablidades** es una función $P: \mathcal{F} \to \mathbb{R}$, i.e. asigna a cada $A \in \mathcal{F}$ un real, satisfaciendo los **Axiomas de Kolmogórov**:
 > 1. $\forall A \in \mathcal{F} \ (P(A) \in [0,1])$
 > 2. $P(\Omega) = 1$
@@ -23,11 +24,13 @@ cssclasses:
 > $$
 
 > [!Info]- **Nota!**
+>
 > $(i)$ **No negatividad:** Define donde está acotada $P$.
 > $(ii)$ **Nomalización:** La probablidad que ocurra *algún* resultado del espacio muestral es exactamente la unidad.
 > $(iii)$ $\sigma$**-aditividad:** La probablidad de la unión de todos estos eventos es exactamente igual a la suma (*serie*) de sus probabilidades individuales. El axioma $(iii)$ de $\mathcal{F}$ es el que permite esto.
 
 > [!theorem] **Teorema.** (Propiedades de $P$)
+>
 > Sean $A,B \in \mathcal{F}$, 
 > 1. $P[\varnothing]  = 0$
 > 2. Suma para unión finita:
@@ -47,6 +50,7 @@ cssclasses:
 > 	- $P(A) \leq P(B)$
 
 > [!proof]- **Proof.** $(i)$
+>
 > 6. **P.D.** $P[\varnothing] = 0$
 > Sea $A_{1} \neq \varnothing, A_{2} \neq \varnothing\dots \implies A_{1} \cap A_{2} = \varnothing$.
 > $$
@@ -74,6 +78,7 @@ cssclasses:
 > 
 
 > [!proof]- **Proof.** $(ii)$ y $(iii)$
+>
 > 7. **P.D.** $A_{n+1}=A_{n+2}=\dots=\varnothing$
 > Por hip. tenemos $A_{1},\dots,A_{n}$ eventos ajenos, Ent.
 > $$
@@ -98,6 +103,7 @@ cssclasses:
 > $$
 
 > [!proof]- **Proof.** $(iv)$
+>
 > Sea $A \subseteq B$,
 > **P.D.** $P(B-A) = P(B) -P(A)$
 > Tenemos que $A \cup B = B = (B \setminus A) \cup A$, Ent.
@@ -140,6 +146,7 @@ cssclasses:
 
 
 > [!proof]- **Proof.**
+>
 > Sean $A,B \in \mathcal{F}$,
 > **P.D.** $P[A \cup B] = P[A] + P[B] - P[A\cap B]$
 > $$
@@ -156,6 +163,7 @@ vimos mas propiedades
 
 
 > [!theorem] **Teorema.** (Desigualdad de Boole)
+>
 > Para $(A_{n})_{n=1}^{\infty}$ eventos tales que $A_{i} \in \mathcal{F}$, se tiene que
 > $$
 > P\left[ \bigcup_{i=1}^{\infty} A_{i} \right] \leq \sum_{i=1}^{\infty} P[A_{i}]
@@ -163,6 +171,7 @@ vimos mas propiedades
 
 
 > [!proof]- **Proof.** 
+>
 > Vamos a usar a los eventos:
 > $$
 > \begin{align}

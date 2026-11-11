@@ -12,6 +12,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Teorema.** (Regla de L'Hôpital)
+>
 > Sean $f$ y $g$ funciones derivables en un intervalo abierto que contiene a $a$ (excepto posiblemente en $a$).
 > Si $\displaystyle \lim_{x \to a} f(x)= 0$ y $\displaystyle \lim_{x \to a} g(x) = 0$, o si los dos límites divergen, y si $g'(x) \neq  0$ cerca de $a$, entonces
 > $$

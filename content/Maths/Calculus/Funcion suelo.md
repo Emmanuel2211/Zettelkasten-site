@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Def.** Greatest Integer function (función suelo)
+>
 > $\forall x \in \mathbb{R}$ definimos
 > $$
 > \lfloor x \rfloor  = \text{max}\{ n\in \mathbb{Z}:n \leq x \}
@@ -24,6 +25,7 @@ cssclasses:
 # Función Techo
 
 > [!theorem] **Def.** (función techo)
+>
 > $\forall x \in \mathbb{R}$ definimos
 > $$
 > \lceil x \rceil  = \min\{ n \in \mathbb{Z}: n \geq x \}

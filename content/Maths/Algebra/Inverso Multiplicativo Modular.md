@@ -12,10 +12,12 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Teorema.**
+>
 > Sean $m \in \mathbb{Z}^{+}, a \in \mathbb{Z}$. El número $a$ tiene un inverso módulo $m$, es decir
 > $ax \equiv 1 \pmod{m}$ si y sólo si $(a,m) = 1$.
 
 > [!proof]- **Proof.**
+>
 > Sean $m \in \mathbb{Z}^{+}, a \in \mathbb{Z}$.
 > $(\implies )$ Supongamos que $a$ tiene un inverso módulo $m$. Entonces existe $b \in \mathbb{Z}$ tal que,
 > $$
@@ -40,6 +42,7 @@ cssclasses:
 
 
 > [!observation]+ **Observación.**
+>
 > 1. Si $as + mt = 1$, entonces $s$ es un inv. de $a$ mod $m$.
 > 2. Si $(a,m) = 1$, cualesquiera dos inversos de $a$ son congruentes mód. $m$. 
 > En otras palabras, si $(a,m) = 1$  la solución de $ax \equiv 1 \pmod{m}$ es única módulo $m$, es decir, si $s,t \in \mathbb{Z}$ son soluciones de $ax \equiv 1 \pmod{m}$, ent.
@@ -47,10 +50,12 @@ cssclasses:
 > s \equiv t \pmod{m}
 > $$
 > > [!proof]+ **Proof.**
+> >
 > > Si $b,c \in \mathbb{Z}$ son tales que $ab \equiv 1 \pmod{m}$ y $ac \equiv 1 \pmod{m}$, entonces por transitividad, $ab \equiv ac \pmod{m}$ y como $(a,m) = 1$ (son primos relativos) por cancelación $b \equiv c \pmod{m}$.
 
 
 > [!theorem] **Definición.** (Inverso Multiplicativo Modular)
+>
 > Sean $m \in  \mathbb{Z}^{+}, a \in \mathbb{Z}$, con $(a,m) = 1$. Decimos que $b \in \mathbb{Z}$ es un **inverso de $a$ módulo** $m$ si
 > $$
 > ab \equiv 1 \pmod{m}
@@ -58,6 +63,7 @@ cssclasses:
 > y lo denotamos $a_{m}^{-1}$, esto es un abuso de notación pero es valido.
 
 > [!example]+ Ejemplo.
+>
 > $3,-2,8$ son inversos de $2$ mod. $5$, por abuso de notación, trabajando mod. 5:
 > $$
 > \begin{align}

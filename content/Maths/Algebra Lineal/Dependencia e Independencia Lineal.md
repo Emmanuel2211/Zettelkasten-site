@@ -25,12 +25,14 @@ $$
 A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
 
 > [!observation]+ **Observación.**
+>
 > Sean $\{ u_{1},\dots, u_{k} \}$, en ocasiones no sabemos que todos sean distinitos, al menos que se especifique que $i \neq j \implies  u_{i} \neq  u_{j}$. **Aguas!** Podemos pensar que encontramos una comb. lineal no trivial del $\bar{0}$ y NO sea así!
 > $$
 > \text{ Si } \ u_{1} = u_{2}, \implies  \bar{0} = 1u_{1} - 1u_{2} + 0u_{3}  +\dots + 0u_{k}
 > $$
 
 > [!theorem] **Definición.** (Comb. Lineal no Trivial del $\bar{0}$)
+>
 > Sea $V$ un esp. vect. sobre $\mathbb{F}$. Sea $S \subseteq V$ y $S \neq \varnothing$. Decimos que existe una **combinación lineal no trivial del $\bar{0}$ de vectores de** $S$ si y śolo si $\exists k \in  \mathbb{N}^{+} \ \exists u_{1},\dots,u_{k} \in  S \ \exists a_{1},\dots,a_{k} \in  \mathbb{F}$  tales que $\forall i,j \in \{ 1,\dots,k \} (i\neq j \implies  u_{i}\neq u_{j})$ y
 > $$
 > \exists i \in \{ 1,\dots,k \} (a_{i} \neq  0) \ \text{ y } \ \sum_{i=1}^{k} a_{i}u_{i} = \bar{0}
@@ -38,11 +40,13 @@ A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
 
 
 > [!theorem] **Lemita**
+>
 > Sea $V$ esp. vect. sobre $\mathbb{F}$ y $S \subseteq V$. Si $\bar{0} \in  S$, ent. existe una comb. lineal no trivial del $\bar{0}$ de vectores de $S$.
 
 
 
 > [!theorem] **Definición.** (Dependencia Lineal)
+>
 > Sea $V$ esp. vect. sobre $\mathbb{F}$. Sea $S \subseteq V$. $S$ es **linealmente dependiente** (l.d) si y sólo si, hay un número finito no vacío de vectores en $S$, $x_{1},x_{2}, \dots, x_{k}$ distintos por pares y hay $a_{1}, \dots, a_{k} \in  \mathbb{F}$, no todos cero, tal que $\displaystyle \hat{0} = \sum_{i=1}^{k} a_{i}x_{i}$
 > 
 > Es decir,
@@ -56,6 +60,7 @@ A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
 
 
 > [!theorem] **Definición.** (Independencia Lineal)
+>
 > Sea $S \subseteq V$. Decimos que $S$ es **linealmente independiente** (l.i.) si y sólo si **no** es l.d... AAAAHHH!
 
 
@@ -63,6 +68,7 @@ A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
  
 
 > [!theorem] **Definición.** (Independencia Lineal)
+>
 > Sea $S \subseteq V$. $S$ es **l.i.** sii $\forall k \in  \mathbb{N}^{+} \ \forall x_{1},\dots,x_{k} \in  S \ \forall a_{1},\dots,a_{k} \in  \mathbb{F}$
 > $$
 > \forall i,j \in \{ 1,\dots k \} \left( (i\neq j \implies  x_{i} \neq x_{j}) \land \sum_{i=1}^{k} a_{i}x_{i} = \bar{0} \right)
@@ -76,11 +82,13 @@ A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
 
 
 > [!example]+ **Ejemplos.** 
+>
 > - $\varnothing$ es l.i. por vacuidad.
 > - Si $S \subseteq V$ tal que $\bar{0} \in S$, ent. es l.d.
 > - Si $S = \{ x \}$ con $x \neq \bar{0}$, $S$ es l.i.
 
 > [!theorem] **Lema.** *Bonito*
+>
 > Sean $S_{1}, S_{2} \subseteq  V$, con $S_{1}\subseteq S_{2}$.
 > 1. Si $S_{1}$ es l.d, ent. $S_{2}$ es l.d. (los l.d.s suben)
 > 2. Si $S_{2}$ es l.i, ent. $S_{1}$ es l.i. (los l.i.s bajan)
@@ -91,6 +99,7 @@ A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
 Formalizando un resultado muy importante,
 
 > [!theorem] **Teorema.** (Teorema de la Linealidad Finita)
+>
 > Sea $V$ un esp. vect. y sea $S \subseteq V$ **finito** no vacío. Sea $n \in  \mathbb{N}^{+}$ tal que $\left| S \right| = n$ y sea $S = \{ v_{1},\dots,v_{n} \}$
 > Ent. $S$ es **l.i.** si y sólo si
 > $$
@@ -98,9 +107,11 @@ Formalizando un resultado muy importante,
 > $$
 
 > [!observation]- **Observación.**
+>
 > Gracias a que $P \iff Q \equiv  \neg P \iff  \neg Q$, el teorema anterior también aplica para l.d.'s finitos!
 
 > [!proof]- **Proof.**
+>
 > ($\implies$) Sup. que $S$ es l.i, ent. para todo $k \in \mathbb{N}^{+}$, cualesquiera $u_{1},\dots,u_{k}\in S$ todos distintos, se tiene que
 > $$
 > \forall b_{1},\dots,b_{k} \in \mathbb{F} \left(\sum_{i=1}^{k} b_{i}u_{i} = \bar{0} \implies  \forall i \in \{ 1,\dots,k \} (b_{i}=0)  \right)
@@ -125,6 +136,7 @@ Formalizando un resultado muy importante,
 > $$
 
 > [!Info]- **Nota!**
+>
 > Explicando el uso del doble índice en la Dem. anterior:
 > Se utiliza el índice $j_i$ porque necesitas una función (un mapeo) que conecte el subconjunto $S'$ con el conjunto original $S$. Tienes vectores $u_i$ en tu subconjunto y sabes que cada uno de ellos es idéntico a algún vector $v$ del conjunto grande. No puedes escribir simplemente $u_i = v_j$, porque el índice $j$ **depende** de qué $i$ estés evaluando. Al escribir $j_i$, estás diciendo formalmente: "Sea $j_i$ la posición exacta en $S$ que le corresponde al vector $i$-ésimo de $S'$". Por ejemplo, si $u_1$ resulta ser el tercer vector del conjunto original, entonces $j_1 = 3$ (luego $u_1 = v_3$); si $u_2$ es el séptimo, entonces $j_2 = 7$ (luego $u_2 = v_7$). El doble índice es solo una manera rigurosa de indexar subconjuntos sin perder la referencia de dónde venían.
 > 
@@ -133,13 +145,16 @@ Formalizando un resultado muy importante,
 El siguiente resultado debería de ser un Teorema por su importancia:
 
 > [!theorem] **Lema.** (Lema de Dependencia)
+>
 > Sea $S$ un subcjto. l.i. de un esp. vect. $V$. Sea $v \in  V$ tal que $v \not\in S$. Ent. $v \in  \langle S \rangle$ si y sólo si $S \cup \{ v \}$ es l.d.
 >
 
 > [!observation]- **Observación.**
+>
 > Las hipótesis no ponen ninguna restricción a la cardinalidad de $S$, por lo que puede ser finito y infinito, es decir, *en la demostración no debemos de usar que sea finito*.
 
 > [!proof]+ **Proof.**
+>
 > Sea $S \subseteq V$ l.i. y $v \in V \ \ \epsilon \ \ v \not\in S$.
 > ($\implies$) Sup. $v \in \langle S \rangle$, ent. hay $n \in \mathbb{N}^{+}$ y hay $x_{1},\dots,x_{n} \in S$ y hay $a_{1},\dots,a_{n} \in F$ tales que $\displaystyle  v = \sum_{i=1}^{n} a_{i}x_{i}$ y s.p.g. supongase que $\forall i,j \in \{ 1,\dots,n \} (i\neq j \implies x_{i}\neq x_{j})$.
 > Ent. $\displaystyle \bar{0} = \sum_{i=1}^{n} a_{i}x_{i} + (-1)v$.

@@ -13,6 +13,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Campo)
+>
 > Un **campo** $\mathbb{F}:= (\mathbb{F},+,\cdot)$ es un conjunto $\mathbb{F}$ con dos operaciones $+: \mathbb{F}\times \mathbb{F} \to \mathbb{F}$ y $\cdot: \mathbb{F}\times \mathbb{F} \to \mathbb{F}$, que cumplen:
 > 
 > $\text{(F1)} \quad \forall a, b \in \mathbb{F} \ (a+b=b+a)$
@@ -28,6 +29,7 @@ cssclasses:
 > 
 
 > [!example]- **Ejemplos.** 
+>
 > - $\mathbb{Q}[\sqrt{ 2 }]$
 > - $\mathbb{Q}$
 > - $\mathbb{C}$
@@ -37,10 +39,12 @@ cssclasses:
 Es muy importante tomar la caraterística de los campos.
 
 > [!theorem] **Definición** (Característica de $\mathbb{F}$)
+>
 > Dado un campo $(\mathbb{F},+,\cdot)$, la **carecterística de** $\mathbb{F}$ es el mínimo número natural positivo $n$ tal que $\underbrace{1+\dots+1 = 0}_{n\text{ veces}}$.
 > Si dicho $n$ no existe, por convención, se dice que el campo tiene **característica** $0$.
 
 > [!example]- **Ejemplos.** 
+>
 > - $\mathbb{Z}_{2}$ tiene característica $2$.
 > - Si $p$ es primo, $\mathbb{Z}_{p}$ tiene característica $p$.
 > 

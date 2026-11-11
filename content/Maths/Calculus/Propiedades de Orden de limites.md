@@ -11,6 +11,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Teorema.** (Conservación de desigualdades)
+>
 > Supongamos la existencia de $\lim_{ x \to x_{0} }f(x)$ y $\lim_{ x \to x_{0} }g(x)$ y que $x_{0}$ sea un punto de acumulación de $\text{dom}(f)\cap\text{dom}(g)$. 
 > Si $\forall x \in\text{dom}(f)\cap\text{dom}(g)$
 > $$
@@ -22,9 +23,11 @@ cssclasses:
 > $$
 
 > [!proof]- **Proof.** 
+>
 > ...
 
 > [!theorem] **Corolario.** 
+>
 > Supongamos la existencia de $\lim_{ x \to x_{0} }f(x)$ y que $\alpha\leq f(x)\leq \beta$ para todo $x \in\text{dom}(f)$. Entonces
 > $$
 > \alpha \leq \lim_{ x \to x_{0} } f(x)\leq \beta
@@ -43,6 +46,7 @@ $$
 
 
 > [!theorem] **Teorema.** (del Sandwich) {Squeeze Theorem}
+>
 > Sea $f,g,h: E \to \mathbb{R}$ y sea $x_{0}$ un punto de acumulación del dominio commún $E$. Supongamos que existen los limites
 > $$
 > \lim_{ x \to x_{0} } f(x) = L \quad \text{ y } \quad \lim_{ x \to x_{0} } g(x) = L
@@ -59,6 +63,7 @@ $$
 > [!proof]- **Proof.** 
 
 > [!theorem] **Teorema.** (Limites de Valores Absolutos)
+>
 > Supongamos la existencia de
 > $$
 > \lim_{ x \to x_{0} } f(x) = L
@@ -71,6 +76,7 @@ $$
 Ya que los máximos y mínimos pueden ser expresados en terminas de valor absoluto, se desarrolla el corolario:
 
 > [!theorem] **Corolario.** (Max/Min de Limites)
+>
 > Supongamos la existencia de
 > $$
 > \lim_{ x \to x_{0} } f(x) = L \quad \text{ y } \quad \lim_{ x \to x_{0} } g(x) = M
@@ -84,6 +90,7 @@ Ya que los máximos y mínimos pueden ser expresados en terminas de valor absolu
 > $$
 
 > [!proof]- **Proof.** 
+>
 > A partir de la identidad
 > $$
 > \max \{ f(x), g(x) \} = \frac{f(x)+g(x)}{2} + \frac{\lvert f(x)- g(x) \rvert }{2}

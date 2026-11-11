@@ -16,6 +16,7 @@ Después de construir $\exp \left(x\right)$, definimos sus partes: par e impar.
 > Recordamos que toda función real puede escribirse como la suma de una función par y una impar, las hiperbólicas son justo esto para $e^{x}$ .
 
 > [!theorem] **Definición.** (Funciones Hiperbólicas)
+>
 > Sea $x \in  \mathbb{R}$, definimos:
 > - $\displaystyle \sinh(x) = \frac{e^{x}- e^{-x}}{2}$
 > - $\displaystyle \cosh(x) = \frac{e^{x}+ e^{-x}}{2}$
@@ -33,6 +34,7 @@ A partir de las propiedades de $\exp \left(x\right)$ (*leyes de exponentes*), de
 ##### Graficas
 
 > [!observation]+ **Observación.**
+>
 > Dado $e^{2}x > 0$, $\cosh(x) > 0$ para todo $x$, lo que significa que por el teorema anterior
 > $(\cosh(x), \sinh(x))\in \{ x^{2} - y^{2} = 1, x > 0 \}$, esto representa a la "rama positiva de la hipérbola $x^{2} - y^{2} = 1$".
 
@@ -46,6 +48,7 @@ veremos que es una funcion catenaria
 
 
 > [!theorem] **Teorema.** (Propiedades de Funciones Hiperbólicas)
+>
 > - Identidades Fundamentales:
 > $$
 > \begin{align}
@@ -83,6 +86,7 @@ veremos que es una funcion catenaria
 
 
 > [!theorem] **Teorema.** (Derivadas)
+>
 > $$
 > \begin{align}
 > \sinh' (x) &= \cosh(x) \\[0.5em]
@@ -99,6 +103,7 @@ veremos que es una funcion catenaria
 ![[Pasted image 20261002120356.png|center|607]]
 
 > [!theorem] **Teorema.** (Funciones Inversas)
+>
 > Sea $x \in \mathbb{R}$,
 > - $\displaystyle \sinh^{-1}(x) = \log \left(x+ \sqrt{x^{2}+1}\right)$
 > - $\displaystyle \cosh^{-1}(x) = \log \left(x + \sqrt{x^{2} -1}\right)$
@@ -109,6 +114,7 @@ veremos que es una funcion catenaria
 
 
 > [!theorem] **Teorema.** (Derivadas)
+>
 > $$
 > \begin{align}
 > \frac{d}{dx}\sinh^{-1}(x) &= \frac{1}{\sqrt{x^{2} + 1}}\\[0.5em]

@@ -13,6 +13,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Proposición 20. Libro I.** (Desigualdad del Triangulo)
+>
 > En un triángulo, la suma de dos lados es mayor al tercero.
 
 > [!proof]- **Proof.** 
@@ -20,6 +21,7 @@ cssclasses:
 ---
 
 > [!theorem] **Teorema** (Desigualdad del Triángulo Vectorial)
+>
 > Sean $\mathbf{a,b} \in V_{n}$ se tiene que
 > $$
 > \lvert \mathbf{a}+\mathbf{b} \rvert  \leq \lvert \mathbf{a} \rvert +\lvert \mathbf{b} \rvert 
@@ -31,6 +33,7 @@ cssclasses:
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Como $\mathbf{a \cdot b}\leq \lvert \mathbf{a \cdot b} \rvert$, de la [[Desigualdad de Cauchy-Bunyakovsky-Schwarz|desigualdad de Cauchy]] tenemos
 > $$
 > \mathbf{a \cdot b} \leq \lvert \mathbf{a \cdot b}   \rvert \leq \lvert \mathbf{a} \rvert \lvert \mathbf{b} \rvert .

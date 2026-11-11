@@ -12,6 +12,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Axioma.** 
+>
 > Si $X$ y $Y$ tienen los mismo elementos, entonces $X=Y$:
 > $$
 > \forall u(u \in X \iff u \in Y) \implies X = Y

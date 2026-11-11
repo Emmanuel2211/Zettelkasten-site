@@ -13,6 +13,7 @@ cssclasses:
 # $V = \mathscr{F}(S,\mathbb{F})$
 
 > [!theorem] **Definición.**
+>
 > Sea $\mathbb{F}$ un campo. Sea $S$ un conjunto no vacío cualquiera, defnimos 
 > $$\mathscr{F}(S,\mathbb{F}) = \{  f \mid f: S\to \mathbb{F} \}$$
 > Con las siguientes operaciones,
@@ -29,10 +30,12 @@ cssclasses:
 > $$
 
 > [!observation]- **Observación**
+>
 > El codominio de las funciones debe ser el cmapo sobre el que está definido el espacio.
 > También observer que $S$ puede no ser campo, no se le pide más que sea un conjunto no vacío.
 
 > [!example]+ **Ejemplos particulares.** 
+>
 > $\mathscr{F}(\mathbb{R},\mathbb{R})$
 > $\mathscr{F}(\mathbb{R}^{n}, \mathbb{R})$
 > hablamos de generalizaciones mas generales! o tambien... mas simples

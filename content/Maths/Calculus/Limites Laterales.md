@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición** (Límite por la Derecha e Izquierda)
+>
 > Sea $A \subseteq \mathbb{R}$ y $f: A \to \mathbb{R}$. Se dice que $L \in  \mathbb{R}$ es **límite por la derecha de** $f$ **en** $x_{0}$ si,
 > $$
 > \forall \varepsilon >0 \ \exists \delta  >0   \left(  0 < x- x_{0} < \delta  \implies  \left| f(x)  - L\right| < \varepsilon \right)
@@ -28,6 +29,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.**
+>
 > $$
 > \lim_{x \to x_{0}} f(x) = L \iff  \lim_{x \to x_{0}^{+}} f(x) = L = \lim_{x \to x_{0}^{-}} f(x)
 > $$

@@ -289,6 +289,27 @@ def fix_math_in_callouts(text: str) -> str:
     return "\n".join(out)
 
 
+NESTED_CALLOUT_RE = re.compile(r"^( {0,3}(?:> *)+)\[![\w-]+\|?.*?\][+-]?.*$")
+
+
+def fix_nested_callout_titles(text: str) -> str:
+    """The OFM plugin separates a callout's title from its body by adding an
+    empty '> ' line after `> [!type] ...`, but its regex only matches ONE '>'
+    at column 0. In nested callouts (`> > [!proof]- ...`) or with a leading
+    space (` > [!proof]- ...`) the body then stays in the title paragraph and
+    the whole proof renders as the title. Add that empty line ourselves, with
+    the same prefix, for every callout (a duplicate blank line is harmless)."""
+    out, lines = [], text.split("\n")
+    for i, line in enumerate(lines):
+        out.append(line)
+        m = NESTED_CALLOUT_RE.match(line)
+        if m:
+            nxt = lines[i + 1] if i + 1 < len(lines) else ""
+            if nxt.replace(">", "").strip():  # body follows right away
+                out.append(m.group(1).rstrip())
+    return "\n".join(out)
+
+
 def h1_to_title(text: str) -> str:
     """Obsidian hides the inline title, so notes start with their own `# H1`.
     Quartz already prints the page title, so move that H1 into `title:`."""
@@ -605,7 +626,7 @@ def main() -> int:
         text = fix_inline_footnotes(text)
         text = fix_folder_note_links(text, rel, index, published)
         text = fix_raw_html(text, rel, index)
-        text = add_modified_date(h1_to_title(fix_math_in_callouts(text)), VAULT / rel)
+        text = add_modified_date(h1_to_title(fix_nested_callout_titles(fix_math_in_callouts(text))), VAULT / rel)
         dst.write_text(text, encoding="utf-8")
         shutil.copystat(VAULT / rel, dst)  # keep modified dates
     for rel in assets:

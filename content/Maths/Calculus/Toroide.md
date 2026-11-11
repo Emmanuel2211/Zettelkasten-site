@@ -16,11 +16,13 @@ cssclasses:
 > El sólido generado al rotar el disco $(x-a)^{2} + y^{2} \leq r^{2}, 0 < r< a$. alrededor del eje $Y$ es conocido como el **Toro**.
 
 > [!theorem] **Propiedades.**
+>
 > 1. Volumen: $\boxed{V = 2\pi^{2} a r^{2}}$
 > 2. Área de superficie: $\boxed{A = 4\pi^{2} a r}$
 
 
 > [!proof]+ **Proof.**
+>
 > 1. Por el método de los casquillos (ver [[Solidos de Revolución]]), para cada $x \in [a-r, a+r]$ la altura del disco es $2\sqrt{r^{2} - (x-a)^{2}}$, ent.
 > $$
 > \begin{align}
@@ -36,5 +38,6 @@ cssclasses:
 > $$
 
 > [!observation]+ **Observación.**
+>
 > Ambas fórmulas son "distancia recorrida por el centro × medida de lo que gira": 
 > $V = (2\pi a)(\pi r^{2})$ y $A = (2\pi a)(2\pi r)$.

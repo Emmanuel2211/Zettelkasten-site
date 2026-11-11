@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Independencia de v.a.s)
+>
 > Sean $X$ y $Y$ v.a.s, se dice que son **independientes** si los eventos $(X\leq x)$  y 
 > $(Y\leq y)$ son independientes para cualesquiera valores $x,y \in \mathbb{R}$, es decir, si se cumple:
 > $$
@@ -23,9 +24,11 @@ cssclasses:
 > $$
 
 > [!observation]- **Observación.**
+>
 > Como está afirmación es por definición $\forall x,y \in \mathbb{R}$, por lógica, para ver que no es cierta, faltaría encontrar al menos un $(x,y)$ para la cual no se cumpla.
 
 > [!theorem] **Teorema.** (Independencia de V.A.s Discretas)
+>
 > Sean $X,Y$ discretas, ent. la condición de independencia es:
 > $$
 > P(X=x,Y=y) = P(X=x)P(Y=y), \quad -\infty<x,y <\infty
@@ -42,6 +45,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Independencia de V.A.s Continuas)
+>
 > Sean $X,Y$ continuas, se puede ver que:
 > $$
 > F_{X,Y}(x,y) = \int_{-\infty}^{x} \int_{-\infty}^{y} f_{X,Y}(u,v) \, dv \, du

@@ -59,6 +59,7 @@ $$
 
 
 > [!Info]+ **Nota!**
+>
 > Es "buena" aproximación para funciones monótonas (tomando $n$ "grande").
 > En métodos numéricos lo que nos interesa es la eficiencia.
 

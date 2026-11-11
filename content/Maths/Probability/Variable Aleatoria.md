@@ -14,6 +14,7 @@ cssclasses:
 > Es una función que asigna un real a cada resultado de un experimento.
 
 > [!theorem] **Definición.** (Variable Aleatoria)
+>
 > Una variable aleatoria, denotada $X$, es una función $X: \Omega \to \mathbb{R}$ tal que para cualquier $x \in  \mathbb{R}$,
 > $$
 > \{ \omega \in \Omega \mid X(\omega ) \leq x \} \in  \mathcal{F}
@@ -30,6 +31,7 @@ Como $(X \in  A) \in  \mathcal{F}$, podemos sacar la medida de proba $P[A]$ para
 
 
 > [!example]- Ejemplo.
+>
 > Sea $A = (x,y)$, considerando $(X \in  A)$ podemos también escribirlo de la forma $( x < X < y )$, es decir
 > $$
 > (X \in (x,y)) = \{  \omega  \in  \Omega  \mid  x < X(w) < y \}
@@ -42,10 +44,12 @@ Como $(X \in  A) \in  \mathcal{F}$, podemos sacar la medida de proba $P[A]$ para
 
 
 > [!Info]- Medida de Probabilidad Inducida
+>
 > Sea cualquier intervalo de la forma $(-\infty,x]$, por medio de su imagen inversa $X^{-1}((-\infty,x])$ se puede aplicar la medida de probablidad $P$, pues su $X^{-1}$ está en $\mathcal{F}$ (dada nuestra definición). Así, mediante una variable aleatoria $X$ puede tomarse la proba $P$ de $A \in  \mathcal{B}(\mathbb{R})$. En ocaciones se le denota $P_{X}$, llamada **medida de proba inducida por la variable aleatoria** $X$. Así pues, tenemos un nuevo esp. de proba. de interés $(\Omega , \mathcal{B}(\mathbb{R}), P)$.
 
 
 > [!theorem] **Definición.** (Función Indicadora)
+>
 > La variable aleatoria en la cual, sea $A$ evento, toma el valor $1$ si $A$ ocurre o es $0$ si $A$ no ocurre, es llamada **función indicadora**, denotada:
 > $$
 > \mathbb{1}_{A}(w) = \begin{cases}
@@ -57,6 +61,7 @@ Como $(X \in  A) \in  \mathcal{F}$, podemos sacar la medida de proba $P[A]$ para
 
 
 > [!example]- Ejemplo.
+>
 > Queremos saber la cantidad de aguilas que salieron en 4 lanzamientos de una moneda. Esto podríamos definirlo como una función $X: \Omega \to \mathbb{R}$ tal que para cada $\omega  \in  \Omega$ se define $X(\omega ) = \# \text{ de ágilas en } \omega$.
 > Al ser función, tenemos que su imágen directa es, sea $B \subseteq \mathbb{R}$.
 > $$

@@ -13,6 +13,7 @@ cssclasses:
   - romana
 ---
 > [!theorem] **Definición.** (Polinomio de Taylor)
+>
 > Sea $I \subseteq \mathbb{R}$ un intervalo abierto y $a \in  I$. Sea $f: I\to \mathbb{R}$ función $n$-veces diferenciable en $a$. El **polinomio de Taylor de grado $n$ con centro en** $a$ denotado $P_{n,a}(x)$,
 > $$
 > P_{n,a}(x) = \sum_{k=0}^{n} \frac{f^{(k)}(a)}{k!} (x-a)^k
@@ -25,6 +26,7 @@ cssclasses:
 > Si $a = 0$, es conocido como **polinomio de Maclaurin**.
 
 > [!theorem] **Definición.** (Residuo de Lagrange)
+>
 > Definimos $R_{k+1}(x)$ como el residuo al paso $k+1$ de la expansión de Taylor.
 > $$
 > R_{k+1}(x) = \int_{a}^{x} \frac{(x-t)^{k}}{k!} f^{(k+1)}(t) \, dt
@@ -34,6 +36,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Algunas Expansiones Bonitas)
+>
 > Algunos polinomios de Maclaurin importantes:
 > - Logaritmo:
 > $$

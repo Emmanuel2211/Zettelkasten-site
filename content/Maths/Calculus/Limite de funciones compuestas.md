@@ -12,6 +12,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Teorema.** (Funciones Compuestas)
+>
 > Sea $F$ una función definida en el **vecindario** del punto $L$ tal que
 > $$
 > \lim_{ z \to L } F(z) = F(L)
@@ -32,6 +33,7 @@ $$
 es llamada **continuidad**<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> en el punto $L$.
 
 > [!proof]- **Proof.** 
+>
 > ... ejercicio
 
 ^947369

@@ -4,12 +4,14 @@ title: "Definiciones de la base de un logaritmo...??/ wut"
 publish: true
 ---
 > [!theorem] **Definición.** (chida)
+>
 > Dados $a>0$ y $x \in \mathbb{R}$ definimos
 > $$
 > a^{x} := e^{x \log (a)}
 > $$
 
 > [!observation]- **Observación**
+>
 > 1. 
 > $$
 > \begin{align}

@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!tip]+ **Idea.**
+>
 > Utilizando polinomio de Taylor (ver [[Polinomio de Taylor]]), recordamos:
 > $$
 > f(x) = f(x_{0}) + f'(x_{0})(x-x_{0}) + f''(x_{0})\frac{(x-x_{0})^{2}}{2!} + \frac{f'''(x_{0})(x-x_{0})^{3}}{3!} + \dots + \frac{f^{(n)}(x_{0})(x-x_{0})^{n}}{n!} + R_{n+1}(x)
@@ -20,6 +21,7 @@ cssclasses:
 > En donde el residuo es $\displaystyle R_{n+1}(x) = \int_{x_{0}}^{x} \frac{(x-t)^{n}}{n!} f^{(n+1)}(t)\, dt$ (con $f$ de clase $C^{n+1}$).
 
 > [!Info]+ **Nota!**
+>
 > Si $f^{(n+1)}$ está acotada, $\left| R_{n+1}(x) \right|$ también lo podemos acotar.
 
 Sea $M$ una cota de $\left| R_{n+1}(x) \right|$ en $[a,b]$, ent.
@@ -34,6 +36,7 @@ $$
 $$
 
 > [!example]+ Ejemplo.
+>
 > $\square$ Aproxima $\displaystyle \int_{0}^{1} e^{-x^{2}} \, dx$
 > Hagamos $u = -x^{2}$. De esta manera (Taylor de $e^{u}$ alrededor de $0$)
 > $$

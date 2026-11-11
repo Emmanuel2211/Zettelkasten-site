@@ -11,6 +11,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Teorema.** Desigualdad de las media aritmética-geométrica
+>
 > Para caso $n = 2$. Sea $0<a<b$, entonces 
 > $$
 > a < \sqrt{ ab }\leq \frac{a+b}{2} < b
@@ -23,6 +24,7 @@ materia:
 ---
 
 > [!theorem] **Teorema.** Desigualdad QM-AM-GM-HM
+>
 > La media cuadrática, aritmética, geométrica, armónica.
 > $$
 > \sqrt{ \frac{\sum a_{i}^2}{n} } \geq \frac{\sum a_{i}}{n} \geq \sqrt[n]{ \prod a_{i} } \geq \frac{n}{\sum \frac{1}{a_{i}}}

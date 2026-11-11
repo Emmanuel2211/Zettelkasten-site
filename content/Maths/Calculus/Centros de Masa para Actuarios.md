@@ -14,6 +14,7 @@ cssclasses:
 Dado un vector de puntos $\{ x_{1},\dots,x_{n} \}$ con vector asociado de masas $\{ m_{1},\dots,m_{n} \}$ se definió el momento de masas (respecto al origen) por: $\displaystyle \sum_{i=1}^{n} m_{i}x_{i}$
 
 > [!observation]+ **Observación.**
+>
 > Si $\displaystyle m_{i} = \frac{1}{n}\  \ \forall i, \ \ \sum_{i=1}^{n} m_{i}x_{i} = \frac{1}{n}\sum_{i=1}^{n} x_{i}$
 > Esto no es más que un **promedio** (aritmético); en general, $\bar{x}$ (abajo) es un **promedio ponderado**.
 > Notemos que en este caso $\sum_{i=1}^{n} m_{i} = 1$, por lo que el momento y el centro de masa coinciden.
@@ -21,6 +22,7 @@ Dado un vector de puntos $\{ x_{1},\dots,x_{n} \}$ con vector asociado de masas 
 También definimos al centro de masa (o centroide, si las masas son iguales) como $\displaystyle \bar{x} = \frac{\displaystyle \sum_{i=1}^{n} m_{i}x_{i}}{\sum_{i=1}^{n} m_{i}}$
 
 > [!observation]+ **Observación.**
+>
 > $$
 > \bar{x} = \sum_{i=1}^{n} \frac{m_{i}}{\displaystyle \sum_{k=1}^{n} m_{k}}\, x_{i} = \sum_{i=1}^{n} \mu _{i} x_{i}, \qquad \mu_{i} := \frac{m_{i}}{\displaystyle \sum_{k=1}^{n} m_{k}}
 > $$
@@ -32,6 +34,7 @@ Sea $\mathcal{E}$ un experimento que tiene por posibles resultados $\{ x_{1},x_{
 $\displaystyle f(x) = \begin{cases} p_{i} & x = x_{i} \\ 0  & \text{ o.c. }\end{cases}$ y $\displaystyle \sum_{k=1}^{n} f(x_{k}) = 1$ entonces a $f$ se le conoce como **función de masa de probabilidad**.
 
 > [!theorem] **Definición.** (Primer Momento)
+>
 > Dado $X = \{ x_{1},\dots,x_{n} \}$ y $P = \{ p_{1},\dots, p_{n} \}$ se define el **primer momento** como
 > $$
 > \operatorname{E}[X]  = \sum_{i=1}^{n} x_{i}f(x_{i})
@@ -39,9 +42,11 @@ $\displaystyle f(x) = \begin{cases} p_{i} & x = x_{i} \\ 0  & \text{ o.c. }\end{
 > en proba se le llama **esperanza**.
 
 > [!observation]+ **Observación.**
+>
 > Como $\sum p_{i} = 1$, las probabilidades son "masas normalizadas" ($\mu_{i} = p_{i}$), así que la esperanza **es** el centro de masa: $\operatorname{E}[X] = \bar{x}$. En el caso continuo, $f$ hace el papel de una densidad de masa y $\operatorname{E}[X] = \int x f(x)\,dx$ es el centro de masa de una varilla con esa densidad.
 
 > [!example]+ Ejemplo.
+>
 > Si tenemos un número infinito numerable de resultados, $X = \{ x_{1},x_{2},\dots, \}$ con probabilidades correspondientes $P = \{ p_{1},p_{2},\dots \}$, la función de masa de proba asociada cumple
 > $$
 > \sum_{x \in \operatorname{supp}(f)} f(x) = 1
@@ -53,6 +58,7 @@ $\displaystyle f(x) = \begin{cases} p_{i} & x = x_{i} \\ 0  & \text{ o.c. }\end{
 
 
 > [!theorem] **Definición.** (Función de Probabilidad Acumulada)
+>
 > La **función de probabilidad acumulada** es
 > $$
 > F(x) = \sum_{\substack{t \in \operatorname{supp}(f) \\ t \leq x}} f(t)
@@ -76,6 +82,7 @@ F(x) = \int_{-\infty}^{x} f(t) \, dt
 $$
 
 > [!observation]+ **Observación.**
+>
 > 1. Esta relación es muy importante, pues por T.F.C., $\displaystyle \frac{d}{dx}F(x) = f(x)$ (en los puntos de continuidad de $f$)
 > 2. Suponiendo que $x > y$, por aditividad de la integral,
 > $$
@@ -85,6 +92,7 @@ $$
 
 
 > [!example]+ Ejemplo.
+>
 > $\square$ Supongamos que mediante pruebas experimentales se ha determinado que el tiempo de falla de un foco está dado por $\displaystyle f(t) = At^{2}(100-t)^{2} \cdot \mathbb{1}_{[0,100]}(t)$.
 > - ¿Cuánto vale $A$ para que $f$ sea una densidad? $\displaystyle \int_{\mathbb{R}} f(x) \, dx = 1$
 > esto es, $\displaystyle \int_{0}^{100} At^{2}(100-t)^{2} \, dt = 1$, ya, desarrollamos el binomio al cuadrado, multiplicamos por $t^{2}$, sacamos $A$, separamos la integral y evaluamos en los límites de integración.

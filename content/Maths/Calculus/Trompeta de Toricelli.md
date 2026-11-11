@@ -16,11 +16,13 @@ cssclasses:
 > Considera la región $R = \{ (x,y) \mid x \geq 1 , 0 \leq y \leq  \frac{1}{x} \}$. Al rotar está región alrededor del eje $X$, justo obtenemos la Trompeta de Torricelli. Observamos estas propiedades:
 
 > [!theorem] **Proposición.** (Volume y Área)
+>
 > 1. El volumen de la Trompeta de Torricelli es finito, y es igual a $\pi$.
 > 2. Su área o superficie es infinita.
 >
 
 > [!proof]- **Proof.**
+>
 > 1. $\displaystyle V = \pi \int_{a}^{b} f(x)^{2} \, dx  = \pi \int_{1}^{\infty} \left(\frac{1}{x}\right)^{2} \, dx = \pi \lim_{b \to \infty} \left(\frac{x^{-1}}{-1}  \right)\bigg|_{1}^{b} = -\pi \lim_{b \to \infty} \left[ \frac{1}{b} - 1  \right] = \pi$
 > Por lo tanto, $V = \pi$.
 >

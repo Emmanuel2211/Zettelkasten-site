@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Monotonía)
+>
 > Sea $f: I \to  \mathbb{R}$, y sean $x,y \in  I$,
 > - $f$ es **creciente** si $x < y \implies  f(x) \leq  f(y)$
 > - $f$ es **decreciente** si $x < y \implies  f(x) \geq f(y)$
@@ -20,6 +21,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (Monotonía Estricta)
+>
 > Sea $f: I\to \mathbb{R}$ una funcion definida en un intervalo $I \subseteq \mathbb{R}$. Decimos que $f$ **es estrictamente creciente en** $I$ si para todo $x,y \in I$ se cumple que
 > $$
 > x < y \implies f(x) < f(y)
@@ -35,6 +37,7 @@ cssclasses:
 La primera derivada nos habla de la tasa de cambio y la dirección de la curva.
 
 > [!theorem] **Teorema.** (Criterio de Monotonia)
+>
 > Sea $f: I\to \mathbb{R}$ una función continua en el intervalo cerrado $I = [a,b]$ y derivable en el intervalo abierto $(a,b)$.
 > - Si $f'(x) > 0$ para todo $x \in (a,b)$, entonces $f$ es estrictamente creciente en $I$.
 > Analogamente, 
@@ -46,6 +49,7 @@ El recíproco es falso.
 
 
 > [!theorem] **Teorema.** (Teorema de Fermat) (Condición para extremos relativos)
+>
 > Si $f$ tiene un extremo local ($\max$ o $\min$) en un punto $c$ de su dominio, y $f$ es derivable en $c$, entonces obligatoriamente $f'(c) = 0$. 
 > Y a $c$ se le llama **punto crítico**.
 

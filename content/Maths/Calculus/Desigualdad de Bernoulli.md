@@ -14,6 +14,7 @@ materia:
 TARGET DECK: Calculo
 
 > [!theorem] **Teorema.** Desigualdad de Bernoulli
+>
 > Si $x \geq -1$ y $n \in \mathbb{N}$
 > $$
 > (1+x)^n \geq 1 +nx

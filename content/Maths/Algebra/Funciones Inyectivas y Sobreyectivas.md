@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definción.** (Inyectividad)
+>
 > Sea una función $f: A\to B$, se dice que $f$ es **inyectiva** o **uno a uno** si y sólo si
 > $$
 > \forall x_{1},x_{2} \in A (x_{1} \neq x_{2} \implies f(x_{1}) \neq f(x_{2}))
@@ -28,6 +29,7 @@ Es útil intepretar la definición de *inyectividad* como se interpreta la segun
 
 
 > [!theorem] **Definción.** (Sobreyectividad)
+>
 > Sea $f$ una función, se dice que $f$ es **sobre** o **suprayectiva** si y sólo si
 > $$
 > \forall y \in B \ \exists x \in A \ ( f(x) = y)

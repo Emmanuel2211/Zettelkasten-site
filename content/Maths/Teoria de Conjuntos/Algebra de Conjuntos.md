@@ -17,6 +17,7 @@ cssclasses:
 Definimos la **unión, intersección, diferencia**, el **complemento** y la **diferencia simétrica**. Denotamos $U$ al conjunto universal.
 
 > [!theorem] **Definición.** 
+>
 > Sean $A,B$ conjuntos,
 > Recoradando la contención: $A \subseteq B \iff \forall x(x \in A \implies x \in B)$
 > $$
@@ -45,6 +46,7 @@ Definimos la **unión, intersección, diferencia**, el **complemento** y la **di
 A partir de aquí, podemos desarrollar resultados de conjuntos como
 
 > [!theorem] **Teorema.** (Propiedades de Conjuntos)
+>
 > Sean $A,B,C, X$ conjuntos tales que $A,B,C \subseteq X$, entones.
 > - Idempotencia: $A \cup A = A = A \cap A$
 > - Conmutatividad: $A\cup B = B\cup A$ y $A \cap B = B \cap A$
@@ -129,6 +131,7 @@ A partir de aquí, podemos desarrollar resultados de conjuntos como
 > 
 
 > [!proof]- **Proof.** 
+>
 > dah 
 
 Con esas propiedades deebería de bastar hasta ahora...

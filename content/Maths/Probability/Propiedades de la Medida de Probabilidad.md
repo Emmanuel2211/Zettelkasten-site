@@ -15,6 +15,7 @@ Desarrollamos más pripiedades a partir de los teoremas básicos y los axiomas..
 
 
 > [!theorem] **Teorema.** (Propiedades de $P$)
+>
 > 1.
 > $$
 > P[A \vartriangle C] \leq  P[A \vartriangle B] + P[B \vartriangle C]

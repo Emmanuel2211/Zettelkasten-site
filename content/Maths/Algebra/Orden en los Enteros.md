@@ -13,6 +13,7 @@ cssclasses:
 # Orden en $\mathbb{Z}$
 
 > [!theorem] **Definición.** (Orden en $\mathbb{Z}$)
+>
 > Sean $a,b \in \mathbb{Z}$ decimos que $b$ **es mayor que** $a$ si
 > $$
 > b -a \in \mathbb{N} \setminus \{ 0 \}
@@ -24,12 +25,14 @@ cssclasses:
 > $$
 
 > [!observation]- **Observación.**
+>
 > 1. Sea $a \in \mathbb{Z}$, $a>0 \iff a \in \mathbb{N}\setminus \{ 0 \}$
 > 2. Sea $a \in \mathbb{Z}$, $a \geq 0 \iff a \in \mathbb{N}$
 
 Definido el orden, damos paso a otra propiedade importante de $\mathbb{Z}$
 
 > [!theorem] **Teorema.** (Dominio Entero Ordenado $\mathbb{Z}$)
+>
 > En $\mathbb{Z}$ el subconjunto de $\mathbb{N} \setminus \{  0 \}$ cumple lo siguiente:
 > 1. $\forall a , b \in \mathbb{N} \setminus \{  0 \} \quad a + b \in \mathbb{N} \setminus \{  0 \}$
 > 2. $\forall a,b \in \mathbb{N} \setminus \{  0 \}, \quad  ab \in \mathbb{N} \setminus \{  0 \}$
@@ -41,10 +44,12 @@ Definido el orden, damos paso a otra propiedade importante de $\mathbb{Z}$
 
 
 > [!proof]- **Proof.** 
+>
 > $(i)$ y $(ii)$ se dan por las propiedades de $\mathbb{N}$.
 > $(iii)$ ya se probo!
 
 > [!theorem] **Teorema.** (Propiedades $<  \ \mathbb{Z}$)
+>
 > Sean $a,b,c,d \in \mathbb{Z}$
 > 1. Tenemos que $a^{2} \geq 0$.
 > 2. Transitividad:
@@ -73,6 +78,7 @@ Definido el orden, damos paso a otra propiedade importante de $\mathbb{Z}$
 Muchas de estas demostraciones, en especial de orden, pueden ser descritas geometricamente. Eso ayuda mucho para el desarrollo geometrico-algebraico de justificaciones.
 
 > [!proof]- **Proof.** 
+>
 > Sean $a,b,c \in \mathbb{Z}$
 > 1. Supongamos $a < b \land b < c$ **P.D.** $a < c$
 > Como $a<b$, ent. $b-a \in \mathbb{N} \setminus \{ 0 \}$

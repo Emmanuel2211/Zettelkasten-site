@@ -12,11 +12,13 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Proposición 47, Libro I.** (Teorema de Pitágoras)
+>
 > Sea $\triangle ABC$, el cuadrado de su hipotenusa es igual a la suma de los cuadrados de sus catetos.
 
 > [!proof]- **Proof.** 
 
 > [!theorem] **Proposición 48, Libro I** (Reciproco de Pitágoras)
+>
 > Sea $\triangle ABC$, si cuadrado de uno de sus lados es igual a la suma de los cuadrados de los otros dos lados, entonces el ángulo entre estos dos lados es $\perp$.
 
 > [!proof]- **Proof.** 

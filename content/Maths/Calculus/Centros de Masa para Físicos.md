@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!tip]+ **Idea.**
+>
 > Supongamos que tenemos $n$ cuerpos $X = \{ x_{1},\dots,x_{n} \}$ con masas asociadas $M = \{ m_{1},\dots,m_{n} \}$, cuerpos alineados.
 > El momento de masa respecto al origen representa, el **torque** o fuerza de rotación de un sistema alrededor de un eje o en este caso, un punto (*el origen*). Al ser justo, de un sistema, donde diferentes fuerzas (*los pesos $m_{i}g$*) son aplicadas, se calcula el "*total*" de la fuerza aplicada al sistema de la siguiente forma; el momento de masa es el torque total dividido entre $g$.
 > El centroide representa dónde está el centro de masa, dadas todas las masas, en tal sistema.
@@ -20,6 +21,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (Momento)
+>
 > Dado lo anterior, el **momento** o **momento de masa** de $(X, M)$ respecto al origen es:
 > $$
 > \sum_{i=1}^{n} m_{i}x_{i}
@@ -31,6 +33,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (Centroide o centro de masa)
+>
 > El **centroide** de $(X, M)$ denotado $\bar{x}$ es:
 > $$
 > \bar{x} = \frac{\displaystyle \sum_{i=1}^{n} m_{i}x_{i}}{\displaystyle \sum_{i=1}^{n} m_{i}}
@@ -49,12 +52,14 @@ $$
 $$
 
 > [!observation]+ **Observación.**
+>
 > La suma con doble índice anterior es $= 0$, pues observamos que $\forall i,k \in \{ 1,\dots,n \}$, por ejemplo, si $i = 1, k= 2 \implies m_{1}m_{2}(x_{1}-x_{2})$, y si lo invertimos,
 > $i = 2, k =1 \implies  m_{2}m_{1}(x_{2}-x_{1})$, lo cual es lo mismo que el anterior pero con signo opuesto, si lo sumamos se cancela. Y si $i = k$, el término es $m_{i}^{2} \cdot 0 = 0$.
 >
 > **NOTA**. Los físicos dicen que un sistema está equilibrado si se sostiene justo desde su centroide.
 
 > [!note]- Otra forma (más directa)
+>
 > Por la definición de $\bar{x}$, $\displaystyle \bar{x} \sum_{i=1}^{n} m_{i} = \sum_{i=1}^{n} m_{i}x_{i}$, ent.
 > $$
 > \sum_{i=1}^{n} m_{i}(x_{i} - \bar{x}) = \sum_{i=1}^{n} m_{i}x_{i} - \bar{x}\sum_{i=1}^{n} m_{i} = \sum_{i=1}^{n} m_{i}x_{i} - \sum_{i=1}^{n} m_{i}x_{i} = 0
@@ -89,6 +94,7 @@ pues toda la masa del tramo está en $\xi_{i}$.
 Obs. que el lado derecho de la ecuación es una [[Sumas de Riemann|suma de Riemann]] para $\rho(x)\cdot x$.
 
 > [!theorem] **Definición.** (Momento respecto al origen)
+>
 > El momento de una varilla sobre $[a,b]$ con densidad $\rho$ continua es:
 > $$
 > \int_{a}^{b} x \rho(x) \, dx
@@ -96,12 +102,14 @@ Obs. que el lado derecho de la ecuación es una [[Sumas de Riemann|suma de Riema
 > de esta forma, el momento depende de la densidad.
 
 > [!theorem] **Definición.** (Centroide caso Continuo)
+>
 > El centroide de una varilla es,
 > $$
 > \bar{x} = \frac{\displaystyle \int_{a}^{b} x \rho(x) \, dx}{ \displaystyle \int_{a}^{b} \rho(x) \, dx}
 > $$
 
 > [!observation]+ **Observación.**
+>
 > Si $\rho = k$, i.e. es constante, $\displaystyle \bar{x} = \frac{\displaystyle \rho \int_{a}^{b} x \, dx}{\displaystyle  \rho \int_{a}^{b}  \, dx} = \frac{\displaystyle \rho \left(\frac{b^{2}-a^{2}}{2}  \right)}{\rho (b-a)} = \frac{b+a}{2}$ (dif. de cuadrados)
 > Lo cual tiene sentido, el centroide de una varilla con densidad constante, es el punto medio.
 
@@ -145,6 +153,7 @@ $$
 Como $\xi_{i}$ y $c_{i}$ no son necesariamente el mismo punto, estas no son exactamente sumas de Riemann; sin embargo, por [[Continuidad Uniforme|continuidad uniforme]] convergen a las integrales siguientes.
 
 > [!theorem] **Definición.** (Momento de función paramétrica)
+>
 > Los momentos de una varilla dada por $\gamma(t) = \left( \gamma_{1}(t), \gamma_{2}(t)  \right)$, $t \in [a,b]$, de clase $C^{1}$ son:
 > $$
 > \begin{align}
@@ -154,6 +163,7 @@ Como $\xi_{i}$ y $c_{i}$ no son necesariamente el mismo punto, estas no son exac
 > $$
 
 > [!theorem] **Definición.** (Centroide paramétrico)
+>
 > Las coordenadas del centroide de una curva dada por $\gamma(t) = (\gamma_{1}(t), \gamma_{2}(t))$ son, donde $\displaystyle M_{T} = \int_{a}^{b} \rho(t)\sqrt{(\gamma_{1}'(t))^{2} + (\gamma_{2}'(t))^{2}} \, dt$ es la masa total
 > $$
 > \begin{align}
@@ -184,6 +194,7 @@ $$
 $$
 
 > [!note]- Justificación
+>
 > Cada franja vertical de ancho $dx$ tiene masa $\propto f(x)\,dx$ y su centroide está a la altura $\frac{f(x)}{2}$. Ent. $\displaystyle M_{x} = \int_{a}^{b} \frac{f(x)}{2} f(x)\,dx$, y dividiendo entre $A$ se obtiene $\bar{y}$.
 
 Ver también [[Centros de Masa para Actuarios]], donde se observa que $\operatorname{E}[X] = \bar{x}$.

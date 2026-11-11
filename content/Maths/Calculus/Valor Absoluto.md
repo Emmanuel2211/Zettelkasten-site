@@ -16,6 +16,7 @@ La función valor absoluto describe la *estructura metrica* de $\mathbb{R}$
 
 
 > [!theorem] **Def.** Valor absoluto $\mathbb{Z}$
+>
 > El **valor absoluto** de $a \in \mathbb{R}$, denotado por $|a|$, se define por la regla
 > $$
 > \lvert a \rvert = \begin{cases}
@@ -26,6 +27,7 @@ La función valor absoluto describe la *estructura metrica* de $\mathbb{R}$
 
 
 > [!observation]+ **Observación.**
+>
 > Sea $a \in \mathbb{Z}$,
 > 1. $\lvert a \rvert = \lvert -a \rvert$
 > 2. $a \leq \lvert a \rvert$ y $-a \leq \left| a \right|$
@@ -34,6 +36,7 @@ La función valor absoluto describe la *estructura metrica* de $\mathbb{R}$
 Se desarrollan propiedades a partir de las propiedades de *orden* en $\mathbb{Z}$
 
 > [!theorem] **Teorema.**  (Más propiedades del Valor Absoluto)
+>
 > Sean $a,b \in \mathbb{Z}$.
 > 1. $\lvert a \rvert\geq 0$, más aún, $\lvert  a \rvert = 0 \iff a =0$.
 > 2. $\lvert ab \rvert = \lvert a \rvert\lvert b \rvert$
@@ -41,6 +44,7 @@ Se desarrollan propiedades a partir de las propiedades de *orden* en $\mathbb{Z}
 > 4. $\left| \left| a \right| - \left| b \right| \right| \leq \left| a-b \right|$
 
 > [!proof]- **Proof.** 
+>
 > Sean $a,b \in \mathbb{Z}$
 > 1. **PD.** $\lvert a \rvert \geq 0$, por def.
 > **PD.** $\lvert a \rvert = 0 \iff a = 0$.

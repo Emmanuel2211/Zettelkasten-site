@@ -37,12 +37,14 @@ $$
 $$
 
 > [!observation]+ **Observación.**
+>
 > La regla de los trapecios es el promedio de las [[Sumas de Riemann|sumas de Riemann]] por la izquierda y por la derecha:
 > $$
 > \sum_{k=0}^{n-1} \frac{f(x_{k}) + f(x_{k+1})}{2} \cdot \frac{b-a}{n}
 > $$
 
 > [!Info]+ **Nota!**
+>
 > Útil para funciones que no se vean monótonas con muchos chipotes en la gráfica de la función.
 
 Ver también [[Metodos numericos de Integracion]].

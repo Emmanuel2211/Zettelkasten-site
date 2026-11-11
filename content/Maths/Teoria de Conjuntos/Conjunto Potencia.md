@@ -8,9 +8,11 @@ alias:
 - [ "power axiom" ]
 ---
 > [!theorem] **Definición.** (Conjunto Potencia)
+>
 > $\mathcal{P}(A)$
 
 > [!theorem] **Def.** (Subconjunto)
+>
 > Un conjunto $U$ es un **subconjunto** de $X$, denotado $U \subset X$ si
 > $$
 > \forall z ( z \in U \implies z \in X)
@@ -26,6 +28,7 @@ es llamado **conjunto potencia**.
 De este axioma se desarrolla otras nociones básicas de la teoría de conjuntos.
 
 > [!theorem] **Def.** (Producto)
+>
 > El **producto** de $X$ y $Y$ es el conjunto de pares $(x,y)$ tales que $x \in X$ y $y \in Y$:
 > $$
 > X \times Y = \{  (x,y): x \in X \land y \in Y \}

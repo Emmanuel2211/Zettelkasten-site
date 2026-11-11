@@ -16,6 +16,7 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > No importa qué tan cerca de $L$ nos pidan estar, a partir de cierto término la sucesión ya nunca se sale.
 
 > [!theorem] **Definición.** (Sucesión Convergente)
+>
 > Sea $\{ a_{n} \}$ una sucesión y sea $L \in \mathbb{R}$. Decimos que $\{ a_{n} \}$ **converge** a $L$ sii
 > $$
 > \forall \varepsilon > 0 \ \exists N \in \mathbb{N} \text{ tal que } \forall n \geq N \ \left( \lvert a_{n} - L \rvert < \varepsilon \right)
@@ -26,6 +27,7 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > Si $L = 0$, decimos que $\{ a_{n} \}$ es **nula**.
 
 > [!tip]- **Idea.** (El uso de $\varepsilon$)
+>
 > Por propiedades de valor absoluto,
 > $$
 > \lvert a_{n} - L \rvert < \varepsilon \iff L - \varepsilon < a_{n} < L + \varepsilon \iff a_{n} \in (L-\varepsilon, L+\varepsilon)
@@ -36,11 +38,13 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > Mientras más angosta sea la banda, más tarde suele empezar a atrapar: $N$ depende de $\varepsilon$, y a veces se escribe $N = N(\varepsilon)$.
 
 > [!observation]+ **Observación.**
+>
 > 1. Si $N$ funciona para $\varepsilon$, ent. cualquier $N' \geq N$ también funciona, y $N$ también funciona para cualquier $\varepsilon' > \varepsilon$. Por eso basta encontrar **algún** $N$, no el más pequeño.
 > 2. $a_{n} \to L$ sii para todo $\varepsilon > 0$, fuera de $(L-\varepsilon,L+\varepsilon)$ hay solo una cantidad **finita** de términos.
 > 3. Cambiar, quitar o agregar una cantidad finita de términos no afecta la convergencia ni el límite: solo importa la *cola* de la sucesión (ver [[Subsucesiones]]).
 >
 > > [!proof]- **Proof.** (2)
+> >
 > > $(\implies)$ Sea $\varepsilon > 0$, por def. existe $N$ tq. $\forall n \geq N$ $a_{n} \in (L-\varepsilon,L+\varepsilon)$. Ent. los únicos términos que pueden quedar fuera son $a_{1},\dots,a_{N-1}$, que son finitos.
 > > $(\impliedby)$ Sea $\varepsilon > 0$ y sea $F = \{ n \in \mathbb{N} \mid a_{n} \notin (L-\varepsilon,L+\varepsilon) \}$, que por hip. es finito. Si $F = \varnothing$ tomamos $N = 1$; si no, tomamos $N = \max F + 1$. En ambos casos, si $n \geq N$, ent. $n \notin F$, i.e. $\lvert a_{n} - L \rvert < \varepsilon$.
 > > $$
@@ -50,12 +54,14 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 La siguiente proposición dice que basta saber trabajar con sucesiones que tienden a $0$:
 
 > [!theorem] **Proposición.**
+>
 > Sea $\{ a_{n} \}$ una sucesión y $L \in \mathbb{R}$. Son equivalentes:
 > 1. $a_{n} \to L$
 > 2. $(a_{n} - L) \to 0$
 > 3. $\lvert a_{n} - L \rvert \to 0$
 
 > [!proof]- **Proof.**
+>
 > Para todo $n \in \mathbb{N}$,
 > $$
 > \lvert a_{n} - L \rvert = \lvert (a_{n} - L) - 0 \rvert = \big\lvert \lvert a_{n} - L \rvert - 0 \big\rvert
@@ -70,6 +76,7 @@ La siguiente proposición dice que basta saber trabajar con sucesiones que tiend
 Para probar que $a_{n} \to L$ con la definición, el trabajo casi siempre es el mismo: **acotar** $\lvert a_{n} - L \rvert$ por algo sencillo que dependa de $n$ (como $\frac{c}{n}$), y luego hacerlo menor que $\varepsilon$ con la Propiedad Arquimediana<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>. El *borrador* es donde encontramos $N$; la *prueba* lo presenta limpio.
 
 > [!example]- **Ejemplo 1.** (Sucesión constante)
+>
 > Sea $c \in \mathbb{R}$ y $a_{n} = c$ para todo $n$. Ent. $a_{n} \to c$.
 >
 > **Proof.** Sea $\varepsilon > 0$. Tomamos $N = 1$. Ent. $\forall n \geq 1$, $\lvert a_{n} - c \rvert = \lvert c - c \rvert = 0 < \varepsilon$.
@@ -78,6 +85,7 @@ Para probar que $a_{n} \to L$ con la definición, el trabajo casi siempre es el 
 > $$
 
 > [!example]- **Ejemplo 2.** ($\frac{1}{n} \to 0$)
+>
 > **Borrador.** Queremos $\left\lvert \frac{1}{n} - 0 \right\rvert = \frac{1}{n} < \varepsilon$, i.e. $n > \frac{1}{\varepsilon}$. La Prop. Arquimediana nos da un $N$ con $\frac{1}{N} < \varepsilon$, y si $n \geq N$, ent. $\frac{1}{n} \leq \frac{1}{N}$.
 >
 > **Proof.** Sea $\varepsilon > 0$. Por la Prop. Arquimediana existe $N \in \mathbb{N}$ tq. $\frac{1}{N} < \varepsilon$. Ent. $\forall n \geq N$,
@@ -88,9 +96,11 @@ Para probar que $a_{n} \to L$ con la definición, el trabajo casi siempre es el 
 > \therefore \ \lim_{ n \to \infty } \frac{1}{n} = 0 \tag*{$\blacksquare$}
 > $$
 > > [!observation]- **Observación.**
+> >
 > > Con el mismo $N$ se tiene $\frac{1}{n^{p}} \to 0$ para todo $p \in \mathbb{N}^{+}$ y $\frac{(-1)^{n}}{n} \to 0$, pues $\frac{1}{n^{p}} \leq \frac{1}{n}$ y $\left\lvert \frac{(-1)^{n}}{n} \right\rvert = \frac{1}{n}$.
 
 > [!example]- **Ejemplo 3.** ($\frac{2n+1}{n+3} \to 2$)
+>
 > **Borrador.** Simplificamos la distancia:
 > $$
 > \left\lvert \frac{2n+1}{n+3} - 2 \right\rvert = \left\lvert \frac{2n+1-2n-6}{n+3} \right\rvert = \frac{5}{n+3} < \frac{5}{n}
@@ -111,6 +121,7 @@ Para probar que $a_{n} \to L$ con la definición, el trabajo casi siempre es el 
 > $$
 
 > [!example]- **Ejemplo 4.** ($\sqrt{ n+1 } - \sqrt{ n } \to 0$)
+>
 > Aunque $\sqrt{ n+1 }$ y $\sqrt{ n }$ crecen sin cota, su diferencia se va a $0$.
 >
 > **Borrador.** Racionalizamos:
@@ -131,6 +142,7 @@ Para probar que $a_{n} \to L$ con la definición, el trabajo casi siempre es el 
 > $$
 
 > [!example]- **Ejemplo 5.** ($\frac{n^{2}+1}{2n^{2}-3} \to \frac{1}{2}$, cuando la cota solo vale para $n$ grande)
+>
 > **Borrador.**
 > $$
 > \left\lvert \frac{n^{2}+1}{2n^{2}-3} - \frac{1}{2} \right\rvert = \left\lvert \frac{2n^{2}+2 - 2n^{2} + 3}{2(2n^{2}-3)} \right\rvert = \frac{5}{2(2n^{2}-3)}
@@ -158,9 +170,11 @@ Para probar que $a_{n} \to L$ con la definición, el trabajo casi siempre es el 
 La definición dice "**el** límite", pero eso hay que demostrarlo: una sucesión no puede acercarse a dos números a la vez.
 
 > [!theorem] **Teorema.** (Unicidad del Límite)
+>
 > Sea $\{ a_{n} \}$ una sucesión. Si $a_{n} \to L$ y $a_{n} \to M$, ent. $L = M$.
 
 > [!proof]- **Proof.**
+>
 > **Borrador.** Si $L \neq M$, tomamos bandas de radio $\varepsilon = \frac{\lvert L-M \rvert}{2}$ alrededor de $L$ y de $M$; estas bandas no se tocan. Pero a partir de cierto $n$ la sucesión tendría que estar en **ambas** a la vez.
 >
 > **Proof.** Sup. que $L \neq M$ y sea $\varepsilon = \frac{\lvert L-M \rvert}{2} > 0$.
@@ -184,9 +198,11 @@ La definición dice "**el** límite", pero eso hay que demostrarlo: una sucesió
 Recordemos que $\{ a_{n} \}$ está **acotada** sii $\exists k \in \mathbb{R}^{+}$ tq. $\forall n \in \mathbb{N} \ \lvert a_{n} \rvert \leq k$ (ver [[Sucesiones Acotadas]]).
 
 > [!theorem] **Proposición.**
+>
 > Toda sucesión convergente está acotada.
 
 > [!proof]- **Proof.**
+>
 > **Borrador.** Con $\varepsilon = 1$, a partir de $N$ todos los términos están en $(L-1,L+1)$, ent. $\lvert a_{n} \rvert < \lvert L \rvert + 1$. Antes de $N$ solo hay una cantidad finita de términos, y un cjto. finito siempre tiene máximo.
 >
 > **Proof.** Sup. que $a_{n} \to L$. Para $\varepsilon = 1$ existe $N \in \mathbb{N}$ tq. $\forall n \geq N$ $\lvert a_{n} - L \rvert < 1$. Ent. $\forall n \geq N$,
@@ -205,6 +221,7 @@ Recordemos que $\{ a_{n} \}$ está **acotada** sii $\exists k \in \mathbb{R}^{+}
 > $$
 
 > [!theorem] **Corolario.**
+>
 > Si $\{ a_{n} \}$ **no** está acotada, ent. $\{ a_{n} \}$ no converge.
 
 El recíproco de la proposición es falso: estar acotada es **necesario** pero **no suficiente** para converger. El contraejemplo clásico es $\{ (-1)^{n} \}$, que está acotada ($k = 1$) pero no converge, como veremos abajo. Sin embargo, si además pedimos que sea monótona, sí converge (ver [[Criterios de Convergencia de Sucesiones]] y [[Sucesiones Monotonas]]).

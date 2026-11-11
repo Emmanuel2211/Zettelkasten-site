@@ -4,6 +4,7 @@ title: "Función de Dirichlet"
 publish: true
 ---
 > [!theorem] **Def.** (Función de Dirichlet)
+>
 > $$
 > D(x) = \begin{cases}
 > 0,  & x \in \mathbb{I} \lor x = 0 \\

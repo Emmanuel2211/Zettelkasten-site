@@ -15,6 +15,7 @@ cssclasses:
 Al igual que en un campo $\mathbb{F}$<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>, veremos que propiedades se desprenden a partir de los "axiomas" del esp. vect. Enlistaremos algunas y procederemos con sus demostraciones constructivamente, repetando el orden en como se enuncian.
 
 > [!theorem] **Teorema.** (Propiedades de $V$)
+>
 > Sea $V$ un esp. vect. sobre un campo $\mathbb{F}$,
 > 1. Unicidad del neutro $+$: Si $\bar{0} \in V$ y $0' \in V$ son tales
 > $$
@@ -45,6 +46,7 @@ Al igual que en un campo $\mathbb{F}$<sup><a href="#user-content-fn-inline-1" id
 
 
 > [!proof]- **Proof.** $(i)$
+>
 > Sean $\bar{0}, 0' \in V$ tal que $\forall x \in V (x+\bar{0}=x)\dots(1)$  y $\forall x \in V(x+0' = x)\dots (2)$
 > Como $(1)$ se cumple y $0' \in V$, $0'+\bar{0}=0'$.
 > Como $(2)$ se cumple y $\bar{0}\in V$, $\bar{0}+0' = \bar{0}$.
@@ -54,6 +56,7 @@ Al igual que en un campo $\mathbb{F}$<sup><a href="#user-content-fn-inline-1" id
 > $$
 
 > [!proof]- **Proof.** $(ii)$
+>
 >  Sean $x,y,z \in V$ tales que $x + z = y + z$. Existe un elemento $v \in V$ tal que $z + v = 0$. Luego, 
 > $$
 > \begin{align}
@@ -67,6 +70,7 @@ Al igual que en un campo $\mathbb{F}$<sup><a href="#user-content-fn-inline-1" id
 Que pasa con el reciproco del teorema-propiedad $(ii)$ Sea da por (VS0), que dice que $+$ es función.
 
 > [!proof]- **Proof.** $(iii)$
+>
 > de dos formas, hagamos las dos cada una usando los dos teoremas anteiores.
 
 Gracias al teorema-propiedad $(iii)$ le damos una notacion única al inverso:
@@ -78,6 +82,7 @@ $$
 
 
 > [!proof]- **Proof.** $(iv)$
+>
 > 1. Sea $x \in V$. **P.D.**  $0 \cdot x = \bar{0}$
 
 

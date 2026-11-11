@@ -76,6 +76,7 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - `fix_folder_note_links`: un *folder note* como `Maths/Algebra/Algebra.md` se publica como `maths/algebra/index`. Por un bug de la resolución "shortest" de Quartz, los `[[Algebra]]` quedaban rotos; esta función los reescribe a `[[Maths/Algebra/index|Algebra]]`.
   - `fix_raw_html`: dentro del HTML crudo convierte `<span class="math">` en `math-inline` y `<div class="math">` en `math-display`, que son las únicas clases que MathJax reconoce al compilar. También pone una ruta absoluta en `<img src>`.
   - `fix_math_in_callouts`: agrega el `> ` que falta en las líneas de un `$$…$$` dentro de un callout.
+  - `fix_nested_callout_titles`: agrega una línea `>` vacía después del encabezado de cada callout. El plugin OFM ya lo hace, pero su regex solo reconoce un `>` en la columna 0. Por eso, en callouts anidados (`> > [!proof]`) o con un espacio antes del `>`, el cuerpo se pegaba al título.
   - `h1_to_title`: el `# H1` inicial pasa a ser el `title:` de la página. No lo hace si el H1 lleva `$ [ ] < >` o comillas invertidas.
   - `add_modified_date`: escribe `modified:` con el mtime real del archivo.
   - **TikZ** (```tikz): se compila con `latex` + `dvisvgm --no-fonts --exact-bbox`, usando el driver `pgfsys-dvisvgm.def`.

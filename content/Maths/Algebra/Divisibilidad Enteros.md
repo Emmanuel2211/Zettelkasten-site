@@ -13,6 +13,7 @@ cssclasses:
 # Divisivilidad $\mathbb{Z}$
 
 > [!theorem] **Definición.** (Criterio Divisibilidad)
+>
 > Sean $a,b \in  \mathbb{Z}$, decimos que $b$ **divide a** $a$, o que $b$ **es factor de** $a$, o que $a$ **es multiplo de** $b$, o que $a$ es **divisible entre** $b$, si para algun $q \in  \mathbb{Z}$
 > $$
 > a = bq
@@ -20,12 +21,14 @@ cssclasses:
 > **Notación.** $b \mid  a$, o $b \not\mid  a$ si $b$ no divide $a$.
 
 > [!observation]+ **Observación.**
+>
 > Si $a = 0$ tenemos que $b \mid  0$, es decir, $0 = b\cdot q , \quad  q \in  \mathbb{Z}$.
 > Además, $b$ podría ser cualquier entero, Ent. $b\mid 0 , \quad \forall  b \in  \mathbb{Z}$
 > 
 
 
 > [!theorem] **Proposición.** 
+>
 > Sean $a,b \in  \mathbb{Z}$, $u,v \in \mathbb{Z}$ unidades.
 > $$
 > b \mid a \iff ub \mid va
@@ -35,6 +38,7 @@ cssclasses:
 Lo probamos de forma generalizada para que funcione para Dominios Enteros en general.
 
  > [!proof]- **Proof.**
+ >
  > Sean $a,b \in  \mathbb{Z}$, $u,v \in \mathbb{Z}$ unidades
  > $(\implies )$ Supongamos $b \mid  a$.
  > **P.D.** $ub \mid va$
@@ -68,15 +72,18 @@ Lo probamos de forma generalizada para que funcione para Dominios Enteros en gen
 
 
 > [!theorem] **Corolario.** 
+>
 > $$
 > b\mid a \iff \left| b \right|\mid  \left| a \right|
 > $$
 
 
 > [!theorem] **Proposición.**
+>
 > Sean $a,b \in  \mathbb{Z}$. Si $b\mid  a$ y $a \mid  b$, entonces $a$ y $b$ son asociados, es decir $a = ub$ con $u \in  \mathbb{Z}$ unidad.
 
 > [!proof]- **Proof.**
+>
 > Sea $a,b \in  \mathbb{Z}$. Sup. $b \mid  a$ y $a \mid b$.
 > **P.D.** $a$ y $b$ son asociados.
 > $(1)$ Como $b \mid a$, ent. $a = bq, \ q \in  \mathbb{Z}$.
@@ -103,10 +110,12 @@ Lo probamos de forma generalizada para que funcione para Dominios Enteros en gen
 ---
 
 > [!theorem] **Proposición.**
+>
 > Sean $a,b \in  \mathbb{Z}$ con $a\neq 0$, si $b \mid a$, ent $\left| b \right| \leq \left| a \right|$
 
 
 > [!proof]+ **Proof.**
+>
 > Sean $a,b \in  \mathbb{Z}$, con $a \neq 0$. Supongamos $b \mid  a$.
 > **PD.** $\left| b \right|\leq  \left| a \right|$
 > Como $b \mid  a$, ent. $a = bq, \quad q \in  \mathbb{Z} \ \ (1)$ .
@@ -130,6 +139,7 @@ Lo probamos de forma generalizada para que funcione para Dominios Enteros en gen
 
 
 > [!theorem] **Teorema.** (Propiedades Básicas)
+>
 > Sean $a,b,c \in  \mathbb{Z}$. 
 > 1. $a \mid  a$.
 > 2. Si $a \mid b$ y $b \mid c$, ent. $a \mid  c$.
@@ -139,6 +149,7 @@ Lo probamos de forma generalizada para que funcione para Dominios Enteros en gen
 > 6.  Si $b\mid a + c, \ b \mid  a$, ent. $b \mid c$.
 
 > [!proof]- **Proof.**
+>
 > 1. $a = 1\cdot a$ con $1 \in  \mathbb{Z}$
 > 2. Sup $a \mid  b$ y $b \mid  c$, es decir $b = aq$ y $c = b \hat{q}$ con $q, \hat{q} \in  \mathbb{Z}$.
 > ent. $c  = (aq) \hat{q} = a (q \hat{q})$ con $q \hat{q} \in  \mathbb{Z}$
@@ -173,15 +184,18 @@ Lo probamos de forma generalizada para que funcione para Dominios Enteros en gen
 
 
 > [!observation]+ **Observación.**
+>
 > Es interesante ver que en $(\impliedby)$ de $(v)$, la hipotesis es muy fuerte. En esa demostración podemos ver que hay algún tipo de demostraciones más simples de lo que parecen, que guardan en su *hip.* la demostración en sí.
 
 > [!observation]+ **Observación.**
+>
 > Vemos que $(vi)$ es el "reciproco" de $(ii)$ pero con la condición necesaria que $b\mid a$, sino, no se cumple.
 > Y si nos preguntamos en $(v)$, que es $ar + cs$ y si se pueden describir todos los $\mathbb{Z}$ a partir de esa expresión? 
 >
 
 
 > [!theorem] **Definición.** (Combinación Lineal Entera)
+>
 > Sean $a,c \in  \mathbb{Z}$. Una combinación lineal entera de $a$ y $c$ es un elemento de la forma
 > $$
 > as + ct \quad \text{ con } \quad s,t \in \mathbb{Z}

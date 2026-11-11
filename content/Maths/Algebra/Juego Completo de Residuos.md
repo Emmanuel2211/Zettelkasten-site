@@ -12,12 +12,15 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Juego Completo de Residuos)
+>
 > Sea $m \in \mathbb{Z}^{+}$. Un **juego completo de residuos módulo** $m$ es un conjunto formado por exactamente un representante de cada calse de equivalencia módulo $m$.
 
 > [!observation]+ **Observación.**
+>
 > Todo juego completo de residuos módulo $m$ tiene exactamente $m$ elementos.
 
 > [!example]+ Ejemplo.
+>
 > $m = 8$
 > Un juego completo de residuos módulo $8$ es
 > $$
@@ -40,9 +43,11 @@ cssclasses:
 
 
 > [!theorem] **Lema.**
+>
 > Sea $m \in \mathbb{Z}^{+}$, $a \in \mathbb{Z}$. Tenemos que $(a,m) = 1$ si y sólo si $(b,m) = 1$ para toda $b \in \bar{a}$.
 
 > [!proof]+ **Proof.**
+>
 > $m \in \mathbb{Z}^{+}$, $a \in \mathbb{Z}$, $b \in \bar{a}$
 > Como $b \in \bar{a}$ tenemso que $b \equiv a \pmod{m}$ y así $b - a = mq$ con $q \in \mathbb{Z}$. Entonces $b = a + mq$. Por un lema previo al algoritmo de Euclides,
 > $$
@@ -51,9 +56,11 @@ cssclasses:
 > Asíi, $(a,m) =1$ si y sólo si $(b,m) =1$ Q.E.D.
 
 > [!theorem] **Definición.** (Juego Reducido de Reciduos)
+>
 > Sea $m \in \mathbb{Z}^{+}$. Un **juego reducido de residuos módulo** $m$ es una conjunto formado por exactamente un representante de cada clase de equivalencia módulo $m$ formada por primos relativos por $m$.
 
 > [!observation]+ **Observación.**
+>
 > Todo juego **reducido** de residuos módulo $m$ tiene tantos elementos como clases de residuo módulo $Mates$ formadas por primos relativos con $m$.
 
 

@@ -16,6 +16,7 @@ cssclasses:
 Una función uniparamétrica es $f: I \subseteq \mathbb{R}\to \mathbb{R}^{2}$ (con $I$ un intervalo)
 
 > [!example]- Ejemplos. 
+>
 > 1. Dada $f: [a,b]\to \mathbb{R}$ continua, su gráfica es una curva uniparamétrica.
 > La gráfica se puede ver mediante: $t \mapsto (t,f(t))$ en $t \in  [a,b]$.
 >
@@ -69,12 +70,14 @@ en donde $c_{k} \in [x_{k}, x_{k+1}]$. Lo anterior es una [[Sumas de Riemann|sum
 
 
 > [!theorem] **Definición.** (Longitud de una Gráfica de una función)
+>
 > Dada $f:[a,b]\to \mathbb{R}$ con derivada continua, definimos **la longitud de la gráfica de** $f$, denotada también $\ell_{\operatorname{graf}(f) }$, como
 > $$
 > \operatorname{long}(\operatorname{graf} (f))  = \int_{a}^{b} \sqrt{1+f'(x)^{2}} \, dx
 > $$
 
 > [!example]- Ejemplo.
+>
 > $\square$ Calcula la longitud de la parábola $y = x^{2}$ en el intervalo $[0,1]$, $f:[0,1] \to \mathbb{R}$,
 > $f(x ) = x^{2}$, entonces $\displaystyle \operatorname{long}(\operatorname{graf} (f))  = \int_{0}^{1} \sqrt{1+(2x)^{2}} \, dx$, y ya, resolvemos con sust. trig. ($2x = \tan(\theta)$):
 > $$
@@ -100,6 +103,7 @@ con $c_{k}, d_{k} \in [t_{k}, t_{k+1}]$ (aplicamos el T.V.M. a $f$ y a $g$ por s
 Lo que está dentro de la suma: a medida que la partición sea más pequeña el intervalo $[t_{k},t_{k+1}]$ se aproxima a 0 y $c_{k}, d_{k}$ van a converger al mismo punto; si $f'$ y $g'$ son continuas, por [[Continuidad Uniforme|continuidad uniforme]] la suma converge a la integral siguiente (aunque no sea exactamente una suma de Riemann).
 
 > [!theorem] **Definición.** (Longitud de una curva)
+>
 > Sea $\gamma: [a,b] \to \mathbb{R}^{2}$, la longitud de una curva $t \mapsto (f(t), g(t))$ para $t\in [a,b]$ con $f$ y $g$ de derivada continua es
 > $$
 > \ell_{\gamma}[a,b] := \int_{a}^{b} \sqrt{f'(t)^{2} + g'(t)^{2}} \, dt
@@ -107,6 +111,7 @@ Lo que está dentro de la suma: a medida que la partición sea más pequeña el 
 
 
 > [!example]+ Ejemplo.
+>
 > $\square$ Calcula el perímetro de una circunferencia de radio $r$,
 > $\mathscr{C}_{r} \sim  t \mapsto (r\cos(t), r\sin(t))$, $t \in [0,2\pi]$. Entonces,
 > $$
@@ -116,6 +121,7 @@ Lo que está dentro de la suma: a medida que la partición sea más pequeña el 
 
 
 > [!observation]+ **Observación.**
+>
 > Por def. de norma,
 > $$
 > \left\| (x,y) \right\| = \sqrt{x^{2} + y^{2}}
@@ -127,6 +133,7 @@ Lo que está dentro de la suma: a medida que la partición sea más pequeña el 
 
 
 > [!example]- Ejemplo 2.
+>
 > Calcula el perímetro de una elipse con parámetros $a,b$ centrada en el origen.
 > $t \mapsto ( a\cos(t) , b\sin(t))$, con $t \in  [0,2\pi]$.
 > La integral elíptica es,

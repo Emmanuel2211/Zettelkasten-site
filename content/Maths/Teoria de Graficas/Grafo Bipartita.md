@@ -14,6 +14,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Def.** (Grafo Bipartita)
+>
 > Un **grafo bipartita** es el cuyos vertices pueden ser particionados en dos subconjuntos $X$ y $Y$, tales que cada arista tiene un extremo en cada uno; esa partición $(X,Y)$ es llamada **bipartición** del grafo.
 > 
 > Un **grafo bipartita completo** es un grafo bipartita simple con la bipartición $(X,Y)$, el cual cada vértice de $X$ está unido con cada vértice de $Y$; si $\lvert X \rvert = m$ y $\lvert Y \rvert = n$, tal grafo se denota $K_{m,n}$.

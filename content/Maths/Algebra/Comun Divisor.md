@@ -13,6 +13,7 @@ cssclasses:
   - romana
 ---
 > [!theorem] **Definción.** (Común Divisor)
+>
 > Sean $a,b \in  \mathbb{Z}$, decimos que $c \in  \mathbb{Z}$ es un divisor común de $a$ y $b$ si
 > $$
 > c \mid a \quad \text{ y } \quad c \mid b
@@ -20,6 +21,7 @@ cssclasses:
 >
 
 > [!observation]+ **Observación.**
+>
 > - Siempre existen divisores comunes, por ejemplo el 1.
 > - Si $a\neq 0$ o $b\neq 0$ existe un divisor común que es mayor o igual que los demás.
 > > [!proof]- **Proof.**
@@ -43,6 +45,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (MCD)
+>
 > Sean $a,b \in  \mathbb{Z}$, con $a\neq 0$ o $b \neq 0$, decimos que $g \in  \mathbb{Z}$ es el **máximo común divisor** de $a$ y $b$ si es el mayor de todos los divisores comunes de $a$ y $b$, se denota $(a,b)$ o $(a \  ; b)$ o $\operatorname{mcd} (a,b)$, es decir,
 > $$
 > (a,b) = \max \left\{c \in  \mathbb{Z} \mid c \mid a \text{ y } c \mid b\right\} 
@@ -50,6 +53,7 @@ cssclasses:
 
 
 > [!observation]+ **Observaciones.**
+>
 > $\forall a,b \in  \mathbb{Z}$
 > - Si $a \neq 0$ o $b\neq 0$, existe $(a,b)$. (la Obs. anterior)
 > - Si $a\neq 0$ o $b\neq 0$, se tiene $1 \leq (a,b)$
@@ -57,6 +61,7 @@ cssclasses:
 > - Si solo $a\neq 0$, tenemos $(a,0) = \left| a \right|$
 
 > [!example]+ Ejemplo.
+>
 > Sea $a = 8$ y $b = 12$, y tenemos que $(a,b) = (8,12) = 4$.
 > Consideremos las combinaciones lineales enteras de $a$ y $b$, es decir
 > $$
@@ -79,6 +84,7 @@ cssclasses:
 Algunas observaciones sencillas,
 
 > [!theorem] **Lema.**
+>
 > Sea $S \subseteq \mathbb{Z}$ no vacío, cerrado bajo suma y bajo resta.
 > 1. $0 \in  S$
 > 2. $a \in  S \implies  -a \in  S$
@@ -86,6 +92,7 @@ Algunas observaciones sencillas,
 >
 
 > [!proof]+ **Proof.**
+>
 > Sea $S \subseteq \mathbb{Z}$ no vacío, cerrado bajo suma y bajo resta,
 > 1. Como $S \neq  \varnothing$ existe $a \in  S$, y como $S$ es cerrado bajo resta, $a -a \in S$.
 > 2. Sea $a \in  S$, tenemos $-a = 0 - a \in S$, pues $0 \in  S$ y cerrado bajo resta.
@@ -95,12 +102,14 @@ Algunas observaciones sencillas,
 
 
 > [!theorem] **Lema.**
+>
 > Sea $S \subseteq \mathbb{Z}$, $S \neq  \varnothing$ cerrado bajo suma y resta. Entonces $S = \{ 0 \}$ o bien existe un elemento positivo mínimo en $S$, digamos $b$, que divide a todo elemento de $S$, ent
 > $$
 > S = \{ bt \mid  t \in  \mathbb{Z} \}
 > $$
 
 > [!proof]+ **Proof.**
+>
 > Sea $\varnothing \neq  S \subseteq  \mathbb{Z}$ cerrado bajo suma y resta. Por Lema 1, $0 \in  S$. Así, si $S = \{ 0 \}$, se cumple.
 > Si $S \supset \{ 0 \}$, existe $a \in  S$ con $a \neq  0$. Por Lema 1, también $-a \in  S$. Alguno de $a$ o $-a$ es positivo, ent. en $S$ hay elementos positivos.
 > $$
@@ -126,6 +135,7 @@ Algunas observaciones sencillas,
 > $$
 
 > [!theorem] **Teorema.** (Identidad de Bézout)
+>
 > Sean $a,b \in \mathbb{Z}$ no nulos. El máximo común divisor de $a$ y $b$ es la comb. lineal positiva mínima de $a$ y $b$, es decir
 > $$
 > (a,b) = \min \left\{ax + by > 0 \mid  x,y \in  \mathbb{Z}\right\} 
@@ -137,6 +147,7 @@ Algunas observaciones sencillas,
 
 
 > [!proof]+ **Proof.**
+>
 > Sean $a,b \in  \mathbb{Z}$ no ambos nulos. Considero $S = \{  ax + by \mid  x ,y \in  \mathbb{Z} \}$.
 > Notamos que $S \neq \varnothing$ pues $0 = a \cdot 0 + b \cdot 0 \in  S$.
 > Además $S$ es cerrado bajo suma y bajo resta, ya que si $s_{1},s_{2} \in  S$.
@@ -167,6 +178,7 @@ Algunas observaciones sencillas,
 
 
 > [!theorem] **Corolario.**
+>
 > Sean $g,a,b \in  \mathbb{Z}$ no ambos nulos. Las siguientes condiciones son equvialentes:
 > 1. $g = (a,b)$
 > 2. $g$ es la comb. lineal positiva mínima de $a$ y $b$.
@@ -176,6 +188,7 @@ Algunas observaciones sencillas,
 > $(iv)$ es, los demás divisores dividen al MCD.
 
 > [!proof]+ **Proof.**
+>
 > Sean $g,a,b \in \mathbb{Z}$, $a$ y $b$ no ambos nulos. $(i) \iff  (ii)$ (Teo. anterior).
 >
 > $( ii \implies  iii )$
@@ -200,13 +213,16 @@ Algunas observaciones sencillas,
 
 
 > [!Info]- **Nota!** 
+>
 > Se puede generalizar y definir el máximo común divisor de más de dos números con al menos uno distinto de cero.
 
 
 > [!theorem] **Teorema.**
+>
 > Sean $a,b,m \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$, y $m\neq 0$. Tenemos que $(ma,mb) = \left| m \right|(a,b)$
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,m \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$, y $m\neq 0$
 > - Caso 1: $m> 0$
 > $$
@@ -223,20 +239,24 @@ Algunas observaciones sencillas,
 
 
 > [!theorem] **Definición.** (Cociente)
+>
 > Sean $a,b \in \mathbb{Z}$, $b\neq 0$. Si $b \mid a$, sabemos que existe $c \in \mathbb{Z}$ tal que $a = bc$. A $c$ se le llama el **cociente de** $a$ **entre** $b$ y se denota por $\displaystyle \frac{a}{b}$.
 
 > [!observation]+ **Observación.**
+>
 > - Dicha $c$ es única
 > - $\displaystyle b \left( \frac{a}{b}\right) = a$
 
 
 > [!theorem] **Teorema.**
+>
 > Sean $a,b,c \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$, y $c \neq 0$. Si $c\mid a$ y $c \mid b$ entonces,
 > $$
 > \left| c \right| \mid (a,b) \quad \text{ y } \quad \left( \frac{a}{c} , \frac{b}{c}  \right) = \frac{(a,b)}{\left| c \right|}
 > $$
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,c \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$, $c\neq 0$.
 > Supongamos que $c\mid a$ y $c \mid b$. Por propiedades del máximo común divisor tenemos que $c \mid (a,b)$ y entonces también $\left| c \right|\mid (a,b)$.
 > Ahora, por Obs. 2 y teorema anterior,
@@ -250,26 +270,32 @@ Algunas observaciones sencillas,
 
 
 > [!theorem] **Corolario.**
+>
 > Sean $a,b \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$. Entonces,
 > $$
 > \left( \frac{a}{(a,b)} , \frac{b}{(a,b)}  \right) = 1
 > $$
 
 > [!proof]- **Proof.**
+>
 > Usando el teorema anterior con $c = (a,b)$
 
 
 > [!theorem] **Definición** (Primos Relativos)
+>
 > Sean $a,b \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$. Decimos que $a$ y $b$ son **primos relativos** o **coprimos** si  $(a,b) = 1$.
 
 > [!example]- **Ejemplo.** 
+>
 > 28 y 55 son primos relativos ya que $(28,55) = 1$.
 
 > [!theorem] **Teorema.**
+>
 > Sean $a,b,c \in \mathbb{Z}$ con $a\neq 0$ y $b\neq 0$, o bien $c\neq 0$. Si $(a,c) = (b,c) = 1$, entonces $(ab,c) = 1$
 
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,c \in \mathbb{Z}$, $a\neq 0$ y $b\neq 0$, o bien $c\neq 0$.
 > Supongamos que $(a,c) = (b,c) = 1$. Sabemos que existen $s,t,r,q \in \mathbb{Z}$ tales que
 > $$
@@ -283,9 +309,11 @@ Algunas observaciones sencillas,
 
 
 > [!theorem] **Lema.** (Lema de Euclides)
+>
 > Sean $a,b,c \in \mathbb{Z} \setminus \{ 0 \}$. Si $c \mid ab$ y $(c,a) = 1$, entonces $c \mid b$
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,c \in \mathbb{Z}$, $c$ y $a$ no ambos nulos. Supongamos $c \mid ab$ y $(c,a) =1$. Como $(c,a) = 1$ existen $s,t \in \mathbb{Z}$ tales
 > $$
 > 1 = as + ct,

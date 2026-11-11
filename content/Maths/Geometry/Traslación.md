@@ -14,6 +14,7 @@ materia:
 
 
 > [!theorem] **Teorema** 
+>
 > Sea $T: \mathbb{R}^{2}\to \mathbb{R}^{2}$ y $\mathbf{P}, \mathbf{a}  \in \mathbb{R}^{2}$ 
 > $$
 > T(\mathbf{P}) = \mathbf{P} + \mathbf{a}

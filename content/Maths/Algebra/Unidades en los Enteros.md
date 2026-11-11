@@ -13,12 +13,14 @@ cssclasses:
 # Aún más propiedades en $\mathbb{Z}$
 
 > [!theorem] **Teorema.** (Se cumple el *PBO*)
+>
 > **No** existe $a \in \mathbb{Z}$ tal que
 > $$
 > 0 <a < 1
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Supogamos *PRAA* (por reducción al absurdo) que existe $a \in \mathbb{Z}$ tal que $0<a <1$.
 > Consideramos
 > $$
@@ -53,15 +55,18 @@ cssclasses:
 > 
 
 > [!theorem] **Definición.** (Unidad)
+>
 > Decimos que $u \in \mathbb{Z}$ es una **unidad** en $\mathbb{Z}$ si tiene inverso multiplicativo. Es decir,
 > $$
 > \exists  v \in \mathbb{Z} \ (u \cdot v= 1) 
 > $$
 
 > [!theorem] **Teorema.** (Unidades en $\mathbb{Z}$)
+>
 > Las **únicas unidades** en $\mathbb{Z}$ son $1$ y $-1$.
 
 > [!proof]+ **Proof.** 
+>
 > $1$ es unidade en $\mathbb{Z}$ ya que $(1)(1) = 1$.
 > $-1$ es unidad en $\mathbb{Z}$ ya que $(-1)(-1) = 1$
 > Veamos que son las únicas.

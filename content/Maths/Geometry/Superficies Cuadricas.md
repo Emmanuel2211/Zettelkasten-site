@@ -12,6 +12,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Definición.** (Superficie Cuadrática)
+>
 > Es el lugar geométrico de los puntos $(x,y,z) \in \mathbb{R}^{3}$ que satisfacen la ecuación general de segundo grado:
 > $$
 > Ax^{2} + By^{2} + Cz^{2} + Dxy + Exz + Fyz + Gx + Hy + Iz + J = 0
@@ -26,6 +27,7 @@ La herramienta para iniciar estudiarlas es con las **curvas de nivel**, esta es 
 
 esfera, paraboloide, hiperboloide, hiperbolide de dos hojasparaboloide eliptico, paraboloide hiperbolico
 > [!theorem] **Definición** (Cono rectangular)
+>
 > Es la superficie cuadrática cuya ecuación es:
 > $$
 > x^{2} + y^{2} - c^{2}z^{2} = 0
@@ -42,6 +44,7 @@ $x = k$
 y luego $x = 0$.
 
 > [!theorem] **Definición** (Superficie Cilindrinca)
+>
 > No hay como tal una ecuación.  La superficie cilíndrica está generada por una recta que se desplaza paralelamente a otra fija y que se apoya constantemente en una curva fija también. La recta móvil y la curva fija se denominan *generatriz* y *directriz* de la superficie respectivamente.
 > La superficie cilindrica cuya generatriz es $\parallel$ a uno de los ejes coordenados y la directriz es una curva en el plano coordenado que es $\perp$ a la generatriz tiene la misma ecuación que la directriz. (calculo IV)
 > Si la directriz es una circunferencia $x^{2} + y^{2} = a^{2}$, la superficie cilindrica es: $x^{2} + y^{2} = a^{2}$, $z \in \mathbb{R}$.

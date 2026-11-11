@@ -15,6 +15,7 @@ cssclasses:
 > Es la suma de cada "*área rectangula*" que se forma al multiplicar la longitud del subintervalo $(x_{i+1} - x_{i}) \ \forall  i \in \{ 1,\dots,n \}$ por algún valor de la función $f(x)$ en el mismo subintervalo, como lo es $\min \left\{f\right\}$ y $\max \left\{f\right\}$ para definir los rectangulos más grandes y pequeños de cada subintervalo.
 
 > [!theorem] **Definición.** (Sumas de Darboux Superiores e Inferiores)
+>
 > Sea $f: [a,b] \implies \mathbb{R}$ continua y $\mathcal{P}$ partición de $[a,b]$ 
 > $$
 > \begin{align}
@@ -27,6 +28,7 @@ cssclasses:
 ![[Pasted image 20260825114547.png|center]]
 
 > [!observation]- **Observación.**
+>
 > Tenemos que
 > $$
 > L\leq U
@@ -44,12 +46,14 @@ cssclasses:
 > El refinamiento de una partición, siempre va a tener sumas más proximas, es decir, para cualquier $L(P)$ **refinar** implica aumentar el área, para cualquier $U(P)$, implica disminuir el área.
 
 > [!theorem] **Proposición.** 
+>
 > Sea $\mathcal{P}$ una partición, y $\mathcal{P}'$ un refinamiento de $\mathcal{P}$ tenemos que
 > $$
 > L_{\mathcal{P}} \leq L_{\mathcal{P}'} \leq U_{\mathcal{P}'} \leq U_{\mathcal{P}}
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Tomemos
 > $$
 > \begin{align}
@@ -86,12 +90,14 @@ cssclasses:
 > De hecho, siempre se cumple que $L \leq U$, no importa que partición.
 
 > [!theorem] **Proposición 2.** 
+>
 > Sean $P_{1}$ y $P_{2}$ cualesquiera particiones,
 > $$
 > L(P_{1}) \leq U(P_{2})
 > $$
 
 > [!proof]- **Proof.** 
+>
 > $P= P_{1} \cup P_{2}$. Observemos que $P$ es un refinamiento de $P_{1}$  y de $P_{2}$. Así, $L_{P_{1}}\leq L_{P}\leq U_{P}\leq U_{P_{2}}$
 
 Ahora vamos a definir la integral de Darboux.
@@ -101,6 +107,7 @@ Generalizamos la *Proposición 2* con este *Lema*:
 > Cualqueir $U$ es una cota superior de conjunto de sumas inferiores, y cualqueir $L$ es una cota inferior del conjunto de sumas superiores. Y es como son reales acotados, es claro que tenemos $\inf$ y $\sup$.
 
 > [!theorem] **Lema 1.** (Acotación de las Sumas de Darboux)
+>
 > Dada $f:[a,b] \to \mathbb{R}$ continua. Definimos los conjuntos de todas las sumas inferiores y superiores como:
 > $$
 > \mathcal{L} = \{ L(P, f) \mid P \text{ es partición de } [a,b] \}
@@ -119,10 +126,12 @@ Generalizamos la *Proposición 2* con este *Lema*:
 
 
 > [!theorem] **Lema 2.** (Existencia de la Integral Inferior y Superior)
+>
 > Dada $f:[a,b] \to \mathbb{R}$ continua, existen $\sup \left\{\mathcal{L}\right\}$ e $\inf \left\{\mathcal{U}\right\}$.
 
 
 > [!proof]- **Proof.**
+>
 > Como el conjunto $\mathcal{L}$ es no vacío y está acotado superiormente (por cualquier suma superior, según el *Lema 1*), por el Axioma del Supremo, $\sup \mathcal{L}$ existe en $\mathbb{R}$.
 > Como el conjunto $\mathcal{U}$ es no vacío y está acotado inferiormente (por cualquier suma inferior, según el *Lema 1*), por el Axioma del Ínfimo, $\inf \mathcal{U}$ existe en $\mathbb{R}$.
 
@@ -133,6 +142,7 @@ Generalizamos la *Proposición 2* con este *Lema*:
 
 
 > [!theorem] **Definición.** ($\varepsilon$-partición)
+>
 > Dada $f:[a,b]\to \mathbb{R}$ continua y postiva, sea $P = \{ a =x_{0},\dots,x_{n} =b \}$.
 > Decimos que $P_{[a,b]}$ es una $\varepsilon$**-partición**,  si para todo $j \in  \{ 0,\dots,n-1 \}$, para cualesquiera $p,q \in [x_{j},x_{j+1}]$ se tiene que
 > $$
@@ -145,9 +155,11 @@ Recuerda que "para cualquier" es lo mismo que "para todo", evita confusiones!
 
 
 > [!theorem] **Lema 3.** 
+>
 > Para $f:[a,b]\to \mathbb{R}$ continua y positiva, existe las $\varepsilon$-particiones.
 
 > [!proof]- **Proof.** 
+>
 > Como $f: [a,b] \to \mathbb{R}$ es continua, ent. es unif. continua.
 > Fijando $\varepsilon$ tendremos una $\delta$ "fija" que cumple la definición. Así, consideramos, $N \in \mathbb{N}$ tal que $\frac{1}{N}< \delta$ por prop. arquimediana, y sea la partición
 > $$
@@ -158,6 +170,7 @@ Recuerda que "para cualquier" es lo mismo que "para todo", evita confusiones!
 > Lo mismo pasa para cualquier subintervalo $[x_{j},x_{j+1}]. \quad \blacksquare$
 
 > [!observation]- **Observación.**
+>
 > Podemos pensar al Lema 3 como una máquina, le metes un número de tolerancia (cualquier número positivo) y la máquina te fabrica y te entrega una partición $P$ de $[a,b]$ garantizada. La garantía de esa partición es que, en cualquiera de sus subintervalos, la diferencia entre el punto más alto de la función y el punto más bajo será estrictamente menor que ese número de tolerancia que le metiste.
 
 
@@ -166,12 +179,14 @@ El Lema 3, implica el Lema 4:
 > Puedes acercar $U$ y a $L$ tanto como quieras!
 
 > [!theorem] **Lema 4.** 
+>
 > Si $f: [a,b] \to \mathbb{R}$ continua y postiva, ent. existen una suma inferior y una suma superior tales que
 > $$
 > \lvert U - L \rvert < \varepsilon, \quad \forall \varepsilon > 0
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Sea $\displaystyle \varepsilon>0 \ \exists \delta > 0 \mid \lvert x-y \rvert<\delta \implies \lvert f(x)-f(y) \rvert< \frac{\varepsilon}{b-a}$ para cuales quiera $x,y$, por continuidad unifrome.
 > Sea $P$ una partición tal que $\Delta P < \delta$ (**Recordatorio:** dado $P=\{ x_{0}=1,\dots,x_{n}=b \}$ se define $\Delta P = \underset{j}{\max}\{ x_{j+1}-x_{j} \}$).
 > Con esto,
@@ -197,6 +212,7 @@ El Lema 3, implica el Lema 4:
 
 
 > [!theorem] **Definición.** (Integral de Darboux)
+>
 > Sea $f:[a,b] \to \mathbb{R}$ continua, se define a la Integral de Darboux como el supremo del conjunto de todas las sumas inferiores $\mathcal{L}$, es decir, es decir,
 > $$
 > \int_{a}^{b} f(x) \, dx  = \sup_{P} \{ L(P,f) \mid P \text{ es partición de } [a,b] \}
@@ -206,10 +222,12 @@ El Lema 3, implica el Lema 4:
 > Para que sea una integral tiene que cumplir las propiedades: *Aditividad* e *Intercalación*. Esto hay que demostrarlo:
 
 > [!Info]- **Nota!**
+>
 > **Nota.** Si $f$ es continua en $[a,b]$, también lo es en $[u,v] \quad \forall u,v \in [a,b]$.
 
 
 > [!proof]- **Proof.** 
+>
 > **Propiedad 2. Intercalación:**
 > Observamos que, $f\mid [u,v]$ (*restringido*), $P=\{ u,v \}$ es una partición de $[u,v]$. Además,
 > $$
@@ -272,11 +290,13 @@ El Lema 3, implica el Lema 4:
 > $$
 
 > [!theorem] **Proposición.** (Propiedad 3)
+>
 > $$
 > \int_{a}^{a} f(x) \, dx  = 0
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Por Propiedad 1.
 > $$
 > \int_{a}^{a} f(x) \, dx + \int_{a}^{a} f(x) \, dx = \int_{a}^{a} f(x) \, dx 

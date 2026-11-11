@@ -4,12 +4,14 @@ title: "Parabola"
 publish: true
 ---
 > [!theorem] **Definición** 
+>
 > $\mathcal{P}$ es una **parábola** si sus elementos equidistan de un punto $F$ y una recta $\mathcal{D}$.
 > $$
 > \mathcal{P} = \{ P \in \mathbb{R} : d(P,F) = d(P,\mathcal{L}) \}
 > $$
 
 > [!theorem] **Teorema** (Ecuación Canónica)
+>
 > Sea $\mathcal{P}$ con $V$ *(vértice)* en el **origen** y su eje focal coincide con el eje $X$, entonces su ecuación es:
 > $$
 > y^{2} = 4px
@@ -20,6 +22,7 @@ publish: true
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Sea $X$ el eje focal y $V(0,0)$. Por definición, el vértice es el punto medio del segmento desde la  directriz $\mathcal{L}$ al foco $F$. 
 > Observamos que si $d(F,V) = p$ escribimos $F(p,0)$.
 > Igualmente, $\mathcal{L}$ esta a la distancia $-p$ del origen, por lo que su ecuación es $x = -p$, o bien $x+p=0$
@@ -33,6 +36,7 @@ publish: true
 > $$
 
 > [!theorem] **Teorema.** (Ecuación Ordinaria)
+>
 > Sea $\mathcal{P}$ con $V(h,k)$ y distancia $p$ de $V$ a $F$. Si su eje focal es paralelo al eje $X$.
 > $$
 > (y-k)^{2} = 4p(x-h)
@@ -43,6 +47,7 @@ publish: true
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Trasladamos los ejes al origen
 > $$
 > \begin{align}
@@ -63,6 +68,7 @@ publish: true
 
 
 > [!theorem] **Teorema.** (Ecuación General)
+>
 > Toda parabola cuyo eje focal sea paralelo a alguno de los ejes coordenados es descrita por un caso de la ecuación general de segundo grado, donde $B = 0$ y su discriminante es cero:
 > $$
 > \begin{align}
@@ -72,6 +78,7 @@ publish: true
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Partimos de nuestra ecuación ordinaria
 > $$
 > \begin{align}

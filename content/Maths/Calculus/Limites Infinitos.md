@@ -12,6 +12,7 @@ cssclasses:
   - romana
 ---
 > [!theorem] **Definición.** (Limite $x \to \pm\infty$ es $\infty$)
+>
 > Diremos que $\displaystyle\lim_{ x \to \infty } f(x) = \infty$ si
 > $$
 > \forall  M > 0 \ \exists  N \  (x > N \implies f(x ) > M)
@@ -24,6 +25,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Operaciones con Límites Infinitos)
+>
 > Sean $f$ y $g$ funciones tales que $\displaystyle  \lim_{x \to a} f(x) = \infty$ y $\displaystyle \lim_{x \to a} g(x) = c$ donde $c \in  \mathbb{R}$, entonces
 > 1. Suma con constante:
 > $$
@@ -41,6 +43,7 @@ cssclasses:
 
 
 > [!observation]+ **Observación.** (Indeterminaciones)
+>
 > No se pueden utilizar los teoremas del álgebra de límites para las siguientes indetermidaciones, pues no se cumplen las hipotesis:
 > - $\frac{0}{0}$ o $\frac{\infty}{\infty}$ : Se utiliza L'Hôpital.
 > - $0 \cdot \infty$ : Falla el teorema del producto, se arrregla pasando $1$ al denominador y se pasa a la forma $\frac{0}{0}$.

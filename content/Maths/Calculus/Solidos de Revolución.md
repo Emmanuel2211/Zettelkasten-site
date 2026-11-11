@@ -38,12 +38,14 @@ con $z_{k} \in [x_{k}, x_{k+1}]$, lo cual es una Suma de Riemann para $\pi f^{2}
 Así, la propuesta inicial no era correcta: el volumen no depende de $f$, sino de $f^{2}$, pues cada disco tiene volumen $\pi r^{2}h$ con $r = f(z)$.
 
 > [!theorem] **Definición.** (Volumen de un Sólido de Revolución)
+>
 > El volumen del sólido de revolución generado a partir de $f:[a,b] \to \mathbb{R}$ es
 > $$
 > \pi \int_{a}^{b} f^{2}(x) \, dx
 > $$
 
 > [!example]+ Ejemplo.
+>
 > $\square$ Calcula el volumen de una esfera de radio $r$.
 > Recordando la función de una media luna positiva (de cuando sacamos el área del círculo), $f(x)= \sqrt{r^{2} - x^{2}}$. Ent. el volumen es,
 > $$
@@ -59,6 +61,7 @@ Así, la propuesta inicial no era correcta: el volumen no depende de $f$, sino d
 ### Área
 
 > [!example]+ Ejemplo. 
+>
 > $\square$ Calcula el área de un cono de altura $h$, generatriz $l$ y radio $r$.
 >
 > El área de un sector de radio $p$ es
@@ -75,6 +78,7 @@ Así, la propuesta inicial no era correcta: el volumen no depende de $f$, sino d
 
 
 > [!example]+ Ejemplo. 
+>
 > Calcula el área de un cono truncado con un corte perpendicular respecto a la altura.
 > 
 > Claramente, el área está dada por: $A = A_{C} - A' = \pi r_{1} l - \pi r_{2} l'$, donde $A_{C}$ es el área del cono completo, y $A'$ es el área del cono que buscamos cortar.
@@ -133,12 +137,14 @@ Un área es necesariamente positiva, por lo que añadimos v.a. a $f(x)$.
 
 
 > [!theorem] **Definición.** (Área de una superficie de revolución sobre el eje X)
+>
 > El área de la superficie de revolución generada por la gráfica de $f:[a,b]\to \mathbb{R}$, con $f'$ continua, es,
 > $$
 > 2\pi \int_{a}^{b}  \left| f(x) \right| \sqrt{1 + f'(x)^{2}} \, dx
 > $$
 
 > [!observation]+ **Observación.**
+>
 > ¿Cuál es el área del cilindro? $A = 2\pi r \cdot h$,
 > Sabemos que $\int_{a}^{b} \sqrt{1+f'(x)^{2}} \, dx$ es la longitud de la gráfica de $f(x)$.
 > Así, observamos que la fórmula del área de una superficie de revolución generaliza de alguna manera el concepto de área de un cilindro recto con base circular.
@@ -149,6 +155,7 @@ Un área es necesariamente positiva, por lo que añadimos v.a. a $f(x)$.
 
 
 > [!tip]+ **Idea.**
+>
 > Ya sabemos cómo calcular volúmenes de cilindros, ¿no? Bueno, como es habitual, el proceso es aproximar el volumen de otra cosa que no conocemos por medio de volúmenes que ya conocemos, como un pan de muerto agujerado o una piedra taladrada, por medio de volúmenes de cilindros agujerados.
 
 Sea $f:[a,b]\to \mathbb{R}^{+}$ continua con $a\geq 0$, cuya gráfica es como sigue.
@@ -171,6 +178,7 @@ $$
 $$
 
 > [!note]- Intuición
+>
 > $2\pi x' \cdot f(x') \cdot (x_{2}-x_{1})$ es *circunferencia × altura × grosor*: si cortamos el casquillo verticalmente y lo "desenrollamos", obtenemos (aproximadamente) una placa de largo $2\pi x'$, alto $f(x')$ y grosor $x_{2}-x_{1}$.
 
 Así, una aproximación al volumen de $V$ será
@@ -181,6 +189,7 @@ con $x'_{k}$ el punto medio de $[x_{k}, x_{k+1}]$, dada una partición $\mathcal
 
 
 > [!theorem] **Definición.** (Volumen de S.R. sobre el eje Y)
+>
 > El volumen $V$, con sus hipótesis, es,
 > $$
 > 2\pi \int_{a}^{b} x f(x) \, dx

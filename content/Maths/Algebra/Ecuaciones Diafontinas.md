@@ -12,20 +12,24 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Ecuación Diafontina)
+>
 > A las ecuaciones planteadas con enteros, en las que se buscan soluciones enteras, se conocen como **ecuaciones diafontinas**, son de la forma
 > $$
 > ax + by = c \quad a,b,c \in \mathbb{Z}
 > $$
 
 > [!observation]+ **Observación.**
+>
 > La ecuación $0x + 0y = c$, con $c \in  \mathbb{Z}$, tiene solución si y sólo si $c= 0$, y en ese caso todo par $x,y \in \mathbb{Z}$ es solución.
 
 
 > [!theorem] **Teorema.** (Condición necesaria para solución)
+>
 > Sean $a,b,c \in \mathbb{Z}$, con $a\neq 0$ o $b\neq 0$. La ecuación $ax + by=c$ tiene soluciones enteras si y sólo si $(a,b)\mid c$.
 
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,c \in \mathbb{Z}, a\neq 0$ o $b\neq 0$.
 > $(\implies)$ Supongamos que $ax+by = c$ tiene solución entera, entonces existe $s,t \in \mathbb{Z}$ tales que $as + bt =c$. Como $(a,b) \mid a, (a,b) \mid b$, entonces $(a,b)\mid as + bt = c$
 > $$
@@ -41,12 +45,14 @@ cssclasses:
 > $$
 
 > [!theorem] **Teorema.** (Soluciones en el caso de ser coprimos, e igual a $0$)
+>
 > Sean $a,b \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$, $(a,b) = 1$. Las soluciones enteras de $ax + by = 0$ son
 > $$
 > x = -bt, \quad y = at, \quad \text{ con } t \in \mathbb{Z}
 > $$
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b \in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$, $(a,b) = 1$.
 > consideremos $x = -bt$, $y = at$ con $t \in \mathbb{Z}$. Entonces,
 > $$
@@ -73,12 +79,14 @@ cssclasses:
 El siguiente Teorema enuncia lo mismo pero de forma conjuntista. Es bueno pensar todo de manera conjuntista, te da mayor perspectiva.
 
 > [!theorem]- **Teorema.**
+>
 > Sea $a,b \in \mathbb{Z}\setminus \{ 0 \}$, sea $(a,b) = 1$. El conjunto de soluciones de $ax+by = 0$ es
 > $$
 > \{ (bt, -at) \mid  t \in  \mathbb{Z} \}
 > $$
 
 > [!proof]- **Proof.**
+>
 > Sea $S$ el conjunto de soluciones de $ax + by = 0$.
 > **PD.** $S = \{ (bt, -at) \mid  t \in  \mathbb{Z} \}$
 > $(\supseteq)$
@@ -138,6 +146,7 @@ El siguiente Teorema enuncia lo mismo pero de forma conjuntista. Es bueno pensar
 
 
 > [!theorem] **Corolario.** (Soluciones de no ser coprimos, e igual a 0)
+>
 > Sean $a,b \in \mathbb{Z}$, $a\neq 0 \lor  b\neq 0$. Las soluciones entaras de $ax + by =0$ son
 > $$
 > x = \frac{-b}{(a,b)}t, \quad y = \frac{a}{(a,b)}t, \quad t \in \mathbb{Z}
@@ -149,6 +158,7 @@ Una observacion es que nuestra grafica de soluciones de una ecuación, es solo e
 
 
 > [!theorem] **Teorema.** (Todas las soluciones a partir de una dada, y más una igual a 0)
+>
 > Sean $a,b,c \in \mathbb{Z}$, $a \neq 0$ o $b\neq 0$, $(a,b) \mid c$. Sean $e,f \in \mathbb{Z}$ tales que $ae + bf = c$. Las soluciones enteras de $ax + by = c$ son los pares de la forma
 > $$
 > x = e + u, \quad y = f+v
@@ -156,6 +166,7 @@ Una observacion es que nuestra grafica de soluciones de una ecuación, es solo e
 > con $u,v \in \mathbb{Z}$ tales que $au + bv = 0$
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b,c \in \mathbb{Z}$, $a\neq 0$ o $b \neq 0$, $(a,b)\mid c$.
 > Sea $x = e$, $y = f$ una solución entera de $ax + by = c$
 > Dada $u,v \in \mathbb{Z}$ tales que $au + bv = 0$ tenemos,
@@ -176,6 +187,7 @@ Una observacion es que nuestra grafica de soluciones de una ecuación, es solo e
 
 
 > [!theorem] **Corolario.** (Todas las soluciones, dada una sola solución)
+>
 > Sean $a,b, c\in \mathbb{Z}$, $a\neq 0$ o $b\neq 0$, $(a,b)\mid c$. Sean $e,f \in \mathbb{Z}$ tales que $ae + bf = c$. Las soluciones enteras de $ax+by = c$ son los pares de la forma,
 > $$
 > x = e + \left( \frac{-b}{(a,b)}t  \right) \quad y = f + \left(\frac{a}{(a,b)}t  \right) \quad \text{  con } t \in \mathbb{Z}
@@ -184,6 +196,7 @@ Una observacion es que nuestra grafica de soluciones de una ecuación, es solo e
 De nuevo, es importante ver esto de forma conjuntista. Estos teoremas nos responden ¿Cuál es el conjunto de todas las soluciones?
 
 > [!example]+ Ejemplo.
+>
 > Encuentra las soluciones enteras de $56x + 315y = 42$. Mediante el algoritmo de Euclides vimos que $(56, 315 = 7)$ y $7 \mid 42$, por lo que existe una solución entera. Vimos además que
 > $$
 > 56(17 ) + 315(-3) = 7

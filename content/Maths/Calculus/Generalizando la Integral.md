@@ -18,6 +18,7 @@ Dado que en una funcion acotada no sabemos de la existencia de mínimos y másmi
 - [ ] TODO: porque?
 
 > [!theorem] **Definición** (Suma Inferior y Superior para funciones acotadas)
+>
 > $$
 > \begin{align}
 > L(f,P) &= \sum_{k=0}^{n-1} \underset{[x_{k},x_{k+1}]}{\inf  \{  f \}} \cdot(x_{k+1}- x_{k}) \\
@@ -28,6 +29,7 @@ Dado que en una funcion acotada no sabemos de la existencia de mínimos y másmi
 Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivalente $L(P)$, utilizada en muchos libros.
 
 > [!observation]+ **Observación.**
+>
 > Si $P'$ es refinamiento de $P$ se cumple:
 > $$
 > \begin{align}
@@ -39,6 +41,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 
 
 > [!observation]+ **Observación.**
+>
 > De igual forma, para $P_{1}$ y $P_{2}$ particiones
 > $$
 > L(P_{1},f) \leq U(P_{2},f)
@@ -52,9 +55,11 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 > $$
 
 > [!theorem] **Corolario.** 
+>
 > Existen $\sup\{ \mathcal{L} \}$ e $\inf \{ \mathcal{U} \}$
 
 > [!theorem] **Definición.** (Criterio de Integración funciones acotadas)
+>
 > Decimos que $f: [a,b] \to \mathbb{R}^{+}$ acotada, es integrable si
 > $$
 > \underline{I} = \sup \{ L \} = \inf \{ U \} = \overline{I}
@@ -62,9 +67,11 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 > Donde $\underline{I}$ es la **integral inferior** y $\underline{I}$ es la **integral superior**.
 
 > [!theorem] **Teorema.** (Criterio de Integración PRO)
+>
 > Sea $f: [a,b] \to \mathbb{R}^{+}$ función acotadad, $f$ es integrable en $[a,b]$ si y sólo si, para toda $\varepsilon >0$ existe una partición $P$ tal que $U(P,f) - L(P,f) < \varepsilon$.
 
 > [!proof]- **Proof.** 
+>
 > $(\implies)$
 > Supongamos que $f$ es integrable, es decir, tenemos que
 > $$
@@ -105,15 +112,19 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 
 
 > [!theorem] **Corolario.** 
+>
 > Si $f: [a,b] \to \mathbb{R}^{+}$ es continua, entonces es integrable.
 
 > [!proof]- **Proof.** 
+>
 > Sea $f$ continuida, lo que implica Lema 3 y 4, lo que implica nuetro Teorema anterior. Q.E.D.
 
 > [!theorem] **Teorema.** ()
+>
 > Sea $f: [a,b] \to \mathbb{R}^{+}$ continua excepto en un punto $c \in (a,b)$. Entonces, $f$ es integrable en $[a,b]$.
 
 > [!proof]+ **Proof.** 
+>
 > La idea de la demostración es aproximar por derecha e izquierda nuestro punto $c$.
 > Sean $a<y <c$ y $b>z>c$. Sabemos que $f$ es continua en en $[a,y]$ y $[z,b]$, observamos que estos intervalos son acotados y cerrado, i.e **compacto**. 
 > Por lo que es integrable en cada subintervalo:
@@ -147,6 +158,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 
 
 > [!theorem] **Corolario.**
+>
 > Sea $f: [a,b] \to \mathbb{R}^{+}$ acotada y continua en $[a,b]$ excepto en $\{ c_{1,},c_{2},c_{3},\dots,c_{n} \}$. Entonces, $f$ es integrable.
 
 > Sea $f: [a,b] \to \mathbb{R}^{+}$ acotada. Dado que $\underset{[a,b]}{\sup \left\{f\right\}}$ y $\underset{[a,b]}{\inf \left\{f\right\} }$ existen, se define a una suma de Reimann como
@@ -156,6 +168,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 > donde $P = \{ x_{0} = a, \dots, x_{n} = b \}$ y $z_{i} \in  [x_{i},x_{i+1}]$.
 
 > [!theorem] **Teorema.** (Criterio de Integrabilidad 3)
+>
 > Sea $f:[a,b]\to\mathbb{R}$; $f$ es integrable si y sólo si existe un número $I$ tal que $\forall \{ P_{n} \}_{n \in \mathbb{N}}$ (sucesión) con $P_{n}$ partición tal que
 > $$
 > \lim_{n \to \infty} \Delta P_{n} = 0
@@ -167,6 +180,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 
 
 > [!Info]- **Nota!**
+>
 > Recordemos el tipico ejemplo de $f(x) = x^{2}$, $f: [0,1]\to \mathbb{R}$. 
 > Sea $n \in  \mathbb{N}$ y $P_{n} = \{ 0, \frac{1}{n}, \frac{2}{n},\dots, \frac{n-1}{n}, 1 \}$
 > Esta es una sucesión particular de particiones tales que $\displaystyle \lim_{n \to \infty} \Delta P_{n} = 0$. Anteriormente llegamos a que:
@@ -176,6 +190,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 
 
 > [!example]- Ejemplo. $f(x) = e^{x}$
+>
 > Sea $f(x) = e^{x}$  para $x \in  [a,b]$. Calcula $\displaystyle \int_{a}^{b} e^{x} \, dx$ con sumas de Reimann.
 > Sea $P_{n} = \left\{a, \frac{b-a}{n}+ a, a+ \frac{2(b-a)}{n},\dots, b  \right\}$, observamos que
 > $$
@@ -198,6 +213,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 
 
 > [!theorem] **Proposición.**
+>
 > Sea $f,g: [a,b]\to \mathbb{R}^{+}$ integrables. Entonces
 > $$
 > \int_{a}^{b} (f+g)(x) \, dx  = \int_{a}^{b} f(x) \, dx + \int_{a}^{b} g(x) \, dx 
@@ -207,12 +223,14 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 
 Sea $f:[a,b]\to \mathbb{R}^{-}$ acotada. ¿Cúal es su integral?
 > [!theorem] **Proposición 2.** 
+>
 > $$
 > \int_{a}^{b} -f(x) \, dx  = - \int_{a}^{b} f(x) \, dx 
 > $$
 
 
 > [!proof]- **Proof.**
+>
 > Sea $P$ partición de $[a,b]$.
 > $$
 > \begin{align}
@@ -236,9 +254,11 @@ Sea $f:[a,b]\to \mathbb{R}^{-}$ acotada. ¿Cúal es su integral?
 > $$
 
 > [!theorem] **Proposición 2.**
+>
 > Si $f$ es integrable en $[a,b]$ entonces $f$ es integrable en todo $[c,d] \subseteq [a,b]$.
 
 > [!proof]- **Proof.**
+>
 > Como $f$ es integrable en $[a,b]$. Dado $\varepsilon >0$ existe una $P$ partición de $[a,b]$ tal que $U(P,f)-L(P,f) < \varepsilon$.
 >
 > Defino $P' = P \cap [c,d] \cup \{ c,d \}$ la cual es partición de $[c,d]$.
@@ -254,11 +274,13 @@ Sea $f:[a,b]\to \mathbb{R}^{-}$ acotada. ¿Cúal es su integral?
 
 
 > [!theorem] **Proposición**
+>
 > $$
 > \int_{a}^{b} \lambda f(x) \, dx  = \lambda \int_{a}^{b} f(x) \, dx 
 > $$
 
 > [!proof]- **Proof.**
+>
 > Sea $\{ P_{n} \}$ sucesión de particiones tales que $\Delta  P_{n} \overset{n \to  \infty}{\longrightarrow} 0$.
 > Sea $\displaystyle S = S(P_{n}, \lambda f) = \sum_{k=0}^{n-1} (\lambda f)(z_{k})(x_{k+1}-x_{k})$, donde $z_{k} \in  [x_{k}, x_{k+1}]$.
 > esto es igual a
@@ -284,12 +306,14 @@ Al ser $\displaystyle  \int_{a}^{b} () \, dx$ aditiva y homogénea, se dice que 
 
 
 > [!theorem] **Teorema.** (Propiedad Acumulativa)
+>
 > Sean $f: [a,b] \to  \mathbb{R}$ acotada y $c \in (a,b)$. $f$ es integrable en $[a,b]$ si y sólo si $f$ es integrable en $[a,c]$ y $[c,b]$. En cualquier caso:
 > $$
 > \int_{a}^{b} f(x) \, dx = \int_{a}^{c} f(x) \, dx + \int_{c}^{b} f(x) \, dx 
 > $$
 
 > [!proof]- **Proof.**
+>
 > $( \implies )$ Por una proposición anterior, se cumple.
 > $(\impliedby )$ Supongamos que $f$ es integrable en $[a,c]$ y $[c,b]$. Existen dos particiones $P_{1}$ y $P_{2}$ de $[a,c]$ y $[c,b]$ respectivamente tales que
 > $$
@@ -342,9 +366,11 @@ Al ser $\displaystyle  \int_{a}^{b} () \, dx$ aditiva y homogénea, se dice que 
 
 
 > [!theorem] **Corolario.**
+>
 > Dados $f: [a,b] \to  \mathbb{R}$ acotada y $P = \{ c_{0} = a_{1},c_{1},c_{2},\dots, c_{n} = b \}$ partición de $[a,b]$ se tiene que $f$ es integrable en $[a,b]$ si y sólo si $f$ es integrable en $[c_{i}, c_{i+1}] \ \forall i \in  \{ 0,\dots,n-1 \}$.
 
 > [!proof]- **Proof.**
+>
 > $$
 > \int_{a}^{b} f(x) \, dx = \sum_{i=0}^{n-1} \int_{c_{i}}^{c_{i+1}} f(x) \, dx 
 > $$
@@ -352,12 +378,14 @@ Al ser $\displaystyle  \int_{a}^{b} () \, dx$ aditiva y homogénea, se dice que 
 
 
 > [!theorem] **Teorema.**
+>
 > Sean $f,g$ funciones integrables:
 > 1. Si $f \geq  0$ entonces, $\displaystyle \int_{a}^{b} f(x) \, dx \geq  0$.
 > 2. Si $f \geq  g$ entonces, $\displaystyle \int_{a}^{b} f(x) \, dx \geq \int_{a}^{b} g(x) \, dx$
 > 3. $\displaystyle m(b-a) \leq  \int_{a}^{b} f(x) \, dx \leq  M(b-a)$ donde $m$ y $M$ son cotas inferior y superior de $f$ respectivamente.
 
 > [!proof]- **Proof.** 
+>
 > 1. Cualqueir suma superior de $f$ es positiva, particualtmente, $U(\{ a,b \},f) = \underset{[a,b]}{\sup \left\{f\right\} }(b-a)\geq  0$ pues $f\geq 0 \implies \underset{[a,b]}{\sup \left\{f\right\} }\geq 0$. De esta manera, $\inf \left\{U \mid  U \text{ es suma superior }\right\} = \overline{I} = I \geq 0$ para $\displaystyle  I = \int_{a}^{b} f(x) \, dx$.
 > 2. Si $f\geq g$, $f - g \geq  0$ y por $(i)$, $\displaystyle \int_{a}^{b} (f-g)(x) \, dx \geq  0$. Al ser $\displaystyle \int_{a}^{b} () \, dx$ lineal.
 > $$

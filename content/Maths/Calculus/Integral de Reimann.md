@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Suma de Reimann)
+>
 > Dada $f:[a,b] \to \mathbb{R}^{+}$ y $P$ partición de $[a,b]$ una **suma de Reimann** es una expresión.
 > $$
 > R = \sum_{i=0}^{n-1} f(z_{i})(x_{i+1}-x_{i})
@@ -19,6 +20,7 @@ cssclasses:
 > en donde $P$ es una partición de $[a,b]$. y $z_{i} \in [x_{i},x_{i+1}]$, para todo $i$.
 
 > [!theorem] **Definición.** (Integral de Reimann)
+>
 > Dada $f:[a,b]\to \mathbb{R}^{+}$ decimos que $S$ **es la integral de** $f$ si para todo $\varepsilon >0$ existe $\delta > 0$ tal que para toda $P_{[a,b]}$ con $\Delta P < \delta$ se cumple que $\lvert S- R \rvert < \varepsilon$ para toda $R$ (*suma de Reimann*) con partición $P$.
 > $$
 > \forall \varepsilon > 0 \ \exists  \delta > 0 \ (\forall P_{[a,b]}(\Delta P < \delta) \implies \forall R_{P} \lvert  S- R \rvert <\varepsilon)
@@ -26,12 +28,14 @@ cssclasses:
 > De exister $S$, la llamamos **integral de Reimann**.
 
 > [!theorem] **Teorema.** (Integral de Darboux es equivalente a la Integral de Reimann)
+>
 > Dada $f:[a,b]\to \mathbb{R}^{+}$ continua, se tiene que
 > $$
 > \int_{a}^{b} f(x) \, dx  = S
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Veamos que la integral de Darboux implica la integral de Reimann.
 > Sea $\varepsilon>0$. Probaremos que $\displaystyle \left\lvert  \int_{a}^{b} f(x) \, dx - S  \right\rvert<\varepsilon$.
 > Sabemos que $\displaystyle \int_{a}^{b} f(x) \, dx = \sup\{ \mathcal{L} \}$.

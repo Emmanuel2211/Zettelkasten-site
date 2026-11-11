@@ -50,6 +50,7 @@ $$
 
 Otra forma de describirlo:
 > [!theorem] **Teorema**
+>
 > Sea $U: \mathbb{R}^{2} \to \mathbb{R}^{2}$, $\mathbf{P}(x,y)$ y sea $\mathbf{u} \in \mathbb{R}^{2}$ tal que $\lvert \mathbf{u} \rvert = 1$
 > $$
 > U(\mathbf{P}) = x\mathbf{u} + y\mathbf{u^\perp}

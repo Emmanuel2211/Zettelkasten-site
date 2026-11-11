@@ -13,6 +13,7 @@ cssclasses: romana
 Con dos operaciones<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>
 
 > [!theorem] **Axiomas de Campo** 
+>
 > 1. $+(a,b) = +(b,a)$
 > 2. $+(+(a,b),c) = +(a,+(b,c))$
 > 3. $+(a,0) = +(0,a) = a$

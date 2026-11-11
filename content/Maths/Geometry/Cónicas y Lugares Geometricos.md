@@ -8,6 +8,7 @@ publish: true
 #### Ecuación de Segundo Grado
 
 > [!theorem] **Definición.** (Cónica)
+>
 > Se definen mediante la ecuación general de segundo grado
 > $$
 > Ax^{2} + Bxy + Cy^{2} + Dx + Ey + F = 0
@@ -25,5 +26,6 @@ Se genera cuando cortamos el cono paralelamente a uno de sus lados:
 
 
 > [!theorem] **Definición.** (Cónica degenerada)
+>
 > lollllllllllllll
 > 

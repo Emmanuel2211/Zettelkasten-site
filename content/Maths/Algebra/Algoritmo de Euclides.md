@@ -14,12 +14,14 @@ cssclasses:
 Después de definir MCD, ver más teoremas de divisibilidad y definir a los primos. Tenemos lo necesario para desarrollar el Algoritmo de Euclides.
 
 > [!theorem] **Lema.**
+>
 > Sean $a,b \in  \mathbb{Z}$, $b \neq  0$. Para todo $q \in  \mathbb{Z}$
 > $$
 > (a,b) = (a-bq, b)
 > $$
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b \in \mathbb{Z}$ con $b\neq 0$. Sea $q \in \mathbb{Z}$.
 > $D = \{ d \in  \mathbb{Z} :  d \mid  a \land  d \mid b \}$
 > $T = \{ c \in  \mathbb{Z} :  c \mid  a- bq \land  c \mid  b \}$
@@ -39,11 +41,13 @@ Después de definir MCD, ver más teoremas de divisibilidad y definir a los prim
 > $$
 
 > [!example]- Ejemplo.
+>
 > $(315, 56) = \ ?$
 > $(315, 56) = (315 - 5(56), 56) = (35, 56) = (35, 56 - 35) = (35, 21)$
 > $= (35-21,21) = (14, 21) = (14 , 21 -14) = (14, 7) = (0, 7) = 7$.
 
 > [!theorem] **Teorema.** (Algortimo de Euclides)
+>
 > Sean $a,b \in \mathbb{Z}$, $b >0$ 
 > Si $b \mid a$, ent. $(a,b) = b$.
 > Si $b \not\mid a$ aplicando el algoritmo de la división tenemos
@@ -62,6 +66,7 @@ Después de definir MCD, ver más teoremas de divisibilidad y definir a los prim
 
 
 > [!example]+ Ejemplo.
+>
 > $(315, 56)$
 > $$
 > \begin{align}

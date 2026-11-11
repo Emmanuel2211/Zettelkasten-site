@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** ($\operatorname{Unif} (a,b)$ continua)
+>
 > Sea $X$ v.a. decimos que $X$ tiene distrib. uniforme continua en el intervalo $(a,b)$, i.e. $\operatorname{unif} (a,b)$, cuando su función de densidad es:
 > $$
 > f(x) =\begin{cases}
@@ -22,6 +23,7 @@ cssclasses:
 > Esta distrib. tiene como parámetros $a$ y $b$
 
 > [!observation]- **Observación.**
+>
 > Solo para tenerlo en claro, se puede ver en $f(x)$ que $\operatorname{supp}(X) = [a,b]$.
 > También, recuerdese que la $f(x)$ puede verse de forma equivalente con la función indicadora de la sig. manera:
 > $$
@@ -47,6 +49,7 @@ $$
 
 
 > [!example]- Ejemplo.
+>
 > Cierta inversión tiene una tasas de rendimientos $X$ efectiva anual, y se sabe que dicha tasa es una v.a. uniforme, entre el 25% y el 50%. Si tenemos una iversión inicial de \$100. ¿Cuál es la probablidad de que en un año se haya acumulado más de \$130?
 > Comencemos llamando $\operatorname{Acum} = Y$, es la inversión acumulada.
 > $\implies Y = 100(1+ X)$
@@ -63,6 +66,7 @@ $$
 
 
 > [!theorem] **Teorema.** (Propiedades)
+>
 > 1. Función de Distribución.
 > $$
 > F_{X}(x) = \begin{cases}

@@ -37,6 +37,7 @@ cssclasses:
 ---
 
 > [!theorem] **Definición.** (Permutaciones)
+>
 > A las ordenaciones de un conjunto con $n$ elementos tomados de $n$ en $n$ se les llama **permutaciones de** $n$ **elementos**. Se denota
 > $$
 > P_{n} = O_{n}^{n} = n!
@@ -51,9 +52,11 @@ Es claro de donde viene la notación $n!$, un caso especial de las ordenaciones.
 Vemos ejemplos:
 
 > [!example]- **Ejemplo 1.** 
+>
 > Supongamos que hay cuatro personas que van a sentarse en cuatro lugares. Sean las iniciales de sus nombres $\{ A,B,C,D \}$. Entonces existe $4! =24$ maneras distintas de sentar a la mesa a las cuatro personas. 
 
 > [!example]- **Ejemplo 2.** 
+>
 > Se quiere colocar 11 libros en un estante, de los cuales 4 son novelas, 3 son ensayos, 3 son poemas y 1 es de cuentos. ¿De cuántas maneras puede hacerse esto si se quiere que los libros del mismo tipo queden juntos?
 > 
 > Por el Principio General del Producto, hay $P_{4}P_{3}P_{3}P_{1}$ arreglos de los libros de manera que las novelas queden primero, los ensayos segundo, los poemas tercer y el de cuentos al final. Similarmente para cada posible arreglo de los tipos de libros, hay $P_{4}P_{3}P_{3}P_{1}$ arreglos. Entonces, como hay $P_{4}$ posibles órdenes de los tipos de libros, por el Principio del Producto hay $(P_{4})P_{4}P_{3}P_{3}P_{1} = 4!\cdot 4! \cdot 3! \cdot 3! \cdot 1! = 20736$ maneras de acomodar los libros en el estante de forma que los libros de un mismo tipo queden juntos.
@@ -64,6 +67,7 @@ Vemos ejemplos:
 Una definición alternativa es
 
 > [!theorem] **Definición 2.** (Permutaciones)
+>
 > Sea $A$ un conjunto finito. Las **permutaciones del conjunto** $A$ son las funciones biyectivas de $A$ en $A$.
 
 <section data-footnotes class="footnotes"><h2 class="sr-only" id="footnote-label">Notas</h2>

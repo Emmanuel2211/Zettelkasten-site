@@ -21,6 +21,7 @@ $$
 
 
 > [!theorem] **Teorema.** (Representación Matricial)
+>
 > Una transformación **lineal** $T : \mathbb{R}^n \to \mathbb{R}^m$ admite una representación mediante la matriz $A_{T} \in M_{m\times n}$, en el sentido de que $\forall \mathbf{x} \in \mathbb{R}^n : T (\mathbf{x}) = A_{T}\cdot \mathbf{x}$
 > Donde $A_{T}$ se llama **matriz estándar** de $T$, y se define como
 > $$
@@ -31,6 +32,7 @@ $$
 > Claro, $\mathbf{e}_{k}$ son los canónicos
 
 > [!theorem] **Teorema.** (Recíproco del teorema anterior)
+>
 > Toda matriz $A \in M_{m\times n}$ genera una transformación lineal
 > $$
 > T_{A} : \mathbb{R}^n \to \mathbb{R}^m

@@ -12,9 +12,11 @@ aliases:
 cssclasses: romana
 ---
 > [!summary]- **Motivación**
+>
 > Un conjunto es algo simple, una colección, un grupo, un conjunto de cosas. Los conjuntos no son algo real, una bolsa de papas no es un conjunto de papas, la idea de *conjunto* es meramente *abstracta*. **Es una capacidad de la mente la de crear conjuntos**, la de agrupar cosas por una propiedad en concreto.
 
 > [!quote]- **Definición.** (Un conjunto según Cantor)
+>
 > Un **conjunto** es una colección de objetos definidos y distintos que forman parte de nuestra intuición o de nuestro pensamiento. A estos objetos se les denomina elementos (miembros) del conjunto.
 
 

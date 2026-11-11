@@ -16,6 +16,7 @@ Que motivación más importante que el uso de estas estructuras desde la escuela
 Abstraemos! y se hace la luz...
 
 > [!theorem] **Def.** (Vector Space)
+>
 > Sea $\mathbb{F}$ un campo. Un **espacio vectorial sobre** $\mathbb{F}$ consiste de un conjunto $V$ y dos operaciones
 > $$
 > \text{(VS 0)} \ \ + : V \times V \to V \quad \text{(VS 0.5)} \ \ \cdot: \mathbb{F} \times V  \to V
@@ -38,6 +39,7 @@ Abstraemos! y se hace la luz...
 > Los elementos de $\mathbb{F}$ son llamados escalares, y los de $V$ vectores.
 
 > [!observation]- **Observación.**
+>
 > - La multiplicación escalar es una función que va de $\mathbb{F} \times V$ en $V$, por lo que dado $a \in \mathbb{F}$ y $x \in V$, sólo tiene sentido hablar de $a \cdot x$ o $ax$; 
 > - En general, en todo esp. vect. denotamos con $\bar{0}$ a su neutro para diferenciarlo del neutro $0$ del campo.
 > - *Ojo!* en nuestros "axiomas" no mencionamos nuestro **neutro** e **inverso** son *únicos*.

@@ -12,6 +12,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Axioma.** (Unión)
+>
 > Para cualquier $X$, existe un conjunto $Y = \bigcup X$:
 > $$
 > \forall X  \ \exists Y \ \forall u ( u \in Y \iff \exists z (z \in X \land u \in z))
@@ -19,6 +20,7 @@ materia:
 
 
 > [!theorem] **Definición.** (Unión Generalizada) (sin índices)
+>
 > $$
 > \bigcup A = \{ x \mid \exists y \in A (x \in y) \}
 > $$

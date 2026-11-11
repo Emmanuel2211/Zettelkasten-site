@@ -12,10 +12,12 @@ cssclasses:
  - romana
 ---
 > [!tip]+ **Idea.**
+>
 > Sup. que tenemos una sucesión infinita de ensayos indep. Bernoulli, en cada uno de los caules la proba. de éxito es $p$. Sea $r\geq 1$ núm entero, definamos $X$ v.a. como el número de fracasos antes de obtener el $r$-ésimo éxito.
 > Es claro que $X$ puede tomar valores $0,1,2,\dots$
 
 > [!theorem] **Definición.** ($\operatorname{Bin \ neg}(r,p)$)
+>
 > Decimos que $X$ tiene una distrib. binomial negativa con parámetros $r$ y $p$, i.e. 
 > $X \sim \operatorname{Bin \ neg} (r,p)$ si su función de probabilidad es:
 > $$
@@ -32,6 +34,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Propiedades)
+>
 > Sea $X \sim \operatorname{Bin \ Neg}(r,p)$
 > 1. $F_{X}(x)=$
 > 2. $\displaystyle \operatorname{E} (X) = r \left( \frac{1-p}{p}  \right)$
@@ -41,6 +44,7 @@ cssclasses:
 
 
 > [!theorem] **Proposición.**
+>
 > Sea $r \in \mathbb{N}, r\geq 1$ y sean $X_{1},\dots,X_{n}$, v.a.s independientes, cada una con distrib. $\operatorname{geo} (p)$. Entonces,
 > $$
 > X_{1}+\dots+X_{r} \sim \operatorname{bin \ neg} (r,p) .

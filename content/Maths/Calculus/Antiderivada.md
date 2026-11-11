@@ -13,6 +13,7 @@ cssclasses:
   - romana
 ---
 > [!theorem] **Definición.** (Antiderivada)
+>
 > Sea $f$ una función, $\exists F(x)$ tq. $F'(x) = f(x)$. Llamada antiderivada o primitiva. Comprendemos a $F(x)$ como la inversa de la derivada?
 
 Sup. que tomamos $f(x)$ y sup. $\exists F(x)$ tq. $F'(x)= f(x)$

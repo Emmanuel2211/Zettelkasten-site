@@ -14,6 +14,7 @@ cssclasses:
 > El *Teorema de Lagrange* o *Teorema de Valor Medio* establece que, bajo ciertas condiciones de continuidad y derivabilidad, existe un punto en el intervalo donde la derivada coincide con la tasa de cambio promedio.
 
 > [!theorem] **Teorema.** (T.V.M.)
+>
 > Sea $f$ una funcíon continua en $[a,b]$ y derivable en $(a,b)$, Ent. $\exists c \in (a,b)$ tq.
 > $$
 > f'(c) = \frac{f(b)-f(a)}{b-a}
@@ -24,6 +25,7 @@ Un caso particula del T.V.M. es el [[Teorema de Rolle]].
 
 
 > [!theorem] **Teorema.** (Teorema del Valor Medio para Integrales)
+>
 > Sea $f: [a,b] \to  \mathbb{R}$ continua. Entonces existe $c \in  [a,b]$ tal que
 > $$
 > f(c) (b-a ) = \int_{a}^{b} f(x) \, dx 
@@ -32,6 +34,7 @@ Un caso particula del T.V.M. es el [[Teorema de Rolle]].
 Tambíen conocido como el *Teorema del Valor Promedio*.
 
 > [!proof]- **Proof.**
+>
 > Por $(iii)$ del Teorema anterior, $\displaystyle m(b-a) \leq  \int_{a}^{b} f(x) \, dx \leq  M(b-a)$ donde $m = \underset{[a,b]}{\inf \left\{f\right\} }= \underset{[a,b]}{\min \left\{f\right\} } = f(x_{0})$ para algún $x_{0} \in  [a,b]$,
 > $M = \underset{[a,b]}{\sup \left\{f\right\} }= \underset{[a,b]}{\max \left\{f\right\} } = f(y_{0})$ para algún $y_{0} \in  [a,b]$,
 > Así, 
@@ -48,10 +51,12 @@ Tambíen conocido como el *Teorema del Valor Promedio*.
 
 
 > [!tip]- **Idea.**
+>
 > Representa un promedio ponderado. La función $g(x)$ le asigna mayor "importancia" a ciertas zonas del intervalo
 
 
 > [!theorem] **Teorema** (Teorema del Valor Medio Ponderado)
+>
 > Sean $f,g$ continuas en $[a,b]$ . Si $g$ nunca cambia de signo en $[a,b]$ entonces, $\exists c \in [a,b]$ tal que
 > $$
 > \int_{a}^{b} f(x)g(x) \, dx = f(c) \int_{a}^{b} g(x) \, dx

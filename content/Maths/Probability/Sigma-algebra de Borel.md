@@ -14,6 +14,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (Sigma álgebra de Borel)
+>
 > La **sigma álgebra de Borel** de $\mathbb{R}$, denotada $\mathcal{B}(\mathbb{R})$, se define como la mínima $\sigma$-álgebra de subconjutos de $\mathbb{R}$ que contienen todos los intervalos de la forma $(-\infty,x]$ Esto se escribe:
 > $$
 > \mathcal{B}(\mathbb{R})  := \sigma \{ (-\infty,x] \mid x \in  \mathbb{R}\}

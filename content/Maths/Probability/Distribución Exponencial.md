@@ -13,6 +13,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.**
+>
 > Sea $X \sim \operatorname{exp} (\lambda)$ con $\lambda>0$, con función de distribución,
 > $$
 > f_{X}(x) = \lambda e^{-\lambda x} \cdot \mathbb{1}(x)_{[0,\infty)}
@@ -20,6 +21,7 @@ cssclasses:
 > donde observamos que el soporte es $\operatorname{supp}(X) = [0,\infty)$.
 
 > [!proof]- **Proof.**
+>
 > Claramente es función de distribución, pues es claro que
 > $$
 > \forall x \in \mathbb{Z} \ \ f_{X}(x) = \lambda e ^{-\lambda x} \mathbb{1}_{[0,\infty)}(x) \geq 0
@@ -36,6 +38,7 @@ cssclasses:
 
 
 > [!example]+ Ejemplos.
+>
 > 1. Un estudiante debe llegar a un examen a las 9:00 am y sabe que el tiempo que le toma llegar a la facultad de un v.a. $X \sim \exp \left(\lambda\right)$ de parámetro $\lambda = 1$ en horas.
 > Si sale a las 8 am de su casa, cuál es la proba de que llegue a tiempo a su examen.
 > Queremos encontrar $P[X \leq 1] = P[X \in (-\infty, 1]]$, esto es
@@ -49,11 +52,13 @@ cssclasses:
 > Pero conveince seprarla $P[X\in [1,4]] = P[X \leq  4] - P[X\leq 1]$ si es que ya conocemos la función de distribución $F_{X}(x)$, así, solo evaluamos y restamos jaja.
 
 > [!theorem] **Teorema.** (Propiedades)
+>
 > Sea $X \sim \operatorname{Exp} (\lambda)$,
 > 1. $\displaystyle \operatorname{E} (X) = \frac{1}{\lambda}$
 > 2. $\displaystyle \operatorname{Var} (X) = \frac{1}{\lambda^{2}}$
 
 > [!proof]+ **Proof.**
+>
 > 1. $\displaystyle \operatorname{E} (x) = \int_{-\infty}^{\infty} x\lambda e^{-\lambda x} \, dx = \lambda \int_{0}^{\infty} xe^{-\lambda x} \, dx$ usando $u = x \implies du = dx$
 > y $dv = e^{-\lambda x} \implies  v = \frac{-1}{\lambda}e^{-\lambda x}$. Así
 > $$

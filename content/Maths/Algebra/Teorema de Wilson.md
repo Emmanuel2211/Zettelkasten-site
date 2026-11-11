@@ -12,10 +12,12 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Lema.**
+>
 > Sea $p \in \mathbb{Z}^{+}$ un número primo, $a \in  \mathbb{Z}$. Tenemos que $a^{2} \equiv 1 \pmod{p}$ si y sólo si 
 > $a \equiv 1 \pmod{p}$ o $a \equiv -1 \pmod{p}$.
 
 > [!proof]- **Proof.**
+>
 > Sea $p \in \mathbb{Z}^{+}$ primo, $a \in \mathbb{Z}$.
 > $(\impliedby )$ Supongamos que $a \equiv 1 \pmod{p}$ o $a \equiv -1 \pmod{p}$. Ent. $a^{2} \equiv 1^{2} \pmod{p}$ o $a^{2} \equiv (-1)^{2} \pmod{p}$.
 > $(\implies )$ Supogamos que $a^{2} \equiv 1 \pmod{p}$. Entonces $p \mid  a^{2} -1 = (a-1)(a+1)$. Como $p$ es primo se tiene que $p \mid a - 1$ o $p\mid a + 1 = a-(-1)$. Así, $a \equiv 1 \pmod{p}$ o $a \equiv -1 \pmod{p}$.
@@ -24,12 +26,14 @@ cssclasses:
 Una caraterización importante de los números primos:
 
 > [!theorem] **Teorema.** (Teorema de Wilson)
+>
 > Sea $p \in \mathbb{Z}^{+}$ un número primo. Tenemos que,
 > $$
 > (p-1)! \equiv -1 \pmod{p}
 > $$
 
 > [!proof]- **Proof.**
+>
 > Sea $p \in \mathbb{Z}^{+}$ primo.
 > Como $p$ es primo, $1,2,\dots,p-1$ son primos relativos con $p$ y entonces tienen un inverso módulo $p$ por el Teorema de Inversos.
 > Además, por el lema anterior, sólo $1$ y $-1$ (o $1$ y $p-1$) son su propio inverso.
@@ -59,10 +63,12 @@ Una caraterización importante de los números primos:
 
 
 > [!theorem] **Teorema.**
+>
 > Sea $m \in \mathbb{Z}^{+} \quad (m-1)! \equiv -1 \iff m \text{ es primo }$
 
 
 > [!proof]- **Proof.**
+>
 > $(\impliedby )$ Por Teo. de Wilson
 > $(\implies )$ Sup, $(m-1)! \equiv -1 \pmod{m}$, ent. $m \mid (m-1)! - (-1) = (m-1)! +1$
 > Ent. $(m-1)! + 1 = mq$ con $q \in \mathbb{Z}$, y así

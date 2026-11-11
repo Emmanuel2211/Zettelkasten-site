@@ -4,6 +4,7 @@ title: "Resolviendo Congruencias"
 publish: true
 ---
 > [!example]+ Ejemplo.
+>
 > $m  =5$, tendrá solución?
 > $$
 > 2x \equiv 4 \pmod{5} \tag{1}
@@ -34,6 +35,7 @@ $$
 tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe $a_{m}^{-1}$ y mult $(1)$ por $a_{m}^{-1}b$ ...; 
 
 > [!observation]+ **Observación.**
+>
 > Sean $a,b \in \mathbb{Z}, m \in \mathbb{Z}^{+}$ la congruencia
 > $$
 > ax \equiv 1 \pmod{m}
@@ -41,9 +43,11 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > tiene solución si y sólo si $(a,m) = 1$ y cualesquiera dos soluciones son congruentes módulo $m$.
 >
 > > [!proof]- **Proof.**
+> >
 > > Se debe a que $x \in \mathbb{Z}$ es solución si y sólo si $x$ es un inverso de $a$ módulo $m$.
 
 > [!theorem] **Proposición 1.**
+>
 > Sean $a,b \in \mathbb{Z}, m \in \mathbb{Z}^{+}$. Si $(a,m) =1$, entonces la congruencia
 > $$
 > ax \equiv b \pmod{m}
@@ -51,6 +55,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > tiene solución y cualesquiera dos soluciones son congruentes módulo $m$.
 
 > [!proof]- **Proof.**
+>
 > Sean $a,b \in \mathbb{Z}, m \in \mathbb{Z}^{+}, (a,m) = 1$
 > Como $(a,m) = 1$ existe un inverso de $a$ módulo $m$ que denotamos por $a_{m}^{-1}$. Veamos que $a_{m}^{-1}b$ es solución de $ax \equiv b \pmod{m}$.
 > Como $a a_{m}^{-1} \equiv 1 \pmod{m}$, multiplicando por $b$
@@ -69,6 +74,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 
 
 > [!example]- Ejemplos.
+>
 > 1. $8m \equiv 1 \pmod{35}$
 > Buscamos un inverso de $8$ módulo $35$
 > $$
@@ -113,6 +119,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 
 
 > [!theorem] **Teorema.**
+>
 > Sean $m \in \mathbb{Z}^{+}, a, b \in \mathbb{Z}.$ La congruencia
 > $$
 > ax \equiv b \pmod{m}
@@ -120,6 +127,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > tiene solución si y sólo si $(a,m) \mid b$.
 
 > [!proof]- **Proof.**
+>
 > Sean $m \in \mathbb{Z}^{+}, a,b \in \mathbb{Z}$
 > $(\implies )$ Supongamos que la congruencia $ax \equiv b \pmod{m}$ tiene solución. Existe entonces $s \in \mathbb{Z}$ tal que $as \equiv b \pmod{m}$. Así $m \mid as - b$ o bien existe $t \in \mathbb{Z}$ tal que $as-b = mt$. Tenemos entonces que
 > $$
@@ -152,9 +160,11 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 
 
 > [!observation]+ **Observación.**
+>
 > Consideremos $ax \equiv b \pmod{m}$ con $(a,m) \mid  b$, $s \in \mathbb{Z}$ es solución de $ax \equiv b \pmod{m}$ si y sólo si $s$ es solución de $\displaystyle \frac{a}{(a,m)}x \equiv \frac{b}{(a,m)} \pmod{\frac{m}{(a,m)}}$
 >
 > > [!proof]- **Proof.**
+> >
 > > $(\implies )$ Sup. que $s$ es solución de $ax \equiv b \pmod{m}$.
 > > Entonces $as \equiv b \pmod{m}$ y así $as - b = mq$ con $q \in \mathbb{Z}$.
 > > Dividiendo entre $(a,m)$ tenemos
@@ -180,6 +190,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > > $$
 >
 > > [!example]+ Ejemplo.
+> >
 > > $6x \equiv 4 \pmod{8}$, $(6,8)=2$ y $2\mid 4$ tiene solución.
 > > Por la obs. de las soluciones de $6x \equiv 4 \pmod{8}$ son las mismas que las de $3x \equiv 2 \pmod{4}$.
 > > Tenemos que $3(2)\equiv 2 \pmod{4}$
@@ -192,6 +203,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 
 
 > [!theorem] **Teorema.**
+>
 > Sean $m \in \mathbb{Z}^{+}, a, b \in \mathbb{Z}$ con $(a,m)\mid b$. La congruencia $ax \equiv b \pmod{m}$ tiene $(a,m)$ soluciones distintas módulo $m$, que son
 > $$
 > s, s+ \frac{m}{(a,m)} , s + \frac{2m}{(a,m)} , \dots , s + \frac{((a,m) - 1)m}{(a,m)}
@@ -199,6 +211,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > con $s \in \mathbb{Z}$ una solución particular de $\frac{a}{(a,m)}x \equiv \frac{b}{(a,m)} \pmod{\frac{m}{(a,m)}}$
 
 > [!proof]- **Proof.**
+>
 > Sean $m \in \mathbb{Z}^{+}, a,b \in \mathbb{Z}, (a,m)\mid b$
 > Denotemos $ax \equiv b \pmod{m}$ por $\#$ y  $\displaystyle \frac{a}{(a,m)}x \equiv \frac{b}{(a,m)} \pmod{\frac{m}{(a,m)}}$ por $\#\#$.
 > Veamos que los números de la lista son solución de $\#$.
@@ -232,6 +245,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > [!example]+
 
 > [!theorem] **Teorema.** (Teorema Chino de Residuo)
+>
 > Sean $r_{1},r_{2} \in \mathbb{Z}, m_{1},m_{2} \in \mathbb{Z}^{+}$ con $(m_{1},m_{2}) = 1$. Las congruencias
 > $$
 > \begin{align}
@@ -244,15 +258,18 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > [!proof]+ **Proof.**
 
 > [!observation]+ **Observación.**
+>
 > Una solución común de $x \equiv r_{1} \pmod{m_{1}}$ y $x \equiv r_{1} \pmod{m_{2}}$, $(m_{1},m_{2}) = 1$, es
 > $$
 > m_{2}m^{-1}_{2m_{1}}r_{1} + m_{1}m_{1m_{2}}^{-1} r_{2}
 > $$
 >
 > > [!proof]+ **Proof.**
+> >
 > > De la prueba anterior sabemos que
 
 > [!Info]+ **Nota!**
+>
 > Generalizando, sean $m_{1},\dots,m_{t} \in \mathbb{Z}^{+}$ tales que $(m_{i}, m_{j}) = 1 \ \forall  i\neq j, \ r_{1},\dots,r_{t} \in \mathbb{Z}$. Una solución común de
 > $$
 > \begin{align}

@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** ($S(\mathbb{F})$)
+>
 > Sea $\mathbb{F}$ un campo. Definimos
 > $$
 > \mathcal{S}(\mathbb{F}) = \{ r \mid r : \mathbb{N}^{+} \to \mathbb{F} \}

@@ -86,6 +86,7 @@ $$
 donde $\displaystyle \Gamma = (f(x_{0})+ 4 f(x_{1}) + f(x_{2})) + (f(x_{2})+ 4f(x_{3}) + f(x_{4})) + \dots + (f(x_{2(n-1)}) + 4f(x_{2n-1}) + f(x_{2n}))$
 
 > [!observation]+ **Observación.**
+>
 > Agrupando, los índices impares llevan $4$ y los pares interiores llevan $2$ (aparecen en dos paréntesis):
 > $$
 > \Gamma = f(x_{0}) + 4\sum_{k=0}^{n-1} f(x_{2k+1}) + 2\sum_{k=1}^{n-1} f(x_{2k}) + f(x_{2n})

@@ -14,6 +14,7 @@ cssclasses:
 > [!tip]+ **Idea.**
 
 > [!theorem] **Definición.** (f.g.m.)
+>
 > Sea $X$ v.a. (discreta o continua), la **función generadora de momentos** $M(t)$ definida
 > $$
 > M(t) = \operatorname{E} (e^{tX})

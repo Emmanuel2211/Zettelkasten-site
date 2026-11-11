@@ -12,10 +12,12 @@ cssclasses:
  - romana
 ---
 > [!Quote]- Un matemático buscando una definición
+>
 >  ![[Pasted image 20260819215736.png]]
 
 
 > [!theorem] **Definición.** (Logaritmo)
+>
 > Para $x >0$, definimos:
 > $$
 > \log \left(x\right) = \int_{1}^{x} \frac{1}{t} \, dt  
@@ -26,12 +28,14 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Propiedades de $\log$)
+>
 > 1. $\log \left(xy\right) = \log \left(x\right) +\log \left(y\right)$
 > 2. $\log \left(\frac{x}{y}\right) = \log \left(x\right) - \log \left(y\right)$
 > 3. $\log \left(x^{r}\right) = r \log \left(x\right)$
 > 4. $\displaystyle \frac{d}{dx}\log(x) = \frac{1}{x}$ para $x>0$.
 
 > [!theorem] **Definición.** (Logaritmo Base General)
+>
 > Sea $a > 0$ con $a\neq 1$. Para cualquier $x >0$, el logaritmo en base $a$ de $x$ se define mediante el cambio de base al logartimo natural:
 > $$
 > \log_{a} \left(x\right) = \frac{\log \left(x\right)}{\log \left(a\right)}
@@ -57,12 +61,14 @@ pensando en sus caracteristicas sin aun su definicion....
 - es una función *concava*
 
 > [!theorem] **Proposición.**
+>
 > La función $f(x) = x - \log(x)$ es creciente para $x>1$: además,
 > $$
 > \lim_{ x \to \infty } x - \log(x) = \infty
 > $$
 
 > [!proof]- **Proof.** 
+>
 > $f(x) =1 - \frac{1}{x}$. $f(x)= 0 \iff 1 = \frac{1}{x} \iff x = 1$. Para $-x >1$, claramente $f'(x) > 0$. Ahora, $1- \frac{1}{x} = \frac{1}{2} \iff x = 2$.
 > Por el crecimiento, $1 - \frac{1}{x} > \frac{1}{2} \iff x > 2$.
 > Tomemos $c = 3$ y $x > c$. Por el Teorema del Valor Medio en $[c,x]$ existe $y$ tal que
@@ -74,9 +80,11 @@ pensando en sus caracteristicas sin aun su definicion....
 > $$
 
 > [!theorem] **Corolario.** 
+>
 > La función $f(x) = x - m\log x$ para $m \in \mathbb{N}$ es creciente en $x > m;$ además $\displaystyle \lim_{ x \to \infty } x - m \log (x) = \infty$ 
 
 > [!proof]- **Proof.** 
+>
 > $f(x) = 1 - \frac{m}{x} > 0 \iff x>m$. Ahora $1 -\frac{m}{x} = \frac{1}{m+1} \iff x = m+1$.
 > Así $1- \frac{m}{x} > \frac{1}{m+1} \iff x > m+1$.
 > Tomemos $c = m+2$ y $x > c$, Por el T.V.M. existe $y \in [c,x]$ tal que 
@@ -91,11 +99,13 @@ pensando en sus caracteristicas sin aun su definicion....
 de esta forma nos damos cuenta que el logaritmo tiene un crecimiento lentisismo, mayor que cualquier potencia
 
 > [!theorem] **Corolario 2.** 
+>
 > $$
 > \lim_{ x \to \infty } \frac{e^{x}}{x^{m}} = \infty \quad \forall  m \in \mathbb{N}
 > $$
 
 > [!proof]- **Proof.** 
+>
 > $$
 > \begin{align}
 > \lim_{ x \to \infty } \frac{e^{x}}{x^{m}} &= \lim \frac{e^{x}}{e^{\log(x^{m})}} - \lim e ^{x - \log(x^{m})} \\
@@ -104,11 +114,13 @@ de esta forma nos damos cuenta que el logaritmo tiene un crecimiento lentisismo,
 > $$
 
 > [!theorem] **Proposición.** 
+>
 > $$
 > \lim_{ t \to \infty } \left(  1 + \frac{1}{t} \right)^{t} = e
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Sea $f(t) = (1 + \frac{1}{t}) ^{ t}$ y $\log (f(t))$.
 > Probando que $\underset{t \to \infty}{\log(f(t))} \to 1$. ya acabé, Trucaso!
 > $$
@@ -128,11 +140,13 @@ $$
 $$
 
 > [!theorem] **Definición.** (Logaritmo)
+>
 > Se define a $\log x$ como el área bajo la curva $f(x)= \frac{1}{x}, f: (0,\infty) \to (0,\infty)$.
 
 ![[Pasted image 20260818115742.png|center|574]]
 
 > [!theorem] **Teorema.** (Propiedades de Logaritmo)
+>
 > 1. $\log'x = \frac{1}{x}$, $\log: (0,\infty) \to \mathbb{R}$
 > 2. $\log 1 = 0$
 > 3. $\log (xy) = \log (x) + \log (y)$
@@ -142,6 +156,7 @@ $$
 > 7. $\log$ es estrictamente creciente.
 
 > [!proof]- **Proof.** 
+>
 > 1.
 > 2.
 > 3.
@@ -154,11 +169,13 @@ $$
 > $$
 
 > [!theorem] **Teorema 1.1** (lolazo)
+>
 > $$
 > \lim_{ x \to \infty } \log x = \infty
 > $$
 
 > [!proof]- **Proof.**
+>
 > Dado que $\frac{1}{2} < \log 2$, observamos que $1< 2 \log 2 \implies 1 < \log 4$. Así dado $n \in \mathbb{N}, n < n \log 4 = \log (4^{n}$
 > Sea $M > 0$, por P.A. existe $n \in \mathbb{N}$ tal que $n > M$. Además $\forall n \in \mathbb{N}, 4^{n} > n$. Definamos $N = 4^{n}$. Si $x > N \implies x > 4^{n}$. Dado que $\log$ es creciente $\log x > \log (4^{n}) = n \log 4 > n > M$  
 > $$
@@ -168,11 +185,13 @@ $$
 
 
 > [!theorem] **Teorema 1.2** 
+>
 > $$
 > \lim_{  x \to 0^+ } \log x = -\infty
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Si $y = \frac{1}{x}$ entonces $x \to 0^{+} \implies y \to \infty$. Así
 > $$
 > \lim_{ x \to 0^{+} } \log x = \lim_{  y  \to \infty }  \log \left( \frac{1}{y} \right) = -\lim_{  y \to \infty } \log y = -\infty
@@ -181,6 +200,7 @@ $$
 
 
 > [!theorem] **Corolario.** 
+>
 > $$
 > \lim_{ x \to \infty } \frac{x}{\log(x)} = \infty
 > $$
@@ -188,6 +208,7 @@ $$
 Aproximacion del valor de $e$:
 
 > [!proof]- **Proof.** 
+>
 > Sea $x = e^{x}$. Así $\log(x) = y$
 > $$
 > \implies \lim_{ x \to \infty } \frac{x}{\log(x)} = \lim_{ y \to \infty } \frac{e^{y}}{y} =\infty

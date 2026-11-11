@@ -13,6 +13,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Def.** Supremo/Ínfimo (minima cota superior y máxima cota inferior)
+>
 > Sea $E\subseteq \mathbb{R}, E\neq\varnothing$, y acotado.
 > 
 > - Si $M$ es la menor de de todas las cotas superiores, $M$ es llamado **supremo** de $E$, denotamos $M = \sup E$.
@@ -36,13 +37,16 @@ Es conveniente completar la definición
 ---
 
 > [!theorem] **Axioma del supremo (completitud)**
+>
 > Todo conjunto no vacío de números reales que esta acotado superiormente, tiene un cota superior mínima. 
 > 
 
 > [!theorem] **Teorema.** (Axioma del Ínfimo)
+>
 > Si $S \neq \varnothing$ y está acotado inferiormente, tiene ínfimo.
 
 > [!proof]- **Proof.** 
+>
 > Sea $T = \{ \beta \in \mathbb{R}:  \forall a \in S (\beta\leq a) \}$ Dado que $S$ está acotado inferiormente, $T \neq \varnothing$, y dado $S \neq \varnothing$, $T$ está acotado superiormente. Entonces $T$ tiene supremo. Sea $m := \sup T$. Si $a \in S$, entonces $a$ es una cota superior de $T$ y $m \leq a$. Esto prueba que $m$ es una cota inferior de $S$. Además, si $\beta \in \mathbb{R}$ es una cota inferior de $S$, entonces $\beta \in T$, y de aquí $\beta \leq m$. Por lo tanto, $m = \inf S$. Q.E.D.
 > 
 

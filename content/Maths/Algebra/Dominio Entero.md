@@ -13,6 +13,7 @@ cssclasses:
 # Más propiedades de $\mathbb{Z}$
 
 > [!theorem] **Teorema.** (pseudotricotomía)
+>
 > Sea $a \in \mathbb{Z}$, se cumple una y sólo una de las siguietes condiciones:
 > 1. $a = 0$
 > 2. $a \in \mathbb{N} \setminus \{ 0 \}$
@@ -21,6 +22,7 @@ cssclasses:
 En el fondo, esto es la *tricotomía*.
 
 > [!proof]- **Proof.** 
+>
 > Sea $a \in \mathbb{Z}$, digamos $a = \overline{(n,m)}$ con $n,m \in \mathbb{N}$. 
 > Sabemos que se cumple una y sólo una de las siguientes condiciones:
 > $$
@@ -61,15 +63,18 @@ En el fondo, esto es la *tricotomía*.
 > $$
 
 > [!observation]- **Observación.**
+>
 > La doble implicación en la demostración anterior, es estrictamente formal. Pues si demostramos solamente $\implies$ no verficamos el "una y sólo una" de $(i), (ii)$ e $(iii)$.
 
 Desarrollamos más propiedades para describir algunas características importantes de $\mathbb{Z}$.
 
 > [!observation]+ **Observación.**
+>
 > Sean $n,m \in \mathbb{N}$ y $a \in \mathbb{Z}$
 > $a = 0 \iff -a = 0$
 
 > [!theorem] **Teorema.** (Dominio Entero $\mathbb{Z}$ )
+>
 > Sean $a,b \in \mathbb{Z}$. Si $a\neq 0$ y $b\neq 0$, Ent. $a\cdot b\neq 0$. De modo equivalente, si $a\cdot b = 0$, Ent. $a = 0 \lor b =0$.
 > 
 > Y decimos entonces que $\mathbb{Z},+,\cdot$ es un **dominio entero**.
@@ -78,6 +83,7 @@ Desarrollamos más propiedades para describir algunas características important
 Es más sencillo demostrar el $\neq$.
 
 > [!proof]- **Proof.** 
+>
 > Sean $a,b \in \mathbb{Z}$ tales que $a\neq 0$ y $b\neq0$.
 > Para $a$ se tiene que $a \in \mathbb{N}\setminus \{ 0 \}$ ó $-a \in \mathbb{N}\setminus \{  0 \}$. Para $b$ también $b \in \mathbb{N} \setminus \{  0 \}$ ó $-b \in \mathbb{N} \setminus \{  0 \}$.
 > 
@@ -96,11 +102,13 @@ Es más sencillo demostrar el $\neq$.
 
 
 > [!theorem] **Teorema.** 
+>
 > Sean $a,b,c \in \mathbb{Z}$ con $a \neq 0$.
 > 2. Si $ab = ac$, Ent. $b =c$
 > 3. Si $ba = ca$, Ent. $b = c$
 
 > [!proof]- **Proof.** 
+>
 > Sean $a,b,c \in \mathbb{Z}$, $a\neq 0$
 > 4. Sup. $ab = ac$, **P.D.** $b=c$
 > Sumando $-ac$ de ambos lados,

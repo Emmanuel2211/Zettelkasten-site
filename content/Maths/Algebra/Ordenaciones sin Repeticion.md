@@ -36,17 +36,20 @@ Igualmente nombradas *Ordenaciones sin Repetición*. Vamos a interpretarlas:
 
 
 > [!theorem] **Def.** (Ordenaciones)
+>
 > Sea $A$ un conjunto finito con $\lvert A \rvert=n$. Las **ordenaciones de los elementos de** $A$ **tomados de** $m$ **en** $m$ son las funciones $f: I_{m}\to A$ tales que $f$ es inyectiva. Denotamos al número de ordenaciones,
 > $$
 > O_{m}^{n}
 > $$
 
 > [!observation]- **Observación.**
+>
 > ¿Si $n = m$? Se tiene $(n- m) = 0$. Y por convicción $!0 = 1$, por lo que $O_{n}^{n} =   n!$.
 
 De esta forma, las *ordenaciones* son casos especiales de las *ordenaciones con repetición*<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>. Importante, consideramos un ejemplo para ilustrar el resultado general.
 
 > [!example]- **Ejemplo 1.** 
+>
 > Las "palabras" de dos letras distintas que pueden formar con las letras $a,b$ y $c$ son:
 > $$
 > \begin{matrix}
@@ -85,6 +88,7 @@ De esta forma, las *ordenaciones* son casos especiales de las *ordenaciones con 
 
 
 > [!example]- **Ejemplo para el lema.** 
+>
 > Sea $A = \{ a,b,c,d,e \}$. Las funciones inyectivas de $I_{1}$ en $A$ son
 > $$
 > \begin{pmatrix}
@@ -109,15 +113,18 @@ De esta forma, las *ordenaciones* son casos especiales de las *ordenaciones con 
 Ahora sí, veamos el siguiente lema.
 
 > [!theorem]- **Lema.** 
+>
 > Sean $m,n \in \mathbb{N}^{+}$ tales que $m \leq n$. Entonces
 > $$
 > O_{n}^{m+1} = (n-m)O_{n}^{m}
 > $$
 
 > [!proof]- **Proof.** 
+>
 > pag. 245 Algebra Sup. I
 
 > [!theorem] **Teorema.** 
+>
 > Si $m,n \in \mathbb{N}^{+}$ y $m \leq n$, entonces
 > $$
 > O_{m}^{n} = n(n-1)\dots(n-m +1)
@@ -128,6 +135,7 @@ Ahora sí, veamos el siguiente lema.
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Por inducción sobre $m$.
 > *Paso Base:* Si $m = 1$, entonces $n\geq 1$. Dado que hay $n$ funciones inyectivas distintas de $I_{1}$ en un conjunto $\lvert A \rvert = n$, $O_{n}^{1} = n$. Por otro lado, como $m = 1, n(n- 1)\dots(n-m+1) = n$. Así, en este caso, efectivamente, $O_{n}^{m} = n(n-1)\dots(n-m+1)$.
 > 

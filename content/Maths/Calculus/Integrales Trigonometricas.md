@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Senos.**
+>
 > $$
 > \begin{align}
 > \int \sin(x) \, dx &= - \cos(x) + C \\[0.5em]
@@ -23,6 +24,7 @@ cssclasses:
 
 
 > [!theorem] **Cosenos.**
+>
 > $$
 > \begin{align}
 > \int \cos(x) \, dx &=  \sin(x) + C \\[0.5em]
@@ -33,6 +35,7 @@ cssclasses:
 > [!proof]+ **Proof.**
 
 > [!theorem] **Tangentes.**
+>
 > - Tangentes
 > $$
 > \begin{align}
@@ -44,6 +47,7 @@ cssclasses:
 > [!proof]+ **Proof.**
 
 > [!theorem] **Secantes.**
+>
 > $$
 > \begin{align}
 > \int \sec(\theta) \, dx &= \\[0.5em]
@@ -55,6 +59,7 @@ cssclasses:
 > [!proof]+ **Proof.**
 
 > [!theorem] **Cosecantes.**
+>
 > $$
 > \begin{align}
 > \int \csc(\theta) \, dx &= \\[0.5em]
@@ -66,6 +71,7 @@ cssclasses:
 > [!proof]+ **Proof.**
 
 > [!theorem] **Cotangentes.** ()
+>
 > $$
 > \begin{align}
 > \int \cot(\theta) \, dx &= \\[0.5em]
@@ -76,6 +82,7 @@ cssclasses:
 > [!proof]+ **Proof.**
 
 > [!observation]+ **Algunas Observaciones**
+>
 > - En $\displaystyle \int \tan(x) \, dx$, por propiedades de logaritmo $-\log \left(\cos(x)\right) = \log \left(\sec(x)\right)$.
 
 

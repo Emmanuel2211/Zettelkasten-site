@@ -13,6 +13,7 @@ cssclasses:
 
 
 > [!theorem] **Axiomas de Orden** 
+>
 > Sea $P$ el conjunto de todos los reales postivos.
 > 1. Tricotomía: $a = 0 \lor a \in P \lor -a \in P$
 > 2. Cerrado respecto a la suma: $a, b \in P \implies a+b \in P$ 
@@ -21,6 +22,7 @@ cssclasses:
 Estas propiedades definimos la relación de Orden $<$:
 
 > [!theorem] **Def.** (Relación de Orden)
+>
 > $$
 > \begin{align}
 > a - b \in P &\implies a > b  \\[0.5em]

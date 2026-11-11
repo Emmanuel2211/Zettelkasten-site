@@ -20,6 +20,7 @@ Ocurre cuando $\text{det}(M)= -1$.
 
 
 > [!theorem] **Teorema** 
+>
 > Sea $V: \mathbb{R}^{2} \to \mathbb{R}^{2}$, $P(x,y)$ y $\lvert \mathbf{u} \rvert = 1$.
 > $$
 > V(\mathbf{P}) = x\mathbf{u} - y\mathbf{u^\perp}

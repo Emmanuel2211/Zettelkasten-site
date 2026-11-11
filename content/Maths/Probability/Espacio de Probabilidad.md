@@ -12,12 +12,14 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Espacio de Probabildad)
+>
 > Un **espacio de probablidad** es un espacio de medida finita cuya medida total es estrictamente igual a la unidad. Se define como la terna $(\Omega,\mathcal{F},P)$:
 > - **Espacio Muestal:** $\Omega \neq \varnothing$
 > - $\sigma$**-álgebra de Eventos:** $\mathcal{F}$
 > - **Medida de Probabilidad:** $P(A)$
 
 > [!theorem] **Definición.** (Espacio Muestral) [Samplig Space]
+>
 > El espacio muestral de un experimento aleatorio es el conjunto de todos los posibles resultados del experimento, denotado $\Omega$. A un resultado particular del experimento se le denota $\omega$.
 
 La $\sigma$*-álgebra de eventos*<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup> es una familia de subconjuntos de $\Omega$ que cumple con tres propiedades. Funciona como ***aduana*** para restrigir $\operatorname{dom}P$ a solo conjuntos tratables, como en el caso de conjuntos discretos o de infinitos pequeños.
@@ -25,6 +27,7 @@ La $\sigma$*-álgebra de eventos*<sup><a href="#user-content-fn-inline-1" id="us
 La *medida de probablidad*<sup><a href="#user-content-fn-inline-2" id="user-content-fnref-inline-2" data-footnote-ref class="internal">2</a></sup> es una funcíon $P: \mathcal{F\to \mathbb{R}}$ que asigna cada *evento* en $\mathcal{F}$ un número real, y tiene que cumplir con tres axiomas. 
 
 > [!Info]- **Nota!**
+>
 > - Un **experimento aleatorio** $\mathcal{E}$ aunque no lo parezca, también tiene su definición formal fenomenológica:
 > 	- *Replicabilidad:* $\mathcal{E}$ puede ser repetido infinitamente bajo condiciones iniciales identicas.
 > 	- *Indeterminismo:* El resultado $\omega$ de una ejecución individual de $\mathcal{E}$ es impredecible *a priori*. Ningun modelo determinista puede asegurar cuál será el resultado de la siguiente iteración.
@@ -42,6 +45,7 @@ Muyyy en sintesis,
 - $P :=$ Función que da probabilidades
 
 > [!observation]- **Observación**
+>
 > - El complemento es respecto a $\Omega$
 > $$
 > A^{c} = \Omega \setminus A
@@ -61,8 +65,10 @@ Muyyy en sintesis,
 
 
 > [!example]- **Ejemplo 1.** (Medida clásica)<sup><a href="#user-content-fn-inline-3" id="user-content-fnref-inline-3" data-footnote-ref class="internal">3</a></sup>
+>
 > Para la Medida de probabilidad clasica, se necesita que $\Omega$ sea finito.
 > > [!theorem] **Definición.** (Medida clásica)
+> >
 > > $$
 > > P[A] = \frac{\lvert A \rvert }{\lvert \Omega \rvert }
 > > $$
@@ -76,8 +82,10 @@ Muyyy en sintesis,
 > - Suponemos que cada elemento de $\Omega$ tiene la misma probabilidad
 
 > [!example]- **Ejemplo 2.** (Medida Frecuentista)
+>
 > Necesitamos que se realice el experimento algunas veces 
 > > [!theorem] **Definición.** (Medida Frecuentista)
+> >
 > > $$
 > > P[A] = \frac{\# \text{obs. de A}}{\# \text{experimentos}}
 > > $$
@@ -86,6 +94,7 @@ Muyyy en sintesis,
 > $P[S] = 6/10$ y $P[A] = 4/10$
 
 > [!example]- **Ejemplo 3.** (Medida Geométrica)
+>
 > Útil cuando se tienen demasiados eventos en consideración. Supongamos que $\Omega$ es **no-numerable**. Definimos
 > $$
 > P[A] = \frac{\text{Área } (A) }{\text{Área }(\Omega)}

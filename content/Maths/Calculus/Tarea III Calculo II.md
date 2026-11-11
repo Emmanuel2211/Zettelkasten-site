@@ -35,6 +35,7 @@ $$
 $$
 
 > [!Info]+ **Nota!**
+>
 > nvim falta configurar ubrace para que funciones con el replazo de Tab
 
 Como observamos, es una integral eliptica, entonces hay que aproximarla por medio de métodos numéricos. Aproximaremos por Polinomio de Taylor.
@@ -56,6 +57,7 @@ $$
 
 
 > [!example]+ **Ejercicio.**
+>
 6. Una curva con ecuación $\rho = f(\theta)$ se puede expresar paramétricamente por $(f(\theta)\cos(\theta), f(\theta)\sin(\theta))$. Encuentra una fórmula para la longitud de $\mathscr{C}$ en $[\theta_{1},\theta_{2}]$.
 La fórmula de longitud de curva para $\gamma = (\gamma_{1},\gamma_{2})$ es
 $$
@@ -80,6 +82,7 @@ $$
 $$
 
 > [!example]+ Ejemplo.
+>
 ¿Que curva respresenta $\varphi = \theta$? (en coodenadas cartecianas)
 un espiral!
 

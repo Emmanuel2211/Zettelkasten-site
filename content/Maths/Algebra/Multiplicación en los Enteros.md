@@ -16,6 +16,7 @@ cssclasses:
 # Producto en $\mathbb{Z}$
 
 > [!theorem] **Definición.** ($\cdot_{\mathbb{Z}}$)
+>
 > El **producto** en $\mathbb{Z}$ es la función $\cdot_{\mathbb{Z}}: \mathbb{Z}\times \mathbb{Z}\to \mathbb{Z}$ tal que
 > $$
 > [(n,m)] \cdot_{\mathbb{Z}} [(p,q)] = [(n\cdot p + m \cdot q, n \cdot q + m \cdot p)].
@@ -25,16 +26,19 @@ cssclasses:
 Verifiquemos que este *bien definida*.
 
 > [!theorem] **Proposición.** ($\cdot_{\mathbb{Z}}$ Unívoca)
+>
 > Para cualesquiera $[(n,m)], [(p,q)] \in \mathbb{Z}$, si $(n',m') \in [(n,m)]$ y $(p',q') \in [(p,q)]$, entonces
 > $$
 > [(n,m)] \cdot_{\mathbb{Z}}[(p,q)] = [(n',m')]\cdot_{\mathbb{Z}} [(p',q')].
 > $$
 
 > [!proof]- **Proof tarea moral.** 
+>
 > Sean 
 
 
 > [!theorem] **Teorema.** (Propiedades de $\cdot_{\mathbb{Z}}$)
+>
 > 1. Asociatividad: $\forall a,b,c \in \mathbb{Z}\text{ tal que } (a \cdot b) \cdot c = a \cdot (b \cdot c)$
 > 2. Conmutatividad: $\forall a,b \in \mathbb{Z}\text{ tal que } a \cdot b = b \cdot a$
 > 3. Neutro: $\exists \gamma \in \mathbb{Z} \text{ tal que } \forall a \in \mathbb{Z}, \ \gamma \cdot a = a \cdot \gamma = a$
@@ -44,6 +48,7 @@ Verifiquemos que este *bien definida*.
 Con estas 8 propiedades (incluidas $+_{\mathbb{Z}}$) a $\mathbb{Z}$ se le llama entonces un **anillo conmutativo** por $(ii)$ **con uno** $(iii)$.
 
 > [!proof]- **Proof.** 
+>
 > 1. fjdks
 > 2. Sean $a,b \in \mathbb{Z}$ digamos, sean $n,m,p,q \in \mathbb{N}$
 > $$
@@ -80,10 +85,12 @@ Con estas 8 propiedades (incluidas $+_{\mathbb{Z}}$) a $\mathbb{Z}$ se le llama 
 > Bueno, replicamos la únicidad para el neutro multiplicativo $\gamma$, y lo denotamos $1$.
 
 > [!theorem] **Proposición.** (Más propiedades)
+>
 > 1. Para todo $a \in \mathbb{Z}$, $a \cdot 0 = 0 \cdot a = 0$
 > 2. Para todo $A \in \mathbb{Z}$, tenemos $a(-1) = (-1) a = -a$
 
 > [!proof]- **Proof.** 
+>
 > 3. **P.D.** $a \cdot 0 = 0$
 > Sea $a \in \mathbb{Z}$, tenemos
 > $$
@@ -109,12 +116,14 @@ Con estas 8 propiedades (incluidas $+_{\mathbb{Z}}$) a $\mathbb{Z}$ se le llama 
 > $$
 
 > [!theorem] **Proposición.** (Leyes de los signos)
+>
 > Sean $a,b \in \mathbb{Z}$
 > 1. $a(-b) = (-a)b = -ab$
 > 2. $-(-a) = a$
 > 3. $(-a)(-b) = ab$
 
 > [!proof]- **Proof.** 
+>
 > Sean $a,b \in \mathbb{Z}$
 > 1. **P.D.** $a(-b) = -ab$
 > Sabemos que
@@ -155,6 +164,7 @@ Con estas 8 propiedades (incluidas $+_{\mathbb{Z}}$) a $\mathbb{Z}$ se le llama 
 > $$
 
 > [!theorem] **Definición.** (Potencia)
+>
 > Sea $a \in \mathbb{Z}$ y $n \in \mathbb{N}$ definimos la **potencia**
 > $$
 > \begin{align}

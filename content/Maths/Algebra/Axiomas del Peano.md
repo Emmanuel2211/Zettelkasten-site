@@ -12,6 +12,7 @@ cssclasses:
 status: undone
 ---
 > [!theorem] **Axioma.** (Peano)
+>
 > Dado un conjunto $0$, otro conjunto $\mathbb{N}$ y una relación $\mathfrak{s}$ tal que $\operatorname{dom} \mathfrak{s} = \mathbb{N}$, tenemos los siguente:
 > 1. $0 \in \mathbb{N}$.
 > 2. $\forall n \in \mathbb{N} \ \exists! m \in \mathbb{N}((n,m) \in \mathfrak{s})$, es decir, $\mathfrak{s}$ es función, $\mathfrak{s}: \mathbb{N} \to \mathbb{N}$.

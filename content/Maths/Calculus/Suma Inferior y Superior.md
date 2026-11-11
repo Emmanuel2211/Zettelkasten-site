@@ -11,6 +11,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Def.** (Suma Inferior y Superior)
+>
 > Supongamos que $f$ está acotada en $[a,b]$ y que $P = \{ t_{0},\dots, t_{n} \}$ es una partición de $[a,b]$. Sea
 > $$
 > \begin{align}
@@ -28,6 +29,7 @@ cssclasses:
 > $$
 
 > [!observation]- **Observación**
+>
 > A pesar de la motivación geométrica, estas sumas se han definido de manera precisa, sin invocar ningún concepto de "área".
 > 
 > Además, como comentario, el requisito que $f$ esté acotada en $[a,b]$ es esencial para que los $m_{i}$ y $M_{i}$ estén bien definidos. También, es necesario definir a $m_{i}$ y $M_{i}$ como ínfimos y supremos y no como máximos y mínimos, ya que no se supone que $f$ sea continua.
@@ -41,6 +43,7 @@ Ahora, recordamos que queremos llegar a $L(f,P_{1})\leq L(f,P_{2})$, dadas $P_{1
 En la figura, $Q$ representa la partición con *puntos blancos y negros*. Es claro que contiene a $P$, *solo los puntos negros*. Ésto señala que los rectángulos de $Q$ aproximan mejor que la partición $P$.
 
 > [!theorem]- **Lema.** 
+>
 > Si $Q$ contiene a $P$, entonces
 > $$
 > \begin{align}
@@ -50,6 +53,7 @@ En la figura, $Q$ representa la partición con *puntos blancos y negros*. Es cla
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Consideremos primero el caso especial (figura) en donde $Q$ contenga solamente un punto más que $P$:
 > 
 > ![[Pasted image 20260702093950.png|center]]
@@ -108,6 +112,7 @@ En la figura, $Q$ representa la partición con *puntos blancos y negros*. Es cla
 > $$
 
 > [!theorem] **Teorema 1.** 
+>
 > Sean $P_{1}$ y $P_{2}$ particiones de $[a,b]$, y sea $f$ una función acotada en $[a,b]$.
 > Entonces
 > $$
@@ -115,6 +120,7 @@ En la figura, $Q$ representa la partición con *puntos blancos y negros*. Es cla
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Existe una partición $P$ que contiene tanto a $P_{1}$ como a $P_{2}$ (considérese la partición $P$ formada por $P_{1} \cup P_{2}$). Según el lema anterior, 
 > $$
 > L(f,P_{1}) \leq L(f,P) \leq U(f,P) \leq U(f,P_{2}). \tag*{$\blacksquare$}

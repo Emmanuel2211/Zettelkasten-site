@@ -11,6 +11,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición** (Sistema de Ecuaciones Lineales)
+>
 > Dado un campo $\mathbb{F}$ y un **sistema de $m$ ecuaciones lineales en $n$ incógnitas** de la siguiente forma:
 > 
 > $$
@@ -28,4 +29,5 @@ cssclasses:
 Pero... ¿cómo podemos asegurar que el sistema tiene solución? Es conveniente, para comenzar, considerar sistemas los cuales siempre tengan solución.
 
 > [!theorem] **Definición.** (Sistema de Ecuaciones Homogéneo)
+>
 > Llamaremos **homogéneos** a los sistemas de ecuaciones, si todos sus términos independientes son $b_{i} = 0$. Observamos que siempre tienen al menos una solución pues, $(0,\dots,0) \in \mathbb{F}^{n}$. Por lo que el conjunto $S_{h}$ de soluciones de un sistema homogéneo es no vacío.

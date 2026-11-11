@@ -12,9 +12,11 @@ cssclasses:
  - romana
 ---
 > [!tip]+ **Idea.**
+>
 > La varianza $(\sigma^{2})$ es una medida del grado de dispersión de los diferentes valores tomados por la variable.
 
 > [!theorem] **Definición.** (Varianza)
+>
 > Sea $X$ v.a. discreta con función de masa de probabilidad $f(x)$. La **varianza** de $X$ se define como el número
 > $$
 > \operatorname{Var} (X) = \sum_{x} (x-\mu)^{2}f(x),
@@ -32,6 +34,7 @@ cssclasses:
 > A la varianza, generalmente, se le denota $\sigma ^{2}$.
 
 > [!observation]+ **Observación.**
+>
 > También podemos expresar la varianza en una sola expresión como, dodne $\mu$ es $\operatorname{E} (X)$ (bajo la misma v.a.):
 > $$
 > \operatorname{Var} (X) = E(X - \mu)^{2}
@@ -39,9 +42,11 @@ cssclasses:
 > Si! La varianza es un caso particular de la esperanza, en donde estamos calculando la esperanza de $g(x)= ( x - \mu )^{2}$ aplicada a una v.a. $X$ con esperanza $\mu$. Entonces, podemos hacer uso de un poco de la teoría que desarrollamos sobre la esperanza<sup><a href="#user-content-fn-inline-1" id="user-content-fnref-inline-1" data-footnote-ref class="internal">1</a></sup>.
 
 > [!theorem] **Definición.** (Desviación Estandar)
+>
 > A la raíz cuadrada de $\sigma ^{2}$ se le llama **desviación estandar**, denotada $\sigma$.
 
 > [!theorem] **Teorema.** (Propiedades)
+>
 > Sean $X$ y $Y$ v.a. con varianza finita y $c$ una constante, entonces
 > 1. $\displaystyle \operatorname{Var} (X) \geq 0$.
 > 2. $\operatorname{Var} (c) = 0$.
@@ -53,6 +58,7 @@ cssclasses:
 > [!proof]+ **Proof.**
 
 > [!theorem] **Proposición.**
+>
 > Sean $X$ y $Y$ v.a. **independientes** y con varianza finita, entonces
 > $$
 > \operatorname{Var} (X + Y) = \operatorname{Var} (X) + \operatorname{Var} (Y)

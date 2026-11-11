@@ -12,6 +12,7 @@ cssclasses: romana
 materia: 
 ---
 > [!theorem] **Definición.** (Alcance de una Función)
+>
 > Sea $f: [a,b] \to \mathbb{R}$, llamamos el **alcance** u **ocilación** de $f$ a
 > $$
 > \max \left\{f\right\} - \min \left\{f\right\} 
@@ -24,6 +25,7 @@ A diferencia de la continuidad, la continuidad uniforme no tiene punto fijo $x_{
 > En la continuidad uniforme, existe un solo $\delta$ universal que funciona para toda la función al mismo tiempo.
 
 > [!theorem] **Definición.** (Continuidad Uniforme)
+>
 > $f$ es **uniformemente continua** en $[a,b]$ si
 > $$
 > \forall  \varepsilon>0 \ \exists \delta >0 \ \text{ tal que } \ \lvert x-y \rvert <\delta \implies \lvert f(x)-f(y) \rvert < \varepsilon
@@ -32,6 +34,7 @@ A diferencia de la continuidad, la continuidad uniforme no tiene punto fijo $x_{
 > Veremos que si una función $f$ es continua $\implies$ es unif. continua. Pero el reciproco no es verdad, veamos un ejemplo.
 
 > [!example]- **Ejemplo** ($f(x) = x^{2}$)
+>
 > Tomemos $f(x) = x^{2}$, $f:\mathbb{R}\to \mathbb{R}$. Probamos que $f$ es continua en $x_{0}$:
 > 
 > Sea $\varepsilon>0$. Observamos que $\lvert f(x)-f(x_{0}) \rvert  = \lvert x^{2} - x_{0}^{2} \rvert = \lvert x+x_{0} \rvert\lvert x-x_{0} \rvert$.
@@ -59,14 +62,17 @@ A diferencia de la continuidad, la continuidad uniforme no tiene punto fijo $x_{
 > Dado que existe una dependencia clara, $\delta = \delta(x_{0})$, por def. **no** es uniformemente continua.
 
 > [!theorem] **Teorema.** 
+>
 > Si $f$ es uniformemente continua, entonces es continua.
 
 El reciproco no siempre implica continuidad uniforme, ¿o sí? Hay un caso en el cual se cumple: si el $\operatorname{dom}f$ es un conjunto compacto (*cerrado y acotado*), como $[a,b]$.
 
 > [!theorem] **Teorema.** (Heine-Cantor)
+>
 > Si $f:[a,b]\to \mathbb{R}$ es continua, Ent. es **uniformemente continua**.
 
 > [!proof]- **Proof.** 
+>
 > Supongamos que $f$ no es unif. cont. Esto es,
 > $$
 > \neg(\forall \varepsilon > 0 \ \exists  \delta >0 \text{ tal que } \lvert x-y \rvert < \delta \implies \lvert f(x)-f(y) \rvert < \varepsilon)
@@ -117,6 +123,7 @@ El reciproco no siempre implica continuidad uniforme, ¿o sí? Hay un caso en el
 La diferencia con la definición de continuidad, es que $\delta= \delta(f,\varepsilon,x_{0})$, ya no depende de $x_{0}$. Es decir, solo $\delta(f,\varepsilon)$.
 
 > [!theorem] **Def.** (Uniformly Continuous)
+>
 > Sea $f$ definida en $A \subset \mathbb{R}$. Decimos que $f$ es **uniformemente continua** (en $A$) si $\forall \varepsilon>0$ $\exists \delta >0$ tal que si $x,y \in A$ y $\lvert x-y \rvert<\delta$, entonces $\lvert f(x)-f(y) \rvert<\varepsilon$.
 > 
 
@@ -125,9 +132,11 @@ Evalúa globalmente, en todo el dominio, y no solo en un punto como la continuid
 **Intuitivamente:** Imagina un cuadro que se desliza por toda la función.
 
 > [!theorem] **Teorema.** 
+>
 > Si $f$ es uniformemente continua en un intervalo acotado $I$, entonces $f$ esta acotado en $I$.
 
 > [!proof]- **Proof.** 
+>
 > Suponemos que $I$ es alguno de $(a,b),[a,b],(a,b],[a,b)$. Para revisar si $f$ está acotada, elegimos $\delta$ tal que $\lvert f(x)-f(y) \rvert<1$ siempre que $x,y \in I$ y $\lvert x-y \rvert<\delta$. Existe un conjunto finito $a = x_{0}<x_{1}<\dots<x_{n} = b$ tal que $\lvert  x_{i}-x_{i-1} \rvert<\delta$ para $i = 1,\dots,n$. Nuestra definición de $\delta$ implica que $f$ está acotada en cada uno de los intervalos $[x_{i-1},x_{i}]\cap I$. Sea
 > $$
 > \begin{align}
@@ -147,7 +156,9 @@ Evalúa globalmente, en todo el dominio, y no solo en un punto como la continuid
 Este resultado es importante para un criterio de integrabilidad.
 
 > [!theorem] **Teorema.** 
+>
 > Sea $f$ continua en $[a,b]$. Entonces $f$ es uniformemente continua (en $[a,b]$).
 
 > [!proof]- **Proof.** 
+>
 > Our proof invokes a compactness argument. (topoligia elemental)

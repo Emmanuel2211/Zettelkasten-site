@@ -14,6 +14,7 @@ cssclasses:
 Una lista de series y sumas finitas 
 
 > [!theorem] **Teorema.** (Series Finitas)
+>
 > - Suma de Gauss:
 > $$
 > \sum_{x=1}^{n} x = \frac{n(n+1)}{2}
@@ -25,6 +26,7 @@ Una lista de series y sumas finitas
 
 
 > [!theorem] **Teorema.** (Series Numerables)
+>
 > - Serie Armónica:
 > $$
 > \sum_{x=1}^{\infty} \frac{1}{x} \to \infty

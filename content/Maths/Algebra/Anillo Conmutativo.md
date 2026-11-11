@@ -14,6 +14,7 @@ cssclasses:
 Generalizando la estructura que los $\mathbb{Z}$ representan.
 
 > [!theorem] **Definición.** (Anillo Conmt. con Uno)
+>
 > $(A,+,\cdot)$ es una **anillo conmutativo con uno** si:
 > 1. $+:$ Asocia, conmuta, tiene neutro $0_{A}$, hay inversos aditivos.
 > 2. $\cdot:$ Asocia, conmuta, tiene neutro $1_{A}$.
@@ -22,6 +23,7 @@ Generalizando la estructura que los $\mathbb{Z}$ representan.
 > Es decir, si es un anillo, pero con neutro mult. y conmt. para el producto.
 
 > [!theorem] **Definición** (Dominio Entero)
+>
 > Dado $(D,+,\cdot)$ un anillo conmutativo con uno, y $D\neq\{ 0_{D} \}$, decimos que es un **dominio entero** si
 > $$
 > \forall a,b \in D \ (a\neq 0 \land b\neq 0 \implies ab\neq 0)
@@ -32,10 +34,12 @@ Generalizando la estructura que los $\mathbb{Z}$ representan.
 > $$
 
 > [!observation]+ **Observación.**
+>
 > En este caso se cumple las leyes de cancelación para el producto.
 
 
 > [!theorem] **Definición.** (Domonio Entero Ordenado)
+>
 > Dado $(D,+,\cdot)$un dominio entero, decimos que es un **dominio entero ordenado** si existe $\mathcal{P} \subseteq D$ tal que:
 > 5. $\forall a,b \in \mathcal{P} \ (a+b \in  \mathcal{P})$
 > 6. $\forall a,b \in  \mathcal{P} \ (ab \in  \mathcal{P})$
@@ -50,6 +54,7 @@ Generalizando la estructura que los $\mathbb{Z}$ representan.
 > $$
 
 > [!theorem] **Definición.** (Asociados)
+>
 > Dado $(A,+,\cdot)$ un anillo conmutativo con uno. Decimos que $u \in  A$ es una **unidad** si tiene inverso multiplicativo.
 > 
 > Decimos que $a,b \in  A$ son **asociados** si
@@ -58,6 +63,7 @@ Generalizando la estructura que los $\mathbb{Z}$ representan.
 > $$
 
 > [!observation]+ **Observación.**
+>
 > En $\mathbb{Z}$ $a,b$ son **asociados** si y sólo si
 > $$
 > a = b \quad \lor \quad a = -b

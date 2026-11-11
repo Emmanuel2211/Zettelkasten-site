@@ -22,6 +22,7 @@ $$
 > Útil para resolver integrales que contienen una función racional de $x$ y una raíz cuadrada de un trinomio de segundo grado.
 
 > [!example]- Ejemplo.
+>
 > - $\displaystyle \int \frac{dx}{\sqrt{x^{3} + 3}} \, dx$. Llamemos $\sqrt{x^{3}+3} = \sqrt{1}x + t$
 > Ent. $x^{2} + 3 = x^{2} + 2xt + t^{2}$
 > $$
@@ -35,6 +36,7 @@ $$
 > ...
 
 > [!example]- Ejemplo.
+>
 > - $\displaystyle \int \frac{dx}{\sqrt{x^{2} - 3x + 2}}$
 > Lo aproximamos con $\sqrt{x^{2} - 3x + 2} = \sqrt{1}x  +t \implies  x(-3 - 2t) = t^{2}-2$
 > Y encontramos $\displaystyle x = \frac{t^{2} -2}{-3-2t} \implies  \frac{dx}{dt} = \frac{2t(-3-2t)-(-2)(t^{2}-2)}{(-3-2t)^{2}}$

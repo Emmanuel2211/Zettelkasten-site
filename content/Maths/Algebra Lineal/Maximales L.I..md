@@ -16,6 +16,7 @@ Subcojuntos maximales linealmente independientes, maximal $l.i.$!
 Hay una problematica en el querer demostrar que todod espacio vectorial tiene una base.
 
 > [!example]+ Ejemplo.
+>
 > ¿Cómo será una vase para $\mathscr{F}(\mathbb{R},\mathbb{R})$?
 >
 
@@ -38,6 +39,7 @@ La induccion no es para demostrar los infinitos, sino para TODOS LOS FINITOS (qu
 > El **maximal** es el conjunto máximo con respecto a la contención en una colección de conjuntos.
 
 > [!theorem] **Definición** (Maximal)
+>
 > Sea $\mathscr{F}$ una familia de cjts. ($\mathscr{F}$ es un conjunto). Un elemento $M$ de $\mathscr{F}$ se llama **maximal** (con respecto a la contención) si y sólo si ningún elemento de $\mathscr{F}$ contiene propieamente a $M$
 > $$
 > \begin{align}
@@ -58,9 +60,11 @@ Zorn... cota en una cadena de un orden parcial? a partir de ahi se toma lo de qu
 los computologos no creen en el axioma de eleccion.
 
 > [!theorem] **Definición.**
+>
 > $A$ es una cota superior de $\zeta$ con respecto a la contención sii  $\ \forall C \in \zeta \ ( C \subseteq A)$
 
 > [!theorem] **Lema de Zorn.** (Principio de Maximalidad)
+>
 > Sea $\mathscr{F}$ una familia no vacía de cjtos. Si para toda cadena $\zeta \subseteq \mathscr{F}$, existe una cota superior de $\zeta$ en $\mathscr{F}$ con respecto a la contención, entonces, $\mathscr{F}$ tiene un elemento maximal.
 >
 > Esto es, sea $\mathscr{F}$ no vacía, si para toda cadena $\zeta \subseteq \mathscr{F}$, se tiene que $\exists A \in  \mathscr{F} \ \ \epsilon \ \ \forall C \in \zeta \ (C \subseteq A)$, entonces,
@@ -70,12 +74,14 @@ los computologos no creen en el axioma de eleccion.
 
 
 > [!theorem] **Definición.** (Maximal L.I.)
+>
 > Sea $V$ un esp. vect. Sea $S \subseteq V$. (Ojo, $V\subseteq V$ (caso particular) )
 > $B$ **es un subcjto. maximal l.i. de** $S$ si y sólo si
 > 1. $B \subseteq S$ y $B$ es l.i.
 > 2. $\forall  A \subseteq S \ (B \subsetneq A \implies  A \text{ es l.d. })$
 
 > [!observation]+ **Observación.**
+>
 > Se pone esta definición lo más general posible, observe que no estamos pidiendo que $\langle S \rangle = V$.
 > Sin embargo, si lográramos encontrar un $B$ maximal l.i. de $S$, parece que $B$ sería base de $\langle S \rangle$.
 > Y en el caso aprticualr en que $\langle S \rangle =V$, si logramos encontrar un $B$ maxiaml l.i. de $S$, parece que $B$ sería base de $V$.
@@ -88,17 +94,20 @@ Si $S \subseteq  V$ finito o infinito y $V$ es dimensión finita y $\langle S \r
 
 
 > [!theorem] **Teorema.**
+>
 > Sea $V$ un esp. vect. Sea $S \subseteq V \ \ \epsilon \ \  \langle S \rangle = V$. Sea $\beta$ un subcjto. maximal l.i. de $S$. Entonces $\beta$ es base de $V$.
 
 > [!proof]+ **Proof.**
 >
 
 > [!theorem] **Corolario.** (Caso particual en que $\langle S \rangle \lneq V$)
+>
 > Sea $S \subseteq V$ y $S'$ un maximal l.i. de $S$, ent. $S'$ es base de $\langle S \rangle$.
 
 > [!proof]+ **Proof.**
 
 > [!theorem] **Corolario.**
+>
 > Un subcjto. de $V$ es base de $V$ si y sólo si es un subcjto. maximal l.i. de $V$
 
 > [!proof]+ **Proof.**
@@ -106,30 +115,37 @@ Si $S \subseteq  V$ finito o infinito y $V$ es dimensión finita y $\langle S \r
 
 
 > [!observation]+ **Observación.**
+>
 > Es equivalente demostrar que en todo esp. vectorial hay un subcjto. maximal l.i, a demostrar que todo esp. vectorial tiene una base!
 
 > [!theorem] **Lema.**
+>
 > $\bigcup A$ es cota superior de $A$ con respecto a la contención.
 
 > [!proof]+ **Proof.**
 >
 
 > [!theorem] **Teorema.**
+>
 > Sea $S$ un subcjto. l.i. de un esp. vecto. $V$, entonces, existe un subcjto. maximal l.i. de $V$ que contiene a $S$.
 
 > [!proof]+ **Proof.**
 
 
 > [!observation]+ **Observación.**
+>
 > Obtuvimos una base para $V$ que extendió a un subcjto. l.i. de $V$.
 
 > [!theorem] **El Corolario.**
+>
 > Todo espacio vectorial tiene una base.
 
 > [!proof]+ **Proof.**
+>
 > Sea $V$ un espacio vectorial. Entonces, $\varnothing \subseteq  V$ y $\varnothing$ es l.i. Haciendo $S = \varnothing$ en el Teo. anterior, obteniendo una base para $V$.
 
 > [!observation]+ **Observaciones.**
+>
 > - La dems. del Teorema se hace así para poder extender un l.i. ya dado, si se necesita.
 > - **Consecuencias:** $\mathscr{F}(\mathbb{R},\mathbb{R})$ hay una $\beta  \subseteq \mathscr{F}(\mathbb{R},\mathbb{R})$ tq cualquier función de $\mathbb{R}$ en $\mathbb{R}$, se puede escribir como comb. lineal (de un número finto) de vectores en $\beta$, y es l.i.
 > - **Aritmetica transfinita:** Hay manera de demostrar que la noción de dimensión sí se puede extender a dimensión infinita: $\operatorname{dim}(P(\mathbb{R})) = \left| \mathbb{N} \right|$.

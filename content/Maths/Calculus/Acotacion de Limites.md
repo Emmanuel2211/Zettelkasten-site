@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Teorema.** (Acotación de Limites)
+>
 > Supóngase
 > $$
 > \lim_{ x \to x_{0} } f(x) = L
@@ -23,6 +24,7 @@ cssclasses:
 > para todo $x$ en el intervalo que está en el dominio de $f$.
 
 > [!proof]- **Proof.** 
+>
 > Existe $\delta>0$ tal que $\lvert f(x)-L \rvert<1$ siempre y cuando $x$ es un punto del dominio de $f$ diferente $x_{0}$ el cual satisface $\lvert x-x_{0} \rvert<\delta$. Si $x_{0}$ no pertenece al dominio de $f$, entonces significa
 > $$
 > \lvert f(x) \rvert = \lvert f(x)-L+L \rvert \leq \lvert f(x)-L \rvert +\lvert L \rvert < \lvert L \rvert +1
@@ -38,6 +40,7 @@ cssclasses:
 > $$
 
 > [!theorem] **Teorema.** (Boundedness Away from Zero)
+>
 > Si $\lim_{ x \to x_{0} } f(x)$ existe y es diferente de $0$, entonces existe un intervalo $(x_{0}-c,x_{0}+c)$ y un número $m>0$ tal que
 > $$
 > \lvert f(x) \rvert \geq m >0

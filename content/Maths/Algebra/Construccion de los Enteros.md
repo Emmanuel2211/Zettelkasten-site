@@ -15,12 +15,14 @@ Recordando: ![[Motivacion de la relacion ~#^15a338|Relacion ~]]
 Al ser $\sim$ una relación de equivalencia (*ya demostrado*), ***parte*** a $\mathbb{N}^{2}$ en *clases de equivalencia* y, en el contexto de la relación, son pensados como *iguales*.
 
 > [!theorem] **Definición.** $\overline{(n,m)}$ 
+>
 > Denotamos con $[(n,m)]$ o $\overline{(n,m)}$ a la **clase de equivalencia** de $(n,m)$, es decir,
 > $$
 > [(n,m)]=\{ (p,q) \in \mathbb{N}^{2} \mid  (n,m)\sim(p,q) \}.
 > $$
 
 > [!theorem] **Definición.** ($\mathbb{Z}$)
+>
 > El conjunto de los **número enteros** es
 > $$
 > \mathbb{Z} = \{ [(n,m)] \mid (n,m) \in \mathbb{N}^{2} \}.
@@ -41,6 +43,7 @@ Intuitivamente, podemos visualizar $\mathbb{N}$ como $\mathbb{Z}$, "$n-0 = n$"
 ---
 
 > [!theorem] **Proposición.** (Representante de $\overline{(n,m)}$)
+>
 > Para cualquier entero $[(n,m)]$, se cumple una y sólo una de las siguientes afirmaciones: existe un único $k \in \mathbb{N}$ tal que $(k,0)\in[(n,m)]$, o existe un único $k \in \mathbb{N}^+$ tal que $(0,k)\in [(n,m)]$.
 > **2.1** Usando este resultado podemos visualizar a los enteros como
 > $$

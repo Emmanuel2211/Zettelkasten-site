@@ -16,6 +16,7 @@ Es un caso particular de la distribución binomial.
 Un **ensayo Bernoulli**, es aquel experimento aleatoria con únicamente dos posibles resultados: *éxito* o *fracaso*.
 
 > [!tip]+ **Idea.**
+>
 > Surge en experimentos donde los resultados se clasifican solo como exito o fracaso. Y se define una v.a. de la siguiente forma:
 > $$
 > X(w) = \begin{cases}
@@ -27,6 +28,7 @@ Un **ensayo Bernoulli**, es aquel experimento aleatoria con únicamente dos posi
 > Entonces decimos que $X \sim \operatorname{Ber} (p)$ con parámetro $p \in (0,1)$.
 
 > [!theorem] **Definición.** ($\operatorname{Ber} (p)$)
+>
 > Sea $X \sim \operatorname{Ber} (p)$, su función de densidad está dada por
 > $$
 > f(x) = \begin{cases}
@@ -38,6 +40,7 @@ Un **ensayo Bernoulli**, es aquel experimento aleatoria con únicamente dos posi
 > De forma equivalente, $f(x) = p^{x}(1-p)^{1-x}$ si $x \in \{ 0,1 \}$.
 
 > [!theorem] **Teorema.** (Propiedades)
+>
 > Sea $X \sim \operatorname{Ber}(p)$
 > 1. $\operatorname{E}[X] = p$
 > 2. $\operatorname{Var}(X) = p(1-p)$

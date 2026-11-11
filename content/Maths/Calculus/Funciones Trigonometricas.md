@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Teorema.** (Propiedades Trigonométricas)
+>
 > $$
 > \begin{align}
 > \sin ^{2}\theta + \cos ^{2}\theta = 1 \\[1em]
@@ -76,6 +77,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Derivadas)
+>
 > $$
 > \begin{align}
 >   \frac{d}{dx}\sin(x) &= \cos(x) \\[0.5em]
@@ -94,6 +96,7 @@ cssclasses:
 ### Inversas Trigonométricas
 
 > [!theorem] **Teorema.** (Derivadas)
+>
 > $$
 > \begin{align}
 >   \frac{d}{dx}\sin^{-1}(x) &= \frac{1}{\sqrt{1-x^{2}}} \\[0.5em]
@@ -125,6 +128,7 @@ cssclasses:
 
 
 > [!theorem] **Definición.** (Seno y Coseno)
+>
 > Sea $x \in \mathbb{R}$, definimos las funciones seno y coseno mediante las siguientes series, las cuales son absolutamente convergentes en todo $\mathbb{R}$.
 > $$
 > \begin{align}
@@ -136,12 +140,14 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Propiedades)
+>
 > 1. Derivadas: $\displaystyle \frac{d}{dx} \cos(x) = -\sin (x)$ y $\displaystyle \frac{d}{dx} \sin(x) = \cos(x)$.
 > 2. $\sin ^{2}(x) + \cos ^{2}(x) = 1$.
 > 
 
 
 > [!theorem] **Definición.** ($\pi$)
+>
 > El número $\pi$ se define como el doble de la raíz positiva más pequeña de la función coseno. Es decir, $\displaystyle \frac{\pi}{2}$ es el único real en $(0,2)$ que satisface:
 > $$
 > \cos\left(\frac{\pi}{2}\right) = 0
@@ -149,6 +155,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Limites de Trigonometricas)
+>
 > 1. 
 > $$
 > \lim_{ x \to 0 } \frac{\sin(x)}{x} = 1
@@ -157,6 +164,7 @@ cssclasses:
 
 
 > [!proof]- **Proof.**
+>
 > Por definición, para todo $x \neq 0$:
 > $$
 > \sin(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!} x^{2n+1} = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \dots

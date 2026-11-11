@@ -17,6 +17,7 @@ $\mathcal{F}$ es una colección de subconjuntos de $\Omega$ que agrupa a todos l
 > **Notación.** Denotamos $(A_{n})_{n=1}^{\infty}$ ó $A_{1},A_{2},A_{3},\dots$ a cualquier sucesión infinita *numerable* de *eventos*.
 
 > [!theorem] **Definición.** ($\sigma$-álgebra de Eventos)
+>
 > Sea $\Omega$ un conjunto arbitrario no vacío (*espacio muestral*). Un conjunto $\mathcal{F}$ de subconjuntos de $\Omega$ (i.e. una familia $\mathcal{F} \subseteq \mathcal{P}(\Omega)$), se denomica $\sigma$**-álgebra** sobre $\Omega$ si satisface axiomáticamente las siguientes codiciones:
 > 1. $\Omega \in \mathcal{F}$
 > 2. $\forall A (A \in \mathcal{F} \implies A^{c} \in \mathcal{F})$
@@ -28,6 +29,7 @@ $\mathcal{F}$ es una colección de subconjuntos de $\Omega$ que agrupa a todos l
 
 
 > [!Info]- **Nota!**
+>
 > Podemos interpretar a $\mathcal{F}$ como una "lista de eventos válidos" que se define con los axiomas:
 > - $(i) \ \ \Omega \in \mathcal{F}$ representa la pregunta fundamental: ¿Cuál es la probabilidad de que ocurra cualquier cosa dentro de todas las posiblidades?
 > - $(ii)$ Si se puede saber la probabilidad de que suceda $A$, por coherencia lógica, debe ser capaz de medir lo que falta ("que **no** suceda $A$").
@@ -35,6 +37,7 @@ $\mathcal{F}$ es una colección de subconjuntos de $\Omega$ que agrupa a todos l
 
 
 > [!theorem] **Teorema.** (Propiedades)
+>
 > 1. $\varnothing \in \mathcal{F}$
 > 2. Cerradura bajo uniones finitas: Sea $k \in \mathbb{N}$,
 > $$
@@ -56,6 +59,7 @@ $\mathcal{F}$ es una colección de subconjuntos de $\Omega$ que agrupa a todos l
 Generalmente estas propiedades se prueban hasta cursos Análisis Real.
 
 > [!proof]- **Proof.** 
+>
 > 1. **P.D.** $\varnothing \in \mathcal{F}$
 > Por axioma $(i)$ tenemos que $\Omega \in \mathcal{F}$. Aplicando axioma $(ii)$, $\Omega^{c} \in \mathcal{F}$. Pero $\Omega^{c} = \varnothing \ !$ Por lo que $\varnothing \in \mathcal{F} \quad \blacksquare$
 > 2. **P.D.** $\displaystyle (A_{n})_{n=1}^{k} \in \mathcal{F} \implies \bigcup_{n=1}^{k} A_{n}$

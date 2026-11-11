@@ -14,12 +14,14 @@ cssclasses:
 > La integración y la derivación son operaciones inversas. La integral es una función de *"acumulación"*, y la derivada *"el ritmo actual"*.
 
 > [!theorem] **Teorema 4.** (Teorema Fundamental del Cálculo)
+>
 > Sea $f:[a,b] \to \mathbb{R}$ continua, si definimos $G: [a,b] \to \mathbb{R}$ de tal forma que $\displaystyle G(x) = \int_{a}^{x} f(z) \, dz$, entonces $G$ es continua en $[a,b]$ y derivable en $(a,b)$ y su derivada para todo $x \in (a,b)$ es
 > $$
 > G'(x) = \frac{d}{dx} \int_{a}^{x} f(z) \, dz = f(x)
 > $$
 
 > [!proof]- **Proof.** 
+>
 > Por propiedad 1,
 > $$
 > \int_{a}^{u} f(x) \, dx + \int_{u}^{v} f(x) \, dx = \int_{a}^{v} f(x) \, dx 
@@ -51,6 +53,7 @@ cssclasses:
 
 
 > [!observation]- **Observación.**
+>
 > Analizando un poco nuestra demostración, vemos que se usa la antiderivada:
 > $$
 > F(x) = \int_{a}^{x} f(z) \, dz
@@ -71,12 +74,14 @@ Despues del teorema fundamental, podemos estudiar... Antiderivadas.<sup><a href=
 > La Regla de Barrow (TFC2) nos permite concetar integrales definidas con antiderivadas, permitiendo calcular la función de acumulación (*integral*).
 
 > [!theorem] **Teorema.** (Teorema Fundamental del Cálculo 2)
+>
 > Sea $f: [a,b] \to \mathbb{R}$ continua, y sea $F(x)$ la antiderivada de $f(x)$ entonces,
 > $$
 > \int_{a}^{b} f(x) \, dx = F(b)-F(a) = \left. F(x) \right|_{a}^{b}
 > $$
 
 > [!observation]+ **Observación.**
+>
 > - De otra forma,
 > $$
 > \int_{a}^{b} f(x) \, dx = \int_{a}^{b} \frac{d \ F(x)}{dx} \, dx = F(b) - F(a)
@@ -96,14 +101,17 @@ Despues del teorema fundamental, podemos estudiar... Antiderivadas.<sup><a href=
 Con esto, podemos desarrollar más resultados.
 
 > [!theorem] **Teorema 6.** (Unicidad de la Integral)
+>
 > Si $f$ tiene una integral, entonces ésta es única.
 
 > [!proof]- **Proof.** 
+>
 > Por el T.F.C. 2, $F(x) = G(x) + k$. Ahora, $0 = F(a)= G(a) + k$
 > Esto implica, $k = -G(a)$. Como la constante está determinada de manera única por $G$, sólo existe una integral 
 > $$\int_{a}^{b} f(x) \, dx  \tag*{$\blacksquare$}$$
 
 > [!example]- **Ejemplo.** 
+>
 > $$
 > f(x) = x^{2}, \quad x \in [0,1]
 > $$

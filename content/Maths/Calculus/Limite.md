@@ -20,6 +20,7 @@ Lo siguiente es el desarrollo de una noción intuitiva de la definición de lím
 Entonces proponemos un $\varepsilon$, una distancia próxima a $l$, y para ese $\varepsilon$ deberíamos encontrar una distancia $\delta$ en el eje $X$ que la valide.
 
 > [!theorem] **Def.** (Limite $\varepsilon - \delta$)
+>
 > La función $f$ **tiene hacia el límite** $l$ en $a$, si para todo $\varepsilon >0$ existe algún $\delta >0$ tal que, para todo $x$, si $0<\lvert x-a \rvert< \delta$, entonces $\lvert f(x)-l \rvert<\varepsilon$.
 > 
 > O de forma más directa:
@@ -30,9 +31,11 @@ Entonces proponemos un $\varepsilon$, una distancia próxima a $l$, y para ese $
 Además, este límite es **único**.
 
 > [!note]-
+>
 > We would rarely use the definition to compute a limit, and we hope seldom to use the definition to verify one; we will use the definition to develop a theory that will verify limits for us.
 
 > [!example]- **Example 1.**
+>
 > Any function $f(x) = ax + b$ will have the easily predicted limit
 > $$
 > \lim_{ x \to x_{0} }  f(x) = \lim_{ x \to x_{0} } (ax+b) = ax_{0} + b
@@ -63,6 +66,7 @@ Además, este límite es **único**.
 > By definition, $\displaystyle\lim_{ x \to 5 }(10x-11)=39$ as required. **Q.E.D.**
 
 > [!theorem] **Teorema** (Álgebra de Limites)
+>
 > Sean $f, g$ funciones tales que $\displaystyle\lim_{ x \to a }f(x) = L$ y $\displaystyle\lim_{ x \to a }g(x) = M$ donde $L, M \in \mathbb{R}$
 > 1. 
 > $$
@@ -87,6 +91,7 @@ Además, este límite es **único**.
 
 
 > [!observation]+ **Observación.**
+>
 > Podemos generalizar los puntos $(ii)$ y $(iii)$, de tal forma que si $f_{1},\dots,f_{n}$ son funciones de $I\to \mathbb{R}$ cada una con límite $L_{1},\dots,L_{n}$ en $x_{0}$, entonces
 > $$
 > \begin{align}
@@ -96,6 +101,7 @@ Además, este límite es **único**.
 > $$
 
 > [!theorem] **Teorema.** (Sandwich de Límites)
+>
 > Sean $f,g,h: A\to \mathbb{R}$ y sea $x_{0} \in A$. Si $f(x) \leq g(x) \leq  h(x)$, para todo $x \in  A, x\neq  x_{0}$, y si $\displaystyle \lim_{x \to x_{0}} f(x)= L$ y $\displaystyle \lim_{x \to x_{0}} h(x) = L$, entonces
 > $$
 > \lim_{x \to x_{0}} g(x) = L
@@ -106,6 +112,7 @@ Además, este límite es **único**.
 
 
 > [!theorem] **Teorema.** (Límite de V.A.)
+>
 > Sea $f: A \to  \mathbb{R}$ y sea $\displaystyle \lim_{x \to x_{0}} f(x)=L$, entonces
 > $$
 > \lim_{x \to x_{0}} \left| f(x) \right| = \left| L \right|
@@ -116,6 +123,7 @@ Además, este límite es **único**.
 
 
 > [!theorem] **Teorema.** (Límite de la Composición) (Continudad)
+>
 > Si $\displaystyle  \lim_{x \to a} g(x) = L$ y sea $f$ función continua en $L$, entonces
 > $$
 > \lim_{x \to a} f(g(x)) = f(\lim_{x \to a} g(x)) = f(L)
@@ -124,6 +132,7 @@ Además, este límite es **único**.
 > [!proof]- **Proof.**
 
 > [!theorem] Teorema. (Conservación de Desigualdades en el Límite)
+>
 > Sean $f$ y $g$ dos funciones tales que sus límites cuando $x \to a$ existen.
 > Si existe vecindad alrededor de $a$ donde se cumple que $f(x) \leq g(x)$ (para todo $x \neq a$), entonces sus límites heredan la desigualdad. 
 > $$

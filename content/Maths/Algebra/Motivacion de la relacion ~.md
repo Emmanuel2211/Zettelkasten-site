@@ -45,6 +45,7 @@ $$
 Ent. definimos lo siguiente:
 
 > [!theorem] **Definición.** (Relación ~)
+>
 > Dados $n,m,p,q \in \mathbb{N}$, diremos que los pares ordenados $(n,m)$ y $(p,q)$ están relacionados según $\sim$ si y sólo si $n+q = m+p$, es decir.
 > $$
 > (n,m) \sim (p,q) \iff n+q=m+p
@@ -53,9 +54,11 @@ Ent. definimos lo siguiente:
 
 
 > [!theorem] **Teorema.**
+>
 > La relación $\sim$ es de equivalencia.
 
 > [!proof]- **Proof.** 
+>
 > **Reflexividad:**
 > Si $(n,m) \in \mathbb{N} \times \mathbb{N}$ tenemos que (*por conmutatividad* $+_{\mathbb{N}}$)
 > $$
@@ -86,4 +89,5 @@ Ent. definimos lo siguiente:
 > 
 
 > [!observation]- **Observación**
+>
 > Veremos que nuestros $\mathbb{N}$ son una **subestructura** de $\mathbb{Z}$, pero no un subconjunto en el sentido conjuntista estricto. $\mathbb{Z}$ serán individuos nuevos que representen a los viejos.

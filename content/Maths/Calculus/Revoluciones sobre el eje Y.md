@@ -4,6 +4,7 @@ title: "Revoluciones sobre el eje Y"
 publish: true
 ---
 > [!observation]+ **Observación.**
+>
 > Cuando rotamos sobre el eje $Y$ podemos resolver de dos formas, expresando todo en terminos de la función inversa, o simplemente tomando $\left| x \right|$ en lugar de $\left| f(x) \right|$ en el formulazo:
 > $$
 > 2\pi \int_{y_{1}}^{y_{2}} \left| x(y) \right| \sqrt{1 + x'(y)^{2}} \, dy = S = 2\pi \int_{a}^{b} x \sqrt{1  + f'(x)^{2}} \, dx
@@ -12,6 +13,7 @@ publish: true
 > $\square$ 5. Un grupo de ingenieros está construyendo un disco parabólico para un satélite. La forma de este disco estará descrita por $ax^{2}$ rotado alrededor del eje $Y$. Si el disco debe tener 10ft de diámtetro y profundidad de 2 ft. Calcula el valor de $a$ y  el área de su superficie.
 
 > [!example]+ Solución.
+>
 > Bueno para obterner $a$ simplemente evaluamos.
 > Sea $S$ el área de su superficie, dado $f(x) = ax^{2} \implies f'(x) = 2ax$ tenemos
 > $$

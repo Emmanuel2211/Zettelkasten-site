@@ -15,6 +15,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Existencia de $f^{-1}$)
+>
 > Sea $f: [a,b] \to \mathbb{R}$ continua y estrictamente mońotona en $[a,b]$, entonces
 > 1. La imagen directa, $J = f(I)$ es un intervalo.
 > 2. $f$ es una biyección de $I$ sobre $J$.
@@ -23,6 +24,7 @@ cssclasses:
 
 
 > [!theorem] **Teorema.** (Derivada de una Función Inversa)
+>
 > Sea $f:I\to J$ continua y estrictamente monótona (por lo que admite una inversa $f^{-1}:J \to  I$).
 > Si $f$ es derivable en un punto $a \in  I$ y $f'(a) \neq 0$, entonces su función inversa $f^{-1}$ es derivable en el punto $b = f(a)$, y su derivada es
 > $$

@@ -4,20 +4,24 @@ title: "Números Primos"
 publish: true
 ---
 > [!theorem] **Definición.** (Primos)
+>
 > Sea $p \in \mathbb{Z}\setminus \{ 0,1,-1 \}$. Decimos que $p$ es un **número primo** si tiene exactamente dos divisores positivos, $1$ y $\left| p \right|$. En caso contrario decimos que $p$ es un **número compuesto**.
 
 > [!observation]+ **Observación.**
+>
 > Si $a \in \mathbb{Z}$ es compuesto, entonces $a=bc$ con $b,c \in \mathbb{Z}$,
 > $$
 >  1 < \left| b \right| < \left| a \right| \quad \text{ y } \quad 1 < \left| c \right| < \left| a \right| 
 > $$
 
 > [!theorem] **Lema.**
+>
 > Sean $n \in \mathbb{N}$, $n \geq 2$, $a_{1},\dots,a_{n}, p \in \mathbb{Z}$ con $p$ primo.
 > Si $p \mid a_{1}a_{2}\cdots a_{n}$, entonces $p \mid a_{i}$ para algún $i \in \{ 1,\dots,n \}$.
 
 
 > [!proof]- **Proof.**
+>
 > Sea $n \in \mathbb{N}$, $n\geq 2$, $p$ primo. Por inducción sobre $n$, $n =2$. Sean $a_{1},a_{2} \in \mathbb{Z}$ tales que $p \mid a_{1}a_{2}$.
 > Si $p \not\mid a_{1}$, ent. $(p,a_{1}) = 1$ y por el lema de Euclides $p \mid  a_{2}$.
 > Sea $n \in \mathbb{N}$, $n \geq 2$.
@@ -27,6 +31,7 @@ publish: true
 > Por HI tenemos que $p\mid a_{i}$ para algún $i \in \{ 2,\dots,n+1 \}$
 
 > [!theorem] **Teorema.** (Teorema Fundamental de la Aritmética)
+>
 > Todo entero $a$ no nulo es unidad, o de la forma
 > $$
 > a = up_{1}\cdots p_{t} 
@@ -35,6 +40,7 @@ publish: true
 
 
 > [!proof]- **Proof.**
+>
 > Sea $a \in \mathbb{Z}\setminus \{ 0 \}$.
 >
 > **Existencia** por inducción sobre $\left| a \right|$!

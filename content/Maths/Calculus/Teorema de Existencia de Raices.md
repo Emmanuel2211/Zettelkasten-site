@@ -14,4 +14,5 @@ cssclasses:
 Algunas consecuencias de los teoremas fuertes de continuidad de los reales.
 
 > [!theorem] **Teorema.** (Existencia de Raices)
+>
 > Sea $n \in \mathbb{N}^{+}$ y sea $a \in \mathbb{R}, a > 0$, entonces existe un $b \in \mathbb{R}, b > 0 \ \ \epsilon \ \  b ^{n} = a$.

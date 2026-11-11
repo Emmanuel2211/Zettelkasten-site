@@ -11,6 +11,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Definición.** (Continuidad)
+>
 > $f:[a,b] \to \mathbb{R}$ es continuo en $x_{0}$ si
 > $$
 > \lim_{ x \to x_{0} } f(x) = f(x_{0})
@@ -23,11 +24,13 @@ cssclasses:
 > La continuidad se preserva al algebra de limites:
 
 > [!theorem] **Teorema.**
+>
 > Sean $f,g$ continuas en $p$. Entonces $f+g$, $f-g$, $f\cdot g$, $\frac{f}{g}$, con $g(p) \neq 0$ para el cociente, son continuas en $p$.
 
 >Aunque el intervalo sea abierto, la función no puede "explotar" al infinito *cerca* de un punto donde es continua. A diferencia del Teo. Weierstrass, que da acotación *global* para todo un intervalo cerrado.
 
 > [!theorem] **Teorema.** (Acotación Local)
+>
 > Sea $f:[a,b]\to \mathbb{R}$ continua en $c\in(a,b)$, entonces existe $\delta>0$ y $M>0$ tales que
 > $$
 > \lvert f(x) \rvert  \leq M \quad \forall x \in (c-\delta,c+\delta)
@@ -47,12 +50,15 @@ Ahora bien, veamos la definición de *función continua* de Cauchy.
 del $\text{dom} (f)$, donde $f$ esta definida en el vecindario de $x_{0}$: $(x_{0}-c,x_{0}+c)$.
 
 > [!theorem] **Def.** (Continuous)
+>
 > Let $f$ be defined in a neighborhood of $x_{0}$. The function $f$ is continuous at $x_{0}$ provided $\lim_{ x \to x_{0} }f(x) = f(x_{0})$.
 
 > [!note]
+>
 > Esto significa por cada vecindario $V$ de $f(x_{0})$, existe un vecindario $U$ de $x_{0}$ tal que $f(U) \subset V$, es decir, $x \in U \implies f(x) \in V$. O equivalentemente, claro está por $\varepsilon-\delta$. Por lo que podemos desarrollar demostraciones de las dos formas.
 
 > [!observation]- **Observación**
+>
 > Es claro que $f$ puede no ser continua en $x_{0}$ si:
 > 1. $f$ no esta definida en $x_{0}$.
 > 2. $\lim_{ x \to x_{0} }f(x)$ no existe.
@@ -64,6 +70,7 @@ del $\text{dom} (f)$, donde $f$ esta definida en el vecindario de $x_{0}$: $(x_{
 **Continuidad en extremos:** Claro es ta que se define por limites laterales.
 
 > [!example]- **Ejemplo 1.** ("neighbourhood method" proof)
+>
 > Sea $f: (0,\infty) \to \mathbb{R}$, definido por $f(x) = 1/ x$, Se demostrará que si $x_{0} \in (0,\infty)$, entonces $f$ es continua en $x_{0}$.
 > *Proof.*
 > Sea $V$ un vecindario de $f(x_{0})$, $V = (A,B)$. Por lo que $A < f(x_{0}) < B$. Tenemos que encontrar un vecindario $U = (a,b)$ de $x_{0}$ tal que $f(U) \subset V$. 
@@ -83,6 +90,7 @@ del $\text{dom} (f)$, donde $f$ esta definida en el vecindario de $x_{0}$: $(x_{
 > ![[Pasted image 20260506132641.png|center]]
 
 > [!example]- **Ejemplo 2.** ($\varepsilon-\delta$ proof)
+>
 > Sea $f: (0,\infty) \to \mathbb{R}$, y $f(x) = 1 / x$. 
 > PD. $x_{0} \in (0,\infty) \implies f$ es continua en $x_{0}$.
 > Sea $x_{0} \in (0, \infty)$, $x>0$ y $\varepsilon > 0$. PD.

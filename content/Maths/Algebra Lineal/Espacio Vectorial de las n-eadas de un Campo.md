@@ -13,6 +13,7 @@ cssclasses:
 # $V = \mathbb{F}^{n}$
 
 > [!theorem] **Definición.** ($\mathbb{F}^{n}$)
+>
 > Sea $\mathbb{F}$ un campo y sea $n \in \mathbb{N}^{+}$, definimos 
 > $$
 > \mathbb{F}^{n} = \{ (a_{1},\dots,a_{n}) \mid \forall i \in \{ 1,\dots,n \} \ (a_{i} \in \mathbb{F}) \}

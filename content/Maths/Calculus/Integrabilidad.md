@@ -12,6 +12,7 @@ cssclasses:
  - romana
 ---
 > [!theorem] **Def.** (Integral e Integrabilidad)
+>
 > Una función $f$ acotada en $[a,b]$ es **integrable** en $[a,b]$ si
 > $$
 > \sup \{ L(f,P): P \text{ es partición de } [a,b] \} = \inf \{ U(f,P): P \text{ es partición de } [a,b] \}.
@@ -25,6 +26,7 @@ cssclasses:
 
 
 > [!Info]-
+>
 > El símbolo $\int$ originalmente era una $s$ alargada que significaba "suma"; los números $a,b$ se denominan *limites de integración inferior y superior*.
 
 Si $f$ es integrable, de acuerdo a nuestra definición,
@@ -36,12 +38,14 @@ Además, el número $\displaystyle \int_{a}^{b} f$ es el único con esta propied
 Para discutir a fondo la *integral* es útil disponer del siguiente criterio.
 
 > [!theorem] **Teorema 2.** (Criterio de integrabilidad $\varepsilon$)
+>
 > Si $f$ está acotada en $[a,b]$, entonces $f$ es integrable en $[a,b]$ si y solamente si para cada $\varepsilon>0$ existe una partición $P$ de $[a,b]$ tal que
 > $$
 > U(f,P) - L(f,P) <\varepsilon.
 > $$
 
 > [!proof]- **Proof.** 
+>
 > $(\impliedby)$
 > Supongamos primer que para cada $\varepsilon>0$ existe una partición $P$ con
 > $$
@@ -96,6 +100,7 @@ Para discutir a fondo la *integral* es útil disponer del siguiente criterio.
 Observamos que surgen dificultades ya sea $f$ discontinuo o continuo y desarrollamos más resultados.
 
 > [!example]- **Ejemplo 1:** $f(x) = \begin{cases}0,  & x\neq 1 \\  1,  &x=1.\end{cases}$ 
+>
 > Sea $f$ la función definida en $[0,2]$ mediante
 > $$
 > f(x) = \begin{cases}
@@ -142,6 +147,7 @@ Observamos que surgen dificultades ya sea $f$ discontinuo o continuo y desarroll
 > 
 
 > [!example]- **Ejemplo 2:** $f(x) = x$
+>
 > Sea $f(x) = x$, para simplificar consideramos un intervalo $[0,b]$, donde $b>0$. Si $P = \{ t_{0},\dots,t_{n} \}$ es una partición de $[0,b]$, entonces
 > 
 > ![[Pasted image 20260708131523.png|center]]
@@ -219,6 +225,7 @@ Observamos que surgen dificultades ya sea $f$ discontinuo o continuo y desarroll
 > $$
 
 > [!example]- **Ejemplo 3:** $f(x) = x^{2}$
+>
 > Si $P = \{ t_{0},\dots,t_{n} \}$ es una partición de $[0,b]$, entonces
 > $$
 > m_{i} = f(t_{i-1}) = (t_{i-1})^{2} \quad \text{ y } \quad M_{i} = f(t_{i}) = t_{i}^{2}.
@@ -265,9 +272,11 @@ De nuevo, la única superioridad está entonces en otra forma más sencilla de l
 En nuestra discusión hablamos de *verdadero* y "complicadisimo" criterio de integrabilidad, el cual, antes de desarrollar, desmoronamos en varios resultados útiles:
 
 > [!theorem] **Teorema 3.** (Criterio de integrabilidad y continuidad)
+>
 > Si $f$ es continua en $[a,b]$, entonces $f$ es integrable en $[a,b]$.
 
 > [!proof]- **Proof.** 
+>
 > Observemos en primer lugar que $f$ está acotada en $[a,b]$, pues es continau en $[a,b]$. Para demostrar que $f$ es integrable en $[a,b, ]$ utilizamos el Teorema 2, y demostramos que para cada $\varepsilon >0$ existe una partición $P$ de $[a,b]$ tal que
 > $$
 > U(f,P) - L(f,P) < \varepsilon.
@@ -297,12 +306,14 @@ En nuestra discusión hablamos de *verdadero* y "complicadisimo" criterio de int
 El teorema anterior aporta "toda la información necesaria" para el uso de las integrales en este nivel. Pero resulta satisfactorio poseer mayor surtido de herramientas, para ello los siguientes tres teoremas.
 
 > [!theorem] **Teorema 4.**
+>
 > Sea $a<c<b$. Si $f$ es integrable en $[a,b]$, entonces $f$ es integrable en $[a,c]$ y en $[c,b]$. Recíprocamente, si $f$ es integrable en $[a,c]$ y en $[c,b]$, entonces $f$ es integrable en $[a,b]$. Finalmente, si $f$ es integrable en $[a,b]$, entonces
 > $$
 > \int_{a}^{b} f = \int_{a}^{c} f+ \int_{c}^{b} f. 
 > $$
 
 > [!proof]- **Proof.** 
+>
 > $(\implies)$
 > Supongamos que $f$ es integrable en $[a,b]$. Si $\varepsilon>0$, existe una partición $P= \{ t_{0},\dots,t_{n} \}$ de $[a,b]$ tal que
 > $$
