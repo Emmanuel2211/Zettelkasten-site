@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-11T04:37:56Z
+modified: 2026-11-11T19:45:17Z
 title: "Sucesiones Convergentes"
 publish: true
 type: zettel
@@ -32,10 +32,13 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > $$
 > \lvert a_{n} - L \rvert < \varepsilon \iff L - \varepsilon < a_{n} < L + \varepsilon \iff a_{n} \in (L-\varepsilon, L+\varepsilon)
 > $$
-> Si dibujamos la sucesión como los puntos $(n, a_{n})$, la franja horizontal de ancho $2\varepsilon$ alrededor de la recta $y = L$ debe **atrapar** a todos los puntos a partir de $n = N$. Antes de $N$ puede pasar cualquier cosa; después, ya no.
+> Si dibujamos la sucesión como los puntos $(n, a_{n})$, la franja horizontal de ancho $2\varepsilon$ alrededor de la recta $y = L$ debe **atrapar** a todos los puntos a partir de $n = N$.
 >
-> ![[banda-epsilon.svg|center|500]]
-> Mientras más angosta sea la banda, más tarde suele empezar a atrapar: $N$ depende de $\varepsilon$, y a veces se escribe $N = N(\varepsilon)$.
+> ![[banda-epsilon.avif|center|500]]
+> *Sucesión: $a_{n} = 1 + \frac{2(-1)^{n}}{n}$, con $L = 1$.*
+> 
+> Obsérvece que $N$ depende de $\varepsilon$, y a veces se escribe $N = N(\varepsilon)$.
+>
 
 > [!observation]+ **Observación.**
 >

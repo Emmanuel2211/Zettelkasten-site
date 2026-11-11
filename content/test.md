@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-11T05:21:47Z
+modified: 2026-11-11T19:27:43Z
 publish: true
 ---
 
@@ -135,3 +135,16 @@ def partition(A, p, r):
 
 # uso: quicksort(A, 0, len(A) - 1)
 ```
+
+
+---
+
+# Prueba de animación: banda $\varepsilon$ (Manim)
+
+## B. Video HTML en bucle, centrado al 70% (MP4, 134 KB)
+
+<video src="videos/banda-epsilon.mp4" autoplay loop muted playsinline style="display:block; width:60%; margin:auto"></video>
+
+## D. AVIF animado (imagen en bucle, 170 KB)
+
+![[banda-epsilon.avif|center|500]]
