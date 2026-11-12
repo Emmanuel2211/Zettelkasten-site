@@ -169,7 +169,9 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
 - **Layout en monitores (`Head.tsx` + `site.js` §10 + "Layout on monitors" en `custom.scss`):** con el ancho de la **pantalla** (no de la ventana) se calcula el ancho que tiene la nota con la ventana maximizada (`--zk-note`, máx. 44rem) y el tamaño de letra (`--zk-sw`). Así, a media pantalla la nota se ve igual.
   - `html.zk-wide`: menú · nota · menú. `html.zk-narrow` (no caben los menús): la nota conserva su ancho y los menús son cajones que se abren con ☰ (izquierda) y ≡ (derecha); se cierran con Esc, clic fuera o al navegar.
   - Pantallas < 1024px (celulares, tablets chicas): el layout normal de Quartz.
-  - Ancho de menús, separación y alineación (`side`, `gap`, `align` en el script de `Head.tsx`): se eligen con el lab `lab-layout.html` (copiarlo a `public/` después del build; no se publica).
+  - **Regla (elegida en el lab, 2026-11-12): la nota siempre a tamaño completo** (44rem = 968px con la base de 22px, como en Obsidian). Solo se angosta en pantallas donde ni con menús de 220px cabe (1366px → 846px). Los menús toman lo que sobra: entre 220 y 380px, a 24px de la nota y pegados a los bordes de la pantalla (`min`, `max`, `gap`, `align: edge` en el script de `Head.tsx`). Si sobran menos de 220px por lado, se pliegan en cajones.
+  - Ejemplos con pantalla de 1920: ventana completa → menús de 380px; ventana de 1600 → 276px; 1400 o media pantalla → cajones. En 1536 → nota 922px, menús 267px.
+  - El lab (`lab-layout.html`) solo existe en local: copiarlo a `public/` después del build; no se publica.
 - **Fechas:** se toman en el orden frontmatter → filesystem → git.
 
 ## 6b. Rendimiento

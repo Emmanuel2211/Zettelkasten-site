@@ -19,7 +19,7 @@ try {
     .slice(0, 10)
 } catch {}
 
-const ZK_LAYOUT = '(function(){var d=document.documentElement;window.__zkLayout=function(){var o=window.__zkLayoutOpts||{},sw=o.sw||screen.width||innerWidth,vw=o.vw||innerWidth;d.style.setProperty("--zk-sw",sw+"px");if(sw<1024){d.classList.remove("zk-wide","zk-narrow");return}var rem=Math.min(22,Math.max(16,sw*.0055+12.5)),side=o.side||300,gap=o.gap==null?48:o.gap,pad=32,note=Math.round(Math.min(44*rem,sw-2*side-2*gap-pad)),wide=vw>=note+2*side+2*gap+pad;d.style.setProperty("--zk-note",note+"px");d.style.setProperty("--zk-side",side+"px");d.style.setProperty("--zk-gap",gap+"px");d.dataset.zkAlign=o.align||"center";d.classList.toggle("zk-wide",wide);d.classList.toggle("zk-narrow",!wide)};__zkLayout()})()'
+const ZK_LAYOUT = '(function(){var d=document.documentElement;window.__zkLayout=function(){var o=window.__zkLayoutOpts||{},sw=o.sw||screen.width||innerWidth,vw=o.vw||innerWidth;d.style.setProperty("--zk-sw",sw+"px");if(sw<1024){d.classList.remove("zk-wide","zk-narrow");return}var rem=Math.min(22,Math.max(16,sw*.0055+12.5)),min=o.min||220,max=o.max||380,gap=o.gap==null?24:o.gap,pad=32,note=Math.round(Math.min(44*rem,sw-2*min-2*gap-pad)),room=Math.floor((vw-note-2*gap-pad)/2),wide=room>=min,side=Math.max(min,Math.min(max,room));d.style.setProperty("--zk-note",note+"px");d.style.setProperty("--zk-side",side+"px");d.style.setProperty("--zk-gap",gap+"px");d.dataset.zkAlign=o.align||"edge";d.classList.toggle("zk-wide",wide);d.classList.toggle("zk-narrow",!wide)};__zkLayout()})()'
 
 export default (() => {
   const Head: QuartzComponent = ({
@@ -77,9 +77,12 @@ export default (() => {
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         {/* zettelkasten-site: layout from the SCREEN width, before the first
             paint (quartz/static/site.js §10). On a monitor (screen ≥ 1024px)
-            the note keeps the width and text size it has with the window
-            maximised; if the window is too narrow for the side menus too
-            (e.g. half a screen), they become drawers (html.zk-narrow). */}
+            the note ALWAYS has its full size: 44rem (968px with the 22px base
+            of big screens, like in Obsidian), narrower only on screens where
+            even 220px menus don't fit (1366px: 830px). The menus take what is
+            left, 220–380px, against the screen edges, 24px from the note; with
+            less than 220px per side (e.g. half a screen) they become drawers
+            (html.zk-narrow). Chosen in the layout lab, 2026-11-12. */}
         <script dangerouslySetInnerHTML={{ __html: ZK_LAYOUT }} />
 
         <meta name="og:site_name" content={cfg.pageTitle}></meta>
