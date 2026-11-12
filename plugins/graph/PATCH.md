@@ -37,3 +37,15 @@ Copy the new version from npm into this folder, delete the `.map` files, and
 re-apply the replacement above (the minified names `$e`, `Ie`, `Qu`, `ue`, `K`, `g`
 may change: search for `startsWith("tags/")?` near `getPropertyValue("--secondary")`,
 and for `Ju.forEach(function(i){tu.add(i)})` for the second change).
+
+Third change, same two files: a node opened its note on drag end whenever the
+drag lasted < 500 ms, so moving a node quickly (click, flick, release) also
+navigated. Now the drag records how far it moved and only a press that moved
+≤ 5 px counts as a click:
+
+```js
+// start (Xe): …,_u=i.subject.id}            → …,_u=i.subject.id,i.subject.__d0={x:i.x,y:i.y,m:0}}
+// drag  (Ye): …-i.subject.__dragOffset.y}   → …;var d0=i.subject.__d0;d0&&(d0.m=Math.max(d0.m,Math.hypot(i.x-d0.x,i.y-d0.y)))}
+// end   (Ze): Date.now()-ne<500){            → Date.now()-ne<500&&!(i.subject.__d0&&i.subject.__d0.m>5)){
+```
+(search for `on("drag",Ye).on("end",Ze)` to find them after an upgrade).

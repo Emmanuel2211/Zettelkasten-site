@@ -112,8 +112,12 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - En escritorio, los paneles laterales miden 350px (con padding de 1.5rem, para que "Zettelkasten" quepa en una línea) y la página llega a 1680px. El index no tiene ancho máximo (`body[data-slug="index"]`).
   - **Hero del index: "Constelación de tus notas"** (fase 2, elegido en el hero lab). Va de fondo detrás del texto del index, se desvanece hacia abajo y tiene opacidad 0.68 en oscuro y 0.92 en claro. En claro, las líneas y los nodos en reposo también son más opacos (`col.k` en `site.js`).
     - Usa las notas publicadas y sus enlaces reales, leídos de `static/contentIndex.json`, el mismo archivo que cargan la búsqueda y el grafo. Se actualiza solo al publicar.
-    - Solo dibuja la componente conexa más grande, con un layout Fruchterman–Reingold calculado en el navegador. Es determinista y tarda unos milisegundos.
+    - Solo dibuja la componente conexa más grande, con un layout Fruchterman–Reingold calculado en el navegador (~50 ms). Es determinista y se guarda en `localStorage["zk-constellation-v1"]`, con una firma del grafo: solo se recalcula cuando cambian las notas o los enlaces.
     - Las notas cercanas al cursor se encienden y aparece el título de la más cercana (solo fuera del texto; ver abajo). Sin mouse, como en el celular, no hay brillo.
+    - **Clic en un nodo abre su nota** (navegación SPA; Ctrl/Cmd/Shift+clic en otra pestaña). Cuenta si el mouse está a ≤14 px del nodo (`HIT`): el nodo se marca con un anillo, su título sale en el color de acento y el cursor se vuelve de enlace. Solo con mouse.
+    - **Rendimiento (2026-11-12):** antes redibujaba todo el grafo en cada cuadro, sin parar (60–144 por segundo), con un `color-mix()` por arista; en algunas PCs causaba lag y subía los ventiladores. Ahora el grafo en reposo se dibuja **una vez** en un canvas oculto (al cargar, al cambiar el tamaño o el tema); cada cuadro solo lo copia y pinta encima los nodos encendidos. El bucle se detiene cuando el brillo termina de seguir al mouse: en reposo son 0 cuadros. Se quitó el vaivén de los nodos (obligaba a redibujar siempre) y el canvas se limita a ~4 Mpx.
+    - **Vaivén solo cuando hay alguien:** los nodos se mecen desde cada movimiento del mouse, scroll, toque o tecla, durante 8 s (`IDLE_MS`). Luego frenan en ~2 s y no se gasta nada. Mientras se mecen se redibuja todo a 30 cuadros/s (`FPS`) y a resolución 1x: lo caro eran los píxeles (canvas al doble de resolución), no los nodos. Medido con render por software: 112% de un núcleo antes; ahora ~15–20% meciéndose y ~1–2% quieta.
+    - **Respaldo:** `const DRIFT = !REDUCED` en `site.js` §4. Con `DRIFT = false` queda la versión quieta (sin vaivén, resolución completa, 0 cuadros en reposo).
     - Código en `site.js` §4 y CSS `.constellation-hero`. Es un canvas fuera de `<body>` con `z-index: -1`.
     - Desde la página de inicio estilo aarnphm es `position: fixed` y ocupa toda la ventana: se queda en su sitio (sigue girando) mientras el texto pasa encima.
     - Opacidad 0.45 en oscuro y 0.5 en claro (en claro, además, el texto del index usa `--dark`). El brillo **solo sigue al mouse real sobre espacio vacío** (§4, `st.on` y `st.amp`). Sobre el texto, los menús o un enlace (selector `QUIET`) se apaga por completo, y mientras está apagado salta al cursor en vez de barrer la pantalla. Sin mouse (celular) no hay brillo. Se probó un recorrido automático tras 4 s de inactividad y se quitó (2026-11-12). Antes: sobre el texto ignoraba el cursor y solo muestra títulos de nodos con el cursor real sobre espacio vacío. El selector usa `.sidebar > *` y no `.sidebar`, porque en el index las columnas laterales están vacías pero ocupan su lugar, y los nodos detrás de ellas no reaccionaban: antes, al ir a pulsar un enlace se encendían nodos y nombres debajo y estorbaban la lectura.
@@ -142,16 +146,18 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - El espacio alrededor de `$$` se controla con `--math-display-gap: 0.5em`.
 - **Sin vista previa al pasar el mouse sobre un enlace:** `enablePopovers: false` (2026-11-11).
 - **Subrayado de enlaces estilo aarnphm:** siempre visible, delgado (1px, offset 0.18em) y del color del enlace al 40%; al pasar el mouse se vuelve `--tertiary`. Es `text-decoration` puro, sin costo de rendimiento. Las filas `./content …` no lo llevan.
+- **Enlaces `./content ./user_manual ./cool_resources` del index:** en `--secondary` y subrayados como los demás enlaces (en gris no se notaba que eran enlaces). El `./` queda gris y sin subrayado.
 - **`content`, `user_manual` y `cool_resources` sin título ni fecha** (CSS por `data-slug`; la ruta `~/content` ya las nombra).
 - **Enlaces a notas no publicadas:** se ven como texto normal. Lo controlan `disableBrokenWikilinks` y el CSS de `a.internal.broken`.
 - **Plugins:**
   - Búsqueda (Ctrl+K, texto completo).
   - Grafo local (profundidad 2) y global. No está en el index (`condition: not-index`), porque ahí va la constelación. Los tags ya no aparecen como nodos (`showTags: false`).
-    - **Colores por materia:** el grafo es una copia local, `plugins/graph/` (de `@quartz-community/graph` 1.0.0), con dos parches de una línea documentados en `plugins/graph/PATCH.md`.
+    - **Colores por materia:** el grafo es una copia local, `plugins/graph/` (de `@quartz-community/graph` 1.0.0), con tres parches pequeños documentados en `plugins/graph/PATCH.md`.
     - El color de cada nodo lo decide `window.__graphNodeColor` en `site.js` §5. La materia sale **primero de la carpeta**, que es la materia real. Los tags solo cuentan para notas fuera de las carpetas de materia, porque eran poco fiables (muchas notas sin tag, `calulus`, notas de lineal con tag `algebra`).
     - Hay 7 materias, cada una con un color para claro y otro para oscuro.
     - Los **MOC** (tag `moc`, o nota de carpeta con contenido) llevan el color de su materia: un 35% más claro en oscuro y un 35% más oscuro en claro.
     - La nota actual se dibuja en `--dark`. No hay leyenda. Antes de actualizar el plugin, lee `PATCH.md`.
+    - **Arrastrar rápido un nodo ya no abre su nota.** El plugin navegaba si el arrastre duraba < 500 ms, aunque el nodo se hubiera movido. Ahora solo navega si además se movió ≤ 5 px (tercer parche de `PATCH.md`).
   - Explorer: al hacer clic en una carpeta se abre su MOC.
   - Excalidraw (`@quartz-community/obsidian-plugin-excalidraw`), backlinks, TOC, modo lectura y breadcrumbs.
 - **Fechas:** se toman en el orden frontmatter → filesystem → git.

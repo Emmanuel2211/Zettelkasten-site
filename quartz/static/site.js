@@ -137,6 +137,7 @@
 // once with Fruchterman–Reingold and drawn behind the index text (fixed to
 // the window). Notes near the mouse light up and the nearest one shows its
 // title, only over empty space (not over the text). No mouse, no glow.
+// Clicking a node (within a few px of it) opens its note.
 // Only the largest connected component is drawn (loose notes scatter).
 // ---------------------------------------------------------------------------
 ;(() => {
@@ -177,9 +178,32 @@
         const edges = []
         best.forEach((v) => adj[v].forEach((w) => v < w && keep.has(w) && edges.push([keep.get(v), keep.get(w)])))
         const titles = best.map((v) => idx[slugs[v]].title || slugs[v])
-        return { titles, edges, pos: layoutFR(best.length, edges) }
+        const keySlugs = best.map((v) => slugs[v])
+        return { slugs: keySlugs, titles, edges, pos: cachedLayout(keySlugs, edges) }
       })
     return graphPromise
+  }
+
+  // The layout costs ~50 ms (more on slow PCs) of main thread: keep the last
+  // one in localStorage, keyed by the graph itself (it changes only when notes
+  // or links do).
+  function cachedLayout(slugs, edges) {
+    const key = "zk-constellation-v1"
+    const sig = slugs.length + ":" + edges.length + ":" + hash(slugs.join("|") + edges.join("|"))
+    try {
+      const c = JSON.parse(localStorage.getItem(key) || "null")
+      if (c && c.sig === sig) return c.pos
+    } catch {}
+    const pos = layoutFR(slugs.length, edges)
+    try {
+      localStorage.setItem(key, JSON.stringify({ sig, pos: pos.map(([x, y]) => [+x.toFixed(4), +y.toFixed(4)]) }))
+    } catch {}
+    return pos
+  }
+  function hash(str) {
+    let h = 2166136261
+    for (let i = 0; i < str.length; i++) h = Math.imul(h ^ str.charCodeAt(i), 16777619)
+    return (h >>> 0).toString(36)
   }
 
   // Fruchterman–Reingold with a cooling cap on each step (stable, deterministic:
@@ -196,11 +220,11 @@
       dx.fill(0), dy.fill(0)
       for (let i = 0; i < n; i++)
         for (let j = i + 1; j < n; j++) {
-          const ex = x[i] - x[j], ey = y[i] - y[j], d = Math.max(1e-4, Math.hypot(ex, ey)), f = k2 / d / d
+          const ex = x[i] - x[j], ey = y[i] - y[j], d = Math.max(1e-4, Math.sqrt(ex * ex + ey * ey)), f = k2 / d / d
           dx[i] += ex * f, dy[i] += ey * f, dx[j] -= ex * f, dy[j] -= ey * f
         }
       for (const [a, b] of edges) {
-        const ex = x[b] - x[a], ey = y[b] - y[a], d = Math.max(1e-4, Math.hypot(ex, ey)), f = d / k
+        const ex = x[b] - x[a], ey = y[b] - y[a], d = Math.max(1e-4, Math.sqrt(ex * ex + ey * ey)), f = d / k
         dx[a] += ex * f, dy[a] += ey * f, dx[b] -= ex * f, dy[b] -= ey * f
       }
       const temp = 0.06 * (1 - it / ITER) + 0.0005
@@ -222,123 +246,277 @@
     // outside <body>: SPA navigation morphs <body> and would remove it
     document.documentElement.appendChild(canvas)
     const ctx = canvas.getContext("2d")
+    // Performance (it made some PCs lag and spin their fans when it redrew
+    // the whole graph 60–144 times a second, forever):
+    // - the resting graph is drawn ONCE into an offscreen canvas (`base`) on
+    //   load, resize and theme change; a frame only copies it and draws the
+    //   few lit nodes near the mouse on top;
+    // - frames are drawn only while something changes, then the loop stops;
+    // - colours are resolved once (no color-mix() string per edge per frame);
+    // - the backing store is capped at ~4 Mpx (big 4K screens at dpr 2).
+    // The nodes sway (DRIFT) only while someone is there: from each mouse
+    // move, scroll, tap or key, for IDLE_MS; then the swaying brakes to a stop
+    // and the page costs nothing. While swaying the whole graph is redrawn at
+    // FPS frames/s, at 1x resolution: pixels, not nodes, were the real cost
+    // (measured, software rendering: 112% of a core before; 1x/30 fps ~19%;
+    // at 2x even 30 fps stayed ~117%).
+    // DRIFT = false is the still version (static graph, glow only), the
+    // fallback if the swaying is still too heavy somewhere.
+    const DRIFT = !REDUCED, IDLE_MS = 8000, FPS = 30
+    const base = document.createElement("canvas"), bctx = base.getContext("2d")
     // The glow only follows the real mouse over empty space. Over the text,
     // menus or a link, or with no mouse at all (phones), there is none. amp
     // fades it in and out; while it is ~0 the glow point jumps to the cursor
-    // instead of sweeping across the screen.
-    const st = { w: 1, h: 1, p: { x: 0.45, y: 0.4 }, target: { x: 0.45, y: 0.4 }, on: false, amp: 0, raf: 0, alive: true, g: null, dirty: true }
+    // instead of sweeping across the screen. A node within HIT px of the
+    // mouse is "picked": ringed, its title in the accent colour, and a click
+    // opens its note.
+    const HIT = 14
+    const st = { w: 1, h: 1, dpr: 1, p: { x: -1e4, y: -1e4 }, target: { x: -1e4, y: -1e4 }, on: false, amp: 0, raf: 0, alive: true, g: null, pos: null, cur: null, span: [0, 0], hit: -1, active: performance.now(), motion: 0, last: 0 }
     let col = {}
+    const solid = (c) => ((bctx.fillStyle = "#000"), (bctx.fillStyle = c || "#888"), bctx.fillStyle)
     const readColors = () => {
       const cs = getComputedStyle(document.documentElement)
-      const v = (n) => cs.getPropertyValue(n).trim()
+      const v = (n) => solid(cs.getPropertyValue(n).trim())
       col = { main: v("--secondary"), second: v("--tertiary"), text: v("--darkgray"), faint: v("--gray"), font: getComputedStyle(document.body).fontFamily }
       // light backgrounds wash out thin translucent strokes: stronger there
       col.k = document.documentElement.getAttribute("saved-theme") === "light" ? 1.8 : 1.25
-      st.dirty = true
+      renderBase()
       kick()
     }
-    // restart the loop when it stopped (reduced motion draws only on changes)
     const kick = () => {
-      if (st.started && !st.raf) st.raf = requestAnimationFrame(draw)
+      if (st.alive && !st.raf) st.raf = requestAnimationFrame(frame)
     }
-    const alpha = (c, a) => `color-mix(in srgb, ${c} ${Math.round(a * 100)}%, transparent)`
+    const radius = (i) => 1.2 + Math.sqrt(st.g.deg[i]) * 0.8
+    // node positions in CSS px for the current window size
+    const place = () => {
+      if (!st.g) return
+      const { w, h } = st, padX = Math.max(24, w * 0.04), padY = 28, n = st.g.pos.length
+      st.pos = new Float32Array(2 * n)
+      st.g.pos.forEach(([x, y], i) => {
+        st.pos[2 * i] = padX + x * (w - 2 * padX)
+        st.pos[2 * i + 1] = padY + y * (h - 2 * padY)
+      })
+      st.cur = st.pos.slice()
+      st.span = [w - 2 * padX, h - 2 * padY]
+    }
+    // swaying positions: the resting ones plus a small drift scaled by
+    // st.motion (0 = exactly the resting graph, so start and stop are seamless)
+    const sway = (t) => {
+      const { pos, cur, motion } = st, ax = 0.01 * st.span[0] * motion, ay = 0.01 * st.span[1] * motion
+      if (motion <= 0) return cur.set(pos)
+      for (let i = 0, n = pos.length / 2; i < n; i++) {
+        cur[2 * i] = pos[2 * i] + ax * Math.sin(t * 0.25 + i)
+        cur[2 * i + 1] = pos[2 * i + 1] + ay * Math.cos(t * 0.21 + i * 1.7)
+      }
+    }
+    // the resting look: all edges in one path, all nodes in another
+    const drawGraph = (c, pts) => {
+      c.lineWidth = col.k > 1.5 ? 0.8 : 0.7
+      c.strokeStyle = col.faint
+      c.globalAlpha = Math.min(1, 0.22 * col.k)
+      c.beginPath()
+      for (const [a, b] of st.g.edges) c.moveTo(pts[2 * a], pts[2 * a + 1]), c.lineTo(pts[2 * b], pts[2 * b + 1])
+      c.stroke()
+      c.fillStyle = col.text
+      c.globalAlpha = Math.min(1, 0.35 * col.k)
+      c.beginPath()
+      for (let i = 0; i < st.g.titles.length; i++) {
+        const x = pts[2 * i], y = pts[2 * i + 1], r = radius(i)
+        c.moveTo(x + r, y), c.arc(x, y, r, 0, TAU)
+      }
+      c.fill()
+      c.globalAlpha = 1
+    }
+    // the resting graph, drawn once: all edges in one path, all nodes in another
+    const renderBase = () => {
+      bctx.setTransform(1, 0, 0, 1, 0, 0)
+      bctx.clearRect(0, 0, base.width, base.height)
+      if (!st.pos) return
+      bctx.setTransform(st.dpr, 0, 0, st.dpr, 0, 0)
+      drawGraph(bctx, st.pos)
+    }
     const resize = () => {
-      const r = canvas.getBoundingClientRect(), dpr = Math.min(2, devicePixelRatio || 1)
-      st.w = Math.max(1, r.width), st.h = Math.max(1, r.height)
-      canvas.width = Math.round(st.w * dpr), canvas.height = Math.round(st.h * dpr)
+      const w = Math.max(1, innerWidth), h = Math.max(1, innerHeight)
+      let dpr = DRIFT ? 1 : Math.min(2, devicePixelRatio || 1)
+      if (w * h * dpr * dpr > 4e6) dpr = Math.max(1, Math.sqrt(4e6 / (w * h)))
+      Object.assign(st, { w, h, dpr })
+      canvas.width = base.width = Math.round(w * dpr)
+      canvas.height = base.height = Math.round(h * dpr)
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      st.dirty = true
+      place()
+      renderBase()
+      kick()
+    }
+    const nearest = (x, y) => {
+      let best = -1, bd = Infinity
+      const pts = st.cur
+      if (!pts) return [best, bd]
+      for (let i = 0, n = pts.length / 2; i < n; i++) {
+        const dx = pts[2 * i] - x, dy = pts[2 * i + 1] - y, d = dx * dx + dy * dy
+        if (d < bd) (bd = d), (best = i)
+      }
+      return [best, Math.sqrt(bd)]
+    }
+    const pickAt = (x, y) => {
+      const [i, d] = nearest(x, y)
+      return i >= 0 && d < HIT + radius(i) ? i : -1
     }
     // over the text, menus or any link the glow goes away completely, so
     // reading and clicking links doesn't light up nodes and labels underneath
     // (`.sidebar > *`, not `.sidebar`: on the index the side columns are empty
     // but still there, and the nodes behind them must react)
     const QUIET = "article, .page-header, .sidebar > *, a, button, input, .search-container"
+    const isQuiet = (t) => t instanceof Element && !!t.closest(QUIET)
+    const dot = () => document.querySelector(".dot-cursor")
+    const setHit = (i) => {
+      if (i === st.hit) return
+      st.hit = i
+      document.documentElement.classList.toggle("on-constellation-node", i >= 0)
+    }
+    // someone is there: (re)start the swaying for IDLE_MS
+    const wake = () => {
+      st.active = performance.now()
+      if (DRIFT) kick()
+    }
+    const sleep = () => ((st.active = -Infinity), kick())
     const onMove = (e) => {
+      wake()
       if (e.pointerType && e.pointerType !== "mouse") return
-      const r = canvas.getBoundingClientRect()
-      const quiet = e.target instanceof Element && !!e.target.closest(QUIET)
-      st.target = { x: (e.clientX - r.left) / r.width, y: (e.clientY - r.top) / r.height }
-      st.on = !quiet
-      st.dirty = true
+      st.target = { x: e.clientX, y: e.clientY }
+      st.on = !isQuiet(e.target)
+      setHit(st.on ? pickAt(e.clientX, e.clientY) : -1)
+      // the dot cursor (§3) sets is-link from the element under the mouse;
+      // this listener runs after it, so a picked node can turn it on
+      if (st.hit >= 0) dot()?.classList.add("is-link")
+      if (st.on || st.amp > 0) kick()
+    }
+    const onLeave = () => {
+      st.on = false
+      setHit(-1)
       kick()
     }
-    const onLeave = () => (st.on = false)
+    const onClick = (e) => {
+      if (e.button !== 0 || !st.g || isQuiet(e.target)) return
+      const i = st.hit >= 0 ? st.hit : pickAt(e.clientX, e.clientY)
+      if (i < 0 || !st.on) return
+      const s = st.g.slugs[i]
+      const url = new URL("/" + (s === "index" ? "" : s.replace(/(^|\/)index$/, "$1")), location.origin)
+      e.preventDefault()
+      if (e.ctrlKey || e.metaKey || e.shiftKey) open(url, "_blank", "noopener")
+      else if (window.spaNavigate) window.spaNavigate(url)
+      else location.assign(url)
+    }
     addEventListener("pointermove", onMove, { passive: true })
     document.addEventListener("pointerleave", onLeave)
+    document.addEventListener("click", onClick)
     addEventListener("resize", resize)
     document.addEventListener("themechange", readColors)
-    readColors()
-    resize()
+    addEventListener("scroll", wake, { passive: true })
+    addEventListener("pointerdown", wake, { passive: true })
+    addEventListener("keydown", wake)
+    addEventListener("focus", wake)
+    addEventListener("blur", sleep)
 
-    const t0 = performance.now()
-    const draw = (now) => {
+    const frame = (now) => {
       st.raf = 0
-      if (!st.alive) return
-      const t = REDUCED ? 3 : (now - t0) / 1000
-      const inView = canvas.getBoundingClientRect().bottom > 0 && !document.hidden
-      st.amp += ((st.on ? 1 : 0) - st.amp) * (REDUCED ? 1 : 0.08)
+      if (!st.alive || !st.pos) return
+      const swaying = DRIFT && now - st.active < IDLE_MS
+      // ~1.5 s to start swaying, ~3 s to brake
+      st.motion += ((swaying ? 1 : 0) - st.motion) * (swaying ? 0.03 : 0.025)
+      if (st.motion < 0.004) st.motion = 0
+      if (st.motion > 0.996) st.motion = 1
+      const goal = st.on ? 1 : 0
+      st.amp += (goal - st.amp) * (REDUCED ? 1 : 0.12)
+      if (Math.abs(goal - st.amp) < 0.01) st.amp = goal
       if (st.amp < 0.03) st.p = { ...st.target } // hidden: jump, don't sweep
-      st.p.x += (st.target.x - st.p.x) * 0.06
-      st.p.y += (st.target.y - st.p.y) * 0.06
-      if (st.g && inView && (!REDUCED || st.dirty)) paint(t)
-      st.dirty = false
-      if (!REDUCED) st.raf = requestAnimationFrame(draw)
+      const ease = REDUCED ? 1 : 0.18
+      st.p.x += (st.target.x - st.p.x) * ease
+      st.p.y += (st.target.y - st.p.y) * ease
+      if (Math.abs(st.target.x - st.p.x) + Math.abs(st.target.y - st.p.y) < 0.5) st.p = { ...st.target }
+      // while swaying, at most FPS frames/s (the drift is slow; 60 adds nothing)
+      const live = st.motion > 0
+      if (!live || now - st.last >= 1000 / FPS - 2) (st.last = now), paint(now / 1000)
+      // keep going only while swaying, or the glow is still fading or catching up
+      const settled = !swaying && !live && st.amp === goal && st.p.x === st.target.x && st.p.y === st.target.y
+      if (!settled) st.raf = requestAnimationFrame(frame)
     }
     const paint = (t) => {
-      const { w, h, p, g } = st
+      const { w, h, p, g, amp } = st
       ctx.clearRect(0, 0, w, h)
-      const padX = Math.max(24, w * 0.04), padY = 28
-      const pos = g.pos.map(([x, y], i) => [
-        padX + (x + 0.01 * Math.sin(t * 0.25 + i)) * (w - 2 * padX),
-        padY + (y + 0.01 * Math.cos(t * 0.21 + i * 1.7)) * (h - 2 * padY),
-      ])
-      const px = p.x * w, py = p.y * h, R = Math.min(w, h) * 0.22
-      const hot = pos.map(([x, y]) => st.amp * Math.max(0, 1 - Math.hypot(x - px, y - py) / R))
+      sway(t)
+      const pos = st.cur
+      // still: copy the resting graph; swaying: draw it at its new positions
+      if (st.motion > 0) drawGraph(ctx, pos)
+      else ctx.drawImage(base, 0, 0, w, h)
+      if (amp <= 0) return
+      const R = Math.min(w, h) * 0.22, n = g.titles.length
+      const hot = new Float32Array(n)
+      for (let i = 0; i < n; i++) {
+        const d = Math.hypot(pos[2 * i] - p.x, pos[2 * i + 1] - p.y)
+        if (d < R) hot[i] = amp * (1 - d / R)
+      }
+      // lit edges and nodes on top of the resting copy
       ctx.lineWidth = col.k > 1.5 ? 0.8 : 0.7
+      ctx.strokeStyle = col.second
       for (const [a, b] of g.edges) {
         const k = Math.max(hot[a], hot[b])
-        ctx.strokeStyle = k > 0.05 ? alpha(col.second, Math.min(1, (0.15 + 0.6 * k) * col.k)) : alpha(col.faint, Math.min(1, 0.22 * col.k))
-        ctx.beginPath(), ctx.moveTo(pos[a][0], pos[a][1]), ctx.lineTo(pos[b][0], pos[b][1]), ctx.stroke()
+        if (k <= 0.05) continue
+        ctx.globalAlpha = Math.min(1, (0.15 + 0.6 * k) * col.k)
+        ctx.beginPath(), ctx.moveTo(pos[2 * a], pos[2 * a + 1]), ctx.lineTo(pos[2 * b], pos[2 * b + 1]), ctx.stroke()
       }
-      let best = -1, bd = Infinity
-      pos.forEach(([x, y], i) => {
-        const k = hot[i], r = 1.2 + Math.sqrt(g.deg[i]) * 0.8
-        ctx.fillStyle = k > 0.05 ? alpha(col.main, 0.45 + 0.55 * k) : alpha(col.text, Math.min(1, 0.35 * col.k))
-        ctx.beginPath(), ctx.arc(x, y, r + k * 1.5, 0, TAU), ctx.fill()
-        const d = Math.hypot(x - px, y - py)
-        if (d < bd) (bd = d), (best = i)
-      })
-      // title of the nearest note under the cursor
-      if (st.amp > 0.05 && best >= 0 && bd < R * 0.6) {
-        const [x, y] = pos[best], title = g.titles[best]
-        ctx.font = `15px ${col.font}`
-        ctx.fillStyle = col.text
-        ctx.globalAlpha = st.amp
-        const tw = ctx.measureText(title).width
-        ctx.fillText(title, Math.min(Math.max(8, x + 8), w - tw - 8), Math.max(16, y - 8))
-        ctx.globalAlpha = 1
+      ctx.fillStyle = col.main
+      for (let i = 0; i < n; i++) {
+        const k = hot[i]
+        if (k <= 0.05) continue
+        ctx.globalAlpha = 0.45 + 0.55 * k
+        ctx.beginPath(), ctx.arc(pos[2 * i], pos[2 * i + 1], radius(i) + k * 1.5, 0, TAU), ctx.fill()
       }
+      ctx.globalAlpha = 1
+      // title: the picked node, or else the nearest note to the glow
+      let [best, bd] = nearest(p.x, p.y)
+      const picked = st.hit >= 0
+      if (picked) best = st.hit
+      if (best < 0 || amp <= 0.05 || (!picked && bd >= R * 0.6)) return
+      const x = pos[2 * best], y = pos[2 * best + 1], title = g.titles[best]
+      if (picked) {
+        ctx.strokeStyle = col.main
+        ctx.lineWidth = 1.2
+        ctx.beginPath(), ctx.arc(x, y, radius(best) + 5, 0, TAU), ctx.stroke()
+      }
+      ctx.font = `15px ${col.font}`
+      ctx.fillStyle = picked ? col.main : col.text
+      ctx.globalAlpha = amp
+      const tw = ctx.measureText(title).width
+      ctx.fillText(title, Math.min(Math.max(8, x + 10), w - tw - 8), Math.max(16, y - 10))
+      ctx.globalAlpha = 1
     }
+    readColors()
+    resize()
     loadGraph().then((g) => {
       if (!st.alive) return
       const deg = new Array(g.titles.length).fill(0)
       g.edges.forEach(([a, b]) => (deg[a]++, deg[b]++))
       st.g = { ...g, deg }
-      st.dirty = true
+      place()
+      renderBase()
       canvas.classList.add("is-ready")
       kick()
     })
-    st.started = true
-    st.raf = requestAnimationFrame(draw)
     return {
       destroy() {
         st.alive = false
         cancelAnimationFrame(st.raf)
         removeEventListener("pointermove", onMove)
         document.removeEventListener("pointerleave", onLeave)
+        document.removeEventListener("click", onClick)
         removeEventListener("resize", resize)
         document.removeEventListener("themechange", readColors)
+        removeEventListener("scroll", wake)
+        removeEventListener("pointerdown", wake)
+        removeEventListener("keydown", wake)
+        removeEventListener("focus", wake)
+        removeEventListener("blur", sleep)
+        document.documentElement.classList.remove("on-constellation-node")
         canvas.remove()
       },
     }

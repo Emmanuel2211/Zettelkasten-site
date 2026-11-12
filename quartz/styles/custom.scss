@@ -419,8 +419,8 @@ html.has-dot-cursor * {
 
 // ---------------------------------------------------------------------------
 // Index background: constellation of the notes (quartz/static/site.js §4).
-// Fixed to the viewport: it stays in place (still turning and reacting to the
-// cursor) while the index text scrolls over it. z-index -1 works because only
+// Fixed to the viewport: it stays in place (reacting to the cursor) while the
+// index text scrolls over it. z-index -1 works because only
 // <body> has a background, which propagates to the root canvas.
 // ---------------------------------------------------------------------------
 .constellation-hero {
@@ -439,6 +439,12 @@ html.has-dot-cursor * {
 }
 // light mode: dark strokes on a pale ground fade a lot under transparency
 // (kept lower than that, so the index text over it reads easily)
+// a clickable node under the mouse (the canvas itself ignores the pointer;
+// with the dot cursor, §3 shows it as a link instead)
+html.on-constellation-node,
+html.on-constellation-node body {
+  cursor: pointer;
+}
 :root[saved-theme="light"] .constellation-hero.is-ready {
   opacity: 0.5;
 }
@@ -676,18 +682,29 @@ button.open-search {
   font-family: var(--codeFont);
   font-size: 0.8rem;
 
+  // same colour and thin underline as the other links (in grey they didn't
+  // read as links); the "./" stays grey and without underline (inline-block:
+  // text decorations don't reach into it)
   a {
-    color: var(--darkgray);
+    color: var(--secondary);
     font-weight: 400;
     background: none;
-    transition: color 0.2s ease;
+    text-decoration-line: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.18em;
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
 
     &::before {
       content: "./";
+      display: inline-block;
       color: var(--gray);
     }
     &:hover {
-      color: var(--tertiary);
+      color: var(--secondary);
+      text-decoration-color: var(--tertiary);
     }
   }
 }
