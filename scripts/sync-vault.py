@@ -608,6 +608,100 @@ def fix_folder_note_links(text: str, rel: PurePosixPath, index: "VaultIndex", pu
     return "".join(p if i % 2 else LINK_FULL_RE.sub(sub, p) for i, p in enumerate(parts))
 
 
+# ---------------------------------------------------------------------------
+# MOC tree for the left index (quartz/static/site.js §7): each MOC's headings
+# become folders (nested by heading level) and the notes linked under each
+# heading their contents (nested like the MOC's lists). Paths are vault paths,
+# the same as `filePath` in Quartz's contentIndex.json, which maps them to
+# slugs and titles in the browser. Written to content/moc-tree.json.
+# ---------------------------------------------------------------------------
+MOC_TAG_RE = re.compile(r"^\s*(?:-\s*moc\s*$|tags:.*\bmoc\b|type:\s*moc\s*$)", re.M | re.I)
+HEADING_RE = re.compile(r"^(#{1,6})\s+(.*?)\s*#*\s*$")
+
+
+def is_moc(rel: PurePosixPath, text: str) -> bool:
+    fm = frontmatter(text) or ""
+    return bool(MOC_TAG_RE.search(fm)) or (is_folder_note(rel) and bool(WIKI_LINK_RE.search(text)))
+
+
+def heading_anchor(text: str) -> str:
+    """github-slugger, as Quartz uses for heading ids (good enough for MOCs)."""
+    t = text.strip().lower()
+    t = re.sub(r"[^\w\- ]", "", t)
+    return t.replace(" ", "-")
+
+
+def build_moc_tree(notes: dict, index: "VaultIndex") -> list:
+    published = set(notes)
+
+    def target(link: str, rel: PurePosixPath):
+        hit = index.resolve(link, rel)
+        if hit is None or hit not in published or hit == rel or hit.name.endswith(".excalidraw.md"):
+            return None
+        return hit.as_posix()
+
+    mocs = []
+    for rel, text in notes.items():
+        if rel.suffix != ".md" or not is_moc(rel, text):
+            continue
+        body = text
+        fm = frontmatter(text)
+        if fm is not None:
+            body = text.split("---", 2)[2] if text.startswith("---") else text
+        body = re.sub(r"^(?:```|~~~).*?^(?:```|~~~)[^\n]*$", "", body, flags=re.S | re.M)
+        body = re.sub(r"%%.*?%%", "", body, flags=re.S)
+        root = {"level": 0, "items": [], "children": []}
+        stack = [root]
+        for line in body.splitlines():
+            m = HEADING_RE.match(line)
+            if m:
+                level, raw = len(m.group(1)), m.group(2)
+                links = WIKI_LINK_RE.findall(raw)
+                # visible text: aliases/targets of links, no bold, no math
+                plain = LINK_FULL_RE.sub(lambda k: (k.group(4).lstrip("\\|") or k.group(2).split("/")[-1]), raw)
+                plain = re.sub(r"\$[^$]*\$", "", plain).replace("**", "").replace("__", "").strip(" :*_")
+                if not plain:
+                    continue
+                # a leading "# Title" is the note's title, not a section
+                if level == 1 and not root["items"] and not root["children"]:
+                    continue
+                node = {"level": level, "title": plain, "items": [], "children": []}
+                hit = target(links[0], rel) if links else None
+                if hit:
+                    node["path"] = hit
+                else:
+                    node["anchor"] = heading_anchor(plain)
+                while stack[-1]["level"] >= level:
+                    stack.pop()
+                stack[-1]["children"].append(node)
+                stack.append(node)
+                continue
+            indent = len(line) - len(line.lstrip(" \t"))
+            depth = line[:indent].count("\t") + line[:indent].count(" ") // 4
+            for link in WIKI_LINK_RE.findall(line):
+                hit = target(link, rel)
+                cur = stack[-1]
+                if hit and hit != cur.get("path") and all(i["path"] != hit for i in cur["items"]):
+                    cur["items"].append({"path": hit, "depth": depth})
+
+        def prune(n):
+            n["children"] = [c for c in (prune(c) for c in n["children"]) if c]
+            if not n["items"] and not n["children"] and "path" not in n and n["level"]:
+                return None
+            n.pop("level", None)
+            if not n["items"]:
+                n.pop("items")
+            if not n["children"]:
+                n.pop("children")
+            return n
+
+        tree = prune(root)
+        if "items" not in tree and "children" not in tree:
+            continue
+        mocs.append({"path": rel.as_posix(), **{k: v for k, v in tree.items()}})
+    return sorted(mocs, key=lambda m: m["path"])
+
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="report only, write nothing")
@@ -751,6 +845,10 @@ def main() -> int:
         text = fix_raw_html(fix_extra_image_embeds(text), rel, index)
         (CONTENT / rel).parent.mkdir(parents=True, exist_ok=True)
         (CONTENT / rel).write_text(text, encoding="utf-8")
+
+    import json
+    (CONTENT / "moc-tree.json").write_text(
+        json.dumps(build_moc_tree(notes, index), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 
     print(f"\n✓ Wrote {len(notes)} notes, {len(assets)} assets and {len(svgs)} TikZ diagrams to {CONTENT}")
     return 0

@@ -620,12 +620,9 @@ document.addEventListener("nav", () => {
 
 // ---------------------------------------------------------------------------
 // 7. Side menus.
-//  a) Left, desktop: a MOC index instead of the file explorer (the explorer
-//     stays on phones, in the ☰ menu: config `display: mobile-only`). Built
-//     from contentIndex.json, so new MOCs appear by themselves. One entry per
-//     subject, with Spanish names and the subject's MOC colour from the graph
-//     (§5); extra MOCs of a subject are listed under it. The subject of the
-//     page being read is marked.
+//  a) Left: a terminal-style tree (~/, ├─, └─) of subjects → MOC sections →
+//     notes, built from each MOC's headings and links (moc-tree.json, written
+//     by scripts/sync-vault.py), so it follows the MOCs by itself.
 //  b) Right: the table of contents follows the reading: the section in view
 //     is highlighted and a thin bar shows how far into the note you are.
 //  c) Backlinks are titled "Más Enlaces:".
@@ -635,57 +632,157 @@ document.addEventListener("nav", () => {
   const getIndex = () => (idxPromise ??= fetch("/static/contentIndex.json").then((r) => r.json()))
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
 
-  // a) MOC index ------------------------------------------------------------
-  function buildMocs(idx) {
+  // a) MOC tree ---------------------------------------------------------------
+  // moc-tree.json (scripts/sync-vault.py) has, per MOC, its headings as
+  // folders and the notes linked under each heading, as vault paths; the
+  // contentIndex maps those to slugs and titles. One folder per subject (its
+  // main MOC = the one with most links; other MOCs of the subject become
+  // folders inside it). Clicking a name opens its page and unfolds it; the
+  // arrow only folds/unfolds. Open folders are remembered (localStorage).
+  const OPEN_KEY = "zk-tree-open"
+  const openSet = (() => {
+    try {
+      return new Set(JSON.parse(localStorage.getItem(OPEN_KEY) || "[]"))
+    } catch {
+      return new Set()
+    }
+  })()
+  const saveOpen = () => {
+    try {
+      localStorage.setItem(OPEN_KEY, JSON.stringify([...openSet]))
+    } catch {}
+  }
+  let treePromise = null
+  const getTree = () => (treePromise ??= fetch("/moc-tree.json").then((r) => (r.ok ? r.json() : [])))
+  const href = (slug) => "/" + slug.replace(/(^|\/)index$/, "$1")
+
+  function buildTree(idx, mocs) {
     const zk = window.__zk
+    const bySrc = new Map(Object.entries(idx).map(([slug, v]) => [v.filePath, { slug, title: v.title || slug }]))
+    const note = (path) => bySrc.get(path)
+    // flat list items with list depth -> nested
+    const nestItems = (items = []) => {
+      const out = [], stack = [{ depth: -1, kids: out }]
+      for (const it of items) {
+        const n = note(it.path)
+        if (!n) continue
+        const leaf = { ...n, kids: [] }
+        while (stack.length > 1 && stack[stack.length - 1].depth >= it.depth) stack.pop()
+        stack[stack.length - 1].kids.push(leaf)
+        stack.push({ depth: it.depth, kids: leaf.kids })
+      }
+      return out
+    }
+    const folder = (n, id, mocSlug) => {
+      const target = n.path ? note(n.path) : null
+      return {
+        dir: true,
+        id,
+        title: target && !n.title ? target.title : n.title,
+        href: target ? href(target.slug) : mocSlug ? href(mocSlug) + (n.anchor ? "#" + n.anchor : "") : null,
+        slug: target?.slug,
+        kids: [
+          ...(n.children || []).map((c, i) => folder(c, id + "/" + i, mocSlug)),
+          ...nestItems(n.items),
+        ],
+      }
+    }
     const groups = new Map()
-    for (const [slug, v] of Object.entries(idx)) {
-      if (slug.startsWith("tags/")) continue
-      const node = { id: slug, tags: v.tags || [], links: v.links || [] }
-      if (!zk.isMoc(node)) continue
-      const s = zk.subjectOf(node)
+    for (const m of mocs) {
+      const n = note(m.path)
+      if (!n) continue
+      const v = idx[n.slug]
+      const s = zk.subjectOf({ id: n.slug, tags: v.tags || [] })
       if (!s) continue
-      if (!groups.has(s[0])) groups.set(s[0], { s, items: [] })
-      groups.get(s[0]).items.push({ slug, title: v.title || slug, n: node.links.length })
+      if (!groups.has(s[0])) groups.set(s[0], { s, mocs: [] })
+      groups.get(s[0]).mocs.push({ ...m, slug: n.slug, title: n.title, n: (v.links || []).length })
     }
     const order = zk.SUBJECTS.map((s) => s[0])
     return [...groups.values()]
       .sort((a, b) => order.indexOf(a.s[0]) - order.indexOf(b.s[0]))
-      .map((g) => ({ ...g, items: g.items.sort((a, b) => b.n - a.n) })) // main MOC = most links
+      .map(({ s, mocs }) => {
+        const [main, ...rest] = mocs.sort((a, b) => b.n - a.n)
+        const root = folder({ ...main, title: s[1], path: undefined }, s[0], main.slug)
+        root.href = href(main.slug)
+        root.slug = main.slug
+        root.kids.push(
+          ...rest.map((m, i) => {
+            const f = folder({ ...m, title: m.title, path: undefined }, s[0] + "/moc" + i, m.slug)
+            f.href = href(m.slug)
+            f.slug = m.slug
+            return f
+          }),
+        )
+        return root
+      })
   }
-  function renderMocs(groups) {
-    const zk = window.__zk
-    const li = (g) => {
-      const [main, ...rest] = g.items
-      const style = `--c-d:${zk.shade(g.s[4], 0.35)};--c-l:${zk.shade(g.s[5], -0.35)}`
-      const sub = rest.length
-        ? `<ul>${rest.map((r) => `<li><a href="/${esc(r.slug)}">${esc(r.title)}</a></li>`).join("")}</ul>`
-        : ""
-      return `<li data-subj="${g.s[0]}" style="${style}"><a href="/${esc(main.slug)}"><span class="dot" aria-hidden="true"></span>${esc(g.s[1])}</a>${sub}</li>`
+  function renderTree(nodes) {
+    const li = (n) => {
+      if (!n.dir) {
+        const sub = n.kids.length ? `<ul>${n.kids.map(li).join("")}</ul>` : ""
+        return `<li class="t-file"><a href="${esc(href(n.slug))}" data-slug="${esc(n.slug)}">${esc(n.title)}</a>${sub}</li>`
+      }
+      const name = n.href
+        ? `<a href="${esc(n.href)}"${n.slug ? ` data-slug="${esc(n.slug)}"` : ""}>${esc(n.title)}/</a>`
+        : `<span>${esc(n.title)}/</span>`
+      const open = openSet.has(n.id)
+      return `<li class="t-dir${open ? " is-open" : ""}" data-id="${esc(n.id)}"><div class="t-row"><button class="t-tog" aria-expanded="${open}" aria-label="Desplegar ${esc(n.title)}"></button>${name}</div><ul>${n.kids.map(li).join("")}</ul></li>`
     }
-    return `<h3>Índice</h3><ul>${groups.map(li).join("")}</ul>`
+    return `<a class="t-root" href="/">~/</a><ul class="t-tree">${nodes.map(li).join("")}</ul>`
   }
-  let mocHtml = null
-  function placeMocs(idx) {
-    const left = document.querySelector(".sidebar.left")
-    if (!left || left.querySelector(".moc-index")) return markCurrent(idx)
-    mocHtml ??= renderMocs(buildMocs(idx))
-    const nav = document.createElement("nav")
-    nav.className = "moc-index"
-    nav.setAttribute("aria-label", "Índice de materias")
-    nav.innerHTML = mocHtml
-    // right after the title + search/toolbar block
-    const anchor = [...left.children].find((c) => c.querySelector?.(".search")) || left.firstElementChild
-    anchor ? anchor.after(nav) : left.prepend(nav)
-    markCurrent(idx)
+  const setOpen = (dir, open) => {
+    dir.classList.toggle("is-open", open)
+    dir.querySelector(":scope > .t-row > .t-tog")?.setAttribute("aria-expanded", String(open))
+    open ? openSet.add(dir.dataset.id) : openSet.delete(dir.dataset.id)
   }
-  function markCurrent(idx) {
+  document.addEventListener("click", (e) => {
+    const t = e.target instanceof Element ? e.target : null
+    const tog = t?.closest(".moc-index .t-tog")
+    if (tog) {
+      const dir = tog.closest(".t-dir")
+      setOpen(dir, !dir.classList.contains("is-open"))
+      saveOpen()
+      return
+    }
+    const name = t?.closest(".moc-index .t-row > a")
+    if (name) setOpen(name.closest(".t-dir"), true), saveOpen()
+  })
+  let treeHtml = null
+  function placeTree([idx, mocs]) {
+    treeHtml ??= renderTree(buildTree(idx, mocs))
+    // desktop: left column / drawer; phones: inside the ☰ explorer panel,
+    // in place of the file list (hidden in custom.scss)
+    for (const host of document.querySelectorAll(".sidebar.left, .explorer .explorer-content")) {
+      if (host.querySelector(".moc-index")) continue
+      if (host.classList.contains("explorer-content")) {
+        const nav = document.createElement("nav")
+        nav.className = "moc-index"
+        nav.setAttribute("aria-label", "Índice de materias")
+        nav.innerHTML = treeHtml
+        host.prepend(nav)
+        continue
+      }
+      const nav = document.createElement("nav")
+      nav.className = "moc-index"
+      nav.setAttribute("aria-label", "Índice de materias")
+      nav.innerHTML = treeHtml
+      // right after the title + search/toolbar block
+      const anchor = [...host.children].find((c) => c.querySelector?.(".search")) || host.firstElementChild
+      anchor ? anchor.after(nav) : host.prepend(nav)
+    }
+    markCurrent()
+  }
+  // the page being read: highlighted, and its folders unfolded (all places
+  // where it appears)
+  function markCurrent() {
     const slug = document.body.dataset.slug || ""
-    const v = idx[slug]
-    const s = v ? window.__zk.subjectOf({ id: slug, tags: v.tags || [] }) : null
-    document.querySelectorAll(".moc-index li[data-subj]").forEach((li) => {
-      li.classList.toggle("is-current", !!s && li.dataset.subj === s[0])
+    document.querySelectorAll(".moc-index a.is-current").forEach((a) => a.classList.remove("is-current"))
+    document.querySelectorAll(".moc-index a[data-slug]").forEach((a) => {
+      if (a.dataset.slug !== slug) return
+      a.classList.add("is-current")
+      for (let d = a.closest(".t-dir"); d; d = d.parentElement?.closest(".t-dir")) setOpen(d, true)
     })
+    saveOpen()
   }
 
   // b) table of contents following the reading ------------------------------
@@ -723,7 +820,7 @@ document.addEventListener("nav", () => {
     // c) backlinks title
     document.querySelectorAll(".backlinks > h3").forEach((h) => (h.textContent = "Más Enlaces:"))
     collectToc()
-    getIndex().then(placeMocs).catch(() => {})
+    Promise.all([getIndex(), getTree()]).then(placeTree).catch((e) => console.error("moc tree:", e))
   })
 })()
 
@@ -864,5 +961,58 @@ document.addEventListener("nav", () => {
   addEventListener("resize", close)
   document.addEventListener("nav", () => {
     if (open) open.overlay.remove(), (open = null)
+  })
+})()
+
+// ---------------------------------------------------------------------------
+// 10. Layout on monitors: the note keeps its full-screen size (Head.tsx sets
+// html.zk-wide / html.zk-narrow from the screen width before the first
+// paint; here it is recomputed on resize). In zk-narrow the side menus are
+// drawers: ☰ opens the left one (search, tree), ≡ the right one (graph,
+// contents, links). They close with Esc, a click outside, or on navigation.
+// ---------------------------------------------------------------------------
+;(() => {
+  const d = document.documentElement
+  const mk = (cls, label, text) => {
+    const b = document.createElement("button")
+    b.className = "zk-drawer-btn " + cls
+    b.setAttribute("aria-label", label)
+    b.setAttribute("aria-expanded", "false")
+    b.textContent = text
+    // outside <body>: SPA navigation morphs <body> and would remove them
+    d.appendChild(b)
+    return b
+  }
+  const left = mk("is-left", "Abrir índice", "☰")
+  const right = mk("is-right", "Abrir contenido y grafo", "≡")
+  const scrim = document.createElement("div")
+  scrim.className = "zk-scrim"
+  d.appendChild(scrim)
+  const set = (side, open) => {
+    d.classList.toggle("zk-open-" + side, open)
+    ;(side === "left" ? left : right).setAttribute("aria-expanded", String(open))
+  }
+  const close = () => (set("left", false), set("right", false))
+  left.addEventListener("click", () => {
+    const open = !d.classList.contains("zk-open-left")
+    close()
+    set("left", open)
+  })
+  right.addEventListener("click", () => {
+    const open = !d.classList.contains("zk-open-right")
+    close()
+    set("right", open)
+  })
+  scrim.addEventListener("click", close)
+  document.addEventListener("keydown", (e) => e.key === "Escape" && close())
+  document.addEventListener("nav", close)
+  let raf = 0
+  addEventListener("resize", () => {
+    cancelAnimationFrame(raf)
+    raf = requestAnimationFrame(() => {
+      const was = d.classList.contains("zk-narrow")
+      window.__zkLayout?.()
+      if (was && !d.classList.contains("zk-narrow")) close()
+    })
   })
 })()

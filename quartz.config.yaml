@@ -375,11 +375,11 @@ layout:
         left: []
         right: []
     content: {}
+    # folder pages keep the right column (graph, contents, links): the
+    # subject MOCs (Algebra.md, ...) are published as their folder's page
     folder:
       exclude:
         - reader-mode
-      positions:
-        right: []
     tag:
       exclude:
         - reader-mode

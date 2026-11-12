@@ -45,8 +45,11 @@
 // Site-wide "zoom": everything sized in rem (text, math, headings, sidebars)
 // scales with this, like browser zoom. Fluid, like turntrout.com: grows with
 // the window — 16px on phones, ~20px on a 1366px laptop, 22px max (≥1800px).
+// --zk-sw is the SCREEN width (Head.tsx), so on a monitor the text keeps its
+// size when the window is made narrower (e.g. half a screen); without JS it
+// falls back to the window width.
 html {
-  font-size: clamp(16px, 0.55vw + 12.5px, 22px);
+  font-size: clamp(16px, calc(var(--zk-sw, 100vw) * 0.0055 + 12.5px), 22px);
 }
 
 // Body text a bit above the rem size (≈ 23px on a laptop, like turntrout.com).
@@ -472,65 +475,131 @@ html:root[reader-mode="on"] .sidebar.right {
   transition: opacity 0.8s ease !important;
 }
 
-// a) MOC index (left, desktop). Each subject's dot uses its MOC colour from
-// the graph: --c-d (dark) / --c-l (light), set inline per item.
+// a) MOC tree (left): terminal style, like `tree`: ~/ then ├─ └─ branches
+// drawn with borders (they stay aligned when a long name wraps). Folders end
+// in "/", with an arrow that only folds; the name opens the page.
 .moc-index {
-  h3 {
-    font-size: 1rem;
-    margin: 0 0 0.5rem;
-    color: var(--dark);
+  --t-ind: 1.25rem; // indent per level
+  --t-line: color-mix(in srgb, var(--gray) 55%, transparent);
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  line-height: 1.35;
+  margin-top: 0.5rem;
+
+  li,
+  a,
+  span {
+    line-height: 1.35;
+  }
+
+  a {
+    color: var(--darkgray);
+    font-weight: 400;
+    background: none;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: var(--secondary);
+    }
+    &.is-current {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+  }
+  .t-root {
+    color: var(--gray);
   }
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  > ul > li {
-    margin: 0.3rem 0;
-  }
-  a {
-    color: var(--darkgray);
-    font-weight: 400;
-    background: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.55rem;
-    transition: color 0.2s ease;
+  li {
+    position: relative;
+    margin: 0;
+    padding: 0.08rem 0 0.08rem var(--t-ind);
 
+    // vertical trunk (to the next sibling) + horizontal branch
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.35rem;
+      top: 0;
+      bottom: 0;
+      border-left: 1px solid var(--t-line);
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      left: 0.35rem;
+      top: calc(0.08rem + 0.675em);
+      width: calc(var(--t-ind) - 0.55rem);
+      border-top: 1px solid var(--t-line);
+    }
+    // └─ : the last child's trunk stops at its branch
+    &:last-child::before {
+      bottom: auto;
+      height: calc(0.08rem + 0.675em);
+    }
+  }
+  .t-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+  }
+  .t-tog {
+    all: unset;
+    flex: none;
+    width: 0.9em;
+    text-align: center;
+    color: var(--gray);
+    cursor: pointer;
+
+    &::before {
+      content: "▸";
+      display: inline-block;
+      transition: transform 0.15s ease;
+    }
     &:hover {
+      color: var(--secondary);
+    }
+  }
+  .t-dir {
+    > ul {
+      display: none;
+    }
+    &.is-open {
+      > ul {
+        display: block;
+      }
+      > .t-row > .t-tog::before {
+        transform: rotate(90deg);
+      }
+    }
+    > .t-row > a,
+    > .t-row > span {
       color: var(--dark);
     }
   }
-  .dot {
-    width: 0.55rem;
-    height: 0.55rem;
-    border-radius: 50%;
-    background: var(--c-l);
-    flex-shrink: 0;
-    transition: transform 0.2s ease;
+  // notes nested under a note (the MOC's sub-lists): a bit smaller
+  .t-file > ul {
+    font-size: 0.95em;
   }
-  li ul {
-    margin: 0.1rem 0 0.2rem 1.1rem;
-    font-size: 0.88em;
-  }
-  // subject of the page being read
-  li.is-current > a {
-    color: var(--dark);
-    font-weight: 600;
+}
 
-    .dot {
-      transform: scale(1.35);
-    }
-  }
-}
-:root[saved-theme="dark"] .moc-index .dot {
-  background: var(--c-d);
-}
-// phones keep the full explorer in the ☰ menu
+// phones: the tree lives in the ☰ drawer instead (see "Narrow windows")
 @media (max-width: 800px) {
-  .moc-index {
+  .sidebar.left > .moc-index {
     display: none;
   }
+}
+// phones: the tree replaces the explorer's file list in the ☰ menu
+.explorer-content:has(> .moc-index) > .explorer-ul {
+  display: none;
+}
+.explorer-content > .moc-index {
+  padding: 0.5rem 0 2rem;
+  font-size: 0.85rem;
 }
 
 // b) table of contents that follows the reading: current section in the main
@@ -881,4 +950,193 @@ article img[src$=".avif"] {
 :root[saved-theme="dark"] .callout[data-callout-metadata="idea"] {
   --bg: transparent;
   background-color: transparent;
+}
+
+
+// ---------------------------------------------------------------------------
+// Layout on monitors (site.js §10, decided in Head.tsx from the screen width)
+// html.zk-wide:   [menu] [note: --zk-note] [menu]. The note has the width it
+//                 has with the window maximised; the menus (--zk-side) sit in
+//                 the space left, aligned by data-zk-align (hug | center | edge).
+// html.zk-narrow: the menus don't fit next to that note (half a screen...):
+//                 the note keeps its width (or the whole window) and the menus
+//                 become drawers, opened with ☰ (left) and ≡ (right).
+// Phones and small tablets (screen < 1024px) keep Quartz's own layout.
+// ---------------------------------------------------------------------------
+html.zk-wide {
+  .page {
+    max-width: none;
+  }
+  .page > #quartz-body {
+    grid-template-columns: minmax(var(--zk-side), 1fr) var(--zk-note) minmax(var(--zk-side), 1fr);
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+      "grid-sidebar-left grid-header grid-sidebar-right"
+      "grid-sidebar-left grid-center grid-sidebar-right"
+      "grid-sidebar-left grid-footer grid-sidebar-right";
+    column-gap: var(--zk-gap);
+    padding: 0 16px;
+
+    & > .sidebar {
+      width: var(--zk-side);
+      padding-left: 0;
+      padding-right: 0;
+      position: sticky;
+      height: 100vh;
+      flex-direction: column;
+    }
+    & > .sidebar.right > * {
+      flex: none;
+      max-height: none;
+    }
+    & > .sidebar.right > .toc {
+      display: flex;
+    }
+    & > .sidebar.left {
+      justify-self: end;
+    }
+    & > .sidebar.right {
+      justify-self: start;
+    }
+    & .center,
+    & footer {
+      margin-left: 0;
+      margin-right: 0;
+    }
+  }
+  &[data-zk-align="center"] .page > #quartz-body > .sidebar {
+    justify-self: center;
+  }
+  &[data-zk-align="edge"] .page > #quartz-body {
+    & > .sidebar.left {
+      justify-self: start;
+    }
+    & > .sidebar.right {
+      justify-self: end;
+    }
+  }
+}
+
+html.zk-narrow {
+  .page {
+    max-width: none;
+  }
+  .page > #quartz-body {
+    display: grid;
+    grid-template-columns: minmax(0, var(--zk-note));
+    justify-content: center;
+    grid-template-rows: auto auto auto;
+    grid-template-areas: "grid-header" "grid-center" "grid-footer";
+    column-gap: 0;
+    padding: 0 16px;
+
+    & .center,
+    & footer {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    // the menus, as drawers over the note
+    & > .sidebar {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      height: 100dvh;
+      width: min(calc(var(--zk-side) + 3rem), 88vw);
+      z-index: 60;
+      box-sizing: border-box;
+      padding: 3.6rem 1.5rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1.2rem;
+      overflow-y: auto;
+      overscroll-behavior: contain;
+      background: var(--light);
+      opacity: 1 !important; // zen mode fades the menus; not in a drawer
+      visibility: hidden;
+      transition:
+        transform 0.25s ease,
+        visibility 0.25s;
+    }
+    & > .sidebar.left {
+      left: 0;
+      transform: translateX(-100%);
+      border-right: 1px solid var(--lightgray);
+    }
+    & > .sidebar.right {
+      right: 0;
+      left: auto;
+      margin: 0;
+      transform: translateX(100%);
+      border-left: 1px solid var(--lightgray);
+
+      & > * {
+        flex: none;
+        max-height: none;
+      }
+      & > .toc {
+        display: flex;
+      }
+    }
+    // the drawer has the MOC tree: the phone explorer isn't needed here
+    & .explorer {
+      display: none !important;
+    }
+    & .sidebar.left > .moc-index {
+      display: block;
+    }
+  }
+  &.zk-open-left .page > #quartz-body > .sidebar.left,
+  &.zk-open-right .page > #quartz-body > .sidebar.right {
+    transform: none;
+    visibility: visible;
+  }
+  // the path goes back into the flow (the ☰ button sits in the corner)
+  .page .breadcrumb-container {
+    position: static;
+    margin: 1rem 0 0;
+  }
+}
+.zk-drawer-btn,
+.zk-scrim {
+  display: none;
+}
+html.zk-narrow:not(:has(body[data-slug="index"])) {
+  .zk-drawer-btn {
+    all: unset;
+    display: grid;
+    place-items: center;
+    position: fixed;
+    top: 0.8rem;
+    z-index: 70;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 6px;
+    font-family: var(--codeFont);
+    font-size: 1.05rem;
+    color: var(--darkgray);
+    background: color-mix(in srgb, var(--light) 85%, transparent);
+    cursor: pointer;
+    transition: color 0.2s ease;
+
+    &:hover,
+    &[aria-expanded="true"] {
+      color: var(--secondary);
+    }
+    &.is-left {
+      left: 0.8rem;
+    }
+    &.is-right {
+      right: 0.8rem;
+      font-size: 1.5rem;
+    }
+  }
+  &.zk-open-left .zk-scrim,
+  &.zk-open-right .zk-scrim {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 55;
+    background: rgb(0 0 0 / 0.35);
+  }
 }

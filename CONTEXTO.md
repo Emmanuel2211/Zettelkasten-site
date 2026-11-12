@@ -161,6 +161,15 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - Explorer: al hacer clic en una carpeta se abre su MOC.
     - Es una copia local, `plugins/explorer/` (de `@quartz-community/explorer` 1.0.0), con un parche en `plugins/explorer/PATCH.md`. El plugin leía `contentIndex.json` como `e.content || e`, y la página `content` del sitio le daba ese `e.content`: fallaba (`Error building file trie … e.slug is undefined`) y el menú ☰ del celular salía **vacío**.
   - Excalidraw (`@quartz-community/obsidian-plugin-excalidraw`), backlinks, TOC, modo lectura y breadcrumbs.
+- **Índice izquierdo en árbol (2026-11-12):** estilo terminal (`~/`, ramas `├─ └─` dibujadas con bordes): materia → secciones del MOC → notas. Sale de los encabezados y enlaces de cada MOC: `scripts/sync-vault.py` (`build_moc_tree`) escribe `content/moc-tree.json`, con rutas del vault que `site.js` §7 traduce a slugs con `contentIndex.json` (`filePath`).
+  - Un `# Título` al principio del MOC no cuenta como sección. Los encabezados anidan por nivel, y las listas con sangría se ven anidadas.
+  - Clic en el nombre: abre la página (la nota del encabezado si es un enlace, o el MOC en ese `#ancla`) y despliega. La flecha ▸ solo pliega/despliega. Las carpetas abiertas se guardan en `localStorage["zk-tree-open"]`; la nota actual se resalta y sus carpetas se abren solas.
+  - En el celular, el mismo árbol reemplaza la lista de archivos del explorador en el menú ☰.
+- **Páginas de carpeta con menú derecho:** `Algebra.md`, `Algebra Lineal.md`, etc. (notas con el nombre de su carpeta) se publican como página de carpeta, y esas tenían `right: []`. Ahora tienen grafo, contenido y enlaces como cualquier nota (`byPageType.folder` en `quartz.config.yaml`).
+- **Layout en monitores (`Head.tsx` + `site.js` §10 + "Layout on monitors" en `custom.scss`):** con el ancho de la **pantalla** (no de la ventana) se calcula el ancho que tiene la nota con la ventana maximizada (`--zk-note`, máx. 44rem) y el tamaño de letra (`--zk-sw`). Así, a media pantalla la nota se ve igual.
+  - `html.zk-wide`: menú · nota · menú. `html.zk-narrow` (no caben los menús): la nota conserva su ancho y los menús son cajones que se abren con ☰ (izquierda) y ≡ (derecha); se cierran con Esc, clic fuera o al navegar.
+  - Pantallas < 1024px (celulares, tablets chicas): el layout normal de Quartz.
+  - Ancho de menús, separación y alineación (`side`, `gap`, `align` en el script de `Head.tsx`): se eligen con el lab `lab-layout.html` (copiarlo a `public/` después del build; no se publica).
 - **Fechas:** se toman en el orden frontmatter → filesystem → git.
 
 ## 6b. Rendimiento
