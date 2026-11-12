@@ -472,3 +472,12 @@ html.has-dot-cursor * {
     background: var(--subj-#{$s}-d);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Explorer: hide the "excalidraw" folder. It has no folder page (clicking it
+// gave a 404, an almost empty black page in dark mode) and its drawings are
+// already embedded in the notes that use them.
+// ---------------------------------------------------------------------------
+.explorer li:has(> .folder-container a.folder-button[href$="/excalidraw/"]) {
+  display: none;
+}

@@ -392,3 +392,26 @@
     }
   })
 })()
+
+// ---------------------------------------------------------------------------
+// 6. Safari/iPhone fix: close the mobile explorer menu after navigating.
+// The explorer plugin closes it on `nav` only if
+//   button.classList.remove("hide-until-loaded"); button.checkVisibility()
+// is true. Safari answers checkVisibility() with the stale style (the button
+// still display:none) and iOS < 17.4 has no checkVisibility at all, so on
+// iPhones the full-screen menu stayed open over the newly loaded note, with
+// the scroll lock on: "only the loading bar and a black page". One frame
+// later the style is current; if the mobile menu button is shown (phone
+// layout), do what the plugin meant to do.
+// ---------------------------------------------------------------------------
+document.addEventListener("nav", () => {
+  requestAnimationFrame(() => {
+    for (const ex of document.getElementsByClassName("explorer")) {
+      const btn = ex.querySelector(".mobile-explorer")
+      if (!btn || getComputedStyle(btn).display === "none") continue // desktop layout
+      ex.classList.add("collapsed")
+      ex.setAttribute("aria-expanded", "false")
+      document.documentElement.classList.remove("mobile-no-scroll")
+    }
+  })
+})

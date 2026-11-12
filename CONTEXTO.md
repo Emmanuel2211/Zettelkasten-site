@@ -175,6 +175,13 @@ python3 -I scripts/mark-publish.py --undo                # deshace el último --
 - **La página de inicio se perdió al editar `content/index.md`:** se edita en `site-pages/index.md`.
 - **Commits sin foto en GitHub:** pasaba con el correo viejo `jessepinkman22@ciencias.unam.mx`. Ahora se usa `emmanuelcruz22@ciencias.unam.mx`, que debe estar verificado en GitHub → Settings → Emails. Los commits viejos se dejaron así.
 
+- **La carpeta `excalidraw` del explorador llevaba a un 404:** la carpeta no tiene página propia, y en modo oscuro el 404 se ve casi como una página negra. Se ocultó del explorador con CSS; los dibujos siguen dentro de las notas que los usan.
+- **Google Fonts devolvía HTTP 400 en cada página:** el plugin `quartz-fonts` con `fontOrigin: googleFonts` pedía una familia llamada literalmente `"TeX Gyre Pagella", Palatino, serif`. Ahora usa `fontOrigin: local`; JetBrains Mono la sigue cargando `configuration.theme`.
+- **iPhone/Safari: al abrir una nota desde el menú, se quedaba la barra de carga y una pantalla negra.** La nota sí cargaba, pero el menú de pantalla completa nunca se cerraba y el scroll seguía bloqueado (`mobile-no-scroll`).
+  - Causa: el plugin del explorador solo cierra el menú si `boton.checkVisibility()` es verdadero, justo después de quitarle `display:none`. Safari responde con el estilo viejo, y en iOS < 17.4 esa función no existe.
+  - Arreglo: `site.js` §6. En el siguiente cuadro de animación después de cada `nav`, si el botón del menú móvil se ve, cierra el menú. Se probó con WebKit emulando un iPhone 13.
+- **Pruebas con navegadores (Playwright):** `uv run --with playwright python -m playwright install chromium firefox webkit`. WebKit (el motor de Safari) necesita además `sudo apt install libmanette-0.2-0 libenchant-2-2`.
+
 ## 11. Ideas o pendientes
 - Opcional: otro idioma (inglés). Quartz no tiene i18n multi-sitio; habría que hacer un segundo sitio o una carpeta `/en`.
 - Opcional: comentarios con giscus (el plugin `comments` está desactivado) o analytics (`analytics: null`).

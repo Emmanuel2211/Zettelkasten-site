@@ -124,7 +124,11 @@ plugins:
     enabled: true
     options:
       useThemeFonts: false
-      fontOrigin: googleFonts
+      # local: this plugin must NOT request Google Fonts. It asked for a family
+      # literally named '"TeX Gyre Pagella", Palatino, serif' (HTTP 400 on every
+      # page). Pagella is self-hosted; JetBrains Mono (code) is still loaded by
+      # configuration.theme (typography.code + fontOrigin: googleFonts).
+      fontOrigin: local
       # TeX Gyre Pagella is self-hosted (quartz/static/fonts/pagella, see custom.scss)
       body: '"TeX Gyre Pagella", Palatino, serif'
       header: '"TeX Gyre Pagella", Palatino, serif'
