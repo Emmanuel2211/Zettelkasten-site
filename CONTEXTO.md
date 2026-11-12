@@ -105,6 +105,11 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - Cursor cuadrado (como el de jzhao.xyz) en todo el sitio, también sobre texto y matemáticas, y solo con mouse. Crece sobre los enlaces.
   - Modo zen (reader mode) activado por defecto. Si el visitante lo apaga, se recuerda en `localStorage["zen-mode"]`.
   - En escritorio, los paneles laterales miden 350px (con padding de 1.5rem, para que "Zettelkasten" quepa en una línea) y la página llega a 1680px. El index no tiene ancho máximo (`body[data-slug="index"]`).
+  - **Hero del index: "Constelación de tus notas"** (fase 2, elegido en el hero lab). Va de fondo detrás del texto del index, se desvanece hacia abajo y tiene opacidad 0.55.
+    - Usa las notas publicadas y sus enlaces reales, leídos de `static/contentIndex.json`, el mismo archivo que cargan la búsqueda y el grafo. Se actualiza solo al publicar.
+    - Solo dibuja la componente conexa más grande, con un layout Fruchterman–Reingold calculado en el navegador. Es determinista y tarda unos milisegundos.
+    - Las notas cercanas al cursor se encienden y aparece el título de la más cercana. Sin cursor, como en el celular, se mueve sola.
+    - Código en `site.js` §4 y CSS `.constellation-hero`. Es un canvas fuera de `<body>` con `z-index: -1`.
   - El JS propio está en `quartz/static/site.js`. Se carga desde `quartz/components/Head.tsx` (bloque marcado "zettelkasten-site"), que es **un archivo del core de Quartz**: revísalo después de cada `npx quartz upgrade`.
 - **Callouts propios:** `theorem` (con borde, en cursiva y sin icono), `proof` (verde menta) y `observation` (oliva).
   - Los callouts colapsados quedan realmente ocultos.
@@ -115,7 +120,10 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
 - **Enlaces a notas no publicadas:** se ven como texto normal. Lo controlan `disableBrokenWikilinks` y el CSS de `a.internal.broken`.
 - **Plugins:**
   - Búsqueda (Ctrl+K, texto completo).
-  - Grafo local (profundidad 2) y global, sin el tag `romana`.
+  - Grafo local (profundidad 2) y global. No está en el index (`condition: not-index`), porque ahí va la constelación. Los tags ya no aparecen como nodos (`showTags: false`).
+    - **Colores por materia:** el grafo es una copia local, `plugins/graph/` (de `@quartz-community/graph` 1.0.0), con dos parches de una línea documentados en `plugins/graph/PATCH.md`.
+    - El color de cada nodo lo decide `window.__graphNodeColor` en `site.js` §5: primero el primer tag que corresponda a una materia y, si no hay, la carpeta. Hay 8 materias, cada una con un color para claro y otro para oscuro. Las notas de carpeta (`…/index`) son MOC. La nota actual se dibuja en `--dark`.
+    - Debajo del grafo local hay una leyenda. Antes de actualizar el plugin, lee `PATCH.md`.
   - Explorer: al hacer clic en una carpeta se abre su MOC.
   - Excalidraw (`@quartz-community/obsidian-plugin-excalidraw`), backlinks, TOC, modo lectura y breadcrumbs.
 - **Fechas:** se toman en el orden frontmatter → filesystem → git.

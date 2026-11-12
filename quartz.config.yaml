@@ -195,7 +195,10 @@ plugins:
     layout:
       position: left
       priority: 50
-  - source: "@quartz-community/graph"
+  # Local copy of @quartz-community/graph 1.0.0 with a one-line patch: nodes
+  # coloured by subject (window.__graphNodeColor in quartz/static/site.js §5).
+  # See plugins/graph/PATCH.md before upgrading.
+  - source: "./plugins/graph"
     enabled: true
     options:
       localGraph:
@@ -208,7 +211,7 @@ plugins:
         linkDistance: 30
         fontSize: 0.6
         opacityScale: 1
-        showTags: true
+        showTags: false
         removeTags: [romana]
         focusOnHover: true
         enableRadial: false
@@ -222,13 +225,15 @@ plugins:
         linkDistance: 30
         fontSize: 0.6
         opacityScale: 1
-        showTags: true
+        showTags: false
         removeTags: [romana]
         focusOnHover: true
         enableRadial: true
     layout:
       position: right
       priority: 10
+      # the index has the constellation hero instead (site.js §4)
+      condition: not-index
   - source: "@quartz-community/search"
     enabled: true
     options:

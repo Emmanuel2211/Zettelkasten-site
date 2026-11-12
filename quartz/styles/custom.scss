@@ -413,3 +413,62 @@ html.has-dot-cursor * {
     max-width: none;
   }
 }
+
+// ---------------------------------------------------------------------------
+// Index hero: constellation of the notes (quartz/static/site.js §4), drawn
+// behind the index text and fading downward ("de fondo", intensity 100% in the
+// hero lab = 0.55 opacity). z-index -1 works because only <body> has a
+// background, which propagates to the root canvas.
+// ---------------------------------------------------------------------------
+.constellation-hero {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: min(88vh, 900px);
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
+
+  &.is-ready {
+    opacity: 0.55;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Graph legend (subjects), created by quartz/static/site.js §5. The swatch
+// colours are per-subject CSS vars set inline on the list (-d dark, -l light).
+// ---------------------------------------------------------------------------
+.graph-legend {
+  list-style: none;
+  margin: 0.5rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.15rem 0.8rem;
+  font-size: 0.72rem;
+  color: var(--gray);
+
+  li {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    margin: 0;
+  }
+  .sw {
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+  }
+}
+@each $s in calculo, algebra, lineal, proba, geo, conj, graf, moc {
+  .graph-legend .sw[data-subj="#{$s}"] {
+    background: var(--subj-#{$s}-l);
+  }
+  :root[saved-theme="dark"] .graph-legend .sw[data-subj="#{$s}"] {
+    background: var(--subj-#{$s}-d);
+  }
+}
