@@ -78,7 +78,7 @@ cssclasses:
 
 El siguiente Teorema enuncia lo mismo pero de forma conjuntista. Es bueno pensar todo de manera conjuntista, te da mayor perspectiva.
 
-> [!theorem]- **Teorema.**
+> [!theorem|alt]- **Teorema.**
 >
 > Sea $a,b \in \mathbb{Z}\setminus \{ 0 \}$, sea $(a,b) = 1$. El conjunto de soluciones de $ax+by = 0$ es
 > $$
@@ -195,7 +195,7 @@ Una observacion es que nuestra grafica de soluciones de una ecuación, es solo e
 
 De nuevo, es importante ver esto de forma conjuntista. Estos teoremas nos responden ¿Cuál es el conjunto de todas las soluciones?
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > Encuentra las soluciones enteras de $56x + 315y = 42$. Mediante el algoritmo de Euclides vimos que $(56, 315 = 7)$ y $7 \mid 42$, por lo que existe una solución entera. Vimos además que
 > $$

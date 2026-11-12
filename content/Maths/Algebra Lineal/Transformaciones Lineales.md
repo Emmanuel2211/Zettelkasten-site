@@ -103,7 +103,7 @@ Antes de ver ejemplos de transformación lineales, veamos dos definiciones impor
 > $( \supseteq )$ Sea $a \in  \mathbb{R}$, $T(a,-a,0) = (a-a,0) = (0,0)$
 > Así, $R(T) = \mathbb{R}^{2}$, pues $(\subseteq)$ se cumple y $(\supseteq)$ Sea $(a,b) \in \mathbb{R}^{2}$, ent. $(a,0,b)\in \mathbb{R}^{3}$ y $T(a,0,b) = (a,b)$.
 >
-> > [!observation]- **Observación.**
+> > [!observation]+ **Observación.**
 > >
 > > - $T$ **no** es inyectiva.
 > > - $3 = 1+2$, $\operatorname{dim}(\operatorname{Dom} \{T\}) = \operatorname{dim}(N(T))+\operatorname{dim}(R(T))$.
@@ -127,7 +127,7 @@ Antes de ver ejemplos de transformación lineales, veamos dos definiciones impor
 > $N(T_{\theta }) = \{ \bar{0} \}$ (Tarea)
 > $R(T_{\theta }) = \mathbb{R}^{2}$ (Tarea)
 >
-> > [!observation]- **Observación.**
+> > [!observation]+ **Observación.**
 > >
 > > - $T_{\theta }$ es inyectiva
 > > - $2 = 0 + 2$, $\operatorname{dim}(\operatorname{Dom} \{T\}) = \operatorname{dim}(N(T)) + \operatorname{dim}(R(T))$
@@ -208,7 +208,7 @@ Hay más ejemplos en la tarea a verificar si son lineales, nucleos y rangos!
 > Idea: Como $W\leq V$ y $V$ es de dim. finita, $W$ también y $m = \operatorname{dim}(W)\leq \operatorname{dim}(V) = n$. Ent. existe $\alpha = \{ w_{1},\dots, w_{m} \}$ base de $W$. Como $\alpha$ es l.i. y es un subcjto. de $V$, se puede extender a una base de $\beta$ de $V$.
 > Sea $\gamma = \beta \setminus \alpha$. Proponemos $W' = \langle \gamma  \rangle$. Hay que ver que $\langle \gamma  \rangle \oplus \langle \alpha  \rangle = V$. Y ent. $T: V\to V$ será $\forall x \in  V (T(x) = x_{1})$, donde $x = x_{1}+x_{2}$ con $x_{1} \in  W$ y $x_{2} \in W'$, ent. es la proy. buscada.
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Obsérvese que hay tantos $W'$ como extensiones de $\alpha$ hay, es decir $W'$ **no** es único.
 >
@@ -219,7 +219,7 @@ Hay más ejemplos en la tarea a verificar si son lineales, nucleos y rangos!
 
 Ahora, combianamos el concepto de transf. lineales con el de generadores, base y dimensión!
 
-> [!Info]+ **Notación.** 
+> [!Info]- **Notación.** 
 >
 > Sean $V$ y $W$ esp. vect. sobre $\mathbb{F}$. Sea $T : V\to W$ una transf. lineal. Dado $S\subseteq V$, escribimos $T[S]$ o $T(S)$ para la imagen de $S$ bajo $T: T[S] = \{ T(v) \mid v\in S \}$.
 
@@ -231,7 +231,7 @@ Ahora, combianamos el concepto de transf. lineales con el de generadores, base y
 De tarea esta la versión general, en la que $\beta$ no es forzosamente finita.
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sea $\beta = \{ v_{1},\dots,v_{n} \}$ base de $V$, ent. $T[\beta ]\subseteq R(T)$. Por Teo. de Subida, como $R(T)$ es esp. vect, $\langle T[\beta ] \rangle \subseteq R(T)$.
 > **PD.** $R(T) \subseteq  \langle T[\beta ] \rangle$
@@ -343,13 +343,13 @@ De tarea esta la versión general, en la que $\beta$ no es forzosamente finita.
 
 Con estás definiciones podemos rescribir el Teo. 2.4 y 2.4, ya es a su preferencia.
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > Sea $\mathbb{F}$ campo. Sea $T: P_{3}(\mathbb{F}) \to \mathbb{F}^{4}$ definida como $T(a+bx+cx^{2}+dx^{3}) = (a,b,c,d)$. $T$ es lineal. (Tarea)
 > Se verá que sólo el polinomio nula va a dar al $\bar{0} = (0,0,0,0)$, por lo que $T$ es inyectiva.
 > Además, $T$ es sobre, pues $(a,b,c,d) \in \mathbb{F}^{4}$, hay un polinomio, a saber, $a+bx+cx^{2}+dx^{3}$ que va a dar a $(a,b,c,d)$ bajo $T$.
 >
-> > [!observation]- **Observación.**
+> > [!observation]+ **Observación.**
 > >
 > > $$
 > > \operatorname{dim}(P_{3}(\mathbb{F})) = \operatorname{dim}(\mathbb{F}^{4})

@@ -50,7 +50,7 @@ Tambíen conocido como el *Teorema del Valor Promedio*.
 > $$
 
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Representa un promedio ponderado. La función $g(x)$ le asigna mayor "importancia" a ciertas zonas del intervalo
 

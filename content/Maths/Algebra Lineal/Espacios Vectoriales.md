@@ -38,7 +38,7 @@ Abstraemos! y se hace la luz...
 > 
 > Los elementos de $\mathbb{F}$ son llamados escalares, y los de $V$ vectores.
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > - La multiplicación escalar es una función que va de $\mathbb{F} \times V$ en $V$, por lo que dado $a \in \mathbb{F}$ y $x \in V$, sólo tiene sentido hablar de $a \cdot x$ o $ax$; 
 > - En general, en todo esp. vect. denotamos con $\bar{0}$ a su neutro para diferenciarlo del neutro $0$ del campo.

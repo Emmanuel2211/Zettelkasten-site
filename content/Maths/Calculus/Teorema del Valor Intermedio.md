@@ -16,7 +16,7 @@ cssclasses:
 >
 > Si $f: [a,b] \to  \mathbb{R}$ es continua y $f(a)$ y $f(b)$ tienen signos opuestos, es decir, $f(a)f(b) < 0$, entonces existe al menos un $c \in  (a,b)$ tal que $f(c) = 0$
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 
 Equivalentemente, vamos generalizando para una constante $k$. Los siguientes corolarios representan la misma idea pero con caso diferente en cuanto al orden de $f(a)$ y $f(b)$.
 
@@ -24,7 +24,7 @@ Equivalentemente, vamos generalizando para una constante $k$. Los siguientes cor
 >
 > Sea $M \in \mathbb{R}$, si $f(a) < M < f(b)$. Entonces existe $c \in (a,b)$, tal que $f(c) = M$.
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 
 ### Algunas consecuencias
 

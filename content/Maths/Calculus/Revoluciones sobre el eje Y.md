@@ -12,7 +12,7 @@ publish: true
 
 > $\square$ 5. Un grupo de ingenieros está construyendo un disco parabólico para un satélite. La forma de este disco estará descrita por $ax^{2}$ rotado alrededor del eje $Y$. Si el disco debe tener 10ft de diámtetro y profundidad de 2 ft. Calcula el valor de $a$ y  el área de su superficie.
 
-> [!example]+ Solución.
+> [!example]- Solución.
 >
 > Bueno para obterner $a$ simplemente evaluamos.
 > Sea $S$ el área de su superficie, dado $f(x) = ax^{2} \implies f'(x) = 2ax$ tenemos

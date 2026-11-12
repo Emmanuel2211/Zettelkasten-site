@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Sup. que tenemos una sucesión infinita de ensayos indep. Bernoulli, en cada uno de los caules la proba. de éxito es $p$. Sea $r\geq 1$ núm entero, definamos $X$ v.a. como el número de fracasos antes de obtener el $r$-ésimo éxito.
 > Es claro que $X$ puede tomar valores $0,1,2,\dots$
@@ -51,6 +51,6 @@ cssclasses:
 > $$
 > Recíprocamente, toda v.a. con distrib. $\operatorname{bin \ neg} (r,p)$ puede expresarse como una suma de la forma anterior.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 

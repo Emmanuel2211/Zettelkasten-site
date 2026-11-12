@@ -275,7 +275,7 @@ ac \equiv bc \pmod{m} \implies a\equiv b \pmod{m}?
 $$
 vemos que para esto necesitaremos la condición: $c \not\equiv 0 \pmod{m}$.
 
-> [!example]+ Ejemplos cancelación de congruencias.
+> [!example]- Ejemplos cancelación de congruencias.
 >
 > 1. $100 \equiv 16 \pmod{21}$ ya que $100-16 = 84 = 21(4)$, esto es, $21 \mid 100 - 16$.
 > Observamos que podemos factorizar, $4(25) \equiv 4(4) \pmod{21}$, podemos cancelar este $4$? En este caso sí, pues $25 - 4 = 21 = 21(1)$, ent. $25 \equiv 4 \pmod{21}$.

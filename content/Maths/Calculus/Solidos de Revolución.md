@@ -44,7 +44,7 @@ Así, la propuesta inicial no era correcta: el volumen no depende de $f$, sino d
 > \pi \int_{a}^{b} f^{2}(x) \, dx
 > $$
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $\square$ Calcula el volumen de una esfera de radio $r$.
 > Recordando la función de una media luna positiva (de cuando sacamos el área del círculo), $f(x)= \sqrt{r^{2} - x^{2}}$. Ent. el volumen es,
@@ -60,7 +60,7 @@ Así, la propuesta inicial no era correcta: el volumen no depende de $f$, sino d
 
 ### Área
 
-> [!example]+ Ejemplo. 
+> [!example]- Ejemplo. 
 >
 > $\square$ Calcula el área de un cono de altura $h$, generatriz $l$ y radio $r$.
 >
@@ -77,7 +77,7 @@ Así, la propuesta inicial no era correcta: el volumen no depende de $f$, sino d
 > Así, el área del cono (de helado) es: $\displaystyle \frac{l^{2} \theta}{2} = \frac{l^{2}\left(\frac{2\pi r}{l}  \right)}{2} = \boxed{\pi  r l}$
 
 
-> [!example]+ Ejemplo. 
+> [!example]- Ejemplo. 
 >
 > Calcula el área de un cono truncado con un corte perpendicular respecto a la altura.
 > 
@@ -154,7 +154,7 @@ Un área es necesariamente positiva, por lo que añadimos v.a. a $f(x)$.
 ### Método de los casquillos
 
 
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Ya sabemos cómo calcular volúmenes de cilindros, ¿no? Bueno, como es habitual, el proceso es aproximar el volumen de otra cosa que no conocemos por medio de volúmenes que ya conocemos, como un pan de muerto agujerado o una piedra taladrada, por medio de volúmenes de cilindros agujerados.
 

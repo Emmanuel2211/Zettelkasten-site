@@ -26,7 +26,7 @@ Hasta ahora hemos medido eventos estaticos dentro de un universo $\Omega$ congel
 
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Sea $(\Omega , \mathcal{F}, P)$ espacio de probabilidad, y $B \in  \mathcal{F}$.
 > $$
@@ -35,7 +35,7 @@ Hasta ahora hemos medido eventos estaticos dentro de un universo $\Omega$ congel
 
 > ¿Cuál es la probabilidad de que ocurra una cosa y ocurra otra al mismo tiempo?
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Si $P[B]>0$
 > $$
@@ -65,7 +65,7 @@ $$
 El tema es cuando $P[B] = 0$, por ello construimos como sigue la siguiente def.
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Sean $A,B \in  \mathcal{F}$ tal que $A \perp\!\!\!\perp B$ ,
 > $$

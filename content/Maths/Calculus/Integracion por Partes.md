@@ -32,7 +32,7 @@ $$
 > De aquí la famosa mnemotecnia: "Un día vi una vaca sin cola vestida de uniforme!"
 > - "*Si un día vuelvo seré un villano sin sentimientos viviendo del ultraje*"
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > 1. $\displaystyle \int \sin(x)\cos(x) \, dx =  \sin(x)\sin(x) - \int \sin(x)\cos(x) \, dx \implies  \int \sin(x)\cos(x) \, dx = \frac{\sin^{2}(x)}{2} + c$
 >

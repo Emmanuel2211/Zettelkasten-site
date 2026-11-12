@@ -81,7 +81,7 @@ A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
 > $S\subseteq V$ es **l.i.** si y sólo si no hay una combinación lineal no trivial del $\hat{0}$ utilizando vectores de $S$ distintos.
 
 
-> [!example]+ **Ejemplos.** 
+> [!example]- **Ejemplos.** 
 >
 > - $\varnothing$ es l.i. por vacuidad.
 > - Si $S \subseteq V$ tal que $\bar{0} \in S$, ent. es l.d.
@@ -93,7 +93,7 @@ A la segunda, le llamamos *comb. lineal trivial* del $\bar{0}$.
 > 1. Si $S_{1}$ es l.d, ent. $S_{2}$ es l.d. (los l.d.s suben)
 > 2. Si $S_{2}$ es l.i, ent. $S_{1}$ es l.i. (los l.i.s bajan)
 
-> [!proof]+ **Proof.** Tarea
+> [!proof]- **Proof.** Tarea
 
 
 Formalizando un resultado muy importante,
@@ -106,7 +106,7 @@ Formalizando un resultado muy importante,
 > \forall a_{1}, \dots, a_{n} \in  \mathbb{F} \ \left(\sum_{i=1}^{n} a_{i} v_{i} = \hat{0} \implies  \forall i \in  \{ 1,\dots,n \} (a_{i} = 0)\right)
 > $$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Gracias a que $P \iff Q \equiv  \neg P \iff  \neg Q$, el teorema anterior también aplica para l.d.'s finitos!
 
@@ -149,11 +149,11 @@ El siguiente resultado debería de ser un Teorema por su importancia:
 > Sea $S$ un subcjto. l.i. de un esp. vect. $V$. Sea $v \in  V$ tal que $v \not\in S$. Ent. $v \in  \langle S \rangle$ si y sólo si $S \cup \{ v \}$ es l.d.
 >
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Las hipótesis no ponen ninguna restricción a la cardinalidad de $S$, por lo que puede ser finito y infinito, es decir, *en la demostración no debemos de usar que sea finito*.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sea $S \subseteq V$ l.i. y $v \in V \ \ \epsilon \ \ v \not\in S$.
 > ($\implies$) Sup. $v \in \langle S \rangle$, ent. hay $n \in \mathbb{N}^{+}$ y hay $x_{1},\dots,x_{n} \in S$ y hay $a_{1},\dots,a_{n} \in F$ tales que $\displaystyle  v = \sum_{i=1}^{n} a_{i}x_{i}$ y s.p.g. supongase que $\forall i,j \in \{ 1,\dots,n \} (i\neq j \implies x_{i}\neq x_{j})$.

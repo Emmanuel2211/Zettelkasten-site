@@ -15,7 +15,7 @@ Conocida también como *función de acumulación*, siempre puede definirse para 
 
 De manera análoga a la *función de densidad*, induce el estudio de un experimento aleatorio y su modelo de proba, al estudio de las funciones reales.
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > La función de distribución evualuada en $x$, es la proba de que la variable aleatoria tome un valor menor o igual a $x$, i.e, que tome un valor en el intervalo $(-\infty, x]$.
 
@@ -28,7 +28,7 @@ De manera análoga a la *función de densidad*, induce el estudio de un experime
 
 En el caso discreto,
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > $F(x)$ es la suma de todos los valores positivos hasta $x$ de la función de densidad.
 > Y $f(x)$ es el tamaño del salto de la función de distribución en el punto $x$.
@@ -67,7 +67,7 @@ En el caso continuo,
 > 3. $\displaystyle x_{1}\leq x_{2} \implies F(x_{1}) \leq  F(x_{2})$, i.e. nunca es decreciente
 > 4. $\displaystyle F(x) = F(x+)$, i.e. es continua por la derecha.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 
 > [!theorem] **Definición.** (Función de Distrubución)

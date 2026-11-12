@@ -62,7 +62,7 @@ En el fondo, esto es la *tricotomía*.
 > -a = -\overline{(n,m)} = \overline{(m,n)} \in \mathbb{N} \setminus \{ 0 \}
 > $$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > La doble implicación en la demostración anterior, es estrictamente formal. Pues si demostramos solamente $\implies$ no verficamos el "una y sólo una" de $(i), (ii)$ e $(iii)$.
 

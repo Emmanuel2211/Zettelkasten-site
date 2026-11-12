@@ -26,7 +26,7 @@ Queremos formalizar la idea de que una sucesión $\{ a_{n} \}$ "se acerca" a un 
 > Decimos que $\{ a_{n} \}$ es **convergente** si existe $L \in \mathbb{R}$ tal que $a_{n} \to L$. 
 > Si $L = 0$, decimos que $\{ a_{n} \}$ es **nula**.
 
-> [!tip]+ **Idea.** (El uso de $\varepsilon$)
+> [!tip|idea]+ **Idea Intuitiva.** (El uso de $\varepsilon$)
 >
 > Por propiedades de valor absoluto,
 > $$
@@ -99,7 +99,7 @@ Para probar que $a_{n} \to L$ con la definición, el trabajo casi siempre es el 
 > $$
 > \therefore \ \lim_{ n \to \infty } \frac{1}{n} = 0 \tag*{$\blacksquare$}
 > $$
-> > [!observation]- **Observación.**
+> > [!observation]+ **Observación.**
 > >
 > > Con el mismo $N$ se tiene $\frac{1}{n^{p}} \to 0$ para todo $p \in \mathbb{N}^{+}$ y $\frac{(-1)^{n}}{n} \to 0$, pues $\frac{1}{n^{p}} \leq \frac{1}{n}$ y $\left\lvert \frac{(-1)^{n}}{n} \right\rvert = \frac{1}{n}$.
 

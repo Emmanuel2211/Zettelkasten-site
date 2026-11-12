@@ -3,7 +3,7 @@ modified: 2026-11-10T19:09:50Z
 title: "Resolviendo Congruencias"
 publish: true
 ---
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $m  =5$, tendrá solución?
 > $$
@@ -189,7 +189,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > > \tag*{$\blacksquare$}
 > > $$
 >
-> > [!example]+ Ejemplo.
+> > [!example]- Ejemplo.
 > >
 > > $6x \equiv 4 \pmod{8}$, $(6,8)=2$ y $2\mid 4$ tiene solución.
 > > Por la obs. de las soluciones de $6x \equiv 4 \pmod{8}$ son las mismas que las de $3x \equiv 2 \pmod{4}$.
@@ -242,7 +242,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > \end{align}
 > $$
 
-> [!example]+
+> [!example]-
 
 > [!theorem] **Teorema.** (Teorema Chino de Residuo)
 >
@@ -255,7 +255,7 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > $$
 > tienen una solución común y ésta es única módulo $m_{1}m_{2}$.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!observation]+ **Observación.**
 >
@@ -264,11 +264,11 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > m_{2}m^{-1}_{2m_{1}}r_{1} + m_{1}m_{1m_{2}}^{-1} r_{2}
 > $$
 >
-> > [!proof]+ **Proof.**
+> > [!proof]- **Proof.**
 > >
 > > De la prueba anterior sabemos que
 
-> [!Info]+ **Nota!**
+> [!Info]- **Nota!**
 >
 > Generalizando, sean $m_{1},\dots,m_{t} \in \mathbb{Z}^{+}$ tales que $(m_{i}, m_{j}) = 1 \ \forall  i\neq j, \ r_{1},\dots,r_{t} \in \mathbb{Z}$. Una solución común de
 > $$
@@ -286,4 +286,4 @@ tiene solución. Una solución es $a^{-1}_{m}b$, ya que como $(a,m) = 1$ existe 
 > La solución es única módulo $M$.
 
 
-> [!example]+ **Ejemplo.** 
+> [!example]- **Ejemplo.** 

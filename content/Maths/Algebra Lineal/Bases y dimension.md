@@ -16,7 +16,7 @@ cssclasses:
 > Sea $V$ un esp. vect. Una **base** $\beta$ de $V$ es un subcjto. l.i. tal que $\langle \beta  \rangle = V$.
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > - Una base nos genera al espacio sin tener información de más.
 >

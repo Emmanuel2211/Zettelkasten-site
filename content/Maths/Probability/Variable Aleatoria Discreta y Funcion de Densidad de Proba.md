@@ -30,7 +30,7 @@ cssclasses:
 > Otra forma de escribirlo, $f_{X}(x)  = P(X=x)$
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > De nuestra definción, ahora podemos saber la proba de una evento $A$ por medio de la suma de la función de proba de todos sus elementos $x \in A$, esto es
 > $$
@@ -38,7 +38,7 @@ cssclasses:
 > $$
 > Así, la función de densidad $f_{X}$ muestra la forma en la que la probabilidad $P$ se distribuye sobre el conjutno de puntos $x_{0},x_{1}\dots$, es decir, sobre $\operatorname{Im} \{X\}$.
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > El soporte es el conjunto de valores que se puede tomar con probabilidad distinta de cero.
 

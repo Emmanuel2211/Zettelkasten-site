@@ -66,7 +66,7 @@ La definición implica que las sucesiones "recorren" $n \in \mathbb{N}$ de $1 \r
 > \end{align}
 > $$
 
-> [!example]+ Ejemplos.
+> [!example]- Ejemplos.
 >
 > Si $\{ x_{n} \} = 2n^{2}$ y $\{ y_{n} \}  = 3n^{3}- 1$, ent. $\{ x_{n} \} + \{ y_{n} \} = \{ 3n^{3} + 2n^{2}-1 \}$
 >
@@ -83,7 +83,7 @@ La definición implica que las sucesiones "recorren" $n \in \mathbb{N}$ de $1 \r
 
 
 
-> [!theorem]- **Notación.** (Conjunto de funciones)
+> [!theorem] **Notación.** (Conjunto de funciones)
 >
 > Sean $A, B$ cjtos. Se denota al **conjunto de todas las funciones de** $A$ **en** $B$ de diferentes formas como: $B^{A}, \ \mathscr{F}(A,B),   {}^{A}B, \; \operatorname{Func}(A,B)$.
 

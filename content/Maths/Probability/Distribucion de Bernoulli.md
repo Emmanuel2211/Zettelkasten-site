@@ -15,7 +15,7 @@ Es un caso particular de la distribución binomial.
 
 Un **ensayo Bernoulli**, es aquel experimento aleatoria con únicamente dos posibles resultados: *éxito* o *fracaso*.
 
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Surge en experimentos donde los resultados se clasifican solo como exito o fracaso. Y se define una v.a. de la siguiente forma:
 > $$

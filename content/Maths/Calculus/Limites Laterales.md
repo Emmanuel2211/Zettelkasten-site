@@ -35,6 +35,6 @@ cssclasses:
 > $$
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 

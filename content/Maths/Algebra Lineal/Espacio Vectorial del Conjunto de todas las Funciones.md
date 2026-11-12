@@ -29,12 +29,12 @@ cssclasses:
 > (af)(x) = af(x)
 > $$
 
-> [!observation]- **Observación**
+> [!observation]+ **Observación**
 >
 > El codominio de las funciones debe ser el cmapo sobre el que está definido el espacio.
 > También observer que $S$ puede no ser campo, no se le pide más que sea un conjunto no vacío.
 
-> [!example]+ **Ejemplos particulares.** 
+> [!example]- **Ejemplos particulares.** 
 >
 > $\mathscr{F}(\mathbb{R},\mathbb{R})$
 > $\mathscr{F}(\mathbb{R}^{n}, \mathbb{R})$

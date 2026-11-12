@@ -15,7 +15,7 @@ Subcojuntos maximales linealmente independientes, maximal $l.i.$!
 
 Hay una problematica en el querer demostrar que todod espacio vectorial tiene una base.
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > ¿Cómo será una vase para $\mathscr{F}(\mathbb{R},\mathbb{R})$?
 >
@@ -97,20 +97,20 @@ Si $S \subseteq  V$ finito o infinito y $V$ es dimensión finita y $\langle S \r
 >
 > Sea $V$ un esp. vect. Sea $S \subseteq V \ \ \epsilon \ \  \langle S \rangle = V$. Sea $\beta$ un subcjto. maximal l.i. de $S$. Entonces $\beta$ es base de $V$.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 
 > [!theorem] **Corolario.** (Caso particual en que $\langle S \rangle \lneq V$)
 >
 > Sea $S \subseteq V$ y $S'$ un maximal l.i. de $S$, ent. $S'$ es base de $\langle S \rangle$.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!theorem] **Corolario.**
 >
 > Un subcjto. de $V$ es base de $V$ si y sólo si es un subcjto. maximal l.i. de $V$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 
 
@@ -122,14 +122,14 @@ Si $S \subseteq  V$ finito o infinito y $V$ es dimensión finita y $\langle S \r
 >
 > $\bigcup A$ es cota superior de $A$ con respecto a la contención.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 
 > [!theorem] **Teorema.**
 >
 > Sea $S$ un subcjto. l.i. de un esp. vecto. $V$, entonces, existe un subcjto. maximal l.i. de $V$ que contiene a $S$.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 
 > [!observation]+ **Observación.**
@@ -140,7 +140,7 @@ Si $S \subseteq  V$ finito o infinito y $V$ es dimensión finita y $\langle S \r
 >
 > Todo espacio vectorial tiene una base.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sea $V$ un espacio vectorial. Entonces, $\varnothing \subseteq  V$ y $\varnothing$ es l.i. Haciendo $S = \varnothing$ en el Teo. anterior, obteniendo una base para $V$.
 

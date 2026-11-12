@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Uno de los conceptos más importantes, la esperanza $\mu$ es un número que indica el promedio ponderado de los diferentes valores que la variable puede tomar. También se le conoce como *media*, *valor esperado* o *valor ponderado*.
 
@@ -32,7 +32,7 @@ cssclasses:
 > Si para los dos casos, no se cumple la condición de convergencia absoluta, ent. se dice que $\operatorname{E} (X)$ no existe, o que $X$ no tiene esperanza finita.
 > Generalmente, suele denotarse $\operatorname{E} (X) = \mu$.
 
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Los siguientes resultados establecen una forma de calcular la esperanza de una función de una v.a, sea $Y = \varphi (X)$, por def. tendríamos $\operatorname{E} (Y) = \sum_{y} \ y  f_{Y}(y)$, para lo cual necesitamos encontrar $f_{Y}(y)$, que en general, no es fácil.
 > Ent. usamos lo siguietne para calcular $\operatorname{E} (Y)$ conociendo unicamente $f_{X}(x)$ (func. de densidad de $X$).
@@ -44,7 +44,7 @@ cssclasses:
 > \operatorname{E} [\varphi (X)] = \sum_{x} \varphi (x)P(X = x)
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!theorem] **Proposición.** (Teorema del Estadistico Inconsciente) (Caso Continuo)
 >
@@ -53,7 +53,7 @@ cssclasses:
 > \operatorname{E} [\varphi (X)] =  \int_{-\infty}^{\infty} \varphi(x) f_{X}(x) \, dx
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 Los resultados anteriores se puede extender para el caso de $2$ o más v.a.s, como se muestra en la siguiente proposición.
 
@@ -81,14 +81,14 @@ Ahora, propiedades generales de la esperanza.
 > 3. $X\geq 0 \implies \operatorname{E} (X)\geq 0$
 > 4. $\operatorname{E} (X+Y) = \operatorname{E} (X) + \operatorname{E} (Y)$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Observamos dadas estás propiedades que la esperanza el **lineal**, i.e. separa sumas, y, multpl. por constantes.
 
 Otras propiedades se encuentrar en la sección de ejercicios del libro de Luis Rincón!
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 Veamos ahora una aplicación del concepto de indep. en el cálculo de la esperanza.
 
@@ -99,12 +99,12 @@ Veamos ahora una aplicación del concepto de indep. en el cálculo de la esperan
 > \operatorname{E} (XY) = \operatorname{E} (X) \operatorname{E} (Y)
 > $$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > El reciproco no es válido, ej. 232
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 
 La sig. proposición generaliza el resultado anterior.

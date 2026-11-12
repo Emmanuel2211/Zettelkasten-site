@@ -23,7 +23,7 @@ Sean $f,g \in \mathbb{R}[x]$ polinomios. Denotamos $\operatorname{gr}(f)$ al gra
 > $$
 > sea una comb. lineal igual a nuestro cociente $\displaystyle \frac{f(x)}{g(x)}$.
 
-> [!tip]- **Idea.** (Caso 1)
+> [!tip|idea]- **Idea Intuitiva.** (Caso 1)
 >
 > De esta forma, al rescribir $\displaystyle \frac{f(x)}{g(x)}$ como tal comb. lineal, podemos integrar de manera muy sencilla funciones de la forma $A\displaystyle \int  \frac{1}{x-x_{0}} \, dx$, los cuales son igual a $\displaystyle \sum_{i=1}^{n} A_{i}\log \left(x-x_{i}\right)$
 
@@ -35,7 +35,7 @@ Sean $f,g \in \mathbb{R}[x]$ polinomios. Denotamos $\operatorname{gr}(f)$ al gra
 > $$
 > En donde, para los terminos de la forma $(x-x_{0})^{k}$ se extiendan como sumas.
 
-> [!tip]- **Idea.** (Caso 2)
+> [!tip|idea]- **Idea Intuitiva.** (Caso 2)
 >
 > Similar al caso anterior, solo que ya no solo tendremos denominadores lineales en nuestra comb. lineal. Así que tendremos que usar otros metodos de integración mas allá de $\log \left(x\right)$.
 

@@ -19,14 +19,14 @@ cssclasses:
 > $$
 > Además, decimos que $v$ **es una combinación lineal de** $y_{1},\dots,y_{k}$; y que $a_{1},\dots,a_{k}$ son los **coeficientes** de la comb. lineal.
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > - En la definición **no** pedimos que $S$ sea subespacio, pues es útil que esa para subcjts. en general.
 >- Si $S\neq \varnothing$, ent. $\bar{0}$ es comb. lineal de $S$, pues como $S\neq \varnothing$, hay $x \in S$ $0\in \mathbb{F}$, ent. $0x = \bar{0}$.
 
 Es **muy importante** observar dónde aparece la palabra *"finito"* en la definición, *"la suma para cada vector debe ser finita"*. Sin embargo, no hay restricción en la cardinalidad de $S$, puede ser finito no vacío, o infinito! Entonces, inclusive si $S$ es infinito, la comb. lineal involucra un num. finito de $v\in S$.
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > En el caso de que $S\subseteq V$ sea finito, lo podemos escribir como $S = \{ x_{1},\dots,x_{m} \}$. De esta froma, si $v$ es una comb. lineal de $S$, se puede describir con todos los vectores de $S$ y cancelar con su coeficiente $0 \in \mathbb{F}$ los vectores que no juegar papel en escribir a $v$. Es decir,
 > $$
@@ -41,13 +41,13 @@ Es **muy importante** observar dónde aparece la palabra *"finito"* en la defini
 
 Por todas estas obs. anteriores nos dejan claro porqué la *inducción* es tan importante en Lineal.
 
-> [!observation]- **Observación.** ¿Cuando un vector es combinación lineal de otros?
+> [!observation]+ **Observación.** ¿Cuando un vector es combinación lineal de otros?
 >
 > Notaremos al desarrollar sistemas de ecuaciones para encontrar $a_{1},\dots,a_{n}$ que a veces $v$ puede ser descrito por **muchas** comb. lineales, y en ocasiones solo por una **única**! Igual, puede ser que $v$ **no pueda ser descrito**, pues encontraremos en su sistema de ecuaciones una contradicción! Y en otros casos, habrá que recurrir a otras área de las matemáticas para ver si es posible la comb. lineal!
 
 Dada la última *observación*, nos preguntamos, dado $S$ cjto. de vectores **¿Qué vectores puedo ver como comb. lineal de** $x \in S$? Es decir, ¿Qué vectores puedo **generar** o crear a partir de los $x \in S$?
 
-> [!example]+ **Ejemplo.** 
+> [!example]- **Ejemplo.** 
 >
 > Respondiendo a lo anterior, consideremos $(1,0), (0,1) \in \mathbb{R}^{2}$. Tomamos $S = \{ (1,0),(0,1) \}$, Si $(x,y) \in \mathbb{R}^{2}$, ent.
 > $$
@@ -73,7 +73,7 @@ Dada la última *observación*, nos preguntamos, dado $S$ cjto. de vectores **¿
 > **Convención.** $\operatorname{span}(\varnothing) = \{ \bar{0} \}$ 
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > - $\langle \{ \bar{0} \} \rangle = \{  \bar{0} \}$
 > - $S$ puede ser finito o infinito

@@ -20,7 +20,7 @@ cssclasses:
 > \end{align}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 
 > [!theorem] **Cosenos.**
@@ -32,7 +32,7 @@ cssclasses:
 > \end{align}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!theorem] **Tangentes.**
 >
@@ -44,7 +44,7 @@ cssclasses:
 > \end{align}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!theorem] **Secantes.**
 >
@@ -56,7 +56,7 @@ cssclasses:
 > \end{align}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!theorem] **Cosecantes.**
 >
@@ -68,7 +68,7 @@ cssclasses:
 > \end{align}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!theorem] **Cotangentes.** ()
 >
@@ -79,7 +79,7 @@ cssclasses:
 > \end{align}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!observation]+ **Algunas Observaciones**
 >

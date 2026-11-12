@@ -21,7 +21,7 @@ $$
 $$
 y $\{ a_{n} \}$ diverge sii esto pasa para **todo** $L \in \mathbb{R}$.
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > No converger a $L$ significa que hay una banda fija alrededor de $L$ de la que la sucesión **se sale una y otra vez**: no importa qué tan lejos vayamos ($\forall N$), más adelante hay un término afuera ($\exists n \geq N$). Es decir, hay una infinidad de términos fuera de la banda (compara con la Observación (2) de arriba).
 
@@ -63,7 +63,7 @@ No todas las divergentes son iguales: $\{ (-1)^{n} \}$ diverge porque *oscila*, 
 > \forall M \in \mathbb{R} \ \exists N \in \mathbb{N} \text{ tal que } \forall n \geq N \ (a_{n} < M)
 > $$
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Ahora el papel de $\varepsilon$ lo juega $M$: alguien nos propone un "techo" $M$ tan alto como quiera, y a partir de cierto término toda la sucesión queda por encima de él. La banda $(L-\varepsilon, L+\varepsilon)$ se cambia por la semirrecta $(M, \infty)$.
 

@@ -64,7 +64,7 @@ cssclasses:
 > $$
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sean $a,b \in \mathbb{Z}\setminus \{ 0 \}$
 > - Caso 1: $ab > 0$

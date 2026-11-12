@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Utilizando polinomio de Taylor (ver [[Polinomio de Taylor]]), recordamos:
 > $$
@@ -20,7 +20,7 @@ cssclasses:
 > Esto es $f(x) = P_{n}(x) + R_{n+1}(x)$, donde $P_{n}(x)$ (todo menos el residuo) es el polinomio de Taylor de grado $n$.
 > En donde el residuo es $\displaystyle R_{n+1}(x) = \int_{x_{0}}^{x} \frac{(x-t)^{n}}{n!} f^{(n+1)}(t)\, dt$ (con $f$ de clase $C^{n+1}$).
 
-> [!Info]+ **Nota!**
+> [!Info]- **Nota!**
 >
 > Si $f^{(n+1)}$ está acotada, $\left| R_{n+1}(x) \right|$ también lo podemos acotar.
 
@@ -35,7 +35,7 @@ $$
 \int_{a}^{b} f(x) \, dx \approx \boxed{\int_{a}^{b} P_{n}(x) \, dx}
 $$
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $\square$ Aproxima $\displaystyle \int_{0}^{1} e^{-x^{2}} \, dx$
 > Hagamos $u = -x^{2}$. De esta manera (Taylor de $e^{u}$ alrededor de $0$)

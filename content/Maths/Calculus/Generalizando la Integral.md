@@ -123,7 +123,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 >
 > Sea $f: [a,b] \to \mathbb{R}^{+}$ continua excepto en un punto $c \in (a,b)$. Entonces, $f$ es integrable en $[a,b]$.
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 >
 > La idea de la demostración es aproximar por derecha e izquierda nuestro punto $c$.
 > Sean $a<y <c$ y $b>z>c$. Sabemos que $f$ es continua en en $[a,y]$ y $[z,b]$, observamos que estos intervalos son acotados y cerrado, i.e **compacto**. 
@@ -219,7 +219,7 @@ Añadimos $f$ como parámetro por convención, la notación $L(f,P)$ es equivale
 > \int_{a}^{b} (f+g)(x) \, dx  = \int_{a}^{b} f(x) \, dx + \int_{a}^{b} g(x) \, dx 
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 Sea $f:[a,b]\to \mathbb{R}^{-}$ acotada. ¿Cúal es su integral?
 > [!theorem] **Proposición 2.** 

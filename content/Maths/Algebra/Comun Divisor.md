@@ -60,7 +60,7 @@ cssclasses:
 > - Sean $a\neq 0$ o $b\neq 0$. Si $u, u'$ son unidades, Ent. $(ua, u'b) = (a,b)$
 > - Si solo $a\neq 0$, tenemos $(a,0) = \left| a \right|$
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > Sea $a = 8$ y $b = 12$, y tenemos que $(a,b) = (8,12) = 4$.
 > Consideremos las combinaciones lineales enteras de $a$ y $b$, es decir
@@ -91,7 +91,7 @@ Algunas observaciones sencillas,
 > 3. $a \in  S \implies  at \in S \quad \forall  t \in  \mathbb{Z}$
 >
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sea $S \subseteq \mathbb{Z}$ no vacío, cerrado bajo suma y bajo resta,
 > 1. Como $S \neq  \varnothing$ existe $a \in  S$, y como $S$ es cerrado bajo resta, $a -a \in S$.
@@ -108,7 +108,7 @@ Algunas observaciones sencillas,
 > S = \{ bt \mid  t \in  \mathbb{Z} \}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sea $\varnothing \neq  S \subseteq  \mathbb{Z}$ cerrado bajo suma y resta. Por Lema 1, $0 \in  S$. Así, si $S = \{ 0 \}$, se cumple.
 > Si $S \supset \{ 0 \}$, existe $a \in  S$ con $a \neq  0$. Por Lema 1, también $-a \in  S$. Alguno de $a$ o $-a$ es positivo, ent. en $S$ hay elementos positivos.
@@ -146,7 +146,7 @@ Algunas observaciones sencillas,
 > $$
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sean $a,b \in  \mathbb{Z}$ no ambos nulos. Considero $S = \{  ax + by \mid  x ,y \in  \mathbb{Z} \}$.
 > Notamos que $S \neq \varnothing$ pues $0 = a \cdot 0 + b \cdot 0 \in  S$.
@@ -187,7 +187,7 @@ Algunas observaciones sencillas,
 
 > $(iv)$ es, los demás divisores dividen al MCD.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sean $g,a,b \in \mathbb{Z}$, $a$ y $b$ no ambos nulos. $(i) \iff  (ii)$ (Teo. anterior).
 >

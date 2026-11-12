@@ -119,7 +119,7 @@ Además, este límite es **único**.
 > $$
 >
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 
 > [!theorem] **Teorema.** (Límite de la Composición) (Continudad)

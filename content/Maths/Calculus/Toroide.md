@@ -21,7 +21,7 @@ cssclasses:
 > 2. Área de superficie: $\boxed{A = 4\pi^{2} a r}$
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > 1. Por el método de los casquillos (ver [[Solidos de Revolución]]), para cada $x \in [a-r, a+r]$ la altura del disco es $2\sqrt{r^{2} - (x-a)^{2}}$, ent.
 > $$

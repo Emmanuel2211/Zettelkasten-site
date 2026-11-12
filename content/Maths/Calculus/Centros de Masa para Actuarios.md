@@ -45,7 +45,7 @@ $\displaystyle f(x) = \begin{cases} p_{i} & x = x_{i} \\ 0  & \text{ o.c. }\end{
 >
 > Como $\sum p_{i} = 1$, las probabilidades son "masas normalizadas" ($\mu_{i} = p_{i}$), así que la esperanza **es** el centro de masa: $\operatorname{E}[X] = \bar{x}$. En el caso continuo, $f$ hace el papel de una densidad de masa y $\operatorname{E}[X] = \int x f(x)\,dx$ es el centro de masa de una varilla con esa densidad.
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > Si tenemos un número infinito numerable de resultados, $X = \{ x_{1},x_{2},\dots, \}$ con probabilidades correspondientes $P = \{ p_{1},p_{2},\dots \}$, la función de masa de proba asociada cumple
 > $$
@@ -91,7 +91,7 @@ $$
 > es decir, $F(x) - F(y) = \mathbb{P}(y < X \leq x)$.
 
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $\square$ Supongamos que mediante pruebas experimentales se ha determinado que el tiempo de falla de un foco está dado por $\displaystyle f(t) = At^{2}(100-t)^{2} \cdot \mathbb{1}_{[0,100]}(t)$.
 > - ¿Cuánto vale $A$ para que $f$ sea una densidad? $\displaystyle \int_{\mathbb{R}} f(x) \, dx = 1$

@@ -30,7 +30,7 @@ cssclasses:
 
 
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Es el conjunto de puntos del recorrido de $X$ donde la función de probabilidad (o densidad) es no nula.
 

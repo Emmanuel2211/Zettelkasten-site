@@ -50,7 +50,7 @@ cssclasses:
 
 
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $\displaystyle \square \int_{0}^{1} \frac{1}{\sqrt{x}} \, dx = \lim_{c \to 0^{+}} \int_{c}^{1} \frac{1}{\sqrt{x}} \, dx = \lim_{c \to 0^{+}} 2\sqrt{x} \ \bigg|_{c}^{1}$. Así, $\displaystyle \lim_{c \to 0^{+}} (2\sqrt{1} - 2\sqrt{c}) = 2$
 

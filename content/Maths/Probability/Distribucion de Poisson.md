@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Sup. que queremos saber el núm. de ocurrencias de un evento en cierto lapso de tiempo determinado. Podemos definir $X$ v.a. como el núm. de ocurrencias en el intervalo de tiempo dado. Es claro que $X$ puede tomar valores $0,1,2,\dots$ y en principio, no acotamos estos valores. Además, sup. que la conocemos la tasa media de ocurrencias, denotado $\lambda$. El parámetro $\lambda$ es positivo y se interpreta como el núm. promedio de ocurrencias del evento por unidad de tiempo o espacio. 
 
@@ -41,4 +41,4 @@ La distrib. de Poisson tiene teoremas muy útiles en su práctica.
 > X + Y \sim \operatorname{Piosson} (\lambda_{1} + \lambda_{2})
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**

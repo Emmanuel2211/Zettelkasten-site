@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Supongamos que realizamos una serie de $n$ ensayos independientes Bernoulli en donde la probabilidad de éxito de cada ensayo es $p$. Denotemos $E = \text{exito}$ y $F = \text{fracaso}$, es claro que el espacio muestral consiste de $OR_{n}^{2} = 2^{n}$ elementos. Definamos $X$ como la v.a. que indica el número de $E$ en cada uno de nuestros resultados, ent. se tiene que $X$ toma valores $0,1,2,\dots,n$. Así, la probabilidad de obtener $x$ éxitos y $n-x$ fracasos en $n$ ensayos Bernoulli es:
 > $$

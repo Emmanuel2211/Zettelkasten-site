@@ -24,7 +24,7 @@ cssclasses:
 > b-a \in \mathbb{N}
 > $$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > 1. Sea $a \in \mathbb{Z}$, $a>0 \iff a \in \mathbb{N}\setminus \{ 0 \}$
 > 2. Sea $a \in \mathbb{Z}$, $a \geq 0 \iff a \in \mathbb{N}$

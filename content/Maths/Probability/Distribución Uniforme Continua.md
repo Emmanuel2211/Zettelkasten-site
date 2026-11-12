@@ -22,7 +22,7 @@ cssclasses:
 > $$
 > Esta distrib. tiene como parámetros $a$ y $b$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Solo para tenerlo en claro, se puede ver en $f(x)$ que $\operatorname{supp}(X) = [a,b]$.
 > También, recuerdese que la $f(x)$ puede verse de forma equivalente con la función indicadora de la sig. manera:

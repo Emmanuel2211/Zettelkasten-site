@@ -10,7 +10,7 @@ publish: true
 > a^{x} := e^{x \log (a)}
 > $$
 
-> [!observation]- **Observación**
+> [!observation]+ **Observación**
 >
 > 1. 
 > $$

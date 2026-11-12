@@ -637,8 +637,11 @@ document.addEventListener("nav", () => {
   function zoom(src) {
     const r = src.getBoundingClientRect()
     const ar = (src.naturalWidth || r.width) / (src.naturalHeight || r.height || 1)
-    // as large as fits: 94% of the width or 90% of the height
-    const w = Math.min(innerWidth * 0.94, innerHeight * 0.9 * ar)
+    // bigger than in the note, but not the whole screen: up to 72% of the
+    // width (96% on phones, where the note is already narrow) or 75% of the
+    // height, and never smaller than it already was
+    const fw = innerWidth < 800 ? 0.96 : 0.72
+    const w = Math.max(r.width, Math.min(innerWidth * fw, innerHeight * 0.75 * ar))
     const h = w / ar
     const overlay = document.createElement("div")
     overlay.className = "zoom-overlay"

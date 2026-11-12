@@ -32,7 +32,7 @@ cssclasses:
 > $$
 > Se dice que $f$ es **estrictamente monótona** si se cumple alguna de estas dos.
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 
 La primera derivada nos habla de la tasa de cambio y la dirección de la curva.
 
@@ -45,7 +45,7 @@ La primera derivada nos habla de la tasa de cambio y la dirección de la curva.
 
 El recíproco es falso.
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 
 
 > [!theorem] **Teorema.** (Teorema de Fermat) (Condición para extremos relativos)

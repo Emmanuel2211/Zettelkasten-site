@@ -43,7 +43,7 @@ $$
 > \sum_{k=0}^{n-1} \frac{f(x_{k}) + f(x_{k+1})}{2} \cdot \frac{b-a}{n}
 > $$
 
-> [!Info]+ **Nota!**
+> [!Info]- **Nota!**
 >
 > Útil para funciones que no se vean monótonas con muchos chipotes en la gráfica de la función.
 

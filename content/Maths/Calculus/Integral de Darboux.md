@@ -27,7 +27,7 @@ cssclasses:
 
 ![[Pasted image 20260825114547.png|center]]
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Tenemos que
 > $$
@@ -169,7 +169,7 @@ Recuerda que "para cualquier" es lo mismo que "para todo", evita confusiones!
 > Así, para cualesquiera $x,y \in [x_{0},x_{1}]$ se cumple que $\lvert x-y \rvert<\delta$ y; por continuidad uniforme, $\lvert f(x)-f(y) \rvert<\varepsilon$.
 > Lo mismo pasa para cualquier subintervalo $[x_{j},x_{j+1}]. \quad \blacksquare$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Podemos pensar al Lema 3 como una máquina, le metes un número de tolerancia (cualquier número positivo) y la máquina te fabrica y te entrega una partición $P$ de $[a,b]$ garantizada. La garantía de esa partición es que, en cualquiera de sus subintervalos, la diferencia entre el punto más alto de la función y el punto más bajo será estrictamente menor que ese número de tolerancia que le metiste.
 

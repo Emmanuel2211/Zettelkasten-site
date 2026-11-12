@@ -26,7 +26,7 @@ cssclasses:
 > que es el área de la superficie (ver [[Solidos de Revolución]]).
 > 2. Es análogo, con $\displaystyle \bar{x} = \frac{\int_{a}^{b} x \sqrt{1 + f'(x)^{2}}\, dx}{\ell_{\operatorname{graf} (f)}}$ y el área $\displaystyle 2\pi \int_{a}^{b} \left| x \right| \sqrt{1 + f'(x)^{2}}\, dx$.
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $\square$ Calcula el centroide del segmento de recta que genera un cono al hacerlo girar alrededor del eje $X$.
 > Por el Teo. de Pappus y el área del cono $\pi r \ell$ (ver [[Solidos de Revolución]]), $2\pi \bar{y} \ell = \pi r \ell \implies  \bar{y} = \frac{r}{2}$

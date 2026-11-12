@@ -52,7 +52,7 @@ cssclasses:
 > $$
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Analizando un poco nuestra demostración, vemos que se usa la antiderivada:
 > $$

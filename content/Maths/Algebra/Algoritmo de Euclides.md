@@ -65,7 +65,7 @@ Después de definir MCD, ver más teoremas de divisibilidad y definir a los prim
 > Más aún, despejando los residuos obtengo una combinación lineal entera que me da $(a,b)$.
 
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $(315, 56)$
 > $$
@@ -87,4 +87,4 @@ Después de definir MCD, ver más teoremas de divisibilidad y definir a los prim
 > $$
 > por lo que la comb. lineal entera de $56$ y $315$ que es igual a $7$ no es única.
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 

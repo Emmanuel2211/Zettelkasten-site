@@ -44,7 +44,7 @@ Muyyy en sintesis,
 - $\mathcal{F}:=$ Conjunto de posibles eventos
 - $P :=$ Función que da probabilidades
 
-> [!observation]- **Observación**
+> [!observation]+ **Observación**
 >
 > - El complemento es respecto a $\Omega$
 > $$

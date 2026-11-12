@@ -16,7 +16,7 @@ cssclasses:
 > $$\psi_{G}(e)=uv \iff \psi_{H}(\phi(e)) = \theta(u)\theta(v)$$
 > Tal par $(\theta, \phi)$ de funciones es llamado **isomorfismo** entre $G$ y $H$.
 
-> [!observation]- **Observación**
+> [!observation]+ **Observación**
 >
 > En un isomorfismo claramente $G$ y $H$ tienen la misma estructura, lo único que difiere es en el nombre de sus vértices y aristas. Un grafo sin *labels* puede pensarse como un representante de una *clase de equivalencia* de grafos isomórficos.
 

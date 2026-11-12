@@ -110,7 +110,7 @@ Lo que está dentro de la suma: a medida que la partición sea más pequeña el 
 > $$
 
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $\square$ Calcula el perímetro de una circunferencia de radio $r$,
 > $\mathscr{C}_{r} \sim  t \mapsto (r\cos(t), r\sin(t))$, $t \in [0,2\pi]$. Entonces,

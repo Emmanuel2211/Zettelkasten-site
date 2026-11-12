@@ -46,7 +46,7 @@ Solo podemos comparar a las matrices que tengan la misma cantidad de renglones y
 > A_{ij} = B_{ij}
 > $$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Es claro que $\mathbb{F}^{n}$ es una generalización de $\mathbb{F}^{n}$, pues $\mathbb{F}^{n}= M_{1\times n}(\mathbb{F})$.
 > Además, a veces una $n$-ada de $\mathbb{F}$, la escribimos como una matriz de $n\times 1$, i.e. $(a_{1},\dots,a_{n})\in \mathbb{F}^{n}$. Pero también puede ser escrita como **vector columna**:
@@ -121,7 +121,7 @@ Sea $\mathbb{F}$ un campo. Sea $n \in \mathbb{N}^{+}$. Sabemos que $M_{n\times n
 > Una matriz es antisimetrica si y sólo si $A^{t}= -A$.
 > **Obs.** $A$ es antisimetrica $\iff (A_{ji} = -A_{ij})$ y para que esto se cumpla $\forall i \in \{1,\dots,n\}\ A_{ii} = 0$.
 
-> [!example]+ **Ejemplo.** 
+> [!example]- **Ejemplo.** 
 >
 > $$
 > \begin{pmatrix}

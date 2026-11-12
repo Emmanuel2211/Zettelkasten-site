@@ -57,7 +57,7 @@ del $\text{dom} (f)$, donde $f$ esta definida en el vecindario de $x_{0}$: $(x_{
 >
 > Esto significa por cada vecindario $V$ de $f(x_{0})$, existe un vecindario $U$ de $x_{0}$ tal que $f(U) \subset V$, es decir, $x \in U \implies f(x) \in V$. O equivalentemente, claro está por $\varepsilon-\delta$. Por lo que podemos desarrollar demostraciones de las dos formas.
 
-> [!observation]- **Observación**
+> [!observation]+ **Observación**
 >
 > Es claro que $f$ puede no ser continua en $x_{0}$ si:
 > 1. $f$ no esta definida en $x_{0}$.

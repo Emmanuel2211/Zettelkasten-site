@@ -18,7 +18,7 @@ cssclasses:
 > $$
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > - Los subesp. sólo lo son si son sobre el mismo campo.
 > - $V\leq V$, se le llama subesp. **impropio**.
@@ -30,11 +30,11 @@ cssclasses:
 La mayoría de las propiedades para $W\leq V$ ya se cumplen!
 De hecho, se cumplen (VS 1), (VS 2), (VS 5), (VS 7) y (VS 8).
 
-> [!observation]- **Observación.** ¿Porqué?
+> [!observation]+ **Observación.** ¿Porqué?
 >
 > Los "para todo bajan (*a los subconjuntos*)", y los "existen suben". Dado $W \subseteq V$, se van a cumplir todas las propiedades con $\forall$. Tenemos que revisar las propiedades con $\exists$, i.e. (VS 0), (VS 0.5), (VS 3), (VS 4).
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > (VS 0) y (VS 0.5) son abrebiaturas respectivamente de:
 > $$
@@ -105,7 +105,7 @@ Dado las obs. anteriores, es suficiente con revisar (VS 0), (VS 0.5) y (VS 3).
 > 2. $\forall x,y \in W \ (x+y \in W)$
 > 3. $\forall a \in \mathbb{F} \ \forall x \in W \ (ax \in W)$
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 
 Utilizando este criterio encontramos algunos resultados
 

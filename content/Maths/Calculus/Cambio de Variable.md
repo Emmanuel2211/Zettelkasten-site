@@ -38,7 +38,7 @@ cssclasses:
 >
 > Si $f(x) = x$, ent. $\displaystyle \int_{a}^{b} g(x)g'(x) \, dx =\int_{g(a)}^{g(b)} u \, du =  \left. \frac{u^{2}}{2} \right|_{g(a)}^{g(b)}$
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > 1. $\displaystyle \int_{a}^{b} \sin(x)\cos(x) \, dx = \int u(x) \, du =  \left.  \frac{u^{2}}{2}\right| = \left. \frac{\sin^{2}(x)}{2} \right|_{a}^{b} = \frac{\sin^{2}(b)}{2} - \frac{\sin^{2}(a)}{2}$
 >

@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > La varianza $(\sigma^{2})$ es una medida del grado de dispersión de los diferentes valores tomados por la variable.
 
@@ -55,7 +55,7 @@ cssclasses:
 > 5. $\operatorname{Var} (X) = \operatorname{E} (X^{2}) - \operatorname{E}^{2} (X)$.
 > 6. En general, $\operatorname{Var} (X + Y) \neq  \operatorname{Var} (X) + \operatorname{Var} (Y)$.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 > [!theorem] **Proposición.**
 >

@@ -23,7 +23,7 @@ cssclasses:
 > F_{X,Y}(x,y) = F_{X}(x)F_{Y}(y), \quad -\infty<x,y<\infty
 > $$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Como está afirmación es por definición $\forall x,y \in \mathbb{R}$, por lógica, para ver que no es cierta, faltaría encontrar al menos un $(x,y)$ para la cual no se cumpla.
 
@@ -41,7 +41,7 @@ cssclasses:
 > \end{align}
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 
 
 > [!theorem] **Teorema.** (Independencia de V.A.s Continuas)
@@ -56,4 +56,4 @@ cssclasses:
 > $$
 > En donde $\displaystyle f_{X}(x) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) \, dy$ y $\displaystyle f_{Y}(y) = \int_{-\infty}^{\infty} f_{X,Y}(x,y) \, dx$ son 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**

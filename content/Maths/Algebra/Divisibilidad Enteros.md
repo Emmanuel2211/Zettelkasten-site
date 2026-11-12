@@ -114,7 +114,7 @@ Lo probamos de forma generalizada para que funcione para Dominios Enteros en gen
 > Sean $a,b \in  \mathbb{Z}$ con $a\neq 0$, si $b \mid a$, ent $\left| b \right| \leq \left| a \right|$
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sean $a,b \in  \mathbb{Z}$, con $a \neq 0$. Supongamos $b \mid  a$.
 > **PD.** $\left| b \right|\leq  \left| a \right|$

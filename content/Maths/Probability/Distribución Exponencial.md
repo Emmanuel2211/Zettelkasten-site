@@ -37,7 +37,7 @@ cssclasses:
 ![[Pasted image 20261030092032.png|center|350]]
 
 
-> [!example]+ Ejemplos.
+> [!example]- Ejemplos.
 >
 > 1. Un estudiante debe llegar a un examen a las 9:00 am y sabe que el tiempo que le toma llegar a la facultad de un v.a. $X \sim \exp \left(\lambda\right)$ de parámetro $\lambda = 1$ en horas.
 > Si sale a las 8 am de su casa, cuál es la proba de que llegue a tiempo a su examen.
@@ -57,7 +57,7 @@ cssclasses:
 > 1. $\displaystyle \operatorname{E} (X) = \frac{1}{\lambda}$
 > 2. $\displaystyle \operatorname{Var} (X) = \frac{1}{\lambda^{2}}$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > 1. $\displaystyle \operatorname{E} (x) = \int_{-\infty}^{\infty} x\lambda e^{-\lambda x} \, dx = \lambda \int_{0}^{\infty} xe^{-\lambda x} \, dx$ usando $u = x \implies du = dx$
 > y $dv = e^{-\lambda x} \implies  v = \frac{-1}{\lambda}e^{-\lambda x}$. Así

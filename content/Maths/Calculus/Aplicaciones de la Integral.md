@@ -75,7 +75,7 @@ Veamos un ejemplo
 > \end{align}
 > $$
 
-> [!example]+ Ejemplo. (Área de un sector del círculo)
+> [!example]- Ejemplo. (Área de un sector del círculo)
 >
 > Area de triangulo + inegral del intervalo de $r\cos(\theta )$ a $r$
 > Después de visualizar una gráfica para identificar las áreas a calcular, determinamos que necesitamos al suma de, un triángulo una parte del área de la circunferencia:

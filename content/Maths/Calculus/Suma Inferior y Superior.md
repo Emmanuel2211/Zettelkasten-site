@@ -28,7 +28,7 @@ cssclasses:
 > U(f,P) = \sum_{i=1}^n M_{i}(t_{i}-t_{i-1}).
 > $$
 
-> [!observation]- **Observación**
+> [!observation]+ **Observación**
 >
 > A pesar de la motivación geométrica, estas sumas se han definido de manera precisa, sin invocar ningún concepto de "área".
 > 
@@ -42,7 +42,7 @@ Ahora, recordamos que queremos llegar a $L(f,P_{1})\leq L(f,P_{2})$, dadas $P_{1
 
 En la figura, $Q$ representa la partición con *puntos blancos y negros*. Es claro que contiene a $P$, *solo los puntos negros*. Ésto señala que los rectángulos de $Q$ aproximan mejor que la partición $P$.
 
-> [!theorem]- **Lema.** 
+> [!theorem] **Lema.** 
 >
 > Si $Q$ contiene a $P$, entonces
 > $$

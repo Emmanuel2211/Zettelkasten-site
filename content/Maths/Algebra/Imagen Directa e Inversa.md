@@ -11,7 +11,7 @@ tags:
 cssclasses: 
  - romana
 ---
-> [!Info]+ **Notese!**
+> [!Info]- **Notese!**
 >
 > La imagen directa e inversa son funciones conjuntistas $f: \mathcal{P}(A) \to \mathcal{P}(B)$, y no puntuales $g:A \to B$. Pues tomamos conjuntos $f(A)$ en lugar de solo puntos $f(x)$.
 
@@ -35,7 +35,7 @@ cssclasses:
 
 
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > Sea $C \subseteq A$ y $C' \subseteq B$
 > Es claro que, $f[C] \subseteq  B$  y que $f^{-1}[C'] \subseteq A$, además $f[A] = \operatorname{Im}\{ f \}$

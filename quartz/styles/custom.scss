@@ -814,8 +814,15 @@ body:is([data-slug="content"], [data-slug="user_manual"], [data-slug="cool_resou
 // ---------------------------------------------------------------------------
 // Manim animations (AVIF): zoom on click (site.js §9)
 // ---------------------------------------------------------------------------
+// as wide as the column or callout allows, keeping its margins (overrides
+// the width from the embed, e.g. |500)
 article img[src$=".avif"] {
   cursor: zoom-in;
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 .zoom-overlay {
   position: fixed;
@@ -848,6 +855,13 @@ article img[src$=".avif"] {
 // mode, so the animation's black background melts into the page. (In light
 // mode they keep it: there the black video would sit on a pale page anyway.)
 :root[saved-theme="dark"] .callout:has(img[src$=".avif"]) {
+  --bg: transparent;
+  background-color: transparent;
+}
+
+// "Idea Intuitiva" callouts (sync-vault.py tags them `[!tip|idea]`): no tinted
+// background in dark mode, like the callouts with animations
+:root[saved-theme="dark"] .callout[data-callout-metadata="idea"] {
   --bg: transparent;
   background-color: transparent;
 }

@@ -104,5 +104,5 @@ vemos un ejemplo en el cual se crea $\mathbb{R}^{3}$ a partir de la suma de dos 
 >
 > Sea $V$ un esp. vect. Sean $W_{1},W_{2} \leq V$. Ent. $V = W_{1} \oplus W_{2}$ si y sólo si $V = W_{1} + W_{2}$ y para todo $x \in V$, los vectores $x_{1} \in W_{1}$ y $x_{2} \in W_{2}$ tales que $x = x_{1} + x_{2}$ son únicos.
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 > 

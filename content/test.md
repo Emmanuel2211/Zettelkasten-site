@@ -53,7 +53,7 @@ Mismo algoritmo (corregido, versión CLRS) en tres formatos, sin plugin.
 
 ## 1. LaTeX puro (MathJax)
 
-> [!example]+ Algoritmo. (Quicksort)
+> [!example]- Algoritmo. (Quicksort)
 >
 > $$
 > \begin{array}{rl}

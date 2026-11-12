@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Sup. que tenemos una sucesión infinita de ensayos indep. Bernoulli, y cada uno con proba. de éxito $p$. Para cada una de estas sucesiones definimos la v.a. $X$ como el número de fracasos antes de obtener el primer éxito. Es decir,
 > $$

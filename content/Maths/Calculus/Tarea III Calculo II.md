@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!example]+ Ejemplo. 
+> [!example]- Ejemplo. 
 
 5. Un producto de tejas metálicas quiere producri paneles de 28 pulgadas de largo a partir de placas metálicas planas. Las tejas tamarán una forma siniodal descrita por
 $y = \sin\left( \frac{\pi}{7}x \right)$. Encuentra el largo de una placa necesaria para hacer la teja especificada.
@@ -34,7 +34,7 @@ $$
 \end{align}
 $$
 
-> [!Info]+ **Nota!**
+> [!Info]- **Nota!**
 >
 > nvim falta configurar ubrace para que funciones con el replazo de Tab
 
@@ -56,7 +56,7 @@ $$
 $$
 
 
-> [!example]+ **Ejercicio.**
+> [!example]- **Ejercicio.**
 >
 6. Una curva con ecuación $\rho = f(\theta)$ se puede expresar paramétricamente por $(f(\theta)\cos(\theta), f(\theta)\sin(\theta))$. Encuentra una fórmula para la longitud de $\mathscr{C}$ en $[\theta_{1},\theta_{2}]$.
 La fórmula de longitud de curva para $\gamma = (\gamma_{1},\gamma_{2})$ es
@@ -73,7 +73,7 @@ $$
 
 Este formulazo es, el caso particular de funciones uniparametricas polares.
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 
 Un subejercicio del anterior, sea $\rho = e^{-\theta}$ con $\theta \in [0,2\pi]$, calcula la longitud de su curva.
 Usamos el formulazo, para ello necesitamos la derivada, $\rho' = -e^{-\theta}$.
@@ -81,7 +81,7 @@ $$
 \ell_{\mathscr{C}} = \int_{0}^{2\pi} \sqrt{(e^{-\theta})^{2} + (-e^{-\theta})^{2}} \, d\theta = \int_{0}^{2\pi} \sqrt{2e^{-2\theta}} \, d\theta = \sqrt{2}\left(-e^{-2\pi} + 1  \right)
 $$
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 ¿Que curva respresenta $\varphi = \theta$? (en coodenadas cartecianas)
 un espiral!

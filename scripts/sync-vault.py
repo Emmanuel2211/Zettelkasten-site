@@ -311,7 +311,7 @@ def fix_nested_callout_titles(text: str) -> str:
     return "\n".join(out)
 
 
-CALLOUT_HEAD_RE = re.compile(r"^((?: {0,3}> *)+)\[![\w-]+\|?.*?\]-")
+CALLOUT_HEAD_RE = re.compile(r"^((?: {0,3}> *)+)\[!([\w-]+)(\|[^\]]*)?\]([-+])")
 # what renders as a picture on the site: image/AVIF/Excalidraw embeds, raw <img>,
 # Markdown images and TikZ blocks
 CALLOUT_IMAGE_RE = re.compile(
@@ -321,11 +321,35 @@ CALLOUT_IMAGE_RE = re.compile(
 )
 
 
-def expand_callouts_with_images(text: str) -> str:
-    """Callouts folded by default (`> [!idea]-`) that contain a picture open by
-    default on the site (`+`, still foldable): an animation or figure hidden
-    behind a click is easy to miss. The body is every following line that
-    keeps the header's quote depth (in the copy only)."""
+IDEA_HEAD_RE = re.compile(r"^((?: {0,3}> *)+)\[!tip\]([-+]?) ?\*\*Idea(?: Intuitiva)?\.\*\*", re.M)
+
+
+def rename_idea_callouts(text: str) -> str:
+    """`> [!tip]± **Idea Intuitiva.**` (the notes' "idea" callouts; older
+    ones said **Idea.**, also accepted and renamed) is tagged `|idea` (callout
+    metadata, rendered as data-callout-metadata="idea") so custom.scss can
+    style exactly these. Only in the copy."""
+    return IDEA_HEAD_RE.sub(lambda m: f"{m.group(1)}[!tip|idea]{m.group(2)} **Idea Intuitiva.**", text)
+
+
+# callouts that always open: observations stay visible while reading
+ALWAYS_OPEN_CALLOUTS = {"observation"}
+# callouts that can't be folded at all: definitions, lemmas, theorems… are
+# the content itself. Exception: `[!theorem|alt]-`, another way of stating a
+# theorem already in the same note, stays foldable (and folded).
+NEVER_FOLD_CALLOUTS = {"theorem"}
+
+
+def fold_callouts(text: str) -> str:
+    """Site rule for foldable callouts (`> [!tipo]+` / `> [!tipo]-`): all of
+    them start folded (`-`), except observations and the ones that contain a
+    picture (image, AVIF animation, Excalidraw, TikZ…), which start open
+    (`+`); an animation hidden behind a click is easy to miss. Callouts
+    without a fold marker aren't touched. The body is every following line
+    that keeps the header's quote depth, so an outer callout holding an
+    animated inner one opens too. Theorem callouts (NEVER_FOLD_CALLOUTS) lose
+    the marker and can't be folded, unless tagged `|alt`. Only in the copy;
+    the vault keeps its own +/-."""
     lines = text.split("\n")
     for i, line in enumerate(lines):
         m = CALLOUT_HEAD_RE.match(line)
@@ -338,9 +362,12 @@ def expand_callouts_with_images(text: str) -> str:
             if q < depth:
                 break
             body.append(nxt)
-        if CALLOUT_IMAGE_RE.search("\n".join(body)):
-            end = m.end()
-            lines[i] = line[: end - 1] + "+" + line[end:]
+        kind, meta = m.group(2).lower(), (m.group(3) or "").lower()
+        if kind in NEVER_FOLD_CALLOUTS and "alt" not in meta.strip("|").split("|"):
+            lines[i] = line[: m.start(4)] + line[m.end(4):]  # not foldable
+            continue
+        is_open = kind in ALWAYS_OPEN_CALLOUTS or bool(CALLOUT_IMAGE_RE.search("\n".join(body)))
+        lines[i] = line[: m.start(4)] + ("+" if is_open else "-") + line[m.end(4):]
     return "\n".join(lines)
 
 
@@ -702,7 +729,7 @@ def main() -> int:
         text = fix_inline_footnotes(text)
         text = fix_folder_note_links(text, rel, index, published)
         text = fix_raw_html(fix_extra_image_embeds(text), rel, index)
-        text = add_modified_date(h1_to_title(fix_nested_callout_titles(expand_callouts_with_images(fix_math_in_callouts(text)))), VAULT / rel)
+        text = add_modified_date(h1_to_title(fix_nested_callout_titles(fold_callouts(rename_idea_callouts(fix_math_in_callouts(text))))), VAULT / rel)
         dst.write_text(text, encoding="utf-8")
         shutil.copystat(VAULT / rel, dst)  # keep modified dates
     for rel in assets:

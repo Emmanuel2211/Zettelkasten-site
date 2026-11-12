@@ -48,7 +48,7 @@ cssclasses:
 > = \frac{a^{3}}{3\left( \frac{a^{3}}{\sqrt{a^{2}+x^{2}}^{3}}  \right)} = \frac{\sqrt{a^{2}+x^{2}}^{3}}{3} + c
 > $$
 
-> [!example]+ Ejemplo. Varias Identidades Trigonométricas
+> [!example]- Ejemplo. Varias Identidades Trigonométricas
 >
 > 1. $\displaystyle \int \sin(x) \, dx = -\cos(x) + c$
 > 2. $\displaystyle \int \sin(x)^{2} \, dx = \int \frac{1-\cos(2x)}{2} \, dx= \frac{1}{2}\left[ \int  \, dx - \int \cos(2x) \, dx  \right] = \frac{1}{2}\left[ x - \frac{\sin(2x)}{2}  \right] + c$

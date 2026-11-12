@@ -27,7 +27,7 @@ cssclasses:
 > $\displaystyle \{ y_{k} \} = (1,8,6,2,3)$ no es subsucesión de $\{ n \} = \{ x_{n} \}$: es finita y sus términos no respetan el orden de $\{ x_{n} \}$ ($8$ va antes que $6$).
 
 
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Una subsucesión se obtiene **tachando términos** de $\{ x_{n} \}$, pero:
 > 1. Nos quedamos con una infinidad de términos.
@@ -35,7 +35,7 @@ cssclasses:
 >
 > Las posiciones que conservamos son $n_{1}<n_{2}<n_{3}<\dots$, y el $k$-ésimo término de la subsucesión es el que estaba en la posición $n_{k}$, i.e. $y_{k} = x_{n_{k}}$.
 
-> [!theorem]+ **Definición.** (Subsucesión)
+> [!theorem] **Definición.** (Subsucesión)
 >
 > Una sucesión $\{ y_{k} \}$ es una **subsucesión** de $\{ x_{n} \}$ si existe una sucesión $\{ n_{k} \}_{k=1}^{\infty}$ de números naturales tales que $n_{1}<n_{2}<n_{3}<\dots$ y tal que $\forall k \in \mathbb{N} \ (y_{k} = x_{n_{k}})$
 

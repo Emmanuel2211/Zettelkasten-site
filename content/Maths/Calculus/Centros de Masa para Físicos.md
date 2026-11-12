@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]+ **Idea Intuitiva.**
 >
 > Supongamos que tenemos $n$ cuerpos $X = \{ x_{1},\dots,x_{n} \}$ con masas asociadas $M = \{ m_{1},\dots,m_{n} \}$, cuerpos alineados.
 > El momento de masa respecto al origen representa, el **torque** o fuerza de rotación de un sistema alrededor de un eje o en este caso, un punto (*el origen*). Al ser justo, de un sistema, donde diferentes fuerzas (*los pesos $m_{i}g$*) son aplicadas, se calcula el "*total*" de la fuerza aplicada al sistema de la siguiente forma; el momento de masa es el torque total dividido entre $g$.

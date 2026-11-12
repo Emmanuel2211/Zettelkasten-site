@@ -12,7 +12,7 @@ tags:
 cssclasses: 
  - romana
 ---
-> [!tip]- **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Intuitivamente, se representa geometr. como la pendiente de la recta tangente a la curva de la función en el punto $(a,f(a))$.
 
@@ -31,7 +31,7 @@ cssclasses:
 
 > La condición de que exista la derivada, si y sólo si, su límite existe y da como resultado un real finito.
 
-> [!Info]+ **Notación.** 
+> [!Info]- **Notación.** 
 >
 > La notacición de Leibniz $\displaystyle \frac{dy}{dx}$ es super útil para esto, en donde $y$ es nuestra función diferenciable, y $x$ la variable a derivar.
 
@@ -133,7 +133,7 @@ cssclasses:
 > \tag*{$\blacksquare$}
 > $$
 
-> [!example]+ Aplicación: Diferenciación Implicita
+> [!example]- Aplicación: Diferenciación Implicita
 >
 > Dada la ecuación a resolver $x^{2} + y^{2} = r^{2}$ de la circunferencia. Si queremos resolver $y$ en terminos de $x$, sin despejar. Dado que planteamos que $y$ es función de $x$, podemos asumir que $y'$ existe y diferenciamos los dos lados de la ecuación para obtener
 > $$

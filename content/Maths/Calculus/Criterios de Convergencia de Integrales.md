@@ -59,7 +59,7 @@ cssclasses:
 > 2. Si $\displaystyle \int_{a}^{\infty} f(x) \, dx$ diverge, también $\displaystyle \int_{a}^{\infty} g(x) \, dx$ diverge.
 
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Basta notar que $\displaystyle \int_{a}^{b} f(x) \, dx \leq  \int_{a}^{b} g(x) \, dx$ para todo $b>a$. 
 > 1. Si $\displaystyle \int_{a}^{\infty} g(x) \, dx$ converge, por el corolario, $\displaystyle \int_{a}^{b} g(x) \, dx \leq M \quad \forall  b>a$
@@ -71,7 +71,7 @@ cssclasses:
 >
 > Si $\displaystyle\int_{a}^{\infty} \left| f(x) \right| \, dx$ converge, entonces $\displaystyle\int_{a}^{\infty} f(x) \, dx$ también converge.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Notese que $0\leq \left| f(x) \right| - f(x) \leq  2\left| f(x) \right|$. Definamos $F(x) = \left| f(x) \right| - f(x)$ y $G(x) = 2\left| f(x) \right|$
 > Por el criterio 2 tenemos, $\int_{a}^{\infty} G(x) \, dx$ converge, ent. $\int_{a}^{\infty} F(x) \, dx$ converge.

@@ -42,7 +42,7 @@ Igualmente nombradas *Ordenaciones sin Repetición*. Vamos a interpretarlas:
 > O_{m}^{n}
 > $$
 
-> [!observation]- **Observación.**
+> [!observation]+ **Observación.**
 >
 > ¿Si $n = m$? Se tiene $(n- m) = 0$. Y por convicción $!0 = 1$, por lo que $O_{n}^{n} =   n!$.
 
@@ -112,7 +112,7 @@ De esta forma, las *ordenaciones* son casos especiales de las *ordenaciones con 
 
 Ahora sí, veamos el siguiente lema.
 
-> [!theorem]- **Lema.** 
+> [!theorem] **Lema.** 
 >
 > Sean $m,n \in \mathbb{N}^{+}$ tales que $m \leq n$. Entonces
 > $$

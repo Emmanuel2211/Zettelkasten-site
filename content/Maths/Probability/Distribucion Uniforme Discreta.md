@@ -11,7 +11,7 @@ tags:
 cssclasses:
  - romana
 ---
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > Esta distribución surge en espacios de probabilidad equiprobables. En experimentos con $n$ resultados diferentes y todos tiene la misma probabilidad de ocurrir, $P[X = x] = \frac{1}{n} \quad \forall  x \in  \operatorname{sop}(X)$.
 

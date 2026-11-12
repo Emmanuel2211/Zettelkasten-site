@@ -65,7 +65,7 @@ cssclasses:
 >
 > Las **únicas unidades** en $\mathbb{Z}$ son $1$ y $-1$.
 
-> [!proof]+ **Proof.** 
+> [!proof]- **Proof.** 
 >
 > $1$ es unidade en $\mathbb{Z}$ ya que $(1)(1) = 1$.
 > $-1$ es unidad en $\mathbb{Z}$ ya que $(-1)(-1) = 1$

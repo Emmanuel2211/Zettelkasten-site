@@ -130,7 +130,7 @@ En [[Sucesiones Convergentes]] y [[Sucesiones Divergentes]] probamos cada límit
 > $$
 > \lim_{ n \to \infty } \frac{3n^{2} + n - 1}{n^{2} + 5} = \frac{3}{1} = 3
 > $$
-> > [!observation]- **Observación.**
+> > [!observation]+ **Observación.**
 > >
 > > El mismo truco muestra que si $p(n)$ y $q(n)$ son polinomios de grados $r$ y $s$, con coeficientes principales $\alpha$ y $\beta$:
 > > - si $r = s$, ent. $\frac{p(n)}{q(n)} \to \frac{\alpha}{\beta}$;

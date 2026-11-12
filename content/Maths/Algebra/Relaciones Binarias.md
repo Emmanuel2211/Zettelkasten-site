@@ -37,7 +37,7 @@ A la relación $A \times B$, se le conoce como *relación total*.
 
 Es claro que, $\operatorname{dom} R \subseteq A$ e $\operatorname{im} R \subseteq B$.
 
-> [!observation]- **Observación**
+> [!observation]+ **Observación**
 >
 > Muchas veces no se especifica de que producto cartesiano deriva una relación $R$, esto no es problema pues $R \subseteq \operatorname{dom} R \times \operatorname{im} R$.
 
@@ -91,7 +91,7 @@ En este caso, al conjunto de $(x,x)$'s (*primera y segunda coordenadas iguales*)
 
 La propiedad de ser antisimétrica no  tiene que ver con la negación de ser simétrica. De hecho, es posible que una relación sea simétrica y antisimétrica
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > - La relación antisimétrica más famos es $\leq$.
 > Por ejemplo, sea $\leq$ definida sobre $\mathbb{N}$, es antisimétrica, pues 

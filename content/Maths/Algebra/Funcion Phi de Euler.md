@@ -20,7 +20,7 @@ cssclasses:
 >
 > Todo juego completo de residuos módulo $m$ tiene exactamente $m$ elementos.
 
-> [!example]+ Ejemplo.
+> [!example]- Ejemplo.
 >
 > $m = 8$
 > Un juego completo de residuos módulo $8$ es
@@ -47,7 +47,7 @@ cssclasses:
 >
 > Sea $m \in \mathbb{Z}^{+}$, $a \in \mathbb{Z}$. Tenemos que $(a,m) = 1$ si y sólo si $(b,m) = 1$ para toda $b \in \bar{a}$.
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > $m \in \mathbb{Z}^{+}$, $a \in \mathbb{Z}$, $b \in \bar{a}$
 > Como $b \in \bar{a}$ tenemso que $b \equiv a \pmod{m}$ y así $b - a = mq$ con $q \in \mathbb{Z}$. Entonces $b = a + mq$. Por un lema previo al algoritmo de Euclides,
@@ -67,7 +67,7 @@ cssclasses:
 
 
 
-> [!tip]+ **Idea.**
+> [!tip|idea]- **Idea Intuitiva.**
 >
 > También conocida como función totiente, cuenta la cantidad de números enteros positivos menores o iguales a un número $n$ que son coprimos con él. Recordemos que dos núms. son coprimos si su MCD es igual a $1$.
 
@@ -76,7 +76,7 @@ cssclasses:
 > La funcíon phi de euler es $\varphi : \mathbb{Z}^{+} \to  \mathbb{Z}^{+}$ tal que $\varphi ( m)$ es la cantidad de elementos en un juego reducido de residuos módulo $m$.
 
 
-> [!example]+ Ejemplo. 
+> [!example]- Ejemplo. 
 >
 > $m = 8$
 > Sabemos que $\{ 0,1,2,\dots, 7 \}$ es un juego completo de residuos módulo $8$.
@@ -192,7 +192,7 @@ cssclasses:
 > \varphi(p) = p -1
 > $$
 
-> [!proof]+ **Proof.**
+> [!proof]- **Proof.**
 >
 > Sea $p \in \mathbb{Z}^{+}$ primo.
 > $\{ 0,1,\dots,p-1 \}$ es un juego completo de residúos módulo $p$. Sabemos que $(0,p)=  p$ y $(a,p) = 1 \ \ \forall a \in  \{ 1,\dots,p-1 \}$  ya que $p$ es primo.
