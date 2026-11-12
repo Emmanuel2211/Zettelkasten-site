@@ -192,6 +192,7 @@ python3 -I scripts/mark-publish.py --undo                # deshace el último --
 - Deploy: `npx wrangler deploy`. Preview: `npx wrangler versions upload` (los preview builds están desactivados).
 - workers.dev activado. Dominio propio `zettelkastenciencias.cc`.
 - `wrangler.jsonc` usa `html_handling: auto-trailing-slash` y `not_found_handling: 404-page`.
+- **Worker propio (`scripts/worker.js`, `"main"` en `wrangler.jsonc`, binding `ASSETS`), 2026-11-12:** los archivos que existen se sirven directo de los assets (el Worker ni corre). Solo corre para URLs sin archivo y les pone `Cache-Control: no-store`. Se probó en local con `wrangler dev` (wrangler 4.20.0).
 
 ## 10. Problemas que ya se resolvieron (por si vuelven a aparecer)
 - **nvm no activaba:** había una línea `prefix=` en `~/.npmrc`. Se movió a `~/.npmrc.bak`.
@@ -208,6 +209,10 @@ python3 -I scripts/mark-publish.py --undo                # deshace el último --
 - **iPhone/Safari: al abrir una nota desde el menú, se quedaba la barra de carga y una pantalla negra.** La nota sí cargaba, pero el menú de pantalla completa nunca se cerraba y el scroll seguía bloqueado (`mobile-no-scroll`).
   - Causa: el plugin del explorador solo cierra el menú si `boton.checkVisibility()` es verdadero, justo después de quitarle `display:none`. Safari responde con el estilo viejo, y en iOS < 17.4 esa función no existe.
   - Arreglo: `site.js` §6. En el siguiente cuadro de animación después de cada `nav`, si el botón del menú móvil se ve, cierra el menú. Se probó con WebKit emulando un iPhone 13.
+- **Una visitante en iPhone (Chrome, iOS 17.3.1) veía el sitio sin estilos: fondo negro, enlaces azules, solo el HTML. aarnphm.xyz sí le cargaba (2026-11-12).**
+  - Causa: `_headers` pone `immutable, max-age=1 año` según la URL (`/index-*`, `/component-*`, `/static/scripts/*`…), y Cloudflare lo aplica **también a los 404**. Un 404 de `/index-<hash>.css` se guardaba un año en el navegador (y en la caché del edge: `cf-cache-status: HIT`) como si fuera la hoja de estilos. Puede pasar si una página se carga a media publicación, con el HTML de una versión y el CSS de otra.
+  - Descartado: `@layer` (iOS 17.3 lo soporta, y aarnphm también lo usa), las variantes de URL con o sin `/` final y la página 404 (las rutas son absolutas), y `checkVisibility` (ya lo cubre §6; probado quitándola en WebKit).
+  - Arreglo: `scripts/worker.js` (ver §9). Para quien ya lo tenga guardado: al publicar con CSS nuevo cambian los hashes y se arregla solo. Si no, se borra la caché del navegador o se abre en una pestaña de incógnito.
 - **Pruebas con navegadores (Playwright):** `uv run --with playwright python -m playwright install chromium firefox webkit`. WebKit (el motor de Safari) necesita además `sudo apt install libmanette-0.2-0 libenchant-2-2`.
 
 ## 11. Ideas o pendientes

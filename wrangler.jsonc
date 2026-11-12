@@ -4,12 +4,16 @@
   // MUST match the Worker's name in the Cloudflare dashboard, or the build fails.
   "name": "zettelkasten-site",
   "compatibility_date": "2026-10-01",
+  // tiny Worker that only runs for URLs WITHOUT a file: makes 404s
+  // uncacheable (otherwise _headers' "immutable" stuck a 404 as the CSS)
+  "main": "scripts/worker.js",
   // runs before every `wrangler deploy`: cache headers for the static files
   // (see scripts/_headers; Quartz wipes public/ on each build)
   "build": {
     "command": "cp scripts/_headers public/_headers"
   },
   "assets": {
+    "binding": "ASSETS",
     // Quartz's build output
     "directory": "./public",
     // /maths/limite -> maths/limite.html  (Quartz writes `page.html` files)
