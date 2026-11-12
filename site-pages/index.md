@@ -5,7 +5,7 @@ publish: true
 
 hola, me llamo emmanuel. bienvenido a mi zettelkasten.
 
-un repositorio de notas y recursos con el objetivo de enriquecer las formas habituales de aprendizaje, por medio de animaciones, visuales y hypertext.
+un repositorio de notas y recursos con el objetivo de enriquecer las formas habituales de aprendizaje, por medio de hypertext, visuales y animaciones.
 
 soy alumno de matemáticas, ahora mismo curso [[Probabilidad|probabilidad]], [[Calculo|cálculo]], [[Algebra Lineal|álgebra lineal]] y estructura de datos.
 
