@@ -1,33 +1,18 @@
 ---
-title: Bienvenido!
+title: inicio
 publish: true
 ---
 
-Hola! Soy Emmanuel, alumno de Matemáticas @UNAM
+hola, me llamo emmanuel. bienvenido a mi zettelkasten.
 
-El objetivo de este proyecto es enriquecer los recursos visuales e interactivos de diferentes materias de la facultad de ciencias por medio de herramientas como [manim](https://www.manim.community/), neovim, MathJaX, Tik, pseudocode, obsidian... Al igual, fomentar el uso de herramientas digitales en el proceso nuestros aprendizaje....
+un repositorio de notas y recursos con el objetivo de enriquecer las formas habituales de aprendizaje, por medio de animaciones, visuales y hypertext.
 
-TODO: terminar... index & about...
+soy alumno de matemáticas, ahora mismo curso [[Probabilidad|probabilidad]], [[Calculo|cálculo]], [[Algebra Lineal|álgebra lineal]] y estructura de datos.
 
-Bienvenido a mi Zettelkasten: notas de matemáticas, computación y más.
+<button type="button" class="open-search"><kbd>ctrl</kbd> + <kbd>k</kbd></button> para buscar.
 
-Este proyecto sigue en construcción, así que es propenso a errores de renderizado, (revisar archivo `test`)
+puedes contactarme vía <a href="#" class="mail-link" data-m="moc.liamg@1122.dcleunamme">email</a>.
 
-### Moc index
-Aquí puedes revisar todas las notas desde un índice:
-- [[Calculo]]
-- [[Algebra]]
-- [[Probabilidad]]
-- [[Teoria de Conjuntos]]
-- [[Algebra Lineal]]
-$\vdots$
+<nav class="landing-links" aria-label="páginas del sitio"><a href="/content" class="internal">content</a><a href="/user_manual" class="internal">user_manual</a><a href="/cool_resources" class="internal">cool_resources</a></nav>
 
-### Algunos Recursos
-- [Byrne's Euclid](https://www.c82.net/euclid/en/)
-- [Supercharged Maths with Vim + Latex](https://ejmastnak.com/tutorials/vim-latex/intro/)
-- [Neovim + Latex](https://www.dmsussman.org/resources/vimandlatex/)
-- [Forester Evergreen Notes](https://www.forester-notes.org/index/)
-- [The Stack Proyect](https://stacks.math.columbia.edu/)
-- [Blog de Leo](https://blog.nekomath.com/)
-- [Notas del Dr. Max Neumann](https://www.matem.unam.mx/~max/)
-$\vdots$
+<div class="colophon"><button type="button" class="escudo theme-toggle" aria-label="Escudo de la Facultad de Ciencias, UNAM: cambiar entre tema claro y oscuro"></button><p>facultad de ciencias · unam · 2026</p></div>

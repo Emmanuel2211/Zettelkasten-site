@@ -103,7 +103,7 @@
   document.documentElement.classList.add("has-dot-cursor")
 
   const INTERACTIVE =
-    "a, button, summary, label, select, [role=button], .callout-title, .folder-button, .clickable-container, input[type=checkbox]"
+    "a, button, summary, label, select, [role=button], .callout-title, .folder-button, .clickable-container, input[type=checkbox], article img[src$='.avif'], .zoom-overlay"
 
   let x = -100,
     y = -100,
@@ -134,9 +134,9 @@
 // 4. Index hero: "constelación de tus notas" (chosen in the hero lab).
 // The published notes and their real links, read from Quartz's own
 // contentIndex.json (already cached: search and the graph load it), laid out
-// once with Fruchterman–Reingold and drawn behind the index text, fading
-// downward. Notes near the cursor light up and the nearest one shows its
-// title. Without a cursor (phones) the "cursor" wanders slowly on its own.
+// once with Fruchterman–Reingold and drawn behind the index text (fixed to
+// the window). Notes near the mouse light up and the nearest one shows its
+// title, only over empty space (not over the text). No mouse, no glow.
 // Only the largest connected component is drawn (loose notes scatter).
 // ---------------------------------------------------------------------------
 ;(() => {
@@ -222,7 +222,11 @@
     // outside <body>: SPA navigation morphs <body> and would remove it
     document.documentElement.appendChild(canvas)
     const ctx = canvas.getContext("2d")
-    const st = { w: 1, h: 1, p: { x: 0.45, y: 0.4 }, target: { x: 0.45, y: 0.4 }, active: false, raf: 0, alive: true, g: null, dirty: true }
+    // The glow only follows the real mouse over empty space. Over the text,
+    // menus or a link, or with no mouse at all (phones), there is none. amp
+    // fades it in and out; while it is ~0 the glow point jumps to the cursor
+    // instead of sweeping across the screen.
+    const st = { w: 1, h: 1, p: { x: 0.45, y: 0.4 }, target: { x: 0.45, y: 0.4 }, on: false, amp: 0, raf: 0, alive: true, g: null, dirty: true }
     let col = {}
     const readColors = () => {
       const cs = getComputedStyle(document.documentElement)
@@ -245,15 +249,21 @@
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
       st.dirty = true
     }
+    // over the text, menus or any link the glow goes away completely, so
+    // reading and clicking links doesn't light up nodes and labels underneath
+    // (`.sidebar > *`, not `.sidebar`: on the index the side columns are empty
+    // but still there, and the nodes behind them must react)
+    const QUIET = "article, .page-header, .sidebar > *, a, button, input, .search-container"
     const onMove = (e) => {
       if (e.pointerType && e.pointerType !== "mouse") return
       const r = canvas.getBoundingClientRect()
+      const quiet = e.target instanceof Element && !!e.target.closest(QUIET)
       st.target = { x: (e.clientX - r.left) / r.width, y: (e.clientY - r.top) / r.height }
-      st.active = st.target.y >= 0 && st.target.y <= 1
+      st.on = !quiet
       st.dirty = true
       kick()
     }
-    const onLeave = () => (st.active = false)
+    const onLeave = () => (st.on = false)
     addEventListener("pointermove", onMove, { passive: true })
     document.addEventListener("pointerleave", onLeave)
     addEventListener("resize", resize)
@@ -267,7 +277,8 @@
       if (!st.alive) return
       const t = REDUCED ? 3 : (now - t0) / 1000
       const inView = canvas.getBoundingClientRect().bottom > 0 && !document.hidden
-      if (!st.active) st.target = { x: 0.5 + 0.36 * Math.sin(t * 0.07), y: 0.4 + 0.25 * Math.sin(t * 0.09 + 1.3) }
+      st.amp += ((st.on ? 1 : 0) - st.amp) * (REDUCED ? 1 : 0.08)
+      if (st.amp < 0.03) st.p = { ...st.target } // hidden: jump, don't sweep
       st.p.x += (st.target.x - st.p.x) * 0.06
       st.p.y += (st.target.y - st.p.y) * 0.06
       if (st.g && inView && (!REDUCED || st.dirty)) paint(t)
@@ -283,7 +294,7 @@
         padY + (y + 0.01 * Math.cos(t * 0.21 + i * 1.7)) * (h - 2 * padY),
       ])
       const px = p.x * w, py = p.y * h, R = Math.min(w, h) * 0.22
-      const hot = pos.map(([x, y]) => Math.max(0, 1 - Math.hypot(x - px, y - py) / R))
+      const hot = pos.map(([x, y]) => st.amp * Math.max(0, 1 - Math.hypot(x - px, y - py) / R))
       ctx.lineWidth = col.k > 1.5 ? 0.8 : 0.7
       for (const [a, b] of g.edges) {
         const k = Math.max(hot[a], hot[b])
@@ -298,12 +309,15 @@
         const d = Math.hypot(x - px, y - py)
         if (d < bd) (bd = d), (best = i)
       })
-      if (best >= 0 && bd < R * 0.6) {
+      // title of the nearest note under the cursor
+      if (st.amp > 0.05 && best >= 0 && bd < R * 0.6) {
         const [x, y] = pos[best], title = g.titles[best]
         ctx.font = `15px ${col.font}`
         ctx.fillStyle = col.text
+        ctx.globalAlpha = st.amp
         const tw = ctx.measureText(title).width
         ctx.fillText(title, Math.min(Math.max(8, x + 8), w - tw - 8), Math.max(16, y - 8))
+        ctx.globalAlpha = 1
       }
     }
     loadGraph().then((g) => {
@@ -532,5 +546,142 @@ document.addEventListener("nav", () => {
     document.querySelectorAll(".backlinks > h3").forEach((h) => (h.textContent = "Más Enlaces:"))
     collectToc()
     getIndex().then(placeMocs).catch(() => {})
+  })
+})()
+
+// ---------------------------------------------------------------------------
+// 8. Site pages (site-pages/*.md).
+//  a) `.open-search` ("ctrl + k para buscar" on the index) opens the search.
+//  b) `.mail-link`: the address is stored reversed in data-m and assembled
+//     here, so it isn't in the HTML as plain text for spam crawlers.
+//  c) `.moc-list` (content.md): every subject with its MOCs and how many
+//     notes it has, built from contentIndex.json like the left index (§7),
+//     so new subjects and notes appear by themselves.
+// ---------------------------------------------------------------------------
+;(() => {
+  document.addEventListener("click", (e) => {
+    // the coat of arms on the index is the theme switch: it presses the
+    // (hidden) darkmode button, so §2's cross-fade applies too
+    if (e.target instanceof Element && e.target.closest(".theme-toggle")) {
+      document.querySelector(".darkmode")?.click()
+      return
+    }
+    const t = e.target instanceof Element ? e.target.closest(".open-search") : null
+    if (!t) return
+    e.preventDefault()
+    // next tick: opened during this click, the search closes itself again
+    // (it treats the same click as a click outside its box)
+    setTimeout(() => document.querySelector(".search-button")?.click())
+  })
+
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
+  let idxPromise = null
+  const getIndex = () => (idxPromise ??= fetch("/static/contentIndex.json").then((r) => r.json()))
+
+  function renderMocList(idx) {
+    const zk = window.__zk
+    const groups = new Map(zk.SUBJECTS.map((s) => [s[0], { s, mocs: [], n: 0 }]))
+    for (const [slug, v] of Object.entries(idx)) {
+      if (slug.startsWith("tags/") || !slug.includes("/")) continue // site pages live at the root
+      const node = { id: slug, tags: v.tags || [], links: v.links || [] }
+      const s = zk.subjectOf(node)
+      if (!s) continue
+      const g = groups.get(s[0])
+      if (zk.isMoc(node)) g.mocs.push({ slug, title: v.title || slug, links: node.links.length })
+      else g.n++
+    }
+    const items = [...groups.values()]
+      .filter((g) => g.mocs.length || g.n)
+      .map((g) => {
+        const [main, ...rest] = g.mocs.sort((a, b) => b.links - a.links)
+        const style = `--c-d:${zk.shade(g.s[4], 0.35)};--c-l:${zk.shade(g.s[5], -0.35)}`
+        const name = main ? `<a href="/${esc(main.slug)}" class="internal">${esc(g.s[1])}</a>` : esc(g.s[1])
+        const sub = rest.length
+          ? `<ul>${rest.map((r) => `<li><a href="/${esc(r.slug)}" class="internal">${esc(r.title)}</a></li>`).join("")}</ul>`
+          : ""
+        return `<li style="${style}"><span class="dot" aria-hidden="true"></span>${name} <span class="count">${g.n}</span>${sub}</li>`
+      })
+    return `<ul>${items.join("")}</ul>`
+  }
+
+  document.addEventListener("nav", () => {
+    for (const a of document.querySelectorAll(".mail-link[data-m]")) {
+      a.href = "mailto:" + [...a.dataset.m].reverse().join("")
+    }
+    const list = document.querySelector(".moc-list")
+    if (list) getIndex().then((idx) => (list.innerHTML = renderMocList(idx))).catch(() => {})
+  })
+})()
+
+// ---------------------------------------------------------------------------
+// 9. Manim animations (AVIF) open bigger on click: a full-window overlay that
+// grows the image out of its place in the note (FLIP: only transform and
+// opacity animate, so it stays smooth). Click anywhere, Esc or navigating
+// closes it.
+// ---------------------------------------------------------------------------
+;(() => {
+  const SEL = "article img[src$='.avif']"
+  let open = null
+
+  function close() {
+    if (!open) return
+    const { overlay, img, from } = open
+    open = null
+    overlay.classList.remove("is-open")
+    img.style.transform = from
+    const done = () => overlay.remove()
+    img.addEventListener("transitionend", done, { once: true })
+    setTimeout(done, 400) // reduced motion / no transition
+  }
+
+  function zoom(src) {
+    const r = src.getBoundingClientRect()
+    const ar = (src.naturalWidth || r.width) / (src.naturalHeight || r.height || 1)
+    // as large as fits: 94% of the width or 90% of the height
+    const w = Math.min(innerWidth * 0.94, innerHeight * 0.9 * ar)
+    const h = w / ar
+    const overlay = document.createElement("div")
+    overlay.className = "zoom-overlay"
+    overlay.setAttribute("role", "dialog")
+    overlay.setAttribute("aria-label", "animación ampliada")
+    const img = document.createElement("img")
+    img.src = src.currentSrc || src.src
+    img.alt = src.alt || ""
+    img.style.width = `${w}px`
+    img.style.height = `${h}px`
+    img.style.left = `${(innerWidth - w) / 2}px`
+    img.style.top = `${(innerHeight - h) / 2}px`
+    // start exactly over the original, then grow to the centre
+    const s = r.width / w
+    const from = `translate(${r.left - (innerWidth - w) / 2}px, ${r.top - (innerHeight - h) / 2}px) scale(${s})`
+    img.style.transform = from
+    overlay.appendChild(img)
+    document.body.appendChild(overlay)
+    open = { overlay, img, from }
+    requestAnimationFrame(() =>
+      requestAnimationFrame(() => {
+        overlay.classList.add("is-open")
+        img.style.transform = "none"
+      }),
+    )
+  }
+
+  document.addEventListener("click", (e) => {
+    if (!(e.target instanceof Element)) return
+    if (open) {
+      e.preventDefault()
+      close()
+      return
+    }
+    const img = e.target.closest(SEL)
+    if (!img) return
+    e.preventDefault()
+    e.stopPropagation() // don't also fold/unfold the callout around it
+    zoom(img)
+  }, true)
+  document.addEventListener("keydown", (e) => e.key === "Escape" && close())
+  addEventListener("resize", close)
+  document.addEventListener("nav", () => {
+    if (open) open.overlay.remove(), (open = null)
   })
 })()

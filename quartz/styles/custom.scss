@@ -302,11 +302,14 @@ article mjx-container[jax="SVG"][display="true"] {
 }
 
 // ---------------------------------------------------------------------------
-// Internal links, minimal (aarnphm.xyz): accent colour, same weight as the
-// text, no highlighted pill; a thin underline appears on hover.
+// Links, minimal (aarnphm.xyz): accent colour, same weight as the text, no
+// highlighted pill, and a thin underline that is always there, faint, and
+// turns solid on hover (plain text-decoration: no cost at all). The
+// terminal-style link rows keep no underline.
 // ---------------------------------------------------------------------------
-article a.internal:not(.tag-link):not(.broken),
-article a.external {
+article a.internal:not(.tag-link, .broken, .landing-links *),
+article a.external:not(.escudo),
+article a.mail-link {
   background: none;
   padding: 0;
   border-radius: 0;
@@ -314,7 +317,7 @@ article a.external {
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-  text-decoration-color: transparent;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
   transition:
     color 0.2s ease,
     text-decoration-color 0.2s ease;
@@ -415,31 +418,33 @@ html.has-dot-cursor * {
 }
 
 // ---------------------------------------------------------------------------
-// Index hero: constellation of the notes (quartz/static/site.js §4), drawn
-// behind the index text and fading downward ("de fondo", intensity 100% in the
-// hero lab = 0.55 opacity). z-index -1 works because only <body> has a
-// background, which propagates to the root canvas.
+// Index background: constellation of the notes (quartz/static/site.js §4).
+// Fixed to the viewport: it stays in place (still turning and reacting to the
+// cursor) while the index text scrolls over it. z-index -1 works because only
+// <body> has a background, which propagates to the root canvas.
 // ---------------------------------------------------------------------------
 .constellation-hero {
-  position: absolute;
-  top: 0;
-  left: 0;
+  position: fixed;
+  inset: 0;
   width: 100%;
-  height: min(88vh, 900px);
+  height: 100%;
   z-index: -1;
   pointer-events: none;
   opacity: 0;
   transition: opacity 1.2s ease;
-  -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
-  mask-image: linear-gradient(to bottom, #000 0%, #000 45%, transparent 100%);
 
   &.is-ready {
-    opacity: 0.68;
+    opacity: 0.45;
   }
 }
 // light mode: dark strokes on a pale ground fade a lot under transparency
+// (kept lower than that, so the index text over it reads easily)
 :root[saved-theme="light"] .constellation-hero.is-ready {
-  opacity: 0.92;
+  opacity: 0.5;
+}
+// light mode, index: text in the darkest ink, above the constellation
+:root[saved-theme="light"] body[data-slug="index"] article {
+  color: var(--dark);
 }
 
 
@@ -550,4 +555,299 @@ html:root[reader-mode="on"] .sidebar.right {
 ul.toc-content.overflow > li > a.is-current {
   color: var(--secondary);
   opacity: 1;
+}
+
+// ---------------------------------------------------------------------------
+// Site name in the left menu, centred
+// ---------------------------------------------------------------------------
+.sidebar.left .page-title {
+  text-align: center;
+  align-self: stretch;
+}
+
+// ---------------------------------------------------------------------------
+// Terminal-style path at the top of every page: ~/Maths/Calculus/Nota
+// (breadcrumbs plugin with rootName "~" and spacer "/"). Every segment but the
+// last one is a link.
+// ---------------------------------------------------------------------------
+.breadcrumb-container {
+  font-family: var(--codeFont);
+  font-size: 0.72rem;
+  gap: 0;
+  margin: 0 0 1rem;
+  color: var(--gray);
+
+  .breadcrumb-element {
+    gap: 0;
+
+    p {
+      margin: 0 0.12em;
+      color: var(--gray);
+    }
+    a {
+      color: var(--gray);
+      font-weight: 400;
+      background: none;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--tertiary);
+      }
+    }
+    &:last-child a {
+      color: var(--darkgray);
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Index (site-pages/index.md): aarnphm-style landing page. A narrow centred
+// column in a smaller Pagella, no title, over the fixed constellation; the
+// side menus stay. Ends with a terminal-style row of links and the colophon.
+// ---------------------------------------------------------------------------
+body[data-slug="index"] {
+  .center > .page-header,
+  .center > article {
+    max-width: 34rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+  }
+  // text + colophon centred vertically in the window
+  .center {
+    min-height: 100vh;
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .center > .page-header {
+    margin-top: 0;
+  }
+  // terminal-like type, matching the ~/ path
+  article {
+    font-family: var(--codeFont);
+    font-size: 0.8rem;
+    line-height: 1.75;
+  }
+  // no closing rule: the colophon ends the page
+  .center > hr {
+    display: none;
+  }
+  // on the index the path is just the home directory
+  .breadcrumb-element:only-child a::after {
+    content: "/";
+  }
+  .content-meta {
+    font-family: var(--codeFont);
+    font-size: 0.72rem;
+  }
+}
+
+kbd {
+  font-family: var(--codeFont);
+  font-size: 0.78em;
+  padding: 0.05em 0.4em;
+  border: 1px solid var(--lightgray);
+  border-bottom-width: 2px;
+  border-radius: 4px;
+  color: var(--darkgray);
+  background: var(--light);
+}
+button.open-search {
+  font: inherit;
+  color: var(--secondary);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+
+  &:hover kbd {
+    border-color: var(--tertiary);
+    color: var(--dark);
+  }
+}
+
+.landing-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin: 2.5rem 0 0;
+  font-family: var(--codeFont);
+  font-size: 0.8rem;
+
+  a {
+    color: var(--darkgray);
+    font-weight: 400;
+    background: none;
+    transition: color 0.2s ease;
+
+    &::before {
+      content: "./";
+      color: var(--gray);
+    }
+    &:hover {
+      color: var(--tertiary);
+    }
+  }
+}
+
+// colophon: the Faculty's coat of arms, one colour (the SVG is a mask, so it
+// takes the theme's grey instead of fighting the palette)
+.colophon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  gap: 0.45rem;
+  margin: 4.5rem 0 0;
+
+  .escudo {
+    display: block;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    width: 2.6rem;
+    aspect-ratio: 448 / 512;
+    background-color: var(--gray);
+    -webkit-mask: url("/static/escudo-fc.svg") center / contain no-repeat;
+    mask: url("/static/escudo-fc.svg") center / contain no-repeat;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: var(--darkgray);
+    }
+    svg {
+      display: none; // external-link icon
+    }
+  }
+  p {
+    margin: 0;
+    font-family: var(--codeFont);
+    font-size: 0.6rem;
+    color: var(--gray);
+  }
+}
+
+// content.md: every subject with its MOCs and note count (site.js §8c)
+.moc-list {
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  > ul > li {
+    margin: 0.45rem 0;
+  }
+  .dot {
+    display: inline-block;
+    width: 0.55rem;
+    height: 0.55rem;
+    border-radius: 50%;
+    margin-right: 0.6rem;
+    background: var(--c-l);
+    vertical-align: 0.1em;
+  }
+  .count {
+    font-family: var(--codeFont);
+    font-size: 0.75em;
+    color: var(--gray);
+    margin-left: 0.3rem;
+  }
+  li ul {
+    margin: 0.1rem 0 0.2rem 1.15rem;
+    font-size: 0.9em;
+  }
+}
+:root[saved-theme="dark"] .moc-list .dot {
+  background: var(--c-d);
+}
+
+// ---------------------------------------------------------------------------
+// Index only: no left menu (aarnphm-style, just the text). Its search box
+// stays in the DOM, hidden, so "ctrl + k" and the index button still open
+// the search overlay. The grid keeps both 350px side columns, so the text
+// stays centred on the page.
+// ---------------------------------------------------------------------------
+body[data-slug="index"] .sidebar.left {
+  // zen mode fades the side menus; here only the search overlay is left
+  opacity: 1 !important;
+
+  // everything except the search box, the theme button and their boxes
+  *:not(.search, .search *, :has(.search)),
+  .search > .search-button {
+    display: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Path (~/Maths/...) in the page's top-left corner, like aarnphm.xyz. Desktop
+// on every page; on phones only on the index (elsewhere the phone header
+// with the ☰ menu sits there, so the path stays above the title).
+// ---------------------------------------------------------------------------
+.page {
+  position: relative;
+}
+@mixin crumb-corner {
+  position: absolute;
+  top: 1.1rem;
+  left: 1.4rem;
+  margin: 0;
+  z-index: 5;
+}
+@media (min-width: 800px) {
+  .page .breadcrumb-container {
+    @include crumb-corner;
+  }
+}
+body[data-slug="index"] .breadcrumb-container {
+  @include crumb-corner;
+}
+
+// site pages without title or date (the path ~/content already names them)
+body:is([data-slug="content"], [data-slug="user_manual"], [data-slug="cool_resources"]) {
+  .article-title,
+  .content-meta {
+    display: none;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Manim animations (AVIF): zoom on click (site.js §9)
+// ---------------------------------------------------------------------------
+article img[src$=".avif"] {
+  cursor: zoom-in;
+}
+.zoom-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9990; // below the dot cursor (9999)
+  background: color-mix(in srgb, #000 0%, transparent);
+  cursor: zoom-out;
+  transition: background-color 0.3s ease;
+
+  &.is-open {
+    background: color-mix(in srgb, #000 88%, transparent);
+  }
+  img {
+    position: fixed;
+    max-width: none;
+    margin: 0;
+    transform-origin: 0 0;
+    transition: transform 0.32s cubic-bezier(0.2, 0.7, 0.2, 1);
+    will-change: transform;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .zoom-overlay,
+  .zoom-overlay img {
+    transition: none;
+  }
+}
+
+// Callouts holding a manim animation lose their tinted background in dark
+// mode, so the animation's black background melts into the page. (In light
+// mode they keep it: there the black video would sit on a pale page anyway.)
+:root[saved-theme="dark"] .callout:has(img[src$=".avif"]) {
+  --bg: transparent;
+  background-color: transparent;
 }

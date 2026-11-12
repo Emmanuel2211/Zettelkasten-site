@@ -10,9 +10,10 @@ Resumen de cómo se armó el sitio y de todo lo decidido. Sirve para seguir en o
   - También en https://zettelkasten-site.emmanuelcd-2211.workers.dev
 - **Fuente:** el vault de Obsidian en `~/Documentos/Zettelkasten`. Son unas 576 notas, en español y con mucha matemática.
 - **Generador:** Quartz **v5** (config en YAML, plugins `@quartz-community/*` desde npm). Es la alternativa gratis a Obsidian Publish.
-- **Repo:** privado en GitHub, `git@github.com:Emmanuel2211/Zettelkasten-site.git`. La rama principal es **`v5`**.
+- **Repo:** privado en GitHub, `git@github.com:Tequila-Sunset22/Zettelkasten-site.git`. La rama principal es **`v5`**.
   - `origin` es tu repo.
   - `upstream` es `https://github.com/jackyzha0/quartz.git` (lo usa `npx quartz upgrade`).
+  - El usuario de GitHub cambió de `Emmanuel2211` a `Tequila-Sunset22` (2026-11-12). En cada máquina: `git remote set-url origin git@github.com:Tequila-Sunset22/Zettelkasten-site.git`.
 - **Hosting:** un **Cloudflare Worker** (Workers Builds) conectado al repo. Cada push a `v5` lo recompila y lo despliega.
 - **Fuera de alcance:** Dataview.
 
@@ -37,7 +38,7 @@ nvm install 24 && nvm alias default 24
 sudo apt install texlive-latex-extra texlive-pictures texlive-science dvisvgm
 
 # Repo
-git clone git@github.com:Emmanuel2211/Zettelkasten-site.git ~/Documentos/Proyectos/zettelkasten-site
+git clone git@github.com:Tequila-Sunset22/Zettelkasten-site.git ~/Documentos/Proyectos/zettelkasten-site
 cd ~/Documentos/Proyectos/zettelkasten-site
 git remote add upstream https://github.com/jackyzha0/quartz.git
 npm ci                       # npm 11 pide aprobar scripts: esbuild y @parcel/watcher
@@ -94,7 +95,7 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
 
 ## 6. Personalización (`quartz.config.yaml` + `custom.scss`)
 - **General:**
-  - Idioma `es-ES`; título `Zettelkasten`.
+  - Idioma `es-ES`; título del sitio **`Zettelkasten`**, también en la pestaña (`pageTitleSuffix`). Va centrado en el menú izquierdo. (Entre el 11 y el 12 de nov. de 2026 se llamó `Whirling-in-Rags`; se regresó a `Zettelkasten`.)
   - Colores, elegidos en el type lab (2026-11-11). El principal es `--secondary`: enlaces, título y marcadores de listas. El secundario es `--tertiary`: cursor, tags y subrayado de los enlaces.
     - **Claro**, "Carmesí y pizarra": principal `#9b2c42`, secundario `#4c6479`, fondo `#fbfaf9`.
     - **Oscuro**, "Petróleo y ámbar": principal `#6cc7bd`, secundario `#efb54a`, fondo negro puro `#000000` y texto `#eff2ff` (como turntrout.com).
@@ -111,20 +112,36 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - **Hero del index: "Constelación de tus notas"** (fase 2, elegido en el hero lab). Va de fondo detrás del texto del index, se desvanece hacia abajo y tiene opacidad 0.68 en oscuro y 0.92 en claro. En claro, las líneas y los nodos en reposo también son más opacos (`col.k` en `site.js`).
     - Usa las notas publicadas y sus enlaces reales, leídos de `static/contentIndex.json`, el mismo archivo que cargan la búsqueda y el grafo. Se actualiza solo al publicar.
     - Solo dibuja la componente conexa más grande, con un layout Fruchterman–Reingold calculado en el navegador. Es determinista y tarda unos milisegundos.
-    - Las notas cercanas al cursor se encienden y aparece el título de la más cercana. Sin cursor, como en el celular, se mueve sola.
+    - Las notas cercanas al cursor se encienden y aparece el título de la más cercana (solo fuera del texto; ver abajo). Sin mouse, como en el celular, no hay brillo.
     - Código en `site.js` §4 y CSS `.constellation-hero`. Es un canvas fuera de `<body>` con `z-index: -1`.
+    - Desde la página de inicio estilo aarnphm es `position: fixed` y ocupa toda la ventana: se queda en su sitio (sigue girando) mientras el texto pasa encima.
+    - Opacidad 0.45 en oscuro y 0.5 en claro (en claro, además, el texto del index usa `--dark`). El brillo **solo sigue al mouse real sobre espacio vacío** (§4, `st.on` y `st.amp`). Sobre el texto, los menús o un enlace (selector `QUIET`) se apaga por completo, y mientras está apagado salta al cursor en vez de barrer la pantalla. Sin mouse (celular) no hay brillo. Se probó un recorrido automático tras 4 s de inactividad y se quitó (2026-11-12). Antes: sobre el texto ignoraba el cursor y solo muestra títulos de nodos con el cursor real sobre espacio vacío. El selector usa `.sidebar > *` y no `.sidebar`, porque en el index las columnas laterales están vacías pero ocupan su lugar, y los nodos detrás de ellas no reaccionaban: antes, al ir a pulsar un enlace se encendían nodos y nombres debajo y estorbaban la lectura.
   - **Menús laterales** (`site.js` §7):
     - **Izquierdo, en escritorio:** un "Índice" de MOC en lugar del explorador. Se arma desde `contentIndex.json`, así que los MOC nuevos aparecen solos. Hay una entrada por materia con su nombre en español y un punto del color del MOC en el grafo; los MOC extra van debajo, y se resalta la materia de la página actual.
     - **Izquierdo, en el celular:** el explorador completo sigue en el menú ☰ (`display: mobile-only`).
     - **Derecho:** primero la Tabla de Contenidos, que sigue la lectura (sección actual resaltada y barra de progreso con `--toc-progress`); luego "Más Enlaces:" (los retroenlaces, renombrados por JS) y al final el grafo.
     - En modo zen, los menús aparecen y desaparecen con un fundido de 0.8 s.
   - El JS propio está en `quartz/static/site.js`. Se carga desde `quartz/components/Head.tsx` (bloque marcado "zettelkasten-site"), que es **un archivo del core de Quartz**: revísalo después de cada `npx quartz upgrade`.
+- **Página de inicio y páginas del sitio (2026-11-11, estilo aarnphm.xyz):** viven en `site-pages/` y se copian a `content/` siempre, aunque no tengan `publish: true`.
+  - `index.md`: sin título (`article-title` con `condition: not-index`) y sin fecha (`content-meta` también con `condition: not-index`). Columna angosta centrada de 34rem, en tipografía monoespaciada (`--codeFont`, 0.8rem, como la ruta `~/`; prueba, 2026-11-12), y todo el bloque (texto y escudo) centrado verticalmente en la ventana (`.center` en flex con `min-height: 100dvh`). Lleva el texto de bienvenida; `ctrl + k` es un `<button class="open-search">` (un `<a href="#">` no servía: el router SPA lo atrapaba y cerraba la búsqueda). El correo es un `.mail-link` con la dirección al revés en `data-m`, que `site.js` §8 convierte en `mailto:` para que los bots no la lean del HTML. Al final hay una fila de enlaces estilo terminal (`.landing-links`, con `./` delante) y el colofón (`.colophon`): el escudo de la Facultad (2.6rem de ancho; `quartz/static/escudo-fc.svg`, minificado con svgo y usado como `mask`, así toma el gris del tema) y el año.
+  - **Sin menú izquierdo en el index** (escritorio y celular): un CSS al final de `custom.scss` oculta todo el menú menos la caja de búsqueda, que debe seguir en el DOM para que `ctrl + k` y el botón del index abran la búsqueda. Fuerza `opacity: 1`, porque el modo zen desvanece los menús y escondía también la búsqueda. La rejilla conserva las dos columnas de 350px, así que el texto sigue centrado. No hay botones visibles: **el escudo es el interruptor de tema** (`<button class="escudo theme-toggle">`; `site.js` §8 pulsa el botón `.darkmode` oculto, así se conserva el fundido de §2).
+  - `content.md`: lista automática de materias, sus MOC y el número de notas (`.moc-list`, armada en `site.js` §8c desde `contentIndex.json` con las mismas materias que §5).
+  - `user_manual.md` (manual con humor) y `cool_resources.md`.
+  - "Estructura de Datos" aparece sin enlace en el index: todavía no hay notas de computación. Cuando las haya, agregar la materia a `SUBJECTS` en `site.js` §5 (carpeta, tags y colores).
+- **Ruta tipo terminal** en todas las páginas: breadcrumbs con `rootName: "~"` y `spacerSymbol: "/"`, en `--codeFont` pequeña (`~/Maths/Calculus/Antiderivada`); en el index se ve `~/`. Va en la esquina superior izquierda de la página, como en aarnphm (`position: absolute` sobre `.page`): en escritorio en todas las páginas y en el celular solo en el index, porque en las notas ahí está la barra del menú ☰. Muestra los nombres reales de las carpetas.
+- **Metadatos y pie:** solo la fecha (`content-meta` con `showReadingTime: false`). El plugin `footer` está desactivado (ya no dice "Creado con Quartz"); el índice termina con su colofón.
+- **Animaciones manim (AVIF), 2026-11-12:**
+  - **Zoom al hacer clic** (`site.js` §9): una capa a pantalla completa en la que la animación crece desde su lugar en la nota (técnica FLIP: solo se animan `transform` y la opacidad) hasta el 94% del ancho o el 90% del alto. Se cierra con un clic, con Esc o al navegar. El clic no pliega el callout que la contiene. Lleva cursor `zoom-in`, y el cursor cuadrado crece encima.
+  - **Callouts con AVIF sin fondo en modo oscuro:** `.callout:has(img[src$=".avif"])` con `--bg: transparent`, para que el negro del video (`FONDO = "#000000"` en `Claude/manim/estilo.py`) se funda con la página. Conserva el borde. En modo claro se mantiene el fondo. Si un callout tiene otro callout anidado con un AVIF, el exterior también pierde el fondo.
 - **Callouts propios:** `theorem` (con borde, en cursiva y sin icono), `proof` (verde menta) y `observation` (oliva).
   - Los callouts colapsados quedan realmente ocultos.
   - La columna del grid es `minmax(0,1fr)`, para que las ecuaciones anchas se desplacen en vez de recortarse.
 - **Matemáticas:**
   - Se renderizan con MathJax, igual que en Obsidian.
   - El espacio alrededor de `$$` se controla con `--math-display-gap: 0.5em`.
+- **Sin vista previa al pasar el mouse sobre un enlace:** `enablePopovers: false` (2026-11-11).
+- **Subrayado de enlaces estilo aarnphm:** siempre visible, delgado (1px, offset 0.18em) y del color del enlace al 40%; al pasar el mouse se vuelve `--tertiary`. Es `text-decoration` puro, sin costo de rendimiento. Las filas `./content …` no lo llevan.
+- **`content`, `user_manual` y `cool_resources` sin título ni fecha** (CSS por `data-slug`; la ruta `~/content` ya las nombra).
 - **Enlaces a notas no publicadas:** se ven como texto normal. Lo controlan `disableBrokenWikilinks` y el CSS de `a.internal.broken`.
 - **Plugins:**
   - Búsqueda (Ctrl+K, texto completo).

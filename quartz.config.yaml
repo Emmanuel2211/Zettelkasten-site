@@ -3,7 +3,8 @@ configuration:
   pageTitle: Zettelkasten
   pageTitleSuffix: " · Zettelkasten"
   enableSPA: true
-  enablePopovers: true
+  # no note previews on link hover
+  enablePopovers: false
   analytics: null
   locale: es-ES
   baseUrl: zettelkastenciencias.cc
@@ -262,11 +263,17 @@ plugins:
     layout:
       position: beforeBody
       priority: 10
+      # the index has no title (aarnphm-style landing page)
+      condition: not-index
   - source: "@quartz-community/content-meta"
     enabled: true
+    options:
+      # only the date
+      showReadingTime: false
     layout:
       position: beforeBody
       priority: 20
+      condition: not-index
   - source: "@quartz-community/tag-list"
     enabled: true
     layout:
@@ -291,10 +298,13 @@ plugins:
       group: toolbar
   - source: "@quartz-community/breadcrumbs"
     enabled: true
+    # terminal-style path: ~/Maths/Calculus/Nota (styled in custom.scss)
+    options:
+      rootName: "~"
+      spacerSymbol: "/"
     layout:
       position: beforeBody
       priority: 5
-      condition: not-index
   - source: "@quartz-community/comments"
     enabled: false
     options:
@@ -303,11 +313,11 @@ plugins:
     layout:
       position: afterBody
       priority: 10
+  # no footer: the index ends with its own colophon (escudo + year)
   - source: "@quartz-community/footer"
-    enabled: true
+    enabled: false
     options:
-      links:
-        Hecho con Quartz: https://quartz.jzhao.xyz
+      links: {}
     layout:
       position: footer
       priority: 50
