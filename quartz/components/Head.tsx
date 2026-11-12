@@ -4,6 +4,20 @@ import { CSSResourceToStyleElement, JSResourceToScriptElement } from "../util/re
 import { googleFontHref, googleFontSubsetHref } from "../util/theme"
 import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } from "./types"
 import { unescapeHTML } from "../util/escape"
+import { createHash } from "node:crypto"
+import { readFileSync } from "node:fs"
+import { join } from "node:path"
+
+// zettelkasten-site: cache-busting version for quartz/static/site.js. It is
+// served with a long cache (scripts/_headers), so the URL changes whenever the
+// file does (`?v=<hash of its content>`); the HTML is always revalidated.
+let siteJsVersion = "0"
+try {
+  siteJsVersion = createHash("sha256")
+    .update(readFileSync(join(process.cwd(), "quartz", "static", "site.js")))
+    .digest("hex")
+    .slice(0, 10)
+} catch {}
 
 export default (() => {
   const Head: QuartzComponent = ({
@@ -108,7 +122,7 @@ export default (() => {
             __html: `try{var d=document.documentElement;if(!localStorage.getItem("theme"))d.setAttribute("saved-theme","dark");if(localStorage.getItem("zen-mode")!=="off")d.setAttribute("reader-mode","on")}catch(e){}`,
           }}
         />
-        <script src="/static/site.js" defer data-persist />
+        <script src={`/static/site.js?v=${siteJsVersion}`} defer data-persist />
         <link
           rel="preload"
           href="/static/fonts/pagella/texgyrepagella-regular.woff2"

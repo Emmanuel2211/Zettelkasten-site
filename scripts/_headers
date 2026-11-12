@@ -20,8 +20,10 @@
 # unhashed but rarely changing: reuse for a while, refresh in the background
 /static/contentIndex.json
   Cache-Control: public, max-age=600, stale-while-revalidate=86400
+# loaded as /static/site.js?v=<hash of its content> (Head.tsx): a new version
+# gets a new URL, so it can be cached like the hashed files
 /static/site.js
-  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+  Cache-Control: public, max-age=31536000, immutable
 /videos/*
   Cache-Control: public, max-age=86400, stale-while-revalidate=604800
 /images/*

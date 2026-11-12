@@ -131,6 +131,8 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
 ## 6b. Rendimiento
 - **Caché:** `scripts/_headers` define el `Cache-Control` de los archivos estáticos. Los archivos con hash (`component-*`, `index-*`, `static/scripts/*`, `static/resource-*`), las fuentes, KaTeX y `tikz-svg/` se guardan un año como `immutable`. `contentIndex.json`, `site.js`, `videos/` e `images/` usan una caché corta con `stale-while-revalidate`.
   - Antes todo salía con `max-age=0, must-revalidate`, así que cada página volvía a consultar unos 40 archivos.
+  - `site.js` se carga como `/static/site.js?v=<hash>`. `Head.tsx` calcula el hash del contenido en cada build, así que cualquier cambio cambia el URL y se puede guardar en caché un año.
+    - Antes tenía 1 hora más `stale-while-revalidate`, y un navegador podía seguir usando la versión vieja; así no apareció la constelación del index después de publicarla.
   - Quartz borra `public/` en cada build, así que el `build.command` de `wrangler.jsonc` copia el archivo a `public/_headers` antes de cada `wrangler deploy`.
 - **Fuentes:** Pagella se sirve en `.woff2` recortado, unos 60 KB por estilo. La regular se precarga desde `Head.tsx`. Latin Modern sigue en `static/fonts/lm/`, pero ya no se usa.
 - **Pendiente:** las notas con mucha matemática pesan 1–2 MB de HTML, porque MathJax usa `fontCache: "local"` y repite los trazos de cada glifo en cada ecuación.
