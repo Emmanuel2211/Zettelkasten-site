@@ -228,6 +228,8 @@
       const cs = getComputedStyle(document.documentElement)
       const v = (n) => cs.getPropertyValue(n).trim()
       col = { main: v("--secondary"), second: v("--tertiary"), text: v("--darkgray"), faint: v("--gray"), font: getComputedStyle(document.body).fontFamily }
+      // light backgrounds wash out thin translucent strokes: stronger there
+      col.k = document.documentElement.getAttribute("saved-theme") === "light" ? 1.8 : 1.25
       st.dirty = true
       kick()
     }
@@ -282,16 +284,16 @@
       ])
       const px = p.x * w, py = p.y * h, R = Math.min(w, h) * 0.22
       const hot = pos.map(([x, y]) => Math.max(0, 1 - Math.hypot(x - px, y - py) / R))
-      ctx.lineWidth = 0.6
+      ctx.lineWidth = col.k > 1.5 ? 0.8 : 0.7
       for (const [a, b] of g.edges) {
         const k = Math.max(hot[a], hot[b])
-        ctx.strokeStyle = k > 0.05 ? alpha(col.second, 0.15 + 0.6 * k) : alpha(col.faint, 0.22)
+        ctx.strokeStyle = k > 0.05 ? alpha(col.second, Math.min(1, (0.15 + 0.6 * k) * col.k)) : alpha(col.faint, Math.min(1, 0.22 * col.k))
         ctx.beginPath(), ctx.moveTo(pos[a][0], pos[a][1]), ctx.lineTo(pos[b][0], pos[b][1]), ctx.stroke()
       }
       let best = -1, bd = Infinity
       pos.forEach(([x, y], i) => {
         const k = hot[i], r = 1.2 + Math.sqrt(g.deg[i]) * 0.8
-        ctx.fillStyle = k > 0.05 ? alpha(col.main, 0.45 + 0.55 * k) : alpha(col.text, 0.35)
+        ctx.fillStyle = k > 0.05 ? alpha(col.main, 0.45 + 0.55 * k) : alpha(col.text, Math.min(1, 0.35 * col.k))
         ctx.beginPath(), ctx.arc(x, y, r + k * 1.5, 0, TAU), ctx.fill()
         const d = Math.hypot(x - px, y - py)
         if (d < bd) (bd = d), (best = i)
@@ -336,61 +338,69 @@
 })()
 
 // ---------------------------------------------------------------------------
-// 5. Graph view coloured by subject. The graph plugin is a local fork
-// (plugins/graph, see PATCH.md) that asks window.__graphNodeColor for each
-// node's colour. A note's subject comes from its first tag that maps to one;
-// notes without such a tag (73 have none, some have typos like "calulus") fall
-// back to their folder (maths/<folder>/…). The current note is drawn in
-// --dark so it stands out from every subject colour. A small legend goes under
-// the local graph.
+// 5. Subjects and their colours, shared by the graph view and the MOC index.
+// The graph plugin is a local fork (plugins/graph, see PATCH.md) that asks
+// window.__graphNodeColor for each node's colour. A note's subject is its
+// folder (maths/<folder>/); notes outside the subject folders use their first
+// tag that maps to a subject (tags alone were unreliable: many notes have
+// none, some have typos like "calulus", linear algebra is tagged "algebra").
+// MOCs (tag `moc`, or a folder note with content) take their subject's colour,
+// a shade lighter in dark mode and darker in light mode. The current note is
+// drawn in --dark so it stands out from every subject colour.
 // ---------------------------------------------------------------------------
 ;(() => {
   // [key, label, tags, folder, dark colour, light colour]
   const SUBJECTS = [
     ["calculo", "Cálculo", ["calculus", "calulus", "analysis", "monotonia"], "calculus", "#6cc7bd", "#9b2c42"],
     ["algebra", "Álgebra", ["algebra", "combinatronics"], "algebra", "#efb54a", "#4c6479"],
-    ["lineal", "Álgebra lineal", ["linear-algebra"], "algebra-lineal", "#c4d36b", "#6b7a2f"],
+    ["lineal", "Álgebra Lineal", ["linear-algebra"], "algebra-lineal", "#c4d36b", "#6b7a2f"],
     ["proba", "Probabilidad", ["probability"], "probability", "#a99cf0", "#6a4c9c"],
     ["geo", "Geometría",
       ["geometry", "recta", "plano", "norma", "vector-unitario", "cosenos-directores", "numeros-directores", "ecuacion-simetrica", "ecuacion-parametrica-vectorial"],
       "geometry", "#7fb4e8", "#2b6cb0"],
-    ["conj", "Conjuntos", ["sets"], "teoria-de-conjuntos", "#e88fb5", "#b4537a"],
-    ["graf", "Gráficas", ["graphs"], "teoria-de-graficas", "#9cc79a", "#2f6b4a"],
-    ["moc", "Índices (MOC)", ["moc"], null, "#f08f78", "#c0612b"],
+    ["conj", "Teoría de Conjuntos", ["sets"], "teoria-de-conjuntos", "#e88fb5", "#b4537a"],
+    ["graf", "Teoría de Gráficas", ["graphs"], "teoria-de-graficas", "#9cc79a", "#2f6b4a"],
   ]
   const byTag = new Map(), byFolder = new Map()
   for (const s of SUBJECTS) {
     s[2].forEach((t) => byTag.set(t, s))
-    if (s[3]) byFolder.set(s[3], s)
+    byFolder.set(s[3], s)
   }
   const isDark = () => document.documentElement.getAttribute("saved-theme") === "dark"
 
+  // folder first: it is the real subject in this vault (e.g. most linear
+  // algebra notes are tagged "algebra"); tags only for notes outside the
+  // subject folders (maths/Georg Cantor, …)
   function subjectOf(node) {
+    const parts = (node.id || "").split("/")
+    const f = byFolder.get(parts[0] === "maths" ? parts[1] : parts[0])
+    if (f) return f
     for (const t of node.tags || []) if (byTag.has(t)) return byTag.get(t)
-    const id = node.id || ""
-    if (id === "index" || id.endsWith("/index")) return byTag.get("moc") // folder notes = MOCs
-    const parts = id.split("/")
-    return byFolder.get(parts[0] === "maths" ? parts[1] : parts[0]) || null
+    return null
   }
+  // folder notes count as MOCs only when they have content (links): the
+  // automatic folder pages (e.g. maths/calculus/index) have none
+  const isMoc = (node) =>
+    (node.tags || []).includes("moc") || ((node.id || "").endsWith("/index") && (node.links?.length ?? 1) > 0)
+
+  // mix a hex colour with white (amount > 0) or black (amount < 0)
+  function shade(hex, amount) {
+    const n = parseInt(hex.slice(1), 16), t = amount > 0 ? 255 : 0, a = Math.abs(amount)
+    const c = [n >> 16, (n >> 8) & 255, n & 255].map((v) => Math.round(v + (t - v) * a))
+    return "#" + c.map((v) => v.toString(16).padStart(2, "0")).join("")
+  }
+  function colorFor(node) {
+    const s = subjectOf(node)
+    if (!s) return null
+    const base = isDark() ? s[4] : s[5]
+    return isMoc(node) ? shade(base, isDark() ? 0.35 : -0.35) : base
+  }
+  window.__zk = { SUBJECTS, subjectOf, isMoc, colorFor, shade }
 
   window.__graphNodeColor = (node, { current }) => {
     if (current) return getComputedStyle(document.documentElement).getPropertyValue("--dark").trim() || null
-    const s = subjectOf(node)
-    return s ? (isDark() ? s[4] : s[5]) : null // null: plugin default (grey)
+    return colorFor(node) // null: plugin default (grey)
   }
-
-  // legend under the local graph (both themes: colours come from CSS vars)
-  const css = SUBJECTS.map((s) => `--subj-${s[0]}-d:${s[4]};--subj-${s[0]}-l:${s[5]}`).join(";")
-  document.addEventListener("nav", () => {
-    for (const g of document.querySelectorAll(".graph")) {
-      if (g.querySelector(".graph-legend")) continue
-      const ul = document.createElement("ul")
-      ul.className = "graph-legend"
-      ul.setAttribute("style", css)
-      ul.innerHTML = SUBJECTS.map((s) => `<li><span class="sw" data-subj="${s[0]}"></span>${s[1]}</li>`).join("")
-      g.querySelector(".graph-outer")?.after(ul)
-    }
-  })
 })()
 
 // ---------------------------------------------------------------------------
@@ -415,3 +425,112 @@ document.addEventListener("nav", () => {
     }
   })
 })
+
+// ---------------------------------------------------------------------------
+// 7. Side menus.
+//  a) Left, desktop: a MOC index instead of the file explorer (the explorer
+//     stays on phones, in the ☰ menu: config `display: mobile-only`). Built
+//     from contentIndex.json, so new MOCs appear by themselves. One entry per
+//     subject, with Spanish names and the subject's MOC colour from the graph
+//     (§5); extra MOCs of a subject are listed under it. The subject of the
+//     page being read is marked.
+//  b) Right: the table of contents follows the reading: the section in view
+//     is highlighted and a thin bar shows how far into the note you are.
+//  c) Backlinks are titled "Más Enlaces:".
+// ---------------------------------------------------------------------------
+;(() => {
+  let idxPromise = null
+  const getIndex = () => (idxPromise ??= fetch("/static/contentIndex.json").then((r) => r.json()))
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
+
+  // a) MOC index ------------------------------------------------------------
+  function buildMocs(idx) {
+    const zk = window.__zk
+    const groups = new Map()
+    for (const [slug, v] of Object.entries(idx)) {
+      if (slug.startsWith("tags/")) continue
+      const node = { id: slug, tags: v.tags || [], links: v.links || [] }
+      if (!zk.isMoc(node)) continue
+      const s = zk.subjectOf(node)
+      if (!s) continue
+      if (!groups.has(s[0])) groups.set(s[0], { s, items: [] })
+      groups.get(s[0]).items.push({ slug, title: v.title || slug, n: node.links.length })
+    }
+    const order = zk.SUBJECTS.map((s) => s[0])
+    return [...groups.values()]
+      .sort((a, b) => order.indexOf(a.s[0]) - order.indexOf(b.s[0]))
+      .map((g) => ({ ...g, items: g.items.sort((a, b) => b.n - a.n) })) // main MOC = most links
+  }
+  function renderMocs(groups) {
+    const zk = window.__zk
+    const li = (g) => {
+      const [main, ...rest] = g.items
+      const style = `--c-d:${zk.shade(g.s[4], 0.35)};--c-l:${zk.shade(g.s[5], -0.35)}`
+      const sub = rest.length
+        ? `<ul>${rest.map((r) => `<li><a href="/${esc(r.slug)}">${esc(r.title)}</a></li>`).join("")}</ul>`
+        : ""
+      return `<li data-subj="${g.s[0]}" style="${style}"><a href="/${esc(main.slug)}"><span class="dot" aria-hidden="true"></span>${esc(g.s[1])}</a>${sub}</li>`
+    }
+    return `<h3>Índice</h3><ul>${groups.map(li).join("")}</ul>`
+  }
+  let mocHtml = null
+  function placeMocs(idx) {
+    const left = document.querySelector(".sidebar.left")
+    if (!left || left.querySelector(".moc-index")) return markCurrent(idx)
+    mocHtml ??= renderMocs(buildMocs(idx))
+    const nav = document.createElement("nav")
+    nav.className = "moc-index"
+    nav.setAttribute("aria-label", "Índice de materias")
+    nav.innerHTML = mocHtml
+    // right after the title + search/toolbar block
+    const anchor = [...left.children].find((c) => c.querySelector?.(".search")) || left.firstElementChild
+    anchor ? anchor.after(nav) : left.prepend(nav)
+    markCurrent(idx)
+  }
+  function markCurrent(idx) {
+    const slug = document.body.dataset.slug || ""
+    const v = idx[slug]
+    const s = v ? window.__zk.subjectOf({ id: slug, tags: v.tags || [] }) : null
+    document.querySelectorAll(".moc-index li[data-subj]").forEach((li) => {
+      li.classList.toggle("is-current", !!s && li.dataset.subj === s[0])
+    })
+  }
+
+  // b) table of contents following the reading ------------------------------
+  let tocItems = []
+  let ticking = false
+  function collectToc() {
+    tocItems = [...document.querySelectorAll(".toc a[data-for]")]
+      .map((a) => ({ a, h: document.getElementById(a.dataset.for) }))
+      .filter((x) => x.h)
+    updateToc()
+  }
+  function updateToc() {
+    ticking = false
+    const toc = document.querySelector(".toc")
+    if (!toc || !tocItems.length) return
+    const line = innerHeight * 0.3 // a heading counts as "current" once above 30% of the screen
+    let cur = -1 // nothing highlighted before the first heading
+    tocItems.forEach((x, i) => {
+      if (x.h.getBoundingClientRect().top <= line) cur = i
+    })
+    tocItems.forEach((x, i) => x.a.classList.toggle("is-current", i === cur))
+    const art = document.querySelector("article")
+    if (art) {
+      const r = art.getBoundingClientRect()
+      const p = Math.min(1, Math.max(0, (innerHeight * 0.3 - r.top) / Math.max(1, r.height - innerHeight * 0.4)))
+      toc.style.setProperty("--toc-progress", p.toFixed(3))
+    }
+  }
+  addEventListener("scroll", () => {
+    if (!ticking) (ticking = true), requestAnimationFrame(updateToc)
+  }, { passive: true })
+  addEventListener("resize", () => requestAnimationFrame(updateToc))
+
+  document.addEventListener("nav", () => {
+    // c) backlinks title
+    document.querySelectorAll(".backlinks > h3").forEach((h) => (h.textContent = "Más Enlaces:"))
+    collectToc()
+    getIndex().then(placeMocs).catch(() => {})
+  })
+})()

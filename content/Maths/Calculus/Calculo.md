@@ -1,5 +1,5 @@
 ---
-modified: 2026-11-11T04:12:24Z
+modified: 2026-11-12T02:12:36Z
 title: "Calculus"
 publish: true
 type: moc
@@ -40,7 +40,8 @@ La estructura de la discusión es:
 - [[Teorema del Bolzano-Weierstrass]]
 - [[Sucesiones Repaso]]
 
-Creditos: Dr. Rodrigo Perusquía Cortés
+*Creditos: Dr. Rodrigo Perusquía Cortés*
+
 ---
 
 ## [[Funciones]]

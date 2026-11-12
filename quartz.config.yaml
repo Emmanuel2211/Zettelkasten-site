@@ -90,7 +90,7 @@ plugins:
     order: 50
     layout:
       position: right
-      priority: 30
+      priority: 10
   - source: "@quartz-community/crawl-links"
     enabled: true
     options:
@@ -199,6 +199,9 @@ plugins:
     layout:
       position: left
       priority: 50
+      # desktop shows the MOC index instead (site.js §7); phones keep the
+      # full explorer in the ☰ menu
+      display: mobile-only
   # Local copy of @quartz-community/graph 1.0.0 with a one-line patch: nodes
   # coloured by subject (window.__graphNodeColor in quartz/static/site.js §5).
   # See plugins/graph/PATCH.md before upgrading.
@@ -235,7 +238,7 @@ plugins:
         enableRadial: true
     layout:
       position: right
-      priority: 10
+      priority: 30
       # the index has the constellation hero instead (site.js §4)
       condition: not-index
   - source: "@quartz-community/search"
@@ -253,7 +256,7 @@ plugins:
     enabled: true
     layout:
       position: right
-      priority: 50
+      priority: 20
   - source: "@quartz-community/article-title"
     enabled: true
     layout:
