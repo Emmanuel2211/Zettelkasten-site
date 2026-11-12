@@ -189,7 +189,9 @@ plugins:
     enabled: true
   - source: "@quartz-community/tag-page"
     enabled: true
-  - source: "@quartz-community/explorer"
+  # Local copy of @quartz-community/explorer 1.0.0: the site page `content`
+  # broke it (empty ☰ menu). See plugins/explorer/PATCH.md before upgrading.
+  - source: "./plugins/explorer"
     enabled: true
     options:
       title: Notas

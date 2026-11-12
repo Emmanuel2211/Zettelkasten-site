@@ -159,6 +159,7 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
     - La nota actual se dibuja en `--dark`. No hay leyenda. Antes de actualizar el plugin, lee `PATCH.md`.
     - **Arrastrar rápido un nodo ya no abre su nota.** El plugin navegaba si el arrastre duraba < 500 ms, aunque el nodo se hubiera movido. Ahora solo navega si además se movió ≤ 5 px (tercer parche de `PATCH.md`).
   - Explorer: al hacer clic en una carpeta se abre su MOC.
+    - Es una copia local, `plugins/explorer/` (de `@quartz-community/explorer` 1.0.0), con un parche en `plugins/explorer/PATCH.md`. El plugin leía `contentIndex.json` como `e.content || e`, y la página `content` del sitio le daba ese `e.content`: fallaba (`Error building file trie … e.slug is undefined`) y el menú ☰ del celular salía **vacío**.
   - Excalidraw (`@quartz-community/obsidian-plugin-excalidraw`), backlinks, TOC, modo lectura y breadcrumbs.
 - **Fechas:** se toman en el orden frontmatter → filesystem → git.
 
@@ -219,6 +220,7 @@ python3 -I scripts/mark-publish.py --undo                # deshace el último --
   - Causa: `_headers` pone `immutable, max-age=1 año` según la URL (`/index-*`, `/component-*`, `/static/scripts/*`…), y Cloudflare lo aplica **también a los 404**. Un 404 de `/index-<hash>.css` se guardaba un año en el navegador (y en la caché del edge: `cf-cache-status: HIT`) como si fuera la hoja de estilos. Puede pasar si una página se carga a media publicación, con el HTML de una versión y el CSS de otra.
   - Descartado: `@layer` (iOS 17.3 lo soporta, y aarnphm también lo usa), las variantes de URL con o sin `/` final y la página 404 (las rutas son absolutas), y `checkVisibility` (ya lo cubre §6; probado quitándola en WebKit).
   - Arreglo: `scripts/worker.js` (ver §9). Para quien ya lo tenga guardado: al publicar con CSS nuevo cambian los hashes y se arregla solo. Si no, se borra la caché del navegador o se abre en una pestaña de incógnito.
+- **Aviso en consola de `static.cloudflareinsights.com/beacon.min.js` (CORS / integrity):** es el script de Cloudflare Web Analytics, que Cloudflare inyecta solo (no está en el repo). Lo bloquean los bloqueadores de anuncios y la protección antirrastreo del navegador. No afecta al sitio; si no se usan las estadísticas, se apaga en Cloudflare → Analytics & Logs → Web Analytics.
 - **Pruebas con navegadores (Playwright):** `uv run --with playwright python -m playwright install chromium firefox webkit`. WebKit (el motor de Safari) necesita además `sudo apt install libmanette-0.2-0 libenchant-2-2`.
 
 ## 11. Ideas o pendientes
