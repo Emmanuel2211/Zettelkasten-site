@@ -341,8 +341,8 @@ article .landing-links a {
   article a.external:not(.escudo),
   article a.mail-link,
   article .landing-links a {
-    text-decoration-thickness: 1.6px;
-    text-decoration-color: color-mix(in srgb, var(--secondary) 45%, transparent);
+    text-decoration-thickness: 2px;
+    text-decoration-color: color-mix(in srgb, var(--secondary) 60%, transparent);
   }
 }
 
@@ -595,6 +595,12 @@ html:root[reader-mode="on"] .sidebar.right {
     > .t-row > span {
       color: var(--dark);
     }
+    // a folder that is the page being read (its MOC) or under the mouse:
+    // the same accent as a note (the rule above out-ranked .is-current)
+    > .t-row > a:hover,
+    > .t-row > a.is-current {
+      color: var(--secondary);
+    }
   }
   // notes nested under a note (the MOC's sub-lists): a bit smaller
   .t-file > ul {
@@ -650,9 +656,30 @@ ul.toc-content.overflow > li > a.is-current {
 // ---------------------------------------------------------------------------
 // Site name in the left menu, centred
 // ---------------------------------------------------------------------------
+// Site title in CMU Typewriter: LaTeX's \texttt (Computer Modern, SIL OFL:
+// static/fonts/cmu/OFL.txt), subset to Latin (24 KB).
+@font-face {
+  font-family: "CMU Typewriter";
+  src: url("/static/fonts/cmu/cmuntt-latin.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 .sidebar.left .page-title {
   text-align: center;
   align-self: stretch;
+  font-family: "CMU Typewriter", var(--codeFont);
+  font-weight: 400;
+  white-space: nowrap;
+
+  // a soft hover (Quartz's default jumped to the amber --tertiary)
+  a {
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: color-mix(in srgb, var(--secondary) 70%, var(--dark));
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------

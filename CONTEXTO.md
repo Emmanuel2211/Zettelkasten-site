@@ -145,7 +145,7 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - Se renderizan con MathJax, igual que en Obsidian.
   - El espacio alrededor de `$$` se controla con `--math-display-gap: 0.5em`.
 - **Sin vista previa al pasar el mouse sobre un enlace:** `enablePopovers: false` (2026-11-11).
-- **Enlaces (2026-11-12):** del mismo color que el texto (blanco en oscuro, negro en claro), un poco enfatizados con un trazo finísimo (`-webkit-text-stroke: 0.012em`; Pagella solo tiene normal y negrita, y la negrita era demasiado). Subrayado de acento siempre visible: verde `--secondary` al 70% y 1px en oscuro; rojo al 45% y 1.6px en claro. Al pasar el mouse el texto toma el color de acento y el subrayado `--tertiary`. Es `text-decoration` puro, sin costo de rendimiento.
+- **Enlaces (2026-11-12):** del mismo color que el texto (blanco en oscuro, negro en claro), un poco enfatizados con un trazo finísimo (`-webkit-text-stroke: 0.012em`; Pagella solo tiene normal y negrita, y la negrita era demasiado). Subrayado de acento siempre visible: verde `--secondary` al 70% y 1px en oscuro; rojo al 60% y 2px en claro. Al pasar el mouse el texto toma el color de acento y el subrayado `--tertiary`. Es `text-decoration` puro, sin costo de rendimiento.
 - **Enlaces `./content ./user_manual ./cool_resources` del index:** con el mismo estilo que los demás enlaces. El `./` queda gris, sin subrayado ni trazo.
 - **`content`, `user_manual` y `cool_resources` sin título ni fecha** (CSS por `data-slug`; la ruta `~/content` ya las nombra).
 - **Enlaces a notas no publicadas:** se ven como texto normal. Lo controlan `disableBrokenWikilinks` y el CSS de `a.internal.broken`.
@@ -182,6 +182,8 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - Privacidad: no se guarda IP, ubicación ni nada personal; solo, mientras estás conectado, la página y el cursor. "Modo invisible" (`localStorage["zk-invisible"]`) no se conecta.
   - Límites: 30 mensajes de cursor/s por visitante en el servidor. En el plan gratuito, ~100k mensajes al día al Durable Object (≈ 28 h de mouse en movimiento diarias).
   - Probar en local: `npx wrangler dev` (sirve `public/` + Worker + Durable Object) y abrir dos ventanas. Con el servidor Python simple no hay presencia (el tablero dice "sin conexión…"). Ojo: `wrangler dev` hay que reiniciarlo después de cada build (Quartz borra `public/`).
+- **Título "Zettelkasten" del menú izquierdo:** en **CMU Typewriter** (el `\texttt` de LaTeX, Computer Modern; SIL OFL en `quartz/static/fonts/cmu/OFL.txt`), recortada a caracteres latinos con `pyftsubset` (24 KB, `cmuntt-latin.woff2`). Elegida en un lab de 18 fuentes (2026-11-12). Al pasar el mouse cambia suave a un tono más claro del acento (antes saltaba al ámbar `--tertiary`). Cabe en una línea incluso con menús de 220px.
+- **Árbol:** la carpeta de la página actual (p. ej. el MOC de Cálculo) se resalta en el color de acento como cualquier nota (antes una regla de `.t-dir` la dejaba blanca y en negritas).
 - **Fechas:** se toman en el orden frontmatter → filesystem → git.
 
 ## 6b. Rendimiento
