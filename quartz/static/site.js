@@ -457,7 +457,7 @@
         for (const [s, hue] of readers) {
           const i = g.index.get(s)
           if (i === undefined) continue
-          ctx.strokeStyle = ctx.fillStyle = `hsl(${hue} 75% 62%)`
+          ctx.strokeStyle = ctx.fillStyle = window.__zkPresenceColor?.(hue) || col.main
           ctx.beginPath(), ctx.arc(pos[2 * i], pos[2 * i + 1], radius(i) + 4.5, 0, TAU), ctx.stroke()
           ctx.beginPath(), ctx.arc(pos[2 * i], pos[2 * i + 1], radius(i) + 0.5, 0, TAU), ctx.fill()
         }
@@ -1044,6 +1044,8 @@ document.addEventListener("nav", () => {
 // independent), so it moves continuously between messages instead of
 // teleporting. Positions are relative to the note column (left edge, and its
 // width as the unit), so a cursor lands on the same paragraph on any screen.
+// Cursors are squares like the visitor's own, in the site's subject colours;
+// a name only shows when your mouse comes near that cursor.
 // "Modo invisible" (remembered) doesn't connect at all.
 // Nothing runs without a connection; alone on a page nothing is sent.
 // ---------------------------------------------------------------------------
@@ -1066,6 +1068,20 @@ document.addEventListener("nav", () => {
   }
   const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches
   const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches
+  // visitors' colours: the site's own subject colours (§5), [dark, light];
+  // the amber one is left out (it is the visitor's own cursor colour)
+  const PALETTE = [
+    ["#6cc7bd", "#9b2c42"],
+    ["#a99cf0", "#6a4c9c"],
+    ["#e88fb5", "#b4537a"],
+    ["#7fb4e8", "#2b6cb0"],
+    ["#c4d36b", "#6b7a2f"],
+    ["#9cc79a", "#2f6b4a"],
+  ]
+  const pal = (hue) => PALETTE[Math.abs(hue | 0) % PALETTE.length]
+  const colorVars = (hue) => `--c-d:${pal(hue)[0]};--c-l:${pal(hue)[1]}`
+  window.__zkPresenceColor = (hue) => pal(hue)[document.documentElement.getAttribute("saved-theme") === "light" ? 1 : 0]
+  const NEAR = 90 // px: a visitor's name shows when your mouse is this close to their cursor
   const SEND_MS = 50 // ~20 cursor updates per second
   const EASE_S = 0.085 // time constant of the glide (seconds)
   const IDLE_MS = 12000 // a still cursor fades after this
@@ -1191,6 +1207,7 @@ document.addEventListener("nav", () => {
         if (e.pointerType !== "mouse") return
         last = { x: e.clientX, y: e.clientY }
         queueSend()
+        if (cursors.size) kick() // names show as you get near
       },
       { passive: true },
     )
@@ -1207,15 +1224,13 @@ document.addEventListener("nav", () => {
   // outside <body>: SPA navigation morphs <body> and would remove it
   document.documentElement.appendChild(layer)
   const cursors = new Map() // id -> {el, x, y, tx, ty, seen}
-  const ARROW =
-    '<svg viewBox="0 0 16 20" width="14" height="18"><path d="M1 1 L1 16 L5 12.5 L8 19 L10.6 17.8 L7.7 11.6 L13 11.6 Z" fill="currentColor" stroke="var(--light)" stroke-width="1.2" stroke-linejoin="round"/></svg>'
   function moveCursor(u, x, y) {
     let c = cursors.get(u.id)
     if (!c) {
       const el = document.createElement("div")
       el.className = "zk-cursor"
-      el.style.setProperty("--h", u.hue)
-      el.innerHTML = ARROW + `<span>${esc(u.name)}</span>`
+      el.setAttribute("style", colorVars(u.hue))
+      el.innerHTML = `<i></i><span>${esc(u.name)}</span>`
       layer.appendChild(el)
       c = { el, x, y, tx: x, ty: y }
       cursors.set(u.id, c)
@@ -1254,7 +1269,9 @@ document.addEventListener("nav", () => {
       c.y += (c.ty - c.y) * k
       if (Math.abs(c.tx - c.x) * w > 0.3 || Math.abs(c.ty - c.y) * w > 0.3) moving = true
       else (c.x = c.tx), (c.y = c.ty)
-      c.el.style.transform = `translate3d(${(ox + c.x * w).toFixed(1)}px, ${(oy + c.y * w).toFixed(1)}px, 0)`
+      const px = ox + c.x * w, py = oy + c.y * w
+      c.el.style.transform = `translate3d(${px.toFixed(1)}px, ${py.toFixed(1)}px, 0)`
+      c.el.classList.toggle("show-name", !!last && Math.hypot(px - scrollX - last.x, py - scrollY - last.y) < NEAR)
       if (now - c.seen > IDLE_MS) c.el.classList.add("is-idle")
     }
     if (moving) raf = requestAnimationFrame(frame)
@@ -1301,7 +1318,7 @@ document.addEventListener("nav", () => {
     const row = (u, isMe) => {
       const page = u.away ? "ausente" : pageTitle(u.page)
       const where = u.away ? `<span class="zb-val">${esc(page)}</span>` : `<a class="zb-val" href="${pageHref(u.page)}" title="${esc(page)} · llegó ${hhmm(u.at)}">${esc(page)}</a>`
-      return `<li class="${isMe ? "is-me" : ""}" style="--h:${u.hue}"><span class="zb-name">${isMe ? "tú" : esc(u.name)}</span><span class="zb-dots"></span>${where}</li>`
+      return `<li class="${isMe ? "is-me" : ""}" style="${colorVars(u.hue)}"><span class="zb-name">${isMe ? "tú" : esc(u.name)}</span><span class="zb-dots"></span>${where}</li>`
     }
     let body = ""
     if (state === "invisible") body = `<p class="zb-msg">modo invisible</p>`
@@ -1313,7 +1330,7 @@ document.addEventListener("nav", () => {
         `<div class="zb-sec">llegadas<span class="zb-dots"></span></div><ul>${row(mine, true)}${others.map((u) => row(u)).join("")}</ul>` +
         `<div class="zb-sec">salidas<span class="zb-dots"></span></div>` +
         (shown.length
-          ? `<ul class="zb-gone">${shown.map((g) => `<li style="--h:${g.hue}"><span class="zb-name">${esc(g.name)}</span><span class="zb-dots"></span><span class="zb-val">sal ${hhmm(g.at)}</span></li>`).join("")}</ul>` +
+          ? `<ul class="zb-gone">${shown.map((g) => `<li style="${colorVars(g.hue)}"><span class="zb-name">${esc(g.name)}</span><span class="zb-dots"></span><span class="zb-val">sal ${hhmm(g.at)}</span></li>`).join("")}</ul>` +
             (gone.length > SHOW_GONE ? `<p class="zb-more">+${gone.length - SHOW_GONE} más</p>` : "")
           : `<p class="zb-msg">sin salidas</p>`)
     }
