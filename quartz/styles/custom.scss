@@ -1140,3 +1140,217 @@ html.zk-narrow:not(:has(body[data-slug="index"])) {
     background: rgb(0 0 0 / 0.35);
   }
 }
+
+// ---------------------------------------------------------------------------
+// Live presence (site.js §11)
+// ---------------------------------------------------------------------------
+// others' cursors: positioned in document coordinates by JS (transform only,
+// so moving them never triggers layout)
+.zk-cursors {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  z-index: 40;
+  pointer-events: none;
+}
+.zk-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+  color: hsl(var(--h) 72% 62%);
+  transition: opacity 0.6s ease;
+
+  svg {
+    display: block;
+    filter: drop-shadow(0 1px 1px rgb(0 0 0 / 0.35));
+  }
+  span {
+    position: absolute;
+    left: 13px;
+    top: 15px;
+    padding: 1px 6px;
+    border-radius: 4px;
+    font-family: "Departure Mono", var(--codeFont);
+    font-size: 11px;
+    line-height: 1.4;
+    text-transform: uppercase;
+    white-space: nowrap;
+    color: #fff;
+    background: hsl(var(--h) 55% 42%);
+  }
+  &.is-idle {
+    opacity: 0.35;
+  }
+}
+:root[saved-theme="light"] .zk-cursor {
+  color: hsl(var(--h) 65% 45%);
+}
+
+// Departure Mono (Helena Zhang, SIL OFL: static/fonts/departure/LICENSE.txt),
+// the pixel font of jzhao.xyz's board. Pixel-perfect at multiples of 11px.
+@font-face {
+  font-family: "Departure Mono";
+  src: url("/static/fonts/departure/DepartureMono-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+// board on the index: an airport departure board, like jzhao.xyz's
+// (uppercase mono, dotted leaders, square bullets, no rounded corners). Fixed
+// top-right; minimised to its header bar when it doesn't fit (site.js §11).
+.zk-board {
+  position: fixed;
+  top: 1rem;
+  right: 1.2rem;
+  z-index: 30;
+  width: 236px;
+  max-width: calc(100vw - 2.4rem);
+  font-family: "Departure Mono", var(--codeFont);
+  font-size: 11px; // the font's pixel grid: crisp only at 11px
+  line-height: 15px;
+  letter-spacing: 0.02em;
+  box-shadow: 3px 3px 0 0 var(--lightgray);
+  text-transform: uppercase;
+  color: var(--darkgray);
+  background: var(--light);
+  border: 1px solid var(--gray);
+  border-radius: 0;
+
+  button {
+    all: unset;
+    cursor: pointer;
+  }
+  .zb-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 4px 8px;
+    color: var(--dark);
+    border-bottom: 1px solid var(--gray);
+  }
+  .zb-clock,
+  .zb-count {
+    font-variant-numeric: tabular-nums;
+  }
+  &.is-min {
+    width: auto;
+
+    .zb-head {
+      border-bottom: 0;
+    }
+    .zb-body {
+      display: none;
+    }
+    .zb-count {
+      color: var(--secondary);
+    }
+  }
+  .zb-head:hover .zb-site {
+    color: var(--secondary);
+  }
+  .zb-body {
+    padding: 4px 8px 5px;
+  }
+  .zb-sec,
+  li {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5em;
+  }
+  .zb-sec {
+    color: var(--gray);
+    margin-top: 0.15rem;
+  }
+  // the dotted leader between a name and its value
+  .zb-dots {
+    flex: 1;
+    min-width: 1em;
+    border-bottom: 1px dotted color-mix(in srgb, var(--gray) 70%, transparent);
+    transform: translateY(-0.3em);
+  }
+  ul {
+    list-style: none;
+    margin: 0.1rem 0 0.3rem;
+    padding: 0;
+  }
+  li {
+    margin: 0;
+    padding: 0;
+    line-height: 15px;
+
+    &::before {
+      content: "";
+      flex: none;
+      width: 0.5em;
+      height: 0.5em;
+      background: hsl(var(--h) 72% 62%);
+      transform: translateY(-0.05em);
+    }
+  }
+  .zb-name {
+    flex: none;
+  }
+  .zb-val {
+    flex: 0 1 auto;
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    color: var(--darkgray);
+  }
+  a.zb-val {
+    color: var(--secondary);
+    background: none;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+  li.is-me {
+    color: var(--tertiary);
+
+    .zb-name {
+      font-weight: 600;
+    }
+  }
+  .zb-gone li {
+    color: var(--gray);
+
+    &::before {
+      background: none;
+      box-shadow: inset 0 0 0 1px hsl(var(--h) 60% 55%);
+    }
+  }
+  .zb-more,
+  .zb-msg {
+    margin: 0 0 0.3rem 1em;
+    color: var(--gray);
+    font-size: inherit;
+    line-height: 15px;
+  }
+  .zb-foot {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 0.3rem;
+    padding-top: 0.3rem;
+    border-top: 1px solid var(--lightgray);
+    color: var(--gray);
+  }
+  .zb-ghost {
+    color: var(--gray);
+
+    &::before {
+      content: "$ ";
+    }
+    &:hover {
+      color: var(--secondary);
+    }
+  }
+}

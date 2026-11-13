@@ -1,5 +1,6 @@
 // Cloudflare Workers deploy config (used by `npx wrangler deploy` in Workers Builds).
-// The site is static: Cloudflare just serves the folder Quartz builds into.
+// The site is static: Cloudflare serves the folder Quartz builds into, plus a
+// small Worker (scripts/worker.js) for 404s and live presence.
 {
   // MUST match the Worker's name in the Cloudflare dashboard, or the build fails.
   "name": "zettelkasten-site",
@@ -7,6 +8,12 @@
   // tiny Worker that only runs for URLs WITHOUT a file: makes 404s
   // uncacheable (otherwise _headers' "immutable" stuck a 404 as the CSS)
   "main": "scripts/worker.js",
+  // live presence (site.js §11): one Durable Object holds every visitor's
+  // WebSocket (/__presence). SQLite-backed, so it works on the free plan.
+  "durable_objects": {
+    "bindings": [{ "name": "PRESENCE", "class_name": "Presence" }]
+  },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["Presence"] }],
   // runs before every `wrangler deploy`: cache headers for the static files
   // (see scripts/_headers; Quartz wipes public/ on each build)
   "build": {

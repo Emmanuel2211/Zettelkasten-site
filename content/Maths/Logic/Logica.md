@@ -1,5 +1,5 @@
 ---
-modified: 2026-08-19T19:57:31Z
+modified: 2026-11-12T22:33:54Z
 title: "Lógica"
 publish: true
 type: moc

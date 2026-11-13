@@ -411,6 +411,7 @@
     document.addEventListener("click", onClick)
     addEventListener("resize", resize)
     document.addEventListener("themechange", readColors)
+    document.addEventListener("zk-readers", kick)
     addEventListener("scroll", wake, { passive: true })
     addEventListener("pointerdown", wake, { passive: true })
     addEventListener("keydown", wake)
@@ -448,6 +449,19 @@
       // still: copy the resting graph; swaying: draw it at its new positions
       if (st.motion > 0) drawGraph(ctx, pos)
       else ctx.drawImage(base, 0, 0, w, h)
+      // notes someone is reading right now (live presence, §11): a ring in
+      // that visitor's colour
+      const readers = window.__zkReaders
+      if (readers?.size && g.index) {
+        ctx.lineWidth = 1.4
+        for (const [s, hue] of readers) {
+          const i = g.index.get(s)
+          if (i === undefined) continue
+          ctx.strokeStyle = ctx.fillStyle = `hsl(${hue} 75% 62%)`
+          ctx.beginPath(), ctx.arc(pos[2 * i], pos[2 * i + 1], radius(i) + 4.5, 0, TAU), ctx.stroke()
+          ctx.beginPath(), ctx.arc(pos[2 * i], pos[2 * i + 1], radius(i) + 0.5, 0, TAU), ctx.fill()
+        }
+      }
       if (amp <= 0) return
       const R = Math.min(w, h) * 0.22, n = g.titles.length
       const hot = new Float32Array(n)
@@ -496,7 +510,7 @@
       if (!st.alive) return
       const deg = new Array(g.titles.length).fill(0)
       g.edges.forEach(([a, b]) => (deg[a]++, deg[b]++))
-      st.g = { ...g, deg }
+      st.g = { ...g, deg, index: new Map(g.slugs.map((s, i) => [s, i])) }
       place()
       renderBase()
       canvas.classList.add("is-ready")
@@ -516,6 +530,7 @@
         removeEventListener("keydown", wake)
         removeEventListener("focus", wake)
         removeEventListener("blur", sleep)
+        document.removeEventListener("zk-readers", kick)
         document.documentElement.classList.remove("on-constellation-node")
         canvas.remove()
       },
@@ -1014,5 +1029,353 @@ document.addEventListener("nav", () => {
       window.__zkLayout?.()
       if (was && !d.classList.contains("zk-narrow")) close()
     })
+  })
+})()
+
+// ---------------------------------------------------------------------------
+// 11. Live presence (server: the Durable Object in scripts/worker.js).
+// Every visitor gets a random mathematician's name. The index shows a
+// terminal-style board: who is here and which note they are reading
+// (arrivals) and who left recently (departures). On every page, the mouse
+// cursors of the other visitors on that same page are drawn live.
+// Smoothness (like jzhao.xyz, unlike aarnphm.xyz's jumps): positions are sent
+// ~20 times a second, and each remote cursor glides towards its last known
+// position with an exponential ease measured in real time (frame-rate
+// independent), so it moves continuously between messages instead of
+// teleporting. Positions are relative to the note column (left edge, and its
+// width as the unit), so a cursor lands on the same paragraph on any screen.
+// "Modo invisible" (remembered) doesn't connect at all.
+// Nothing runs without a connection; alone on a page nothing is sent.
+// ---------------------------------------------------------------------------
+;(() => {
+  if (!("WebSocket" in window)) return
+  const KEY = "zk-invisible"
+  const ls = {
+    get: () => {
+      try {
+        return localStorage.getItem(KEY) === "1"
+      } catch {
+        return false
+      }
+    },
+    set: (v) => {
+      try {
+        v ? localStorage.setItem(KEY, "1") : localStorage.removeItem(KEY)
+      } catch {}
+    },
+  }
+  const FINE = matchMedia("(hover: hover) and (pointer: fine)").matches
+  const REDUCED = matchMedia("(prefers-reduced-motion: reduce)").matches
+  const SEND_MS = 50 // ~20 cursor updates per second
+  const EASE_S = 0.085 // time constant of the glide (seconds)
+  const IDLE_MS = 12000 // a still cursor fades after this
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
+  const slug = () => document.body?.dataset.slug || ""
+  const hhmm = (t) => new Date(t).toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit", hour12: false })
+
+  let ws = null
+  let me = null
+  let state = ls.get() ? "invisible" : "connecting" // connecting | live | lost | invisible
+  const here = new Map() // id -> user
+  let gone = []
+  let retry = 1000
+  let retryTimer = 0
+
+  // ---- titles of the notes (for the board) ----
+  let titles = null
+  fetch("/static/contentIndex.json")
+    .then((r) => r.json())
+    .then((idx) => {
+      titles = new Map(Object.entries(idx).map(([s, v]) => [s, v.title || s]))
+      renderBoard()
+    })
+    .catch(() => {})
+  const pageTitle = (s) => (s === "index" ? "~/" : titles?.get(s) || s.split("/").pop())
+  const pageHref = (s) => "/" + (s === "index" ? "" : s.replace(/(^|\/)index$/, "$1"))
+
+  // ---- connection ----
+  function connect() {
+    if (state === "invisible") return
+    clearTimeout(retryTimer)
+    let sock
+    try {
+      sock = new WebSocket((location.protocol === "https:" ? "wss://" : "ws://") + location.host + "/__presence")
+    } catch {
+      return lost()
+    }
+    ws = sock
+    sock.onopen = () => {
+      retry = 1000
+      sock.send(JSON.stringify({ t: "hi", page: slug(), away: document.hidden }))
+    }
+    sock.onmessage = (e) => {
+      let m
+      try {
+        m = JSON.parse(e.data)
+      } catch {
+        return
+      }
+      onMessage(m)
+    }
+    sock.onclose = () => ws === sock && lost()
+    sock.onerror = () => {}
+  }
+  function lost() {
+    ws = null
+    me = null
+    here.clear()
+    clearCursors()
+    if (state === "invisible") return renderBoard()
+    state = "lost"
+    renderBoard()
+    retryTimer = setTimeout(connect, retry)
+    retry = Math.min(retry * 2, 60000)
+  }
+  const send = (m) => ws?.readyState === 1 && me && ws.send(JSON.stringify(m))
+
+  function onMessage(m) {
+    if (m.t === "state") {
+      me = m.me
+      here.clear()
+      for (const u of m.here) here.set(u.id, u)
+      gone = m.gone || []
+      state = "live"
+    } else if (m.t === "join" || m.t === "upd") {
+      here.set(m.u.id, m.u)
+      if (m.u.page !== slug()) dropCursor(m.u.id)
+    } else if (m.t === "leave") {
+      here.delete(m.id)
+      dropCursor(m.id)
+      gone = [m.g, ...gone].slice(0, 8)
+    } else if (m.t === "c") {
+      const u = here.get(m.id)
+      if (u && u.page === slug()) moveCursor(u, m.x, m.y)
+      return
+    } else if (m.t === "cx") {
+      dropCursor(m.id)
+      return
+    }
+    renderBoard()
+    publishReaders()
+  }
+
+  // readers per page, for the index constellation (§4 lights those notes)
+  function publishReaders() {
+    const r = new Map()
+    for (const u of here.values()) if (!u.away && u.page !== "index") r.set(u.page, u.hue)
+    window.__zkReaders = r
+    document.dispatchEvent(new CustomEvent("zk-readers"))
+  }
+
+  // ---- my cursor ----
+  const col = () => document.querySelector(".center") || document.body
+  let last = null
+  let sendTimer = 0
+  let lastSent = 0
+  function queueSend() {
+    if (sendTimer || !last) return
+    const wait = Math.max(0, SEND_MS - (performance.now() - lastSent))
+    sendTimer = setTimeout(() => {
+      sendTimer = 0
+      lastSent = performance.now()
+      if (!last || ![...here.values()].some((u) => u.id !== me?.id && u.page === slug())) return // alone here
+      const r = col().getBoundingClientRect()
+      if (!r.width) return
+      send({ t: "c", x: (last.x - r.left) / r.width, y: (last.y - r.top) / r.width })
+    }, wait)
+  }
+  if (FINE) {
+    addEventListener(
+      "pointermove",
+      (e) => {
+        if (e.pointerType !== "mouse") return
+        last = { x: e.clientX, y: e.clientY }
+        queueSend()
+      },
+      { passive: true },
+    )
+    // scrolling moves the page under a still mouse
+    addEventListener("scroll", queueSend, { passive: true })
+    document.addEventListener("pointerleave", () => ((last = null), send({ t: "cx" })))
+    addEventListener("blur", () => ((last = null), send({ t: "cx" })))
+  }
+
+  // ---- others' cursors ----
+  const layer = document.createElement("div")
+  layer.className = "zk-cursors"
+  layer.setAttribute("aria-hidden", "true")
+  // outside <body>: SPA navigation morphs <body> and would remove it
+  document.documentElement.appendChild(layer)
+  const cursors = new Map() // id -> {el, x, y, tx, ty, seen}
+  const ARROW =
+    '<svg viewBox="0 0 16 20" width="14" height="18"><path d="M1 1 L1 16 L5 12.5 L8 19 L10.6 17.8 L7.7 11.6 L13 11.6 Z" fill="currentColor" stroke="var(--light)" stroke-width="1.2" stroke-linejoin="round"/></svg>'
+  function moveCursor(u, x, y) {
+    let c = cursors.get(u.id)
+    if (!c) {
+      const el = document.createElement("div")
+      el.className = "zk-cursor"
+      el.style.setProperty("--h", u.hue)
+      el.innerHTML = ARROW + `<span>${esc(u.name)}</span>`
+      layer.appendChild(el)
+      c = { el, x, y, tx: x, ty: y }
+      cursors.set(u.id, c)
+    }
+    c.tx = x
+    c.ty = y
+    c.seen = performance.now()
+    c.el.classList.remove("is-idle")
+    if (REDUCED) (c.x = x), (c.y = y)
+    kick()
+  }
+  function dropCursor(id) {
+    const c = cursors.get(id)
+    if (!c) return
+    c.el.remove()
+    cursors.delete(id)
+  }
+  function clearCursors() {
+    for (const id of [...cursors.keys()]) dropCursor(id)
+  }
+  let raf = 0
+  let prev = 0
+  const kick = () => {
+    if (!raf) (prev = performance.now()), (raf = requestAnimationFrame(frame))
+  }
+  function frame(now) {
+    raf = 0
+    const dt = Math.min(0.1, (now - prev) / 1000)
+    prev = now
+    const k = 1 - Math.exp(-dt / EASE_S)
+    const r = col().getBoundingClientRect()
+    const ox = r.left + scrollX, oy = r.top + scrollY, w = r.width || 1
+    let moving = false
+    for (const c of cursors.values()) {
+      c.x += (c.tx - c.x) * k
+      c.y += (c.ty - c.y) * k
+      if (Math.abs(c.tx - c.x) * w > 0.3 || Math.abs(c.ty - c.y) * w > 0.3) moving = true
+      else (c.x = c.tx), (c.y = c.ty)
+      c.el.style.transform = `translate3d(${(ox + c.x * w).toFixed(1)}px, ${(oy + c.y * w).toFixed(1)}px, 0)`
+      if (now - c.seen > IDLE_MS) c.el.classList.add("is-idle")
+    }
+    if (moving) raf = requestAnimationFrame(frame)
+  }
+  // keep cursors glued to the note when the layout moves
+  addEventListener("resize", kick)
+  addEventListener("scroll", kick, { passive: true })
+  setInterval(() => cursors.size && kick(), 4000) // idle fading
+
+  // ---- the board (index only) ----
+  // Airport departure board (like jzhao.xyz's): uppercase, dotted leaders,
+  // square bullets, square corners. Fixed in the top-right corner; when the
+  // window is too narrow for it beside the text (< 1500px) it starts
+  // minimised to its header bar (like aarnphm.xyz), and a click unfolds it
+  // over the page. The visitor's own choice (open/minimised) is remembered.
+  const MIN_KEY = "zk-board-min"
+  const SHOW_GONE = 3
+  const roomy = () => innerWidth >= 1500
+  const minPref = () => {
+    try {
+      return localStorage.getItem(MIN_KEY) // "1" | "0" | null
+    } catch {
+      return null
+    }
+  }
+  const isMin = () => (minPref() === null ? !roomy() : minPref() === "1")
+  let clock = 0
+  const now = () => new Date().toLocaleTimeString("es-MX", { hour12: false })
+  function renderBoard() {
+    const host = document.querySelector('body[data-slug="index"] article')
+    clearInterval(clock)
+    if (!host) return
+    let b = host.querySelector(".zk-board")
+    if (!b) {
+      b = document.createElement("section")
+      b.className = "zk-board"
+      b.setAttribute("aria-label", "Quién está en el sitio")
+      host.appendChild(b)
+    }
+    const min = isMin()
+    b.classList.toggle("is-min", min)
+    const others = me ? [...here.values()].filter((u) => u.id !== me.id).sort((a, b) => b.at - a.at) : []
+    const count = state === "live" ? others.length + 1 : 0
+    const row = (u, isMe) => {
+      const page = u.away ? "ausente" : pageTitle(u.page)
+      const where = u.away ? `<span class="zb-val">${esc(page)}</span>` : `<a class="zb-val" href="${pageHref(u.page)}" title="${esc(page)} · llegó ${hhmm(u.at)}">${esc(page)}</a>`
+      return `<li class="${isMe ? "is-me" : ""}" style="--h:${u.hue}"><span class="zb-name">${isMe ? "tú" : esc(u.name)}</span><span class="zb-dots"></span>${where}</li>`
+    }
+    let body = ""
+    if (state === "invisible") body = `<p class="zb-msg">modo invisible</p>`
+    else if (state !== "live") body = `<p class="zb-msg">${state === "lost" ? "sin conexión…" : "conectando…"}</p>`
+    else {
+      const mine = here.get(me.id) || me
+      const shown = gone.slice(0, SHOW_GONE)
+      body =
+        `<div class="zb-sec">llegadas<span class="zb-dots"></span></div><ul>${row(mine, true)}${others.map((u) => row(u)).join("")}</ul>` +
+        `<div class="zb-sec">salidas<span class="zb-dots"></span></div>` +
+        (shown.length
+          ? `<ul class="zb-gone">${shown.map((g) => `<li style="--h:${g.hue}"><span class="zb-name">${esc(g.name)}</span><span class="zb-dots"></span><span class="zb-val">sal ${hhmm(g.at)}</span></li>`).join("")}</ul>` +
+            (gone.length > SHOW_GONE ? `<p class="zb-more">+${gone.length - SHOW_GONE} más</p>` : "")
+          : `<p class="zb-msg">sin salidas</p>`)
+    }
+    const status = state === "live" ? `${count} en el sitio` : state === "invisible" ? "invisible" : state === "lost" ? "sin conexión" : "conectando"
+    b.innerHTML =
+      `<button class="zb-head" type="button" aria-expanded="${!min}" title="${min ? "desplegar" : "minimizar"}">` +
+      `<span class="zb-site">zettelkasten</span>` +
+      (min ? `<span class="zb-count" title="${esc(status)}">■ ${state === "live" ? count : "–"}</span>` : `<span class="zb-clock">${now()}</span>`) +
+      `</button>` +
+      `<div class="zb-body">${body}<div class="zb-foot"><span>■ ${esc(status)}</span><button class="zb-ghost" type="button">${state === "invisible" ? "aparecer" : "invisible"}</button></div></div>`
+    if (!min) {
+      const c = b.querySelector(".zb-clock")
+      clock = setInterval(() => (c.textContent = now()), 1000)
+    }
+  }
+  addEventListener("resize", () => minPref() === null && document.querySelector(".zk-board") && renderBoard())
+  document.addEventListener("click", (e) => {
+    if (!(e.target instanceof Element)) return
+    if (e.target.closest(".zk-board .zb-head")) {
+      try {
+        localStorage.setItem(MIN_KEY, isMin() ? "0" : "1")
+      } catch {}
+      return renderBoard()
+    }
+    if (!e.target.closest(".zb-ghost")) return
+    if (state === "invisible") {
+      ls.set(false)
+      state = "connecting"
+      renderBoard()
+      connect()
+    } else {
+      ls.set(true)
+      state = "invisible"
+      const s = ws
+      ws = null
+      try {
+        s?.close()
+      } catch {}
+      lost()
+    }
+  })
+
+  // ---- navigation / visibility ----
+  let firstNav = true
+  document.addEventListener("nav", () => {
+    if (firstNav) {
+      firstNav = false
+      connect()
+    } else {
+      clearCursors()
+      if (me) {
+        here.set(me.id, { ...(here.get(me.id) || me), page: slug() })
+        send({ t: "page", page: slug() })
+        publishReaders()
+      }
+    }
+    renderBoard()
+  })
+  document.addEventListener("visibilitychange", () => {
+    if (!me) return
+    here.set(me.id, { ...(here.get(me.id) || me), away: document.hidden })
+    send({ t: "away", away: document.hidden })
+    if (document.hidden) send({ t: "cx" })
   })
 })()

@@ -1,5 +1,5 @@
 ---
-modified: 2026-10-20T23:23:34Z
+modified: 2026-11-12T22:43:56Z
 title: "Limite"
 publish: true
 type: zettel
@@ -15,7 +15,6 @@ Lo siguiente es el desarrollo de una noción intuitiva de la definición de lím
 
 > Se dice que la función $f$ se aproxima al límite $l$ cerca de $a$, si $f(x)$ se aproxima tanto como se quiera a $l$ si $x$ se aproxima suficientemente a $a$ pero es distinto de $a$.
 
-![[Screenshot_20260819-205555.png|center|249]]
 
 Entonces proponemos un $\varepsilon$, una distancia próxima a $l$, y para ese $\varepsilon$ deberíamos encontrar una distancia $\delta$ en el eje $X$ que la valide.
 
