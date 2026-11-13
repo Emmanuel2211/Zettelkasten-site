@@ -653,18 +653,24 @@ document.addEventListener("nav", () => {
   // contentIndex maps those to slugs and titles. One folder per subject (its
   // main MOC = the one with most links; other MOCs of the subject become
   // folders inside it). Clicking a name opens its page and unfolds it; the
-  // arrow only folds/unfolds. Open folders are remembered (localStorage).
+  // arrow only folds/unfolds. Each visit starts collapsed (sessionStorage).
+  // Every visit starts collapsed (only the path to the note being read opens,
+  // markCurrent); what the visitor opens or closes is kept for the rest of
+  // the visit (sessionStorage: per tab, gone when it closes).
   const OPEN_KEY = "zk-tree-open"
+  try {
+    localStorage.removeItem(OPEN_KEY) // older versions kept it forever
+  } catch {}
   const openSet = (() => {
     try {
-      return new Set(JSON.parse(localStorage.getItem(OPEN_KEY) || "[]"))
+      return new Set(JSON.parse(sessionStorage.getItem(OPEN_KEY) || "[]"))
     } catch {
       return new Set()
     }
   })()
   const saveOpen = () => {
     try {
-      localStorage.setItem(OPEN_KEY, JSON.stringify([...openSet]))
+      sessionStorage.setItem(OPEN_KEY, JSON.stringify([...openSet]))
     } catch {}
   }
   let treePromise = null

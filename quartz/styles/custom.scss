@@ -1370,3 +1370,53 @@ html.zk-narrow:not(:has(body[data-slug="index"])) {
     }
   }
 }
+
+
+// ---------------------------------------------------------------------------
+// Side menus scroll on their own (they are sticky and as tall as the window,
+// so a long tree or a long table of contents was cut off with no way to reach
+// the end). Left: title and search stay, only the tree scrolls. Right: the
+// whole column scrolls. Thin scrollbars, and the page doesn't scroll along
+// when a menu reaches its end.
+// ---------------------------------------------------------------------------
+@mixin thin-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--gray) 45%, transparent) transparent;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--gray) 45%, transparent);
+  }
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+}
+@media (min-width: 801px) {
+  html:not(.zk-narrow) .page > #quartz-body {
+    & > .sidebar.left {
+      overflow: hidden;
+
+      & > * {
+        flex-shrink: 0;
+      }
+      & > .moc-index {
+        flex: 1 1 auto;
+        min-height: 0;
+        padding-bottom: 2rem;
+        @include thin-scroll;
+      }
+    }
+    & > .sidebar.right {
+      @include thin-scroll;
+
+      // keep each block its size (in a scrolling flex column they would shrink)
+      & > * {
+        flex-shrink: 0;
+      }
+    }
+  }
+}
