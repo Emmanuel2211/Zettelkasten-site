@@ -305,22 +305,28 @@ article mjx-container[jax="SVG"][display="true"] {
 }
 
 // ---------------------------------------------------------------------------
-// Links, minimal (aarnphm.xyz): accent colour, same weight as the text, no
-// highlighted pill, and a thin underline that is always there, faint, and
-// turns solid on hover (plain text-decoration: no cost at all). The
-// terminal-style link rows keep no underline.
+// Links: the same colour as the text around them (white in dark mode, black
+// in light mode), a little emphasised (a hairline text stroke: Pagella only
+// has regular and bold, and bold was too much), with the underline in the
+// accent colour (teal in dark mode; red, a bit thicker, in light mode). On
+// hover the text takes the accent colour. The landing links (./content…)
+// follow the same style.
 // ---------------------------------------------------------------------------
 article a.internal:not(.tag-link, .broken, .landing-links *),
 article a.external:not(.escudo),
-article a.mail-link {
+article a.mail-link,
+article .landing-links a {
+  color: inherit;
   background: none;
   padding: 0;
   border-radius: 0;
   font-weight: inherit;
+  -webkit-text-stroke: 0.012em currentColor;
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
   text-underline-offset: 0.18em;
-  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+  // with white text the teal underline at 40% read as grey: stronger here
+  text-decoration-color: color-mix(in srgb, var(--secondary) 70%, transparent);
   transition:
     color 0.2s ease,
     text-decoration-color 0.2s ease;
@@ -328,6 +334,15 @@ article a.mail-link {
   &:hover {
     color: var(--secondary);
     text-decoration-color: var(--tertiary);
+  }
+}
+:root[saved-theme="light"] {
+  article a.internal:not(.tag-link, .broken, .landing-links *),
+  article a.external:not(.escudo),
+  article a.mail-link,
+  article .landing-links a {
+    text-decoration-thickness: 1.6px;
+    text-decoration-color: color-mix(in srgb, var(--secondary) 45%, transparent);
   }
 }
 
@@ -751,30 +766,13 @@ button.open-search {
   font-family: var(--codeFont);
   font-size: 0.8rem;
 
-  // same colour and thin underline as the other links (in grey they didn't
-  // read as links); the "./" stays grey and without underline (inline-block:
-  // text decorations don't reach into it)
-  a {
-    color: var(--secondary);
-    font-weight: 400;
-    background: none;
-    text-decoration-line: underline;
-    text-decoration-thickness: 1px;
-    text-underline-offset: 0.18em;
-    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
-    transition:
-      color 0.2s ease,
-      text-decoration-color 0.2s ease;
-
-    &::before {
-      content: "./";
-      display: inline-block;
-      color: var(--gray);
-    }
-    &:hover {
-      color: var(--secondary);
-      text-decoration-color: var(--tertiary);
-    }
+  // styled like every other link (see "Links"); the "./" stays grey, without
+  // underline or stroke (inline-block: text decorations don't reach into it)
+  a::before {
+    content: "./";
+    display: inline-block;
+    color: var(--gray);
+    -webkit-text-stroke: 0;
   }
 }
 

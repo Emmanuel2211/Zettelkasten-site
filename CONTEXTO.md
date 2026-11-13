@@ -106,7 +106,7 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
 - **Rediseño "zen" (2026-11-11), inspirado en turntrout.com, jzhao.xyz, aarnphm.xyz y ssp.sh/brain:**
   - El tamaño de letra crece con el ancho de la ventana: `html { font-size: clamp(16px, 0.55vw + 12.5px, 22px) }` y `article` a 1.15rem (unos 23px en una laptop de 1366px, como en The Pond). Reemplaza al zoom fijo de 120%.
   - El cambio de tema claro/oscuro es un fundido de 0.45s con la View Transitions API (`site.js` envuelve el clic en `document.startViewTransition`). Mientras dura, se ignoran los clics: cada cambio dispara `themechange` y la gráfica reconstruye su canvas, así que repetir el clic muy rápido congelaba la página. Antes era un `* { transition }`, casi imperceptible y pesado en las páginas con mucho MathJax.
-  - Enlaces internos minimalistas: color de acento, mismo grosor que el texto, sin fondo resaltado y con subrayado fino al pasar el mouse.
+  - Enlaces internos minimalistas: sin fondo resaltado (estilo actual: ver "Enlaces" más abajo).
   - Cursor cuadrado (como el de jzhao.xyz) en todo el sitio, también sobre texto y matemáticas, y solo con mouse. Crece sobre los enlaces.
   - Modo zen (reader mode) activado por defecto. Si el visitante lo apaga, se recuerda en `localStorage["zen-mode"]`.
   - En escritorio, los paneles laterales miden 350px (con padding de 1.5rem, para que "Zettelkasten" quepa en una línea) y la página llega a 1680px. El index no tiene ancho máximo (`body[data-slug="index"]`).
@@ -145,8 +145,8 @@ git config --global user.email "emmanuelcruz22@ciencias.unam.mx"
   - Se renderizan con MathJax, igual que en Obsidian.
   - El espacio alrededor de `$$` se controla con `--math-display-gap: 0.5em`.
 - **Sin vista previa al pasar el mouse sobre un enlace:** `enablePopovers: false` (2026-11-11).
-- **Subrayado de enlaces estilo aarnphm:** siempre visible, delgado (1px, offset 0.18em) y del color del enlace al 40%; al pasar el mouse se vuelve `--tertiary`. Es `text-decoration` puro, sin costo de rendimiento. Las filas `./content …` no lo llevan.
-- **Enlaces `./content ./user_manual ./cool_resources` del index:** en `--secondary` y subrayados como los demás enlaces (en gris no se notaba que eran enlaces). El `./` queda gris y sin subrayado.
+- **Enlaces (2026-11-12):** del mismo color que el texto (blanco en oscuro, negro en claro), un poco enfatizados con un trazo finísimo (`-webkit-text-stroke: 0.012em`; Pagella solo tiene normal y negrita, y la negrita era demasiado). Subrayado de acento siempre visible: verde `--secondary` al 70% y 1px en oscuro; rojo al 45% y 1.6px en claro. Al pasar el mouse el texto toma el color de acento y el subrayado `--tertiary`. Es `text-decoration` puro, sin costo de rendimiento.
+- **Enlaces `./content ./user_manual ./cool_resources` del index:** con el mismo estilo que los demás enlaces. El `./` queda gris, sin subrayado ni trazo.
 - **`content`, `user_manual` y `cool_resources` sin título ni fecha** (CSS por `data-slug`; la ruta `~/content` ya las nombra).
 - **Enlaces a notas no publicadas:** se ven como texto normal. Lo controlan `disableBrokenWikilinks` y el CSS de `a.internal.broken`.
 - **Plugins:**
