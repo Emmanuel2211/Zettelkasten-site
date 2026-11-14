@@ -986,55 +986,62 @@ document.addEventListener("nav", () => {
 })()
 
 // ---------------------------------------------------------------------------
-// 10. Layout on monitors: the note keeps its full-screen size (Head.tsx sets
-// html.zk-wide / html.zk-narrow from the screen width before the first
-// paint; here it is recomputed on resize). In zk-narrow the side menus are
-// drawers: ☰ opens the left one (search, tree), ≡ the right one (graph,
-// contents, links). They close with Esc, a click outside, or on navigation.
+// 10. Layout on monitors (html.zk-panels, set in Head.tsx from the screen
+// width): no side menus. A bar in the top-left corner, styled like the
+// presence board: the site title (home) and ÁRBOL · GRAFO · BUSCAR · TEMA.
+// ÁRBOL and GRAFO open the left column's tree and the right column's graph and
+// contents as panels (data-zk-panel on <html>); they close with Esc, a click
+// outside, the button again, or on navigation. BUSCAR opens the search
+// overlay; TEMA switches light/dark (through the hidden darkmode button, so
+// §2's cross-fade applies). "Más enlaces" are copied to the end of the note.
 // ---------------------------------------------------------------------------
 ;(() => {
   const d = document.documentElement
-  const mk = (cls, label, text) => {
-    const b = document.createElement("button")
-    b.className = "zk-drawer-btn " + cls
-    b.setAttribute("aria-label", label)
-    b.setAttribute("aria-expanded", "false")
-    b.textContent = text
-    // outside <body>: SPA navigation morphs <body> and would remove them
-    d.appendChild(b)
-    return b
+  const bar = document.createElement("nav")
+  bar.className = "zk-bar"
+  bar.setAttribute("aria-label", "Zettelkasten")
+  bar.innerHTML =
+    '<a class="zb-title" href="/">Zettelkasten</a>' +
+    '<button type="button" data-panel="tree" aria-expanded="false">árbol</button>' +
+    '<button type="button" data-panel="graph" aria-expanded="false">grafo</button>' +
+    '<button type="button" data-act="search">buscar</button>' +
+    '<button type="button" data-act="theme">tema</button>'
+  // outside <body>: SPA navigation morphs <body> and would remove it
+  d.appendChild(bar)
+  const setPanel = (p) => {
+    if (p) d.dataset.zkPanel = p
+    else delete d.dataset.zkPanel
+    bar.querySelectorAll("[data-panel]").forEach((b) => b.setAttribute("aria-expanded", String(b.dataset.panel === p)))
   }
-  const left = mk("is-left", "Abrir índice", "☰")
-  const right = mk("is-right", "Abrir contenido y grafo", "≡")
-  const scrim = document.createElement("div")
-  scrim.className = "zk-scrim"
-  d.appendChild(scrim)
-  const set = (side, open) => {
-    d.classList.toggle("zk-open-" + side, open)
-    ;(side === "left" ? left : right).setAttribute("aria-expanded", String(open))
-  }
-  const close = () => (set("left", false), set("right", false))
-  left.addEventListener("click", () => {
-    const open = !d.classList.contains("zk-open-left")
-    close()
-    set("left", open)
+  bar.addEventListener("click", (e) => {
+    const b = e.target instanceof Element ? e.target.closest("button") : null
+    if (!b) return
+    if (b.dataset.panel) return setPanel(d.dataset.zkPanel === b.dataset.panel ? null : b.dataset.panel)
+    setPanel(null)
+    if (b.dataset.act === "search") setTimeout(() => document.querySelector(".search-button")?.click())
+    if (b.dataset.act === "theme") document.querySelector(".darkmode")?.click()
   })
-  right.addEventListener("click", () => {
-    const open = !d.classList.contains("zk-open-right")
-    close()
-    set("right", open)
+  // a click outside the bar and the open panel closes it
+  document.addEventListener("click", (e) => {
+    if (!d.dataset.zkPanel || !(e.target instanceof Element)) return
+    if (e.target.closest(".zk-bar, .sidebar.left > .moc-index, .sidebar.right")) return
+    setPanel(null)
   })
-  scrim.addEventListener("click", close)
-  document.addEventListener("keydown", (e) => e.key === "Escape" && close())
-  document.addEventListener("nav", close)
+  document.addEventListener("keydown", (e) => e.key === "Escape" && setPanel(null))
+  document.addEventListener("nav", () => {
+    setPanel(null)
+    // "Más enlaces" at the end of the note
+    const src = document.querySelector(".sidebar.right .backlinks")
+    const center = document.querySelector(".center")
+    if (!src || !center || center.querySelector(".zk-backlinks") || !src.querySelector("li a")) return
+    const copy = src.cloneNode(true)
+    copy.className = "zk-backlinks"
+    center.appendChild(copy)
+  })
   let raf = 0
   addEventListener("resize", () => {
     cancelAnimationFrame(raf)
-    raf = requestAnimationFrame(() => {
-      const was = d.classList.contains("zk-narrow")
-      window.__zkLayout?.()
-      if (was && !d.classList.contains("zk-narrow")) close()
-    })
+    raf = requestAnimationFrame(() => window.__zkLayout?.())
   })
 })()
 
@@ -1201,6 +1208,7 @@ document.addEventListener("nav", () => {
       sendTimer = 0
       lastSent = performance.now()
       if (!last || ![...here.values()].some((u) => u.id !== me?.id && u.page === slug())) return // alone here
+      if (document.documentElement.classList.contains("zk-stacked")) return send({ t: "cx" }) // columns: no shared cursor
       const r = col().getBoundingClientRect()
       if (!r.width) return
       send({ t: "c", x: (last.x - r.left) / r.width, y: (last.y - r.top) / r.width })
@@ -1400,5 +1408,355 @@ document.addEventListener("nav", () => {
     here.set(me.id, { ...(here.get(me.id) || me), away: document.hidden })
     send({ t: "away", away: document.hidden })
     if (document.hidden) send({ t: "cx" })
+  })
+})()
+
+// ---------------------------------------------------------------------------
+// 12. Growth stages, MOC trails and the margin meta.
+// notes-meta.json (scripts/sync-vault.py) gives each note its stage (seed,
+// budding, evergreen: the frontmatter `status`), dates and length.
+//  a) MOCs read as trails ("senderos", chosen in the notes lab): each section
+//     heading is a numbered leg ("01 · Reales") with its stop count, the lists
+//     become a path of stops with the note's stage as a text label
+//     ("[semilla]"), sub-items branch off it, and each leg ends pointing to the
+//     next one. It restyles the MOC's own rendered HTML, so the prose, maths
+//     and credits stay.
+//  b) The note's meta (stage, dates, reading time, tags) sits in the left
+//     margin, like a book's marginalia; where the margin is too narrow (or in
+//     a stacked column, §13) it becomes one line under the title.
+// Exposed as window.__zkDecorate(root, slug) so stacked columns use it too.
+// ---------------------------------------------------------------------------
+;(() => {
+  const STAGE = { seed: "semilla", budding: "brote", evergreen: "evergreen" }
+  const MES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"]
+  const fdate = (d) => {
+    if (!d) return ""
+    const [y, m, dd] = d.split("-")
+    return `${+dd} ${MES[+m - 1]} ${y}`
+  }
+  const ago = (d) => {
+    if (!d) return ""
+    const days = Math.floor((Date.now() - new Date(d + "T12:00:00")) / 864e5)
+    if (days <= 0) return "hoy"
+    if (days === 1) return "ayer"
+    if (days < 30) return `hace ${days} días`
+    if (days < 365) return `hace ${Math.round(days / 30)} ${Math.round(days / 30) === 1 ? "mes" : "meses"}`
+    return `hace ${Math.round(days / 365)} ${Math.round(days / 365) === 1 ? "año" : "años"}`
+  }
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
+
+  let dataP = null
+  const data = () =>
+    (dataP ??= Promise.all([
+      fetch("/static/contentIndex.json").then((r) => r.json()),
+      fetch("/notes-meta.json").then((r) => (r.ok ? r.json() : {})),
+      fetch("/moc-tree.json").then((r) => (r.ok ? r.json() : [])),
+    ]).then(([idx, meta, tree]) => {
+      const bySlug = new Map()
+      for (const [slug, v] of Object.entries(idx)) if (v.filePath && meta[v.filePath]) bySlug.set(slug, meta[v.filePath])
+      const mocs = new Set(tree.map((m) => Object.entries(idx).find(([, v]) => v.filePath === m.path)?.[0]).filter(Boolean))
+      return { idx, meta: bySlug, mocs }
+    }))
+  const label = (stage) => `<span class="zk-stage is-${stage}">[${STAGE[stage] || STAGE.seed}]</span>`
+
+  // a) trails ---------------------------------------------------------------
+  function trails(article, d) {
+    const flow = article.querySelector(".markdown-preview-view") || article
+    if (flow.classList.contains("zk-trails")) return
+    flow.classList.add("zk-trails")
+    // stage label before every note link that starts a list item
+    for (const a of flow.querySelectorAll("li > a.internal[data-slug]:first-child")) {
+      const m = d.meta.get(a.dataset.slug)
+      if (m) a.insertAdjacentHTML("beforebegin", label(m.stage) + " ")
+    }
+    // legs: one per top-level heading (h2; h1 if the MOC uses those)
+    const level = flow.querySelector(":scope > h2") ? "H2" : flow.querySelector(":scope > h1") ? "H1" : null
+    if (!level) return
+    const heads = [...flow.children].filter((e) => e.tagName === level)
+    heads.forEach((h, i) => {
+      h.classList.add("zk-leg")
+      h.dataset.leg = String(i + 1).padStart(2, "0")
+      // the elements of this leg, up to the next heading
+      const part = []
+      for (let e = h.nextElementSibling; e && e.tagName !== level; e = e.nextElementSibling) part.push(e)
+      const stops = part.flatMap((e) => [...e.querySelectorAll("li > a.internal[data-slug]")])
+      const ever = stops.filter((a) => d.meta.get(a.dataset.slug)?.stage === "evergreen").length
+      h.insertAdjacentHTML("beforeend", `<span class="zk-leg-count">${stops.length} paradas · ${ever} evergreen</span>`)
+      const next = heads[i + 1]
+      const last = part.filter((e) => e.tagName !== "HR").pop() || h
+      last.insertAdjacentHTML(
+        "afterend",
+        `<p class="zk-leg-next">${next ? `↓ siguiente tramo: ${esc(next.textContent.replace(/\d+ paradas.*$/, "").trim())}` : "fin del sendero"}</p>`,
+      )
+    })
+  }
+
+  // b) margin meta ------------------------------------------------------------
+  function meta(root, slug, d, inline) {
+    const header = root.querySelector(".page-header") || root
+    const title = header.querySelector(".article-title")
+    if (!title || header.querySelector(".zk-meta")) return
+    const m = d.meta.get(slug)
+    const tags = (d.idx[slug]?.tags || []).filter((t) => t !== "moc")
+    const mins = m ? Math.max(1, Math.round(m.words / 180)) : 0
+    const parts = [
+      m ? label(m.stage) : "",
+      m?.created ? `<span>creada ${fdate(m.created)}</span>` : "",
+      m?.modified ? `<span>editada ${ago(m.modified)}</span>` : "",
+      mins ? `<span>${mins} min de lectura</span>` : "",
+      tags.length ? `<span class="zk-meta-tags">${tags.map((t) => `<a class="internal tag-link" href="/tags/${encodeURIComponent(t)}">${esc(t)}</a>`).join(" ")}</span>` : "",
+    ].filter(Boolean)
+    if (!parts.length) return
+    const el = document.createElement("div")
+    el.className = "zk-meta" + (inline ? " is-inline" : "")
+    el.innerHTML = parts.join(inline ? '<span class="zk-sep"> · </span>' : "")
+    if (inline) title.after(el)
+    else title.before(el)
+    header.classList.add("has-zk-meta")
+  }
+  // the margin version needs room left of the note
+  const marginFits = (root) => {
+    const c = (root.querySelector(".page-header") || root).getBoundingClientRect()
+    return c.left > 12 * parseFloat(getComputedStyle(document.documentElement).fontSize) + 40
+  }
+
+  async function decorate(root, slug, opts = {}) {
+    const d = await data()
+    if (d.mocs.has(slug)) {
+      const art = root.querySelector("article")
+      if (art) trails(art, d)
+    }
+    const stacked = document.documentElement.classList.contains("zk-stacked")
+    if (slug !== "index") meta(root, slug, d, opts.inline || stacked || !marginFits(root))
+  }
+  window.__zkDecorate = decorate
+  window.__zkData = data
+
+  document.addEventListener("nav", () => {
+    const slug = document.body?.dataset.slug
+    if (!slug) return
+    const root = document.querySelector(".center")
+    if (root) decorate(root, slug)
+  })
+  // margin ↔ inline when the window changes size
+  let t = 0
+  addEventListener("resize", () => {
+    clearTimeout(t)
+    t = setTimeout(() => {
+      const root = document.querySelector(".center")
+      const el = root?.querySelector(".page-header .zk-meta")
+      if (!el || document.documentElement.classList.contains("zk-stacked")) return
+      const want = !marginFits(root)
+      if (want !== el.classList.contains("is-inline")) {
+        el.remove()
+        decorate(root, document.body.dataset.slug)
+      }
+    }, 150)
+  })
+})()
+
+// ---------------------------------------------------------------------------
+// 13. Stacked columns (Andy Matuschak's notes; chosen in the notes lab).
+// On monitors (html.zk-panels, window ≥ 1100px, mouse), a link inside a note
+// opens the target as a new column to the right, instead of replacing the
+// page; the earlier columns stay as narrow spines with their vertical title
+// (click one to go back to it). A link in an earlier column drops the columns
+// after it. Every column keeps the note's full width (--zk-note) and scrolls
+// on its own. The stack is in the URL (?stack=slug,slug…), so it can be
+// shared and Back works (Quartz re-renders the page, and the stack is rebuilt
+// from the URL). Ctrl/Cmd/Shift-click and links in the panels navigate as
+// usual. Each column gets the same decoration as a page (§12: trails, meta in
+// one line) and its "Más enlaces" at the end.
+// ---------------------------------------------------------------------------
+;(() => {
+  const d = document.documentElement
+  const SPINE = 38 // px
+  const can = () =>
+    d.classList.contains("zk-panels") && innerWidth >= 1100 && matchMedia("(hover: hover) and (pointer: fine)").matches
+  const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
+  const baseSlug = () => document.body?.dataset.slug || ""
+  const slugOf = (url) => {
+    let p = decodeURIComponent(url.pathname).replace(/^\//, "").replace(/\.html$/, "")
+    if (p === "" || p === "/") return "index"
+    if (p.endsWith("/")) p += "index"
+    return p
+  }
+  const pageUrl = (slug) => "/" + (slug === "index" ? "" : slug.replace(/(^|\/)index$/, "$1"))
+  const cache = new Map()
+  let stack = [] // slugs after the base page
+  let root = null // .zk-stack
+
+  // ---- fetching a note as a column ----
+  async function fetchNote(slug) {
+    if (cache.has(slug)) return cache.get(slug)
+    const url = new URL(pageUrl(slug), location.origin)
+    const res = await fetch(url)
+    if (!res.ok) throw new Error(res.status)
+    const doc = new DOMParser().parseFromString(await res.text(), "text/html")
+    // relative links and media -> absolute (they were relative to that page)
+    for (const el of doc.querySelectorAll(".center a[href], .sidebar.right .backlinks a[href]")) {
+      const h = el.getAttribute("href")
+      if (h && !h.startsWith("#") && !/^[a-z]+:/i.test(h)) el.setAttribute("href", new URL(h, url).pathname + new URL(h, url).hash)
+    }
+    for (const el of doc.querySelectorAll(".center [src]")) {
+      const h = el.getAttribute("src")
+      if (h && !/^[a-z]+:/i.test(h)) el.setAttribute("src", new URL(h, url).href)
+    }
+    const out = {
+      title: doc.querySelector(".article-title")?.textContent || slug,
+      header: doc.querySelector(".center .page-header")?.outerHTML || "",
+      article: doc.querySelector(".center article")?.outerHTML || "<article><p>(sin contenido)</p></article>",
+      back: doc.querySelector(".sidebar.right .backlinks")?.querySelector("li a") ? doc.querySelector(".sidebar.right .backlinks").outerHTML : "",
+    }
+    cache.set(slug, out)
+    return out
+  }
+
+  // ---- columns ----
+  const spine = (title, i) =>
+    `<button class="zk-spine" type="button" data-col="${i}" title="${esc(title)}"><span>${esc(title)}</span></button>`
+  function ensureRoot() {
+    if (root?.isConnected) return root
+    const center = document.querySelector(".center")
+    if (!center) return null
+    root = document.createElement("div")
+    root.className = "zk-stack"
+    const col0 = document.createElement("section")
+    col0.className = "zk-col"
+    col0.dataset.i = "0"
+    col0.style.setProperty("--i", 0)
+    col0.innerHTML = spine(document.querySelector(".article-title")?.textContent || "", 0)
+    const body = document.createElement("div")
+    body.className = "zk-colbody"
+    col0.appendChild(body)
+    center.replaceWith(root)
+    body.appendChild(center)
+    root.appendChild(col0)
+    d.classList.add("zk-stacked")
+    // the base page's meta goes to one line (no margin in a column)
+    center.querySelector(".page-header .zk-meta")?.remove()
+    window.__zkDecorate?.(center, baseSlug(), { inline: true })
+    return root
+  }
+  function unstack() {
+    if (!root) return
+    const center = root.querySelector('.zk-col[data-i="0"] .center')
+    if (center) root.replaceWith(center)
+    else root.remove()
+    root = null
+    stack = []
+    d.classList.remove("zk-stacked")
+    if (center) {
+      center.querySelector(".page-header .zk-meta")?.remove()
+      window.__zkDecorate?.(center, baseSlug())
+    }
+  }
+  async function addColumn(slug, i) {
+    const col = document.createElement("section")
+    col.className = "zk-col"
+    col.dataset.i = String(i)
+    col.style.setProperty("--i", i)
+    col.innerHTML = `${spine("…", i)}<div class="zk-colbody"><p class="zk-col-loading">cargando…</p></div><button class="zk-col-close" type="button" data-close="${i}" aria-label="Cerrar columna">×</button>`
+    root.appendChild(col)
+    try {
+      const n = await fetchNote(slug)
+      col.querySelector(".zk-spine").outerHTML = spine(n.title, i)
+      const body = col.querySelector(".zk-colbody")
+      body.innerHTML = n.header + n.article + (n.back ? n.back.replace('class="backlinks"', 'class="zk-backlinks"') : "")
+      const bh = body.querySelector(".zk-backlinks > h3")
+      if (bh) bh.textContent = "Más Enlaces:"
+      await window.__zkDecorate?.(body, slug, { inline: true })
+    } catch {
+      col.querySelector(".zk-colbody").innerHTML = `<p class="zk-col-loading">no se pudo abrir esta nota.</p>`
+    }
+    return col
+  }
+  function scrollToCol(i, smooth = true) {
+    const col = root?.querySelector(`.zk-col[data-i="${i}"]`)
+    if (!col) return
+    root.scrollTo({ left: Math.max(0, col.offsetLeft - i * SPINE), behavior: smooth ? "smooth" : "auto" })
+  }
+  function writeUrl(push) {
+    const u = new URL(location.href)
+    u.searchParams.delete("stack")
+    // readable: ?stack=maths/calculus/cotas,maths/calculus/supremo-e-infimo
+    if (stack.length) u.search = (u.search ? u.search + "&" : "?") + "stack=" + stack.map((s) => encodeURI(s).replace(/[&,#?]/g, encodeURIComponent)).join(",")
+    history[push ? "pushState" : "replaceState"](history.state, "", u)
+  }
+
+  // open `slug` after column `from` (0 = the base page)
+  async function open(slug, from, hash) {
+    if (!ensureRoot()) return
+    if (stack[from] === slug) {
+      // already the next column: just show it
+      return scrollToCol(from + 1)
+    }
+    stack = stack.slice(0, from)
+    root.querySelectorAll(".zk-col").forEach((c) => +c.dataset.i > from && c.remove())
+    stack.push(slug)
+    writeUrl(true)
+    const col = await addColumn(slug, from + 1)
+    scrollToCol(from + 1)
+    if (hash) col.querySelector(".zk-colbody").querySelector(decodeURIComponent(hash))?.scrollIntoView({ block: "start" })
+  }
+  function closeFrom(i) {
+    stack = stack.slice(0, i - 1)
+    root?.querySelectorAll(".zk-col").forEach((c) => +c.dataset.i >= i && c.remove())
+    writeUrl(false)
+    if (!stack.length) unstack()
+    else scrollToCol(stack.length)
+  }
+
+  // ---- clicks ----
+  document.addEventListener(
+    "click",
+    (e) => {
+      if (!(e.target instanceof Element)) return
+      const sp = e.target.closest(".zk-spine")
+      if (sp) return scrollToCol(+sp.dataset.col)
+      const x = e.target.closest(".zk-col-close")
+      if (x) return closeFrom(+x.dataset.close)
+      // fold/unfold callouts in fetched columns (Quartz only wires the page's)
+      const ct = e.target.closest('.zk-col:not([data-i="0"]) .callout.is-collapsible > .callout-title')
+      if (ct) {
+        ct.parentElement.classList.toggle("is-collapsed")
+        return
+      }
+      if (!can() || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return
+      const a = e.target.closest("a[href]")
+      if (!a || !a.closest(".center article, .zk-colbody, .zk-backlinks") || a.closest(".zk-bar, .sidebar")) return
+      if (a.classList.contains("tag-link") || a.getAttribute("role") === "anchor" || a.target === "_blank") return
+      const url = new URL(a.href, location.href)
+      if (url.origin !== location.origin || /\.[a-z0-9]{2,5}$/i.test(url.pathname) || url.pathname.startsWith("/tags/")) return
+      const slug = slugOf(url)
+      const col = a.closest(".zk-col")
+      const from = col ? +col.dataset.i : 0
+      const here = from === 0 ? baseSlug() : stack[from - 1]
+      if (slug === here) return // a link to a heading of the same note
+      e.preventDefault()
+      e.stopPropagation()
+      open(slug, from, url.hash)
+    },
+    true, // capture: before Quartz's SPA router
+  )
+
+  // ---- rebuilding from the URL (load, Back/Forward, shared links) ----
+  document.addEventListener("nav", async () => {
+    root = null
+    stack = []
+    d.classList.remove("zk-stacked")
+    const want = (new URL(location.href).searchParams.get("stack") || "").split(",").filter(Boolean)
+    if (!want.length || !can()) return
+    if (!ensureRoot()) return
+    stack = want
+    for (let i = 0; i < want.length; i++) await addColumn(want[i], i + 1)
+    scrollToCol(want.length, false)
+  })
+  // a window too narrow for columns: back to the plain page (keeps the base)
+  addEventListener("resize", () => {
+    if (root && !can()) {
+      unstack()
+      writeUrl(false)
+    }
   })
 })()

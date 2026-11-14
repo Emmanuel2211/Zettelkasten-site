@@ -1,10 +1,10 @@
 ---
-modified: 2026-08-18T14:40:15Z
+modified: 2026-11-13T23:34:20Z
 title: "Función Sucesor"
 publish: true
 type: zettel
 date: 2026-08-18
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

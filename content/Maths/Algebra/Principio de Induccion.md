@@ -1,10 +1,10 @@
 ---
-modified: 2026-08-31T14:39:40Z
+modified: 2026-11-13T23:34:20Z
 title: "Principio de Inducción"
 publish: true
 type: zettel
 date: 2026-08-19
-status: undone
+status: seed
 aliases:
   - Induccion Fuerte
 tags:

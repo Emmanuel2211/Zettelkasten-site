@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-12T02:30:43Z
+modified: 2026-11-13T23:34:20Z
 title: "\"Combinando\" Subespacios"
 publish: true
 type: zettel
 date: "2026-08-26"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

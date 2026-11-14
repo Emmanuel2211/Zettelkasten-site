@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-16T15:45:11Z
+modified: 2026-11-13T23:34:20Z
 title: "Teorema de Cambio de Variable Aleatoria"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - probability

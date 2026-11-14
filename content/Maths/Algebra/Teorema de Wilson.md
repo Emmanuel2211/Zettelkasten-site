@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-30T14:39:43Z
+modified: 2026-11-13T23:34:20Z
 title: "Teorema de Wilson"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

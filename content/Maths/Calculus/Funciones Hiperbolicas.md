@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-06T01:31:19Z
+modified: 2026-11-13T23:34:20Z
 title: "Trigonométricas Hiperbólicas"
 publish: true
 type: zettel
 date: "2026-08-19"
-status: undone
+status: seed
 aliases:
  - 
 tags:

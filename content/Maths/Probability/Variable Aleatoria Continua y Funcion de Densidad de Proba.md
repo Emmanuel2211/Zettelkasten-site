@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-15T20:39:22Z
+modified: 2026-11-13T23:34:20Z
 title: "Variable Aleatoria Continua"
 publish: true
 type: zettel
 date: 2026-09-30
-status: undone
+status: seed
 aliases:
 tags:
   - probability

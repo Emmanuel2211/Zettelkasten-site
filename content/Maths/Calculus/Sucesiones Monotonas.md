@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-11T03:34:39Z
+modified: 2026-11-13T23:34:20Z
 title: "Sucesiones Monótonas"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

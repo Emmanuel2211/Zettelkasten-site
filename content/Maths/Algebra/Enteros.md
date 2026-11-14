@@ -1,9 +1,9 @@
 ---
-modified: 2026-09-30T14:08:53Z
+modified: 2026-11-13T23:34:20Z
 publish: true
 type: zettel
 date: 2026-08-17
-status: undone
+status: seed
 aliases:
   - Numeros Enteros
 tags:

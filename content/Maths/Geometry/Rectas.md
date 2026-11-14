@@ -1,8 +1,8 @@
 ---
-modified: 2026-11-09T14:45:36Z
+modified: 2026-11-13T23:34:20Z
 publish: true
 type: zettel
-status: done
+status: evergreen
 links:
 tags:
   - vector unitario

@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-29T15:09:17Z
+modified: 2026-11-13T23:34:20Z
 title: "Aplicaciones realcionadas a Centroides"
 publish: true
 type: zettel
 date: "2026-10-28"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

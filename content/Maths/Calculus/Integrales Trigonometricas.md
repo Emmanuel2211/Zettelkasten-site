@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-28T18:24:14Z
+modified: 2026-11-13T23:34:20Z
 title: "Integrales Trigonométricas"
 publish: true
 type: zettel
 date: "2026-10-05"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

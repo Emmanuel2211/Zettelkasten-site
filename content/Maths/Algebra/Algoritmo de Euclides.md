@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-06T19:08:09Z
+modified: 2026-11-13T23:34:20Z
 title: "Algoritmo de Euclides"
 publish: true
 type: zettel
 date: "2026-09-23"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

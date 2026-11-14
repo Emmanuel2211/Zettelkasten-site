@@ -1,9 +1,9 @@
 ---
-modified: 2026-10-14T17:44:48Z
+modified: 2026-11-13T23:34:20Z
 publish: true
 type: zettel
 date: "2026-08-25"
-status: undone
+status: seed
 aliases:
  - Matriz
  - Espacio Vectorial de las Matrices

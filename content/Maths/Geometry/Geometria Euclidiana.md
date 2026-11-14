@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-09T19:31:01Z
+modified: 2026-11-13T23:34:20Z
 title: "Geometría Euclidiana"
 publish: true
 type: zettel
 date: 2026-09-14
-status: undone
+status: seed
 aliases:
 tags:
   - geometry

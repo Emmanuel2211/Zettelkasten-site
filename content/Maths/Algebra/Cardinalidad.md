@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-01T05:31:28Z
+modified: 2026-11-13T23:34:20Z
 title: "Cardinalidad"
 publish: true
 type: zettel
 date: "2026-09-30"
-status: undone
+status: seed
 aliases:
 tags:
  - sets

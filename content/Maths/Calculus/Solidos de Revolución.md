@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-09T21:20:02Z
+modified: 2026-11-13T23:34:20Z
 title: "Sólidos de Revolución"
 publish: true
 type: zettel
 date: "2026-10-23"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

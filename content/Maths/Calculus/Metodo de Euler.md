@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-01T19:30:44Z
+modified: 2026-11-13T23:34:20Z
 title: "Método de Euler"
 publish: true
 type: zettel
 date: "2026-09-29"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

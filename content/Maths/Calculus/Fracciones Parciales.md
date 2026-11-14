@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-03T02:41:58Z
+modified: 2026-11-13T23:34:20Z
 title: "Fracciones Parciales"
 publish: true
 type: zettel
 date: "2026-09-29"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

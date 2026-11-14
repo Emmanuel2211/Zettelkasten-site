@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-02T23:18:38Z
+modified: 2026-11-13T23:34:20Z
 title: "Generalizando la Integral"
 publish: true
 type: zettel
 date: 2026-08-31
-status: undone
+status: seed
 aliases:
 tags:
   - calculus

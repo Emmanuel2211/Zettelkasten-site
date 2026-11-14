@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-17T18:19:35Z
+modified: 2026-11-13T23:34:20Z
 title: "Cambio de Variable"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

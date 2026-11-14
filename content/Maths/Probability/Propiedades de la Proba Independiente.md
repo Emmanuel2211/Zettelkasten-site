@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-29T16:44:29Z
+modified: 2026-11-13T23:34:20Z
 title: "Propiedades de la Independiencia"
 publish: true
 type: zettel
 date: 2026-09-29
-status: undone
+status: seed
 aliases:
 tags:
   - probability

@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-19T16:36:48Z
+modified: 2026-11-13T23:34:20Z
 title: "Combinaciones Lineales y Generados"
 publish: true
 type: zettel
 date: 2026-08-28
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

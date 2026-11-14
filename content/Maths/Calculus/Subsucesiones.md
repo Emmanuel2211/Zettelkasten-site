@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-11T02:39:52Z
+modified: 2026-11-13T23:34:20Z
 title: "Subsucesiones"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

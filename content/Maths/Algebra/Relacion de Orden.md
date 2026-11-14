@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-20T00:36:58Z
+modified: 2026-11-13T23:34:20Z
 title: "Relación de Orden"
 publish: true
 type: zettel
 date: 2026-08-18
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

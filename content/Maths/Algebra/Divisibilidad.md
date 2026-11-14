@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-08T01:31:07Z
+modified: 2026-11-13T23:34:20Z
 title: "Divisivilidad"
 publish: true
 type: zettel
 date: 2026-09-11
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-09T20:10:54Z
+modified: 2026-11-13T23:34:20Z
 title: "Teorema de Bolzano-Weierstrass"
 publish: true
 type: zettel
 date: 2026-09-09
-status: undone
+status: seed
 aliases:
 tags:
   - calculus

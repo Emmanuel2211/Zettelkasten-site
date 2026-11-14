@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-03T15:29:50Z
+modified: 2026-11-13T23:34:20Z
 title: "Varianza"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - probability

@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-10T17:26:07Z
+modified: 2026-11-13T23:34:20Z
 title: "Lógica Proposicional"
 publish: true
 type: zettel
 date: 2026-08-20
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

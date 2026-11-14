@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-09T22:21:11Z
+modified: 2026-11-13T23:34:20Z
 title: "Funciones Uniparamétricas"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-08T01:55:34Z
+modified: 2026-11-13T23:34:20Z
 title: "Axioma de Supremo"
 publish: true
 type: zettel
 date: "2026-08-18"
-status: undone
+status: seed
 aliases:
  - Axioma del infimo
 tags:

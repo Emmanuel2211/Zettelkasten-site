@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-23T14:46:11Z
+modified: 2026-11-13T23:34:20Z
 title: "Algoritmo de la División"
 publish: true
 type: zettel
 date: 2026-09-07
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

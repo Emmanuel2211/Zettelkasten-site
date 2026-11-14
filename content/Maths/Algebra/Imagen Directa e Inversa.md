@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-30T15:47:15Z
+modified: 2026-11-13T23:34:20Z
 title: "Imagen Directa e Inversa"
 publish: true
 type: zettel
 date: "2026-09-18"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

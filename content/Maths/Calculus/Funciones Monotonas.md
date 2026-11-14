@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-09T20:52:59Z
+modified: 2026-11-13T23:34:20Z
 title: "Monotonía de Funciones"
 publish: true
 type: zettel
 date: "2026-09-05"
-status: undone
+status: seed
 aliases:
 tags:
  - Monotonia

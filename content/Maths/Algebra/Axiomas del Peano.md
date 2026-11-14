@@ -1,5 +1,5 @@
 ---
-modified: 2026-08-19T00:52:56Z
+modified: 2026-11-13T23:34:20Z
 title: "Axiomas del Peano"
 publish: true
 type: zettel
@@ -9,7 +9,7 @@ tags:
   - algebra
 cssclasses:
   - romana
-status: undone
+status: seed
 ---
 > [!theorem] **Axioma.** (Peano)
 >

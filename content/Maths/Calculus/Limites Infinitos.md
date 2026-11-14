@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-12T15:54:53Z
+modified: 2026-11-13T23:34:20Z
 title: "Límites Infinitos"
 publish: true
 type: zettel
 date: 2026-09-12
-status: undone
+status: seed
 aliases:
 tags:
   - calculus

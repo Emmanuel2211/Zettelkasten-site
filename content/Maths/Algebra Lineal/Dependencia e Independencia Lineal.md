@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-14T17:56:33Z
+modified: 2026-11-13T23:34:20Z
 title: "Dependencia e Independecia Lineal"
 publish: true
 type: zettel
 date: "2026-09-03"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

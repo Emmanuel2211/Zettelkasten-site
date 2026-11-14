@@ -1,10 +1,10 @@
 ---
-modified: 2026-08-27T16:08:45Z
+modified: 2026-11-13T23:34:20Z
 title: "Propiedades del Campo"
 publish: true
 type: zettel
 date: "2026-08-27"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

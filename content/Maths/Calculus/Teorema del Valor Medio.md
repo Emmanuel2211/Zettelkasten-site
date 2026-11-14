@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-04T19:25:31Z
+modified: 2026-11-13T23:34:20Z
 title: "Teorema de Lagrange"
 publish: true
 type: zettel
 date: "2026-08-21"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

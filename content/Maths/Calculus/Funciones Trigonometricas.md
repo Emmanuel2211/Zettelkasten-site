@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-06T21:46:12Z
+modified: 2026-11-13T23:34:20Z
 title: "Funciones de Trigonometricas"
 publish: true
 type: zettel
 date: "2026-09-05"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

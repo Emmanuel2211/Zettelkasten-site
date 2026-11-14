@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-09T21:53:39Z
+modified: 2026-11-13T23:34:20Z
 title: "Método de los Trapecios"
 publish: true
 type: zettel
 date: "2026-10-30"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

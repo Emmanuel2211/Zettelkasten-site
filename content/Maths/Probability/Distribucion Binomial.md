@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-22T22:03:05Z
+modified: 2026-11-13T23:34:20Z
 title: "Distribución Binomial"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - probability

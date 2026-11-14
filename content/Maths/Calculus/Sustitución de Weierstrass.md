@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-03T00:07:55Z
+modified: 2026-11-13T23:34:20Z
 title: "Sustitución de Weierstrass"
 publish: true
 type: zettel
 date: "2026-10-02"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

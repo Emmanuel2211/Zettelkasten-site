@@ -21,3 +21,6 @@ __pycache__/
 
 # local wrangler dev state
 .wrangler/
+
+# local design labs: python3 labs/build_data.py . public/lab-notes.json && cp labs/lab-notas.html public/
+labs/

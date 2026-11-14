@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-18T02:33:08Z
+modified: 2026-11-13T23:34:20Z
 title: "Probabilidad Condicional e Independiente"
 publish: true
 type: zettel
 date: "2026-09-07"
-status: undone
+status: seed
 aliases:
 tags:
  - probability

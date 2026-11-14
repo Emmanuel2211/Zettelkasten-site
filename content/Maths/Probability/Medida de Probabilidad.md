@@ -1,9 +1,9 @@
 ---
-modified: 2026-09-12T20:42:31Z
+modified: 2026-11-13T23:34:20Z
 publish: true
 type: zettel
 date: "2026-08-24"
-status: undone
+status: seed
 aliases:
 tags:
  - probability

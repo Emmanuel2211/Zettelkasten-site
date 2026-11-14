@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-09T21:54:18Z
+modified: 2026-11-13T23:34:20Z
 title: "Método de Taylor"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

@@ -1,9 +1,9 @@
 ---
-modified: 2026-08-23T00:44:22Z
+modified: 2026-11-13T23:34:20Z
 publish: true
 type: zettel
 date: "2026-08-20"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

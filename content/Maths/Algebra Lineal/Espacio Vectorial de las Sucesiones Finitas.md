@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-11T00:44:52Z
+modified: 2026-11-13T23:34:20Z
 title: "Espacio Vectorial de las Sucesiones Finitas"
 publish: true
 type: zettel
 date: "2026-08-21"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

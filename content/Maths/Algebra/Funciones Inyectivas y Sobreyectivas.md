@@ -1,10 +1,10 @@
 ---
-modified: 2026-08-25T02:45:46Z
+modified: 2026-11-13T23:34:20Z
 title: "Funciones Inyectivas y Sobreyectivas"
 publish: true
 type: zettel
 date: "2026-08-24"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

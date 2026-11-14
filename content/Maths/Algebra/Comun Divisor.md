@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-11T16:50:25Z
+modified: 2026-11-13T23:34:20Z
 title: "Común Divisor"
 publish: true
 type: zettel
 date: 2026-09-11
-status: undone
+status: seed
 aliases:
   - Maximo Comun Divisor
 tags:

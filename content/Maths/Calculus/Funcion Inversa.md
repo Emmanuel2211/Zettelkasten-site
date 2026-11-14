@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-09T18:20:07Z
+modified: 2026-11-13T23:34:20Z
 title: "Función Inversa"
 publish: true
 type: zettel
 date: "2026-09-06"
-status: undone
+status: seed
 aliases:
 tags:
  - calulus

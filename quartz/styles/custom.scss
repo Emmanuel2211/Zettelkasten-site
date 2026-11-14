@@ -53,8 +53,13 @@ html {
 }
 
 // Body text a bit above the rem size (≈ 23px on a laptop, like turntrout.com).
+// 20px with the 22px base of big screens (chosen in the notes lab,
+// 2026-11-13; it was 1.15rem ≈ 25px). The note keeps its width (--zk-note).
 article {
-  font-size: 1.15rem; // ≈ 23px on a laptop, close to turntrout.com
+  font-size: 1.15rem; // phones and small tablets (≈ 18px)
+}
+html.zk-panels article {
+  font-size: 0.91rem;
 }
 
 // ---------------------------------------------------------------------------
@@ -979,70 +984,36 @@ article img[src$=".avif"] {
 
 
 // ---------------------------------------------------------------------------
-// Layout on monitors (site.js §10, decided in Head.tsx from the screen width)
-// html.zk-wide:   [menu] [note: --zk-note] [menu]. The note has the width it
-//                 has with the window maximised; the menus (--zk-side) sit in
-//                 the space left, aligned by data-zk-align (hug | center | edge).
-// html.zk-narrow: the menus don't fit next to that note (half a screen...):
-//                 the note keeps its width (or the whole window) and the menus
-//                 become drawers, opened with ☰ (left) and ≡ (right).
-// Phones and small tablets (screen < 1024px) keep Quartz's own layout.
+// Layout on monitors (Head.tsx + site.js §10), chosen in the notes lab
+// (2026-11-13): no side menus. The note alone in the middle, always at its
+// full width (--zk-note: 44rem, like in Obsidian). A fixed bar in the
+// top-left corner (the site title + ÁRBOL · GRAFO · BUSCAR · TEMA, in the
+// presence board's style) opens the tree and the graph as panels; "Más
+// enlaces" go to the end of the note. Links can open as stacked columns
+// (§13). Phones and small tablets (screen < 1024px) keep Quartz's layout.
 // ---------------------------------------------------------------------------
-html.zk-wide {
-  .page {
-    max-width: none;
-  }
-  .page > #quartz-body {
-    grid-template-columns: minmax(var(--zk-side), 1fr) var(--zk-note) minmax(var(--zk-side), 1fr);
-    grid-template-rows: auto auto auto;
-    grid-template-areas:
-      "grid-sidebar-left grid-header grid-sidebar-right"
-      "grid-sidebar-left grid-center grid-sidebar-right"
-      "grid-sidebar-left grid-footer grid-sidebar-right";
-    column-gap: var(--zk-gap);
-    padding: 0 16px;
+@mixin thin-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--gray) 45%, transparent) transparent;
 
-    & > .sidebar {
-      width: var(--zk-side);
-      padding-left: 0;
-      padding-right: 0;
-      position: sticky;
-      height: 100vh;
-      flex-direction: column;
-    }
-    & > .sidebar.right > * {
-      flex: none;
-      max-height: none;
-    }
-    & > .sidebar.right > .toc {
-      display: flex;
-    }
-    & > .sidebar.left {
-      justify-self: end;
-    }
-    & > .sidebar.right {
-      justify-self: start;
-    }
-    & .center,
-    & footer {
-      margin-left: 0;
-      margin-right: 0;
-    }
+  &::-webkit-scrollbar {
+    width: 6px;
   }
-  &[data-zk-align="center"] .page > #quartz-body > .sidebar {
-    justify-self: center;
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--gray) 45%, transparent);
   }
-  &[data-zk-align="edge"] .page > #quartz-body {
-    & > .sidebar.left {
-      justify-self: start;
-    }
-    & > .sidebar.right {
-      justify-self: end;
-    }
+  &::-webkit-scrollbar-track {
+    background: transparent;
   }
 }
-
-html.zk-narrow {
+@mixin board-panel {
+  background: var(--light);
+  border: 1px solid var(--gray);
+  box-shadow: 3px 3px 0 0 var(--lightgray);
+}
+html.zk-panels {
   .page {
     max-width: none;
   }
@@ -1060,40 +1031,57 @@ html.zk-narrow {
       margin-left: 0;
       margin-right: 0;
     }
-    // the menus, as drawers over the note
-    & > .sidebar {
+
+    // left column: nothing visible but the tree, as a panel. The search box
+    // stays (hidden) so ctrl+k and BUSCAR open its overlay.
+    & > .sidebar.left {
       position: fixed;
       top: 0;
-      bottom: 0;
-      height: 100dvh;
-      width: min(calc(var(--zk-side) + 3rem), 88vw);
+      left: 0;
+      width: 0;
+      height: 0;
+      padding: 0;
+      overflow: visible;
       z-index: 60;
+      opacity: 1 !important; // zen mode fades the menus
+      display: block;
+
+      & > :not(.moc-index, :has(.search)),
+      .flex-component > :not(:has(.search)),
+      .search > .search-button {
+        display: none !important;
+      }
+      & > .moc-index {
+        position: fixed;
+        top: 3.1rem;
+        left: 1rem;
+        width: 23rem;
+        max-height: calc(100vh - 4.5rem);
+        box-sizing: border-box;
+        padding: 0.8rem 1rem 1rem;
+        margin: 0;
+        @include board-panel;
+        @include thin-scroll;
+      }
+    }
+    // right column: graph and contents, as the other panel
+    & > .sidebar.right {
+      position: fixed;
+      top: 3.1rem;
+      left: 1rem;
+      width: 23rem;
+      height: auto;
+      max-height: calc(100vh - 4.5rem);
       box-sizing: border-box;
-      padding: 3.6rem 1.5rem 2rem;
+      padding: 0.8rem 1rem 1rem;
+      margin: 0;
+      z-index: 60;
       display: flex;
       flex-direction: column;
-      align-items: stretch;
-      gap: 1.2rem;
-      overflow-y: auto;
-      overscroll-behavior: contain;
-      background: var(--light);
-      opacity: 1 !important; // zen mode fades the menus; not in a drawer
-      visibility: hidden;
-      transition:
-        transform 0.25s ease,
-        visibility 0.25s;
-    }
-    & > .sidebar.left {
-      left: 0;
-      transform: translateX(-100%);
-      border-right: 1px solid var(--lightgray);
-    }
-    & > .sidebar.right {
-      right: 0;
-      left: auto;
-      margin: 0;
-      transform: translateX(100%);
-      border-left: 1px solid var(--lightgray);
+      gap: 1rem;
+      opacity: 1 !important;
+      @include board-panel;
+      @include thin-scroll;
 
       & > * {
         flex: none;
@@ -1102,67 +1090,121 @@ html.zk-narrow {
       & > .toc {
         display: flex;
       }
+      & > .backlinks {
+        display: none; // shown at the end of the note instead
+      }
     }
-    // the drawer has the MOC tree: the phone explorer isn't needed here
-    & .explorer {
-      display: none !important;
-    }
-    & .sidebar.left > .moc-index {
-      display: block;
+    // panels closed until their button is pressed
+    & > .sidebar.left > .moc-index,
+    & > .sidebar.right {
+      visibility: hidden;
+      opacity: 0 !important;
+      transform: translateY(-6px);
+      transition:
+        opacity 0.15s ease,
+        transform 0.15s ease,
+        visibility 0.15s;
     }
   }
-  &.zk-open-left .page > #quartz-body > .sidebar.left,
-  &.zk-open-right .page > #quartz-body > .sidebar.right {
-    transform: none;
+  &[data-zk-panel="tree"] .page > #quartz-body > .sidebar.left > .moc-index,
+  &[data-zk-panel="graph"] .page > #quartz-body > .sidebar.right {
     visibility: visible;
+    opacity: 1 !important;
+    transform: none;
   }
-  // the path goes back into the flow (the ☰ button sits in the corner)
-  .page .breadcrumb-container {
+  // the path goes back into the flow, above the title (the bar is in the
+  // corner); the index keeps its "~/" in the corner
+  body:not([data-slug="index"]) .page .breadcrumb-container {
     position: static;
-    margin: 1rem 0 0;
+    margin: 4.2rem 0 0;
   }
 }
-.zk-drawer-btn,
-.zk-scrim {
+
+// the bar
+.zk-bar {
   display: none;
 }
-html.zk-narrow:not(:has(body[data-slug="index"])) {
-  .zk-drawer-btn {
+html.zk-panels:not(:has(body[data-slug="index"])) .zk-bar {
+  position: fixed;
+  top: 0.8rem;
+  left: 1rem;
+  z-index: 70;
+  display: flex;
+  align-items: stretch;
+  @include board-panel;
+  font-family: "Departure Mono", var(--codeFont);
+  font-size: 11px;
+  line-height: 15px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+
+  > * {
     all: unset;
-    display: grid;
-    place-items: center;
-    position: fixed;
-    top: 0.8rem;
-    z-index: 70;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 6px;
-    font-family: var(--codeFont);
-    font-size: 1.05rem;
-    color: var(--darkgray);
-    background: color-mix(in srgb, var(--light) 85%, transparent);
     cursor: pointer;
+    padding: 5px 9px;
+    color: var(--darkgray);
+    border-left: 1px solid var(--lightgray);
     transition: color 0.2s ease;
 
     &:hover,
     &[aria-expanded="true"] {
       color: var(--secondary);
     }
-    &.is-left {
-      left: 0.8rem;
-    }
-    &.is-right {
-      right: 0.8rem;
-      font-size: 1.5rem;
+    &[aria-expanded="true"] {
+      background: color-mix(in srgb, var(--secondary) 10%, transparent);
     }
   }
-  &.zk-open-left .zk-scrim,
-  &.zk-open-right .zk-scrim {
-    display: block;
-    position: fixed;
-    inset: 0;
-    z-index: 55;
-    background: rgb(0 0 0 / 0.35);
+  > .zb-title {
+    border-left: 0;
+    font-family: "CMU Typewriter", var(--codeFont);
+    font-size: 17px;
+    text-transform: none;
+    letter-spacing: 0;
+    color: var(--secondary);
+    padding: 3px 11px 3px 10px;
+
+    &:hover {
+      color: color-mix(in srgb, var(--secondary) 70%, var(--dark));
+    }
+  }
+}
+
+// "Más enlaces" at the end of the note (copied from the right column)
+.zk-backlinks {
+  margin: 3rem 0 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--lightgray);
+  font-size: 0.91rem;
+
+  h3 {
+    font-family: var(--codeFont);
+    font-size: 0.66rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--gray);
+    margin: 0 0 0.5rem;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem 1.4rem;
+  }
+  li {
+    margin: 0;
+  }
+  a.internal {
+    color: var(--darkgray);
+    background: none;
+    padding: 0;
+    font-weight: 400;
+
+    &:hover {
+      color: var(--secondary);
+    }
   }
 }
 
@@ -1404,24 +1446,8 @@ html.zk-narrow:not(:has(body[data-slug="index"])) {
 // whole column scrolls. Thin scrollbars, and the page doesn't scroll along
 // when a menu reaches its end.
 // ---------------------------------------------------------------------------
-@mixin thin-scroll {
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: color-mix(in srgb, var(--gray) 45%, transparent) transparent;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background: color-mix(in srgb, var(--gray) 45%, transparent);
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-  }
-}
 @media (min-width: 801px) {
-  html:not(.zk-narrow) .page > #quartz-body {
+  html:not(.zk-panels) .page > #quartz-body {
     & > .sidebar.left {
       overflow: hidden;
 
@@ -1444,4 +1470,266 @@ html.zk-narrow:not(:has(body[data-slug="index"])) {
       }
     }
   }
+}
+
+
+// ---------------------------------------------------------------------------
+// Growth stages, MOC trails and margin meta (site.js §12)
+// ---------------------------------------------------------------------------
+:root {
+  --st-seed: #9cc79a;
+  --st-budding: #c4d36b;
+  --st-evergreen: #6cc7bd;
+}
+:root[saved-theme="light"] {
+  --st-seed: #6b8f3a;
+  --st-budding: #8a6d1f;
+  --st-evergreen: #2f6b4a;
+}
+.zk-stage {
+  font-family: var(--codeFont);
+  font-size: 0.62em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  vertical-align: 0.12em;
+  color: var(--st-seed);
+
+  &.is-budding {
+    color: var(--st-budding);
+  }
+  &.is-evergreen {
+    color: var(--st-evergreen);
+  }
+}
+
+// a) the MOC as trails: numbered legs, a path of stops, branches
+.zk-trails {
+  counter-reset: none;
+
+  > h1.zk-leg,
+  > h2.zk-leg {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.2rem 0.8rem;
+
+    &::before {
+      content: attr(data-leg) " ·";
+      color: var(--secondary);
+    }
+    // the heading's hover anchor (#) would sit between title and count
+    > a[role="anchor"] {
+      display: none;
+    }
+  }
+  .zk-leg-count {
+    font-family: var(--codeFont);
+    font-size: 0.42em;
+    font-weight: 400;
+    color: var(--gray);
+  }
+  > hr {
+    display: none;
+  }
+  // the lists: a vertical path; every item a stop on it
+  ul {
+    list-style: none;
+    position: relative;
+    margin: 0.3rem 0 0.4rem;
+    padding-left: 1.6rem;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0.45rem;
+      top: 0.5rem;
+      bottom: 0.5rem;
+      width: 2px;
+      background: var(--lightgray);
+    }
+  }
+  li {
+    position: relative;
+    margin: 0.12rem 0;
+
+    // the stop
+    &::before {
+      content: "";
+      position: absolute;
+      left: -1.36rem;
+      top: 0.62em;
+      width: 0.42rem;
+      height: 0.42rem;
+      border-radius: 50%;
+      background: var(--light);
+      border: 2px solid var(--gray);
+    }
+    &::marker {
+      content: none;
+    }
+  }
+  // branches (sub-lists): smaller, joined to the path by a dashed line
+  li ul {
+    margin-left: 0.2rem;
+    font-size: 0.93em;
+
+    &::before {
+      background: none;
+      border-left: 1px dashed var(--lightgray);
+    }
+  }
+  .zk-leg-next {
+    font-family: var(--codeFont);
+    font-size: 0.66rem;
+    color: var(--gray);
+    margin: 0.2rem 0 2.2rem 0.2rem;
+  }
+}
+
+// b) meta: in the left margin (marginalia), or one line under the title
+.page-header.has-zk-meta {
+  position: relative;
+
+  .content-meta,
+  .tags {
+    display: none;
+  }
+}
+.zk-meta {
+  font-family: var(--codeFont);
+  font-size: 0.62rem;
+  line-height: 1.85;
+  color: var(--gray);
+
+  .zk-stage {
+    font-size: 1em;
+    vertical-align: 0;
+  }
+  a.tag-link {
+    color: var(--tertiary);
+    background: none;
+    padding: 0;
+    font-weight: 400;
+  }
+  // margin: positioned beside the title (top: auto keeps its height)
+  &:not(.is-inline) {
+    position: absolute;
+    right: calc(100% + 2.4rem);
+    width: 11rem;
+    margin-top: 0.55rem;
+    text-align: right;
+
+    > span {
+      display: block;
+    }
+  }
+  &.is-inline {
+    margin: 0.35rem 0 0.4rem;
+  }
+}
+
+
+// ---------------------------------------------------------------------------
+// Stacked columns (site.js §13, Andy Matuschak style)
+// ---------------------------------------------------------------------------
+html.zk-stacked {
+  overflow: hidden; // the columns scroll, not the page
+
+  .zk-cursors {
+    display: none;
+  }
+  footer {
+    display: none;
+  }
+}
+.zk-stack {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  background: var(--light);
+  @include thin-scroll;
+}
+.zk-col {
+  --spine: 38px;
+  position: sticky;
+  left: calc(var(--i) * var(--spine));
+  flex: none;
+  box-sizing: border-box;
+  width: calc(var(--zk-note) + var(--spine) + 4rem);
+  height: 100vh;
+  padding: 0 2rem 0 calc(var(--spine) + 2rem);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  background: var(--light);
+  border-left: 1px solid var(--lightgray);
+  box-shadow: -10px 0 24px -18px rgb(0 0 0 / 0.7);
+  @include thin-scroll;
+
+  &[data-i="0"] {
+    border-left: 0;
+    box-shadow: none;
+  }
+  // first column: room for the bar above the path
+  .zk-colbody {
+    padding: 0.5rem 0 4rem;
+  }
+  // fetched columns: their path sits where the first column's does
+  &:not([data-i="0"]) .breadcrumb-container {
+    position: static;
+    margin: 4.7rem 0 0;
+  }
+  .center {
+    margin: 0;
+  }
+}
+// the spine: the column's title, vertical, on its left edge (it is all that
+// shows of a column when the next ones slide over it); click = back to it
+.zk-spine {
+  all: unset;
+  position: sticky;
+  float: left;
+  top: 0;
+  margin-left: calc(-1 * (var(--spine) + 2rem));
+  width: var(--spine);
+  height: 100vh;
+  cursor: pointer;
+  border-right: 1px solid transparent;
+
+  span {
+    display: block;
+    writing-mode: vertical-rl;
+    padding: 4.4rem 0 0 11px;
+    font-family: var(--codeFont);
+    font-size: 0.7rem;
+    color: var(--gray);
+    white-space: nowrap;
+    overflow: hidden;
+    max-height: calc(100vh - 6rem);
+    text-overflow: ellipsis;
+  }
+  &:hover span {
+    color: var(--secondary);
+  }
+}
+.zk-col-close {
+  all: unset;
+  position: absolute;
+  top: 0.9rem;
+  right: 1.2rem;
+  font-family: var(--codeFont);
+  font-size: 1rem;
+  color: var(--gray);
+  cursor: pointer;
+
+  &:hover {
+    color: var(--secondary);
+  }
+}
+.zk-col-loading {
+  font-family: var(--codeFont);
+  font-size: 0.8rem;
+  color: var(--gray);
 }

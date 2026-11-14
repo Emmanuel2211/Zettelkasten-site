@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-29T01:39:46Z
+modified: 2026-11-13T23:34:20Z
 title: "Ecuaciones Diafontinas"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

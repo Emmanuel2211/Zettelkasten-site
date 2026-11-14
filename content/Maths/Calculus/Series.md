@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-27T00:28:24Z
+modified: 2026-11-13T23:34:20Z
 title: "Series"
 publish: true
 type: zettel
 date: "2026-10-12"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

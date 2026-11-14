@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-23T00:19:35Z
+modified: 2026-11-13T23:34:20Z
 title: "Polinomios de Taylor"
 publish: true
 type: zettel
 date: 2026-09-23
-status: undone
+status: seed
 aliases: 
   - "Serie de Taylor"
 tags:

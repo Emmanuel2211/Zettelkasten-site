@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-15T16:07:15Z
+modified: 2026-11-13T23:34:20Z
 title: "Independencia de V.A.s"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - probability

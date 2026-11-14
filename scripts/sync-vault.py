@@ -702,6 +702,36 @@ def build_moc_tree(notes: dict, index: "VaultIndex") -> list:
     return sorted(mocs, key=lambda m: m["path"])
 
 
+# ---------------------------------------------------------------------------
+# Growth stage and dates of every published note, for the site (site.js §12:
+# the stage labels on MOC trails and the note's margin meta). Stage comes from
+# the frontmatter `status`: seed | budding | evergreen (older values: undone =
+# seed, done = evergreen; missing or empty = seed). Keyed by vault path, like
+# `filePath` in Quartz's contentIndex.json. Written to content/notes-meta.json.
+# ---------------------------------------------------------------------------
+STAGES = {"seed": "seed", "seeding": "seed", "undone": "seed", "": "seed",
+          "budding": "budding", "brote": "budding", "doing": "budding",
+          "evergreen": "evergreen", "done": "evergreen"}
+
+
+def notes_meta(notes: dict) -> dict:
+    from datetime import datetime, timezone
+    out = {}
+    for rel, text in notes.items():
+        if rel.suffix != ".md":
+            continue
+        fm = frontmatter(text) or ""
+        def field(k):
+            m = re.search(rf"^{k}:[ \t]*[\"']?([^\"'\n]*)[\"']?[ \t]*$", fm, re.M)
+            return m.group(1).strip() if m else ""
+        status = field("status").lower()
+        mtime = datetime.fromtimestamp((VAULT / rel).stat().st_mtime, timezone.utc).strftime("%Y-%m-%d")
+        body = text.split("---", 2)[2] if text.startswith("---") else text
+        words = len(re.findall(r"\w+", re.sub(r"\$\$.*?\$\$|\$[^$\n]*\$", " ", body, flags=re.S)))
+        out[rel.as_posix()] = {"stage": STAGES.get(status, "seed"), "created": field("date")[:10],
+                               "modified": mtime, "words": words}
+    return out
+
 def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--dry-run", action="store_true", help="report only, write nothing")
@@ -847,6 +877,8 @@ def main() -> int:
         (CONTENT / rel).write_text(text, encoding="utf-8")
 
     import json
+    (CONTENT / "notes-meta.json").write_text(
+        json.dumps(notes_meta(notes), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     (CONTENT / "moc-tree.json").write_text(
         json.dumps(build_moc_tree(notes, index), ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
 

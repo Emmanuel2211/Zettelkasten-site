@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-09T18:37:42Z
+modified: 2026-11-13T23:34:20Z
 title: "Paridad de Funciones y Asintotas"
 publish: true
 type: zettel
 date: "2026-09-07"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

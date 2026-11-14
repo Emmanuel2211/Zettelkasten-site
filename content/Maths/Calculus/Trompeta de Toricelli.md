@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-04T21:14:10Z
+modified: 2026-11-13T23:34:20Z
 title: "Trompeta de Torricelli"
 publish: true
 type: zettel
 date: "2026-10-28"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

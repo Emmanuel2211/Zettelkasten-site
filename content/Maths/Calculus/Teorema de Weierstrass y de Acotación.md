@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-02T23:08:56Z
+modified: 2026-11-13T23:34:20Z
 title: "Teorema de Weierstrass y de Acotación"
 publish: true
 type: zettel
 date: "2026-09-07"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

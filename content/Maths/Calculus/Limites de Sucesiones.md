@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-11T04:09:56Z
+modified: 2026-11-13T23:34:20Z
 title: "Límites de Sucesiones"
 publish: true
 type: zettel
 date: "2026-11-10"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

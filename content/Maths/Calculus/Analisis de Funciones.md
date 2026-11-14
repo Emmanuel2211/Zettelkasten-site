@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-09T17:53:59Z
+modified: 2026-11-13T23:34:20Z
 title: "Análisis de Funciones"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

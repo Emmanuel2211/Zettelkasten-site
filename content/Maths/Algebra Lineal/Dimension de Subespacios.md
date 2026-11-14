@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-30T23:45:45Z
+modified: 2026-11-13T23:34:20Z
 title: "Dimensión de Subespacios"
 publish: true
 type: zettel
 date: "2026-09-01"
-status: undone
+status: seed
 aliases:
 tags:
  - algebra

@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-21T20:49:11Z
+modified: 2026-11-13T23:34:20Z
 title: "Algebra de Conjuntos"
 publish: true
 type: zettel
 date: "2026-08-18"
-status: undone
+status: seed
 aliases:
  - Operaciones de Conjuntos
  - Propiedades de Conjuntos

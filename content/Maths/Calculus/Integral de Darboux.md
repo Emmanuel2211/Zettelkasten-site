@@ -1,10 +1,10 @@
 ---
-modified: 2026-09-12T14:29:43Z
+modified: 2026-11-13T23:34:20Z
 title: "Integral de Darboux"
 publish: true
 type: zettel
 date: "2026-09-07"
-status: undone
+status: seed
 aliases:
  - epsilon particion
 tags:

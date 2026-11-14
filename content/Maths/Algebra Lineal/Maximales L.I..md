@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-01T20:29:16Z
+modified: 2026-11-13T23:34:20Z
 title: "Subconjuntos Maximales Linealmente Independientes"
 publish: true
 type: zettel
 date: 2026-09-23
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

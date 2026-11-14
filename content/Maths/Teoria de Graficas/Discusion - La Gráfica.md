@@ -1,10 +1,10 @@
 ---
-modified: 2026-08-17T19:55:46Z
+modified: 2026-11-13T23:34:20Z
 title: "Discusión - El Grafo"
 publish: true
 type: zettel
 date: "2026-08-17"
-status: undone
+status: seed
 aliases:
 tags: 
  - graphs

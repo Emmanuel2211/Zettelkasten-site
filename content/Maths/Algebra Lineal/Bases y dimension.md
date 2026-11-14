@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-14T17:35:39Z
+modified: 2026-11-13T23:34:20Z
 title: "Bases y Dimensión"
 publish: true
 type: zettel
 date: 2026-09-08
-status: undone
+status: seed
 aliases:
 tags:
   - algebra

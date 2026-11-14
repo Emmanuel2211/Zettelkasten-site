@@ -1,10 +1,10 @@
 ---
-modified: 2026-11-11T04:11:45Z
+modified: 2026-11-13T23:34:20Z
 title: "Criterios de Convergencia de Sucesiones"
 publish: true
 type: zettel
 date: "2026-10-01"
-status: undone
+status: seed
 aliases:
 tags:
  - calculus

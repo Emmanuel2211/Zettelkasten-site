@@ -1,10 +1,10 @@
 ---
-modified: 2026-10-02T23:02:55Z
+modified: 2026-11-13T23:34:20Z
 title: "Teorema del Bolzano"
 publish: true
 type: zettel
 date: 2026-09-04
-status: undone
+status: seed
 aliases:
   - Teorema de Bolzano
 tags:
