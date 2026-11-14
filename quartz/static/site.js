@@ -1099,7 +1099,8 @@ document.addEventListener("nav", () => {
   const EASE_S = 0.085 // time constant of the glide (seconds)
   const IDLE_MS = 12000 // a still cursor fades after this
   const esc = (t) => String(t).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c])
-  const slug = () => document.body?.dataset.slug || ""
+  // the note being read: the page, or with stacked columns (§13) the last one
+  const slug = () => window.__zkFocus?.() || document.body?.dataset.slug || ""
   const hhmm = (t) => new Date(t).toLocaleTimeString("es-MX", { hour: "2-digit", minute: "2-digit", hour12: false })
 
   let ws = null
@@ -1197,7 +1198,8 @@ document.addEventListener("nav", () => {
   }
 
   // ---- my cursor ----
-  const col = () => document.querySelector(".center") || document.body
+  // positions are relative to the focused note's column (same width as the page)
+  const col = () => window.__zkFocusEl?.() || document.querySelector(".center") || document.body
   let last = null
   let sendTimer = 0
   let lastSent = 0
@@ -1208,9 +1210,10 @@ document.addEventListener("nav", () => {
       sendTimer = 0
       lastSent = performance.now()
       if (!last || ![...here.values()].some((u) => u.id !== me?.id && u.page === slug())) return // alone here
-      if (document.documentElement.classList.contains("zk-stacked")) return send({ t: "cx" }) // columns: no shared cursor
       const r = col().getBoundingClientRect()
       if (!r.width) return
+      // with columns, only while the mouse is over the focused one
+      if (document.documentElement.classList.contains("zk-stacked") && (last.x < r.left - 40 || last.x > r.right + 40)) return send({ t: "cx" })
       send({ t: "c", x: (last.x - r.left) / r.width, y: (last.y - r.top) / r.width })
     }, wait)
   }
@@ -1226,7 +1229,8 @@ document.addEventListener("nav", () => {
       { passive: true },
     )
     // scrolling moves the page under a still mouse
-    addEventListener("scroll", queueSend, { passive: true })
+    // capture: also the columns' own scroll (scroll events don't bubble)
+    addEventListener("scroll", queueSend, { passive: true, capture: true })
     document.addEventListener("pointerleave", () => ((last = null), send({ t: "cx" })))
     addEventListener("blur", () => ((last = null), send({ t: "cx" })))
   }
@@ -1292,7 +1296,7 @@ document.addEventListener("nav", () => {
   }
   // keep cursors glued to the note when the layout moves
   addEventListener("resize", kick)
-  addEventListener("scroll", kick, { passive: true })
+  addEventListener("scroll", kick, { passive: true, capture: true })
   setInterval(() => cursors.size && kick(), 4000) // idle fading
 
   // ---- the board (index only) ----
@@ -1385,6 +1389,16 @@ document.addEventListener("nav", () => {
       } catch {}
       lost()
     }
+  })
+
+  // ---- columns: the focused note changed (§13) ----
+  document.addEventListener("zk-focus", () => {
+    clearCursors()
+    if (!me) return
+    here.set(me.id, { ...(here.get(me.id) || me), page: slug() })
+    send({ t: "page", page: slug() })
+    publishReaders()
+    renderBoard()
   })
 
   // ---- navigation / visibility ----
@@ -1567,7 +1581,8 @@ document.addEventListener("nav", () => {
 // from the URL). Ctrl/Cmd/Shift-click and links in the panels navigate as
 // usual, and so do the index's links (it opens notes as whole pages; the
 // stacking starts from there). A link to a note already open in an earlier
-// column goes back to it, closing the columns after it. Each column gets the
+// column goes back to it, closing the columns after it. Links to the index
+// and the path at the top (~/Maths/…) navigate as usual (closing all columns). Each column gets the
 // same decoration as a page (§12: trails, meta in one line) and its "Más
 // enlaces" at the end.
 // ---------------------------------------------------------------------------
@@ -1587,6 +1602,17 @@ document.addEventListener("nav", () => {
   const pageUrl = (slug) => "/" + (slug === "index" ? "" : slug.replace(/(^|\/)index$/, "$1"))
   const cache = new Map()
   let stack = [] // slugs after the base page
+  // the note being read = the last column (live presence, §11, follows it)
+  window.__zkFocus = () => (root?.isConnected && stack.length ? stack[stack.length - 1] : null)
+  window.__zkFocusEl = () =>
+    root?.isConnected && stack.length ? root.querySelector(`.zk-col[data-i="${stack.length}"] .zk-colbody`) : null
+  let lastFocus = null
+  const announce = () => {
+    const f = window.__zkFocus() || baseSlug()
+    if (f === lastFocus) return
+    lastFocus = f
+    document.dispatchEvent(new CustomEvent("zk-focus"))
+  }
   let root = null // .zk-stack
 
   // ---- fetching a note as a column ----
@@ -1706,6 +1732,7 @@ document.addEventListener("nav", () => {
     root.querySelectorAll(".zk-col").forEach((c) => +c.dataset.i > from && c.remove())
     stack.push(slug)
     writeUrl(true)
+    announce()
     const col = await addColumn(slug, from + 1)
     scrollToCol(from + 1)
     if (hash) col.querySelector(".zk-colbody").querySelector(decodeURIComponent(hash))?.scrollIntoView({ block: "start" })
@@ -1716,6 +1743,7 @@ document.addEventListener("nav", () => {
     writeUrl(true)
     if (!stack.length) unstack()
     else scrollToCol(stack.length)
+    announce()
   }
 
   // ---- clicks ----
@@ -1735,11 +1763,14 @@ document.addEventListener("nav", () => {
       }
       if (!can() || e.button !== 0 || e.ctrlKey || e.metaKey || e.shiftKey || e.altKey) return
       const a = e.target.closest("a[href]")
-      if (!a || !a.closest(".center article, .zk-colbody, .zk-backlinks") || a.closest(".zk-bar, .sidebar")) return
+      // the path at the top (~/Maths/…) is site navigation: it navigates as usual
+      if (!a || !a.closest(".center article, .zk-colbody, .zk-backlinks") || a.closest(".zk-bar, .sidebar, .breadcrumb-container")) return
       if (a.classList.contains("tag-link") || a.getAttribute("role") === "anchor" || a.target === "_blank") return
       const url = new URL(a.href, location.href)
       if (url.origin !== location.origin || /\.[a-z0-9]{2,5}$/i.test(url.pathname) || url.pathname.startsWith("/tags/")) return
       const slug = slugOf(url)
+      // the index is never a column: going there closes everything
+      if (slug === "index") return
       const col = a.closest(".zk-col")
       const from = col ? +col.dataset.i : 0
       // the index opens notes as whole pages; columns start from there
@@ -1757,6 +1788,7 @@ document.addEventListener("nav", () => {
   document.addEventListener("nav", async () => {
     root = null
     stack = []
+    lastFocus = baseSlug()
     d.classList.remove("zk-stacked")
     const want = (new URL(location.href).searchParams.get("stack") || "").split(",").filter(Boolean)
     if (!want.length || !can()) return
@@ -1764,12 +1796,14 @@ document.addEventListener("nav", () => {
     stack = want
     for (let i = 0; i < want.length; i++) await addColumn(want[i], i + 1)
     scrollToCol(want.length, false)
+    announce()
   })
   // a window too narrow for columns: back to the plain page (keeps the base)
   addEventListener("resize", () => {
     if (root && !can()) {
       unstack()
       writeUrl(false)
+      announce()
     }
   })
 })()

@@ -1635,9 +1635,6 @@ html.zk-panels:not(:has(body[data-slug="index"])) .zk-bar {
 html.zk-stacked {
   overflow: hidden; // the columns scroll, not the page
 
-  .zk-cursors {
-    display: none;
-  }
   footer {
     display: none;
   }
