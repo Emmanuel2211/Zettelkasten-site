@@ -1565,8 +1565,11 @@ document.addEventListener("nav", () => {
 // on its own. The stack is in the URL (?stack=slug,slug…), so it can be
 // shared and Back works (Quartz re-renders the page, and the stack is rebuilt
 // from the URL). Ctrl/Cmd/Shift-click and links in the panels navigate as
-// usual. Each column gets the same decoration as a page (§12: trails, meta in
-// one line) and its "Más enlaces" at the end.
+// usual, and so do the index's links (it opens notes as whole pages; the
+// stacking starts from there). A link to a note already open in an earlier
+// column goes back to it, closing the columns after it. Each column gets the
+// same decoration as a page (§12: trails, meta in one line) and its "Más
+// enlaces" at the end.
 // ---------------------------------------------------------------------------
 ;(() => {
   const d = document.documentElement
@@ -1686,6 +1689,14 @@ document.addEventListener("nav", () => {
 
   // open `slug` after column `from` (0 = the base page)
   async function open(slug, from, hash) {
+    // a note already open in an earlier column (e.g. back to the MOC): go back
+    // to it, closing the columns after it, instead of opening it again
+    const back = [baseSlug(), ...stack].slice(0, from).lastIndexOf(slug)
+    if (back >= 0) {
+      closeFrom(back + 1)
+      scrollToCol(back)
+      return
+    }
     if (!ensureRoot()) return
     if (stack[from] === slug) {
       // already the next column: just show it
@@ -1702,7 +1713,7 @@ document.addEventListener("nav", () => {
   function closeFrom(i) {
     stack = stack.slice(0, i - 1)
     root?.querySelectorAll(".zk-col").forEach((c) => +c.dataset.i >= i && c.remove())
-    writeUrl(false)
+    writeUrl(true)
     if (!stack.length) unstack()
     else scrollToCol(stack.length)
   }
@@ -1731,6 +1742,8 @@ document.addEventListener("nav", () => {
       const slug = slugOf(url)
       const col = a.closest(".zk-col")
       const from = col ? +col.dataset.i : 0
+      // the index opens notes as whole pages; columns start from there
+      if (from === 0 && baseSlug() === "index") return
       const here = from === 0 ? baseSlug() : stack[from - 1]
       if (slug === here) return // a link to a heading of the same note
       e.preventDefault()
